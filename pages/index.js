@@ -1,7 +1,15 @@
-export default function HomePage() {
+import useSWR from "swr";
+
+export default function Home() {
+  const { data: recipes } = useSWR("/api/recipes", { fallbackData: [] });
   return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
+    <>
+      <h1>Rezepte</h1>
+      <ul>
+        {recipes.map((recipe) => {
+          return <li key={recipe._id}>{recipe.title}</li>;
+        })}
+      </ul>
+    </>
   );
 }
