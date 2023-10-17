@@ -1,4 +1,5 @@
 import { SWRConfig } from "swr";
+import GlobalStyle from "../styles.js";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps }) {
         },
       }}
     >
+      <GlobalStyle />
       <Component {...pageProps} />
     </SWRConfig>
   );
