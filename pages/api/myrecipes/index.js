@@ -1,11 +1,11 @@
-import Recipe from "@/db/models/Recipe";
+import myrecipe from "@/db/models/myrecipe";
 import connect from "@/db/connect";
 export default async function handler(request, response) {
   try {
     await connect();
     if (request.method === "GET") {
-      const recipes = await Recipe.find();
-      return response.status(200).json(recipes);
+      const myrecipes = await myrecipe.find();
+      return response.status(200).json(myrecipes);
     }
   } catch (error) {
     console.log(error);

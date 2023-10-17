@@ -1,5 +1,5 @@
 import connect from "@/db/connect.js";
-import Recipe from "@/db/models/Recipe";
+import Recipe from "@/db/models/myrecipe";
 
 export default async function handler(request, response) {
   try {
@@ -11,12 +11,12 @@ export default async function handler(request, response) {
     }
 
     if (request.method === "GET") {
-      const recipe = await Recipe.findById(id);
+      const myrecipe = await myrecipe.findById(id);
 
-      if (!recipe) {
+      if (!myrecipe) {
         return response.status(404).json({ status: "Not found !!!" });
       }
-      response.status(200).json(recipe);
+      response.status(200).json(myrecipe);
     }
   } catch (error) {
     console.error("An error occurred:", error);

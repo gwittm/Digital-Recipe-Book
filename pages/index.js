@@ -1,13 +1,13 @@
 import useSWR from "swr";
 
 export default function Home() {
-  const { data: recipes } = useSWR("/api/recipes", { fallbackData: [] });
+  const { data: myrecipes } = useSWR("/api/myrecipes", { fallbackData: [] });
   return (
     <>
       <h1>Rezepte</h1>
       <ul>
-        {recipes.map((recipe) => {
-          return <li key={recipe._id}>{recipe.title}</li>;
+        {myrecipes.map((myrecipe) => {
+          return <li key={myrecipe._id}>{myrecipe.title}</li>;
         })}
       </ul>
     </>
