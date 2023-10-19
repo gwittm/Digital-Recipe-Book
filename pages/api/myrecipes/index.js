@@ -1,4 +1,4 @@
-import myrecipe from "@/db/models/myrecipe";
+import myrecipe from "@/db/models/Recipe";
 import connect from "@/db/connect";
 export default async function handler(request, response) {
   try {
