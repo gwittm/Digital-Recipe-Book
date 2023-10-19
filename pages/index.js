@@ -1,5 +1,5 @@
 import useSWR from "swr";
-
+//hallo
 export default function Home() {
   const { data: recipes } = useSWR("/api/recipes", { fallbackData: [] });
   return (
