@@ -10,7 +10,6 @@ const recipeSchema = new Schema({
   yield: { type: String },
   ingredients: { type: Array },
   steps: { type: String, required: true },
-  steps: { type: String, required: true },
 });
 
 const Recipe = mongoose.models.Recipe || mongoose.model("Recipe", recipeSchema);
