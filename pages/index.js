@@ -1,3 +1,4 @@
+import Link from "next/link";
 import useSWR from "swr";
 
 export default function Home() {
@@ -10,6 +11,9 @@ export default function Home() {
           return <li key={myrecipe._id}>{myrecipe.title}</li>;
         })}
       </ul>
+      <Link href="/create" passHref legacyBehavior>
+        <Link>+ recipe</Link>
+      </Link>
     </>
   );
 }
