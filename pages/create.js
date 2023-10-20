@@ -1,37 +1,32 @@
-import FormularRecipe from "@/components/FormularAddRecipe";
-import Link from "next/link";
+import Link from "next/link.js";
+import styled from "styled-components";
 import { useRouter } from "next/router";
-import useSWR from "swr";
-
+import Form from "../components/Form.js";
+import { StyledLink } from "../components/StyledLink.js";
+const StyledBackLink = styled(StyledLink)`
+  justify-self: flex-start;
+`;
 export default function CreateRecipePage() {
-  const { mutate } = useSWR("/api/myrecipes");
   const router = useRouter();
-  async function addRecipe(myrecipe) {
-    const response = await fetch("/api/myrecipes", {
+  async function addRecipe(recipe) {
+    const response = await fetch("/api/recipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(myrecipe),
+      body: JSON.stringify(recipe),
     });
-    if (isLoading) {
-      return <h1>is loading...</h1>;
-    }
-    if (!data) {
-      return;
-    }
     if (response.ok) {
-      mutate();
       router.push("/");
     }
   }
   return (
     <>
-      <h2 id="add-myrecipe">Add Recipe</h2>
+      <h2 id="add-recipe">Add Recipe</h2>
       <Link href="/" passHref legacyBehavior>
-        <Link>back</Link>
+        <StyledBackLink>back</StyledBackLink>
       </Link>
-      <FormularRecipe onSubmit={addRecipe} formName={"add-myrecipe"} />
+      <Form onSubmit={addRecipe} formName={"add-recipe"} />
     </>
   );
 }
