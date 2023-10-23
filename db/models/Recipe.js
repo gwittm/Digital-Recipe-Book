@@ -2,17 +2,16 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const RecipeSchema = new Schema({
-  title: { type: String, required: true },
+const recipeSchema = new Schema({
+  title: { type: String },
   image: { type: String },
-  course: { type: String, required: true },
+  course: { type: String },
   time: { type: String },
   yield: { type: String },
   ingredients: { type: Array },
-  steps: { type: String, required: true },
+  steps: { type: String },
 });
 
-const Recipe =
-  mongoose.models.myrecipe || mongoose.model("Recipe", RecipeSchema);
+const Recipe = mongoose.models.Recipe || mongoose.model("Recipe", recipeSchema);
 
 export default Recipe;
