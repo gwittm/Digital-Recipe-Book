@@ -20,9 +20,6 @@ export default function CreateRecipePage() {
   return (
     <>
       <h2 id="add-recipe">Add Recipe</h2>
-      <Link href="/" passHref legacyBehavior>
-        <Link>back</Link>
-      </Link>
       <Form onSubmit={addRecipe} formName={"add-recipe"} />
     </>
   );
