@@ -27,7 +27,6 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           type="text"
           defaultValue={defaultData?.title}
         />
-
         <label>
           prepared with:
           <select name="prepared">
