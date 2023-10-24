@@ -12,7 +12,6 @@ export default function CreateRecipePage() {
       },
       body: JSON.stringify(recipe),
     });
-    console.log(response);
     if (response.ok) {
       router.push("/");
     }

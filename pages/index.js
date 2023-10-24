@@ -25,21 +25,21 @@ export default function Home() {
           return (
             <ListItem key={recipe._id}>
               {recipe.title}
-              <br></br>
-              {recipe.type}
+              {/* <br></br>
+              {recipe.preparation}
               <br></br>
               {recipe.course}
               <br></br>
-              {recipe.yield}
-              <br></br>
               {recipe.time}
+              <br></br>
+              {recipe.servings}
+              <br></br>
+              {recipe.instruction} */}
             </ListItem>
           );
         })}
       </List>
-      <Link href="/create" passHref legacyBehavior>
-        <Link>+ recipe</Link>
-      </Link>
+      <Link href="/create">+ recipe</Link>
     </>
   );
 }

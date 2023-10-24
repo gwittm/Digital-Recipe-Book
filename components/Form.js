@@ -28,8 +28,8 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           defaultValue={defaultData?.title}
         />
         <label>
-          prepared with:
-          <select name="prepared">
+          preparation:
+          <select name="preparation">
             <option value="Oven">Oven</option>
             <option value="Microwave">Microwave</option>
             <option value="Stove" selected="selected">
@@ -39,29 +39,36 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           </select>
         </label>
 
-        <label>
-          Type:
-          <select name="type">
+        <label htmlFor="course">
+          Course:
+          <select name="course">
             <option value="Cake">Cake</option>
             <option value="Dish">Dish</option>
           </select>
         </label>
 
-        <label htmlFor="neededTime">Time:</label>
+        <label htmlFor="time">Time:</label>
         <input
-          id="neededTime"
-          name="neededTime"
+          id="time"
+          name="time"
           type="time"
           defaultValue={defaultData?.neededTime}
         />
+        <label htmlFor="servings">Servings:</label>
+        <input
+          id="servings"
+          name="servings"
+          type="number"
+          defaultValue={defaultData?.servings}
+        />
 
-        <label htmlFor="description">Description</label>
+        <label htmlFor="instruction">Instuction</label>
         <textarea
-          name="description"
-          id="description"
-          cols="30"
+          name="instruction"
+          id="instruction"
+          cols="20"
           rows="10"
-          defaultValue={defaultData?.description}
+          defaultValue={defaultData?.instruction}
         ></textarea>
         <button type="submit">
           {defaultData ? "Update recipe" : "Add recipe"}
