@@ -11,12 +11,12 @@ export default async function handler(request, response) {
     }
 
     if (request.method === "GET") {
-      const myrecipe = await myrecipe.findById(id);
+      const recipe = await Recipe.findById(id);
 
-      if (!myrecipe) {
+      if (!recipe) {
         return response.status(404).json({ status: "Not found !!!" });
       }
-      response.status(200).json(myrecipe);
+      response.status(200).json(recipe);
     }
   } catch (error) {
     console.error("An error occurred:", error);
