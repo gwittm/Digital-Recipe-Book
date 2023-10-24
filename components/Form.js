@@ -28,7 +28,7 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           defaultValue={defaultData?.title}
         />
 
-        {/* <label>
+        <label>
           prepared with:
           <select name="prepared">
             <option value="Oven">Oven</option>
@@ -38,15 +38,15 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
             </option>
             <option value="Grill">Grill</option>
           </select>
-        </label> */}
+        </label>
 
-        {/* <label>
+        <label>
           Type:
           <select name="type">
             <option value="Cake">Cake</option>
             <option value="Dish">Dish</option>
           </select>
-        </label> */}
+        </label>
 
         <label htmlFor="neededTime">Time:</label>
         <input
@@ -64,10 +64,10 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           rows="10"
           defaultValue={defaultData?.description}
         ></textarea>
+        <button type="submit">
+          {defaultData ? "Update recipe" : "Add recipe"}
+        </button>
       </StyledForm>
-      <button type="submit">
-        {defaultData ? "Update place" : "Add place"}
-      </button>
     </>
   );
 }

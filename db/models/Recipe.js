@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const recipeSchema = new Schema({
-  title: { type: String },
+  title: { type: String, required: true },
   image: { type: String },
   course: { type: String },
   time: { type: String },
