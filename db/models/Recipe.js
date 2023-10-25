@@ -9,7 +9,13 @@ const recipeSchema = new Schema({
   course: { type: String },
   time: { type: String },
   servings: { type: Number },
-  // ingredients: { type: Array },
+  ingredients: [
+    {
+      name: { type: String, required: true },
+      amount: { type: Number, required: true },
+      unit: { type: String },
+    },
+  ],
   instruction: { type: String },
 });
 
