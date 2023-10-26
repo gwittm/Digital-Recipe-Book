@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import IngredientsContainer from "./IngredientsContainer";
 import { uid } from "uid";
 
-const StyledIngredientsForm = styled.form`
+const StyledIngredientsForm = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5 rem;
@@ -147,8 +147,8 @@ export default function IngredientsForm({ onAddIngredient }) {
         <StyledButton type="button" onClick={onAddIngredient}>
           +
         </StyledButton>
-        <IngredientsContainer />
       </StyledIngredientsForm>
+      <IngredientsContainer />
     </StyledIngredientDiv>
   );
 }

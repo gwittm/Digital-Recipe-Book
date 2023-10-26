@@ -60,12 +60,12 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           type="number"
           defaultValue={defaultData?.servings}
         />
-        <label htmlFor="ingredients">add ingredients</label>
         <StyledIngredientsForm
           name="ingredients"
           type="input"
           id="ingredients"
         />
+
         <label htmlFor="instruction">Instuction</label>
         <textarea
           name="instruction"

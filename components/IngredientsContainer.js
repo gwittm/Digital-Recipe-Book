@@ -10,7 +10,6 @@ export default function IngredientsContainer({ formIngredients }) {
           <Ingredient id={ingredient.id} title={ingredient.ingredient} />
         </Fragment>
       ))} */}
-      ;
     </section>
   );
 }
