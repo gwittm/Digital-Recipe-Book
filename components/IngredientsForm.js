@@ -1,20 +1,16 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 
-const StyledIngredientsForm = styled.form`
+const StyledIngredientsForm = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5 rem;
+  gap: 0.5rem;
   flex-direction: row;
-  border: solid black, 1em;
-  padding: 1 em;
+  border: 1px solid black;
+  padding: 1em;
 `;
 
-export default function IngredientsFormular({
-  onSubmit,
-  formName,
-  defaultData,
-}) {
+export default function IngredientsFormular({ onSubmit, defaultData }) {
   const [formInstances, setFormInstances] = useState([0]);
 
   function handleSubmit(event) {
@@ -30,34 +26,35 @@ export default function IngredientsFormular({
 
   return (
     <div>
-      {formInstances.map((instance, ingredients) => (
-        <div key={ingredients}>
-          <h2>{formName}</h2>
+      <h2>add ingredients</h2>
+      <button type="button" onClick={addForm}>
+        +
+      </button>
+      {formInstances.map((index) => (
+        <div key={index}>
           <StyledIngredientsForm
-            aria-labelledby={formName}
+            aria-labelledby="ingredients"
             onSubmit={handleSubmit}
           >
-            <label htmlFor={`what${instance}`}>What</label>
+            <label htmlFor="what">What</label>
             <input
-              id={`what${instance}`}
-              name={`what${instance}`}
+              id="what"
+              name="what"
               type="text"
               placeholder="Mehl"
               defaultValue={defaultData?.what}
             />
-            <label htmlFor={`amount${instance}`}>amount</label>
+            <label htmlFor="amount">amount</label>
             <input
-              id={`amount${instance}`}
-              name={`amount${instance}`}
+              id="amount"
+              name="amount"
               type="number"
               placeholder="500"
               defaultValue={defaultData?.amount}
             />
-            <label htmlFor={`unit${instance}`}>unit:</label>
-            <select name={`unit${instance}`} id={`unit${instance}`}>
-              <option value="g" selected="selected">
-                g
-              </option>
+            <label htmlFor="unit">unit:</label>
+            <select name="unit" id="unit">
+              <option value="g">g</option>
               <option value="l">l</option>
               <option value="cl">cl</option>
               <option value="ml">ml</option>
@@ -71,9 +68,6 @@ export default function IngredientsFormular({
           </StyledIngredientsForm>
         </div>
       ))}
-      <button type="button" onClick={addForm}>
-        +
-      </button>
     </div>
   );
 }

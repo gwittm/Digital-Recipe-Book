@@ -1,5 +1,6 @@
 import Recipe from "@/db/models/Recipe";
 import connect from "@/db/connect";
+
 export default async function handler(request, response) {
   await connect();
 
