@@ -9,7 +9,7 @@ const recipeSchema = new Schema({
   course: { type: String },
   time: { type: String },
   servings: { type: Number },
-  ingredients: [{ type: Schema.Types.ObjectId, ref: "Ingredients" }],
+  ingredients: [{ type: Schema.Types.ObjectId, ref: "Ingredient" }],
   instruction: { type: String },
 });
 
