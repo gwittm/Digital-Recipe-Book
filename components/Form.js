@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import IngredientsFormular from "./IngredientsForm";
+import StyledIngredientsForm from "./IngredientsForm";
 
 const StyledForm = styled.form`
   display: flex;
@@ -39,7 +39,6 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
             <option value="Grill">Grill</option>
           </select>
         </label>
-
         <label htmlFor="course">
           Course:
           <select name="course">
@@ -47,7 +46,6 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
             <option value="Dish">Dish</option>
           </select>
         </label>
-
         <label htmlFor="time">Time:</label>
         <input
           id="time"
@@ -63,7 +61,11 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           defaultValue={defaultData?.servings}
         />
         <label htmlFor="ingredients">add ingredients</label>
-        <IngredientsFormular name="ingredients" type="input" id="ingredients" />
+        <StyledIngredientsForm
+          name="ingredients"
+          type="input"
+          id="ingredients"
+        />
         <label htmlFor="instruction">Instuction</label>
         <textarea
           name="instruction"

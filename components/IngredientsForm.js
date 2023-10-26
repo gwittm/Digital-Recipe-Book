@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
+import IngredientsContainer from "./IngredientsContainer";
+import { uid } from "uid";
 
 const StyledIngredientsForm = styled.form`
   display: flex;
@@ -10,7 +12,22 @@ const StyledIngredientsForm = styled.form`
   padding: 1 em;
 `;
 
-export default function IngredientsFormular({
+const StyledIngredientDiv = styled.div`
+  border: solid black, 1em;
+  background-color: grey;
+  margin: 5px;
+  padding: 10px;
+`;
+
+const StyledButton = styled.button`
+  background-color: hotpink;
+  width: 30px;
+  margin: 10px;
+  height: 35px;
+  width: 35px;
+`;
+
+/*export default function IngredientsFormular({
   onSubmit,
   formName,
   defaultData,
@@ -75,5 +92,63 @@ export default function IngredientsFormular({
         +
       </button>
     </div>
+  );
+}
+ */
+
+export default function IngredientsForm({ onAddIngredient }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    onAddIngredient(data);
+    event.target.reset();
+  }
+  const [formIngredients, setFormIngredients] = useState(0);
+
+  function handleAddIngredient(newIngredient) {
+    setFormIngredients([{ id: uid(), newIngredient }, ...formIngredients]);
+  }
+
+  return (
+    <StyledIngredientDiv>
+      <h5>Add your ingredients</h5>
+      <StyledIngredientsForm onSubmit={handleSubmit}>
+        <p>
+          <label htmlFor="ingredient">What</label>
+          <input
+            id="ingredient"
+            name="ingredient"
+            type="text"
+            placeholder="Mehl"
+          />
+        </p>
+        <p>
+          <label htmlFor="amount">How much</label>
+          <input id="amount" name="amount" type="number" placeholder="250" />
+        </p>
+        <p>
+          <label htmlFor="unit">Unit</label>
+          <select name="unit">
+            <option value="g" selected="selected">
+              g
+            </option>
+            <option value="l">l</option>
+            <option value="cl">cl</option>
+            <option value="ml">ml</option>
+            <option value="tbsp">tbsp</option>
+            <option value="tsp">tsp</option>
+            <option value="pt">pt</option>
+            <option value="cup">cup</option>
+            <option value="pcs">pcs</option>
+            <option value="pn">pn</option>
+          </select>
+        </p>
+        <StyledButton type="button" onClick={onAddIngredient}>
+          +
+        </StyledButton>
+        <IngredientsContainer />
+      </StyledIngredientsForm>
+    </StyledIngredientDiv>
   );
 }
