@@ -29,23 +29,22 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           type="text"
           defaultValue={defaultData?.title}
         />
-        <label>
+        <label htmlFor="preparation">
           preparation:
-          <select value="preparation" name="preparation">
+          <select id="preparation" name="preparation">
             <option value="Oven">Oven</option>
             <option value="Microwave">Microwave</option>
-            <option value="Stove" selected="selected">
-              Stove
-            </option>
+            <option value="Stove">Stove</option>
             <option value="Grill">Grill</option>
           </select>
         </label>
 
-        <label>
+        <label htmlFor="course">
           Course:
-          <select value="course" name="course">
+          <select id="course" name="course">
             <option value="Cake">Cake</option>
             <option value="Dish">Dish</option>
+            <option value="Dessert">Dessert</option>
           </select>
         </label>
 
@@ -54,7 +53,7 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           id="time"
           name="time"
           type="time"
-          defaultValue={defaultData?.neededTime}
+          defaultValue={defaultData?.time}
         />
         <label htmlFor="servings">Servings:</label>
         <input
@@ -63,7 +62,6 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           type="number"
           defaultValue={defaultData?.servings}
         />
-        <label htmlFor="ingredients">add ingredients</label>
         <IngredientsFormular />
         <label htmlFor="instruction">Instuction</label>
         <textarea

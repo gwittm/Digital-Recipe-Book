@@ -11,7 +11,7 @@ const StyledIngredientsForm = styled.div`
 `;
 
 export default function IngredientsFormular({ onSubmit, defaultData }) {
-  const [formInstances, setFormInstances] = useState([0]);
+  const [formInstances, setFormInstances] = useState([{}]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -21,39 +21,39 @@ export default function IngredientsFormular({ onSubmit, defaultData }) {
   }
 
   function addForm() {
-    setFormInstances([...formInstances, formInstances.length]);
+    setFormInstances([...formInstances, {}]);
   }
 
   return (
     <div>
-      <h2>add ingredients</h2>
+      <h2>ADD INGREDIENTS</h2>
       <button type="button" onClick={addForm}>
         +
       </button>
-      {formInstances.map((index) => (
+      {formInstances.map((formInstance, index) => (
         <div key={index}>
           <StyledIngredientsForm
             aria-labelledby="ingredients"
             onSubmit={handleSubmit}
           >
-            <label htmlFor="what">What</label>
+            <label htmlFor={`what-${index}`}>What</label>
             <input
-              id="what"
-              name="what"
+              id={`what-${index}`}
+              name={`what-${index}`}
               type="text"
               placeholder="Mehl"
               defaultValue={defaultData?.what}
             />
-            <label htmlFor="amount">amount</label>
+            <label htmlFor={`amount-${index}`}>Amount</label>
             <input
-              id="amount"
-              name="amount"
+              id={`amount-${index}`}
+              name={`amount-${index}`}
               type="number"
               placeholder="500"
               defaultValue={defaultData?.amount}
             />
-            <label htmlFor="unit">unit:</label>
-            <select name="unit" id="unit">
+            <label htmlFor={`unit-${index}`}>Unit:</label>
+            <select name={`unit-${index}`} id={`unit-${index}`}>
               <option value="g">g</option>
               <option value="l">l</option>
               <option value="cl">cl</option>
