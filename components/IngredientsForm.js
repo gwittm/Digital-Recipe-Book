@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import React, { useState } from "react";
 import IngredientsContainer from "./IngredientsContainer";
-import { uid } from "uid";
+import Button from "./Button";
 
 const StyledIngredientsForm = styled.div`
   display: flex;
@@ -101,13 +100,9 @@ export default function IngredientsForm({ onAddIngredient }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onAddIngredient(data);
-    event.target.reset();
-  }
-  const [formIngredients, setFormIngredients] = useState(0);
 
-  function handleAddIngredient(newIngredient) {
-    setFormIngredients([{ id: uid(), newIngredient }, ...formIngredients]);
+    onAddIngredient(data);
+    /*     event.target.elements.ingredient.focus(); */
   }
 
   return (
@@ -115,10 +110,10 @@ export default function IngredientsForm({ onAddIngredient }) {
       <h5>Add your ingredients</h5>
       <StyledIngredientsForm onSubmit={handleSubmit}>
         <p>
-          <label htmlFor="ingredient">What</label>
+          <label htmlFor="ingredientname">What</label>
           <input
-            id="ingredient"
-            name="ingredient"
+            id="ingredientname"
+            name="ingredientname"
             type="text"
             placeholder="Mehl"
           />
@@ -130,9 +125,7 @@ export default function IngredientsForm({ onAddIngredient }) {
         <p>
           <label htmlFor="unit">Unit</label>
           <select name="unit">
-            <option value="g" selected="selected">
-              g
-            </option>
+            <option value="g">g</option>
             <option value="l">l</option>
             <option value="cl">cl</option>
             <option value="ml">ml</option>
@@ -144,9 +137,7 @@ export default function IngredientsForm({ onAddIngredient }) {
             <option value="pn">pn</option>
           </select>
         </p>
-        <StyledButton type="button" onClick={onAddIngredient}>
-          +
-        </StyledButton>
+        <Button type="submit">+</Button>
       </StyledIngredientsForm>
       <IngredientsContainer />
     </StyledIngredientDiv>
