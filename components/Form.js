@@ -16,6 +16,7 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+    console.log("test", data);
     onSubmit(data);
   }
 
@@ -52,7 +53,7 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
         <input
           id="time"
           name="time"
-          type="time"
+          type="text"
           defaultValue={defaultData?.time}
         />
         <label htmlFor="servings">Servings:</label>

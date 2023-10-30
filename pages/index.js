@@ -14,11 +14,19 @@ const ListItem = styled.li`
   position: relative;
   width: 100%;
 `;
+const StyledDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5 rem;
+  flex-direction: column;
+  border: solid black, 1em;
+  padding: 1 em;
+`;
 
 export default function Home() {
   const { data } = useSWR("/api/recipes", { fallbackData: [] });
   return (
-    <>
+    <StyledDiv>
       <h1>Rezepte</h1>
       <List role="list">
         {data.map((recipe) => {
@@ -40,6 +48,6 @@ export default function Home() {
         })}
       </List>
       <Link href="/create">+ recipe</Link>
-    </>
+    </StyledDiv>
   );
 }
