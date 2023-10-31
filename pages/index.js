@@ -1,6 +1,9 @@
 import Link from "next/link.js";
 import styled from "styled-components";
 import useSWR from "swr";
+import { useState } from "react";
+import IngredientsContainer from "@/components/IngredientsContainer";
+import IngredientsForm from "@/components/IngredientsForm";
 
 const List = styled.ul`
   list-style: none;
@@ -42,23 +45,24 @@ export default function Home() {
     <StyledBox>
       <List role="list">
         <h1>Rezepte</h1>
-        {data.map((recipe) => {
+        {data.map((recipe, _id) => {
           return (
-            <>
-              <ListItem key={recipe._id}>
-                {recipe.title}
-                {/* <br></br>
-              {recipe.preparation}
-              <br></br>
-              {recipe.course}
-              <br></br>
-              {recipe.time}
-              <br></br>
-              {recipe.servings}
-              <br></br>
-              {recipe.instruction} */}
-              </ListItem>
-            </>
+            <ListItem key={recipe._id}>
+              {recipe.title}
+              {recipe.ingredients.map((ingredient, index) => (
+                <div key={index}>{ingredient}</div>
+              ))}
+              {/* <br></br>
+                {recipe.preparation}
+                <br></br>
+                {recipe.course}
+                <br></br>
+                {recipe.time}
+                <br></br>
+                {recipe.servings}
+                <br></br>
+                {recipe.instruction}*/}
+            </ListItem>
           );
         })}
         <StyledLink href="/create">+ recipe</StyledLink>

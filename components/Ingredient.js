@@ -1,45 +1,11 @@
-const ingredients = [
-  {
-    id: "432",
-    ingredientname: "flour",
-    amount: "500",
-    unit: "g",
-  },
-  {
-    id: "435",
-    ingredientname: "milk",
-    amount: "500",
-    unit: "ml",
-  },
-  {
-    id: "654w6",
-    ingrdientname: "Bakingpowder",
-    amount: "1",
-    unit: "",
-  },
-];
-
-export default function Ingredient({ unit, amount, id, ingredientname }) {
+export default function Ingredient({ ingredient, amount, unit, id }) {
   return (
-    <>
+    <article>
       <h2>your ingredients:</h2>
-      <ul>
-        {ingredients.map((ingredient) => (
-          <li key={id}>
-            <p>name ={ingredientname}</p>
-            <p>amount={amount}</p>
-            <p>unit={unit}</p>
-          </li>
-        ))}
-      </ul>
-    </>
+      <p>
+        {amount}
+        {unit} of {ingredient}
+      </p>
+    </article>
   );
-
-  {
-    /* {formIngredients.map((ingredient) => (
-        <Fragment key={ingredient.id}>
-          <Ingredient id={ingredient.id} title={ingredient.ingredient} />
-        </Fragment>
-      ))} */
-  }
 }

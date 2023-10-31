@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import StyledIngredientsForm from "./IngredientsForm";
+import { useState } from "react";
 
 const StyledForm = styled.form`
   display: flex;
@@ -11,11 +12,25 @@ const StyledForm = styled.form`
 `;
 
 export default function FormularRecipe({ onSubmit, formName, defaultData }) {
+  const [ingredientsList, setIngredientsList] = useState([]);
+
+  function handleAddIngredient(newIngredientData) {
+    setIngredientsList([
+      ...ingredientsList,
+      { id: uuidv4(), ...newIngredientData },
+    ]);
+
+    onSubmit({
+      ingredients: ingredientsList,
+      ...newIngredientData,
+    });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit(data);
+    onSubmit({ ...data, ingredients: ingredientsList });
   }
 
   return (
@@ -30,7 +45,7 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
         />
         <label>
           preparation:
-          <select name="preparation">
+          <select name="preparation" defaultValue="Oven">
             <option value="Oven">Oven</option>
             <option value="Microwave">Microwave</option>
             <option value="Stove" selected="selected">
@@ -39,21 +54,25 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
             <option value="Grill">Grill</option>
           </select>
         </label>
-        <label htmlFor="course">
+        <label htmlFor="course" defaultValue="Cake">
           Course:
           <select name="course">
             <option value="Cake">Cake</option>
             <option value="Dish">Dish</option>
           </select>
         </label>
-        <label htmlFor="time">Time:</label>
+        <label htmlFor="time" defaultValue="01:00">
+          Time:
+        </label>
         <input
           id="time"
           name="time"
           type="time"
           defaultValue={defaultData?.neededTime}
         />
-        <label htmlFor="servings">Servings:</label>
+        <label htmlFor="servings" defaultValue="1">
+          Servings:
+        </label>
         <input
           id="servings"
           name="servings"
@@ -61,11 +80,11 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           defaultValue={defaultData?.servings}
         />
         <StyledIngredientsForm
+          onAddIngredient={handleAddIngredient}
           name="ingredients"
           type="input"
           id="ingredients"
         />
-
         <label htmlFor="instruction">Instuction</label>
         <textarea
           name="instruction"
@@ -75,7 +94,7 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           defaultValue={defaultData?.instruction}
         ></textarea>
         <button type="submit">
-          {defaultData ? "Update recipe" : "Add recipe"}
+          {defaultData ? "Update recipe" : "Add recipe"}{" "}
         </button>
       </StyledForm>
     </>
