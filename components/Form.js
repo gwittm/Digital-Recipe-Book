@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import IngredientsFormular from "./IngredientsForm";
+import nanoid from "nanoid";
 import React from "react";
 
 const StyledForm = styled.form`
@@ -11,12 +11,12 @@ const StyledForm = styled.form`
   padding: 1 em;
 `;
 
-export default function FormularRecipe({ onSubmit, formName, defaultData }) {
+export default function Form({ onSubmit, formName, defaultData }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log("test", data);
+
     onSubmit(data);
   }
 
@@ -63,7 +63,6 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           type="number"
           defaultValue={defaultData?.servings}
         />
-        <IngredientsFormular />
         <label htmlFor="instruction">Instuction</label>
         <textarea
           name="instruction"
@@ -76,6 +75,19 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           {defaultData ? "Update recipe" : "Add recipe"}
         </button>
       </StyledForm>
+      {/* <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          setIngredients([
+            ...ingredients,
+            { id: nanoid(), name: event.target.elements.ingredient.value },
+          ]);
+        }}
+        style={{ border: "2px solid green" }}
+      >
+        <input name="ingredient" />
+        <button>add</button>
+      </form> */}
     </>
   );
 }
