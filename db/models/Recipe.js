@@ -12,9 +12,9 @@ const recipeSchema = new Schema({
   ingredients: [
     {
       id: String,
-      name: String,
-      amount: Number,
-      unit: String,
+      name: { type: String, required: true },
+      amount: { type: Number, required: true },
+      unit: { type: String },
     },
   ],
   instruction: { type: String },

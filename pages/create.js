@@ -1,6 +1,6 @@
 import Link from "next/link.js";
 import { useRouter } from "next/router";
-import Form from "../components/Form.js";
+import RecipeForm from "../components/RecipeForm.js";
 
 export default function CreateRecipePage() {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function CreateRecipePage() {
   return (
     <>
       <h2 id="add-recipe">Add Recipe</h2>
-      <Form onSubmit={addRecipe} formName={"add-recipe"} />
+      <RecipeForm onSubmit={addRecipe} formName={"add-recipe"} />
     </>
   );
 }

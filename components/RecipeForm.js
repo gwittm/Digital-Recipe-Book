@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import StyledIngredientsForm from "./IngredientsForm";
+
 import { useState } from "react";
 import { nanoid } from "nanoid";
 
@@ -41,7 +41,17 @@ const StyledIngredientInput = styled.div`
   width: 150px;
 `;
 
-export default function FormularRecipe({ onSubmit, formName, defaultData }) {
+const StyledButton = styled.button`
+  background-color: hotpink;
+  width: 480px;
+  margin: 10px;
+  height: 40px;
+  font-size: 18px;
+  border-radius: 5px;
+  align-item: center;
+`;
+
+export default function RecipeForm({ onSubmit, formName, defaultData }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -50,18 +60,6 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
   }
 
   const [ingredients, setIngredients] = useState([]);
-
-  /* function handleAddIngredient(newIngredientData) {
-    setIngredientsList([
-      ...ingredientsList,
-      { id: uuidv4(), ...newIngredientData },
-    ]);
-
-    onsubmit({
-      ingredients: ingredientsList,
-      ...newIngredientData,
-    });
-  }*/
 
   return (
     <StyledDiv>
@@ -151,6 +149,8 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           ]);
         }}
       >
+        {" "}
+        <p>Add ingredients:</p>
         <StyledIngredientsSection>
           <StyledIngredientInput>
             <label htmlFor="ingredient">Ingredient:</label>
@@ -169,7 +169,7 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
               <option value="tsp">tsp</option>
             </select>
           </StyledIngredientInput>
-          <button>add</button>
+          <button>+</button>
         </StyledIngredientsSection>
       </form>
       <StyledIngredientsSection>
@@ -186,9 +186,9 @@ export default function FormularRecipe({ onSubmit, formName, defaultData }) {
           })}
         </ul>
       </StyledIngredientsSection>
-      <button type="submit" form="recipeForm" onSubmit={handleSubmit}>
-        submit
-      </button>
+      <StyledButton type="submit" form="recipeForm" onSubmit={handleSubmit}>
+        Add new Recipe
+      </StyledButton>
       <br />
     </StyledDiv>
   );
