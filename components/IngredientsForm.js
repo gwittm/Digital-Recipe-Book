@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Button from "./Button";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import IngredientsContainer from "./IngredientsContainer";
 
 const StyledIngredientsForm = styled.div`
   display: flex;
@@ -27,11 +26,24 @@ export default function IngredientsForm({ onAddIngredient }) {
     unit: "ml",
   });
 
+  //from ChatGPT... not yet working
+  const handleAddIngredientClick = () => {
+    if (newIngredient.ingredient) {
+      // Checking if the ingredient is not empty
+      onAddIngredient(newIngredient);
+      setNewIngredient({
+        ingredient: "",
+        amount: "",
+        unit: "ml",
+      });
+    }
+  };
+
   function handleAddIngredient(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const newIngredientData = Object.fromEntries(formData);
-    console.log("test", data);
+    console.log("test", newIngredientData);
 
     setIngredientsList([
       ...ingredientsList,
@@ -66,7 +78,8 @@ export default function IngredientsForm({ onAddIngredient }) {
         <div>
           <label htmlFor="amount">Amount</label>
           <input
-            type="text"
+            type="number"
+            min="1"
             name="amount"
             id="amount"
             value={newIngredient.amount}
@@ -81,12 +94,14 @@ export default function IngredientsForm({ onAddIngredient }) {
             onChange={handleInputChange}
           >
             <option value="ml">ml</option>
-            <option value="ml">l</option>
+            <option value="l">l</option>
             <option value="g">g</option>
             <option value="tsp">tsp</option>
           </select>
         </div>
-        <Button type="submit">Add</Button>
+        <Button type="button" onClick={handleAddIngredientClick}>
+          Add
+        </Button>
       </StyledIngredientsForm>
       <IngredientsContainer ingredients={ingredientsList} />
     </StyledIngredientDiv>

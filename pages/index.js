@@ -1,9 +1,6 @@
 import Link from "next/link.js";
 import styled from "styled-components";
 import useSWR from "swr";
-import { useState } from "react";
-import IngredientsContainer from "@/components/IngredientsContainer";
-import IngredientsForm from "@/components/IngredientsForm";
 
 const List = styled.ul`
   list-style: none;
