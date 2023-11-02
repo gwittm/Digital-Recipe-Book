@@ -1,4 +1,3 @@
-import Link from "next/link.js";
 import { useRouter } from "next/router";
 import RecipeForm from "../components/RecipeForm.js";
 
@@ -12,6 +11,7 @@ export default function CreateRecipePage() {
       },
       body: JSON.stringify(recipe),
     });
+    console.log("create-blaaaaa", recipe);
     if (response.ok) {
       router.push("/");
     }

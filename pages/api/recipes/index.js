@@ -14,6 +14,7 @@ export default async function handler(request, response) {
   }
   if (request.method === "POST") {
     const recipes = request.body;
+    console.log("api-index-test", recipes);
     try {
       await Recipe.create(recipes);
       response.status(201).json({ status: "Recipe created." });

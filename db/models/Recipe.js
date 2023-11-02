@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import "./Ingredient";
 
 const { Schema } = mongoose;
 
@@ -9,14 +10,10 @@ const recipeSchema = new Schema({
   course: { type: String },
   time: { type: String },
   servings: { type: Number },
-  ingredients: [
-    {
-      id: String,
-      name: { type: String, required: true },
-      amount: { type: Number, required: true },
-      unit: { type: String },
-    },
-  ],
+  ingredients: {
+    type: [Schema.Types.ObjectId],
+    ref: "Ingredient",
+  },
   instruction: { type: String },
 });
 

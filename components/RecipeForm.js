@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { useState } from "react";
 import { nanoid } from "nanoid";
 
@@ -56,6 +55,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+    console.log("blaaaaaaaa", data);
     onSubmit(data);
   }
 
@@ -141,7 +141,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           setIngredients([
             ...ingredients,
             {
-              id: nanoid(),
+              ingredientId: nanoid(),
               name: event.target.elements.ingredient.value,
               amount: event.target.elements.amount.value,
               unit: event.target.elements.unit.value,
@@ -176,6 +176,8 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         <p>added Ingredients:</p>
         <ul>
           {ingredients.map((ingredient) => {
+            console.log("textblaaaaaaaaaa", ingredients);
+            console.log("ingredientblaaarecipeform", ingredient);
             return (
               <li key={ingredient.id}>
                 {ingredient.name}

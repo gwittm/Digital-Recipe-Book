@@ -49,16 +49,18 @@ export default function Home() {
               {recipe.ingredients.map((ingredient, index) => (
                 <div key={index}>{ingredient}</div>
               ))}
-              {/* <br></br>
-                {recipe.preparation}
-                <br></br>
-                {recipe.course}
-                <br></br>
-                {recipe.time}
-                <br></br>
-                {recipe.servings}
-                <br></br>
-                {recipe.instruction}*/}
+              <br></br>
+              {recipe.preparation}
+              <br></br>
+              {recipe.course}
+              <br></br>
+              {recipe.time}
+              <br></br>
+              {recipe.servings}
+              <br></br>
+              {recipe.instruction}
+              <br></br>
+              {recipe.ingredients}
             </ListItem>
           );
         })}
