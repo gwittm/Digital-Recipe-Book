@@ -56,7 +56,6 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log("blaaaaaaaa", data);
     onSubmit({ ...data, ingredients });
   }
 
@@ -77,7 +76,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           />
         </StyledInput>
         <StyledInput>
-          <label>
+          <label htmlFor="preparation">
             preparation:
             <select name="preparation" defaultValue="Oven">
               <option value="Oven">Oven</option>
@@ -95,31 +94,29 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
               <option value="Dish">Dish</option>
               <option value="Soup">Soup</option>
               <option value="Salad">Salad</option>
+              <option value="Cookies">Cookies</option>
+              <option value="Drinks">Drinks</option>
               <option value="Fingerfood">Fingerfood</option>
             </select>
           </label>
         </StyledInput>
         <StyledInput>
-          <label htmlFor="time" defaultValue="01:00">
-            Time:
-          </label>
+          <label htmlFor="time">Time:</label>
           <input
             id="time"
             name="time"
-            type="time"
-            defaultValue={defaultData?.neededTime}
+            type="text"
+            defaultValue={defaultData?.time}
           />
         </StyledInput>
         <StyledInput>
-          <label htmlFor="servings" defaultValue="1">
-            Servings:
-          </label>
+          <label htmlFor="servings">Servings:</label>
           <input
+            defaultValue="1"
             id="servings"
             name="servings"
             type="number"
             min="1"
-            defaultValue={defaultData?.servings}
           />
         </StyledInput>
         <StyledInput>
@@ -161,11 +158,17 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           </StyledIngredientInput>
           <StyledIngredientInput>
             <label htmlFor="unit">Unit:</label>
-            <select name="unit">
-              <option value="ml">ml</option>
-              <option value="l">l</option>
+            <select id="unit" name="unit">
               <option value="g">g</option>
+              <option value="l">l</option>
+              <option value="cl">cl</option>
+              <option value="ml">ml</option>
+              <option value="tbsp">tbsp</option>
               <option value="tsp">tsp</option>
+              <option value="pt">pt</option>
+              <option value="cup">cup</option>
+              <option value="pcs">pcs</option>
+              <option value="pn">pn</option>
             </select>
           </StyledIngredientInput>
           <button>+</button>
@@ -175,10 +178,8 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         <p>added Ingredients:</p>
         <ul>
           {ingredients.map((ingredient) => {
-            console.log("textblaaaaaaaaaa", ingredients);
-            console.log("ingredientblaaarecipeform", ingredient);
             return (
-              <li key={ingredient.id}>
+              <li key={ingredient.ingredientId}>
                 {ingredient.name}
                 {ingredient.amount}
                 {ingredient.unit}

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import RecipeForm from "../components/RecipeForm.js";
+import RecipeForm from "../components/FormularAddRecipe.js";
 
 export default function CreateRecipePage() {
   const router = useRouter();
@@ -11,7 +11,7 @@ export default function CreateRecipePage() {
       },
       body: JSON.stringify(recipe),
     });
-    console.log("create-blaaaaa", recipe);
+
     if (response.ok) {
       router.push("/");
     }

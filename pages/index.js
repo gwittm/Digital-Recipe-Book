@@ -38,6 +38,7 @@ const StyledBox = styled.section`
 
 export default function Home() {
   const { data } = useSWR("/api/recipes", { fallbackData: [] });
+
   return (
     <StyledBox>
       <List role="list">
@@ -46,26 +47,16 @@ export default function Home() {
           return (
             <ListItem key={recipe._id}>
               {recipe.title}
-              {recipe.ingredients.map((ingredient) => (
-                <div key={ingredient.id}>[ingredient.name]</div>
-              ))}
-              <br></br>
-              {recipe.preparation}
-              <br></br>
-              {recipe.course}
-              <br></br>
-              {recipe.time}
-              <br></br>
-              {recipe.servings}
-              <br></br>
-              {recipe.instruction}
-              <br></br>
-              {recipe.ingredients}
+              {/*  <p>Ingredients:</p>
+              {recipe.ingredients.map((ingredient, index) => (
+                <div key={index}>{ingredient.name}</div>
+              ))} */}
             </ListItem>
           );
         })}
         <StyledLink href="/create">+ recipe</StyledLink>
       </List>
+      ;
     </StyledBox>
   );
 }
