@@ -1,19 +1,21 @@
 import mongoose from "mongoose";
-import "./Ingredient";
 
 const { Schema } = mongoose;
 
 const recipeSchema = new Schema({
   title: { type: String, required: true },
   preparation: { type: String },
-  // image: { type: String },
   course: { type: String },
   time: { type: String },
   servings: { type: Number },
-  ingredients: {
-    type: [Schema.Types.ObjectId],
-    ref: "Ingredient",
-  },
+  ingredients: [
+    {
+      id: { type: String },
+      name: { type: String, required: true },
+      amount: { type: Number, required: true },
+      unit: { type: String },
+    },
+  ],
   instruction: { type: String },
 });
 

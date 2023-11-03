@@ -46,8 +46,8 @@ export default function Home() {
           return (
             <ListItem key={recipe._id}>
               {recipe.title}
-              {recipe.ingredients.map((ingredient, index) => (
-                <div key={index}>{ingredient}</div>
+              {recipe.ingredients.map((ingredient) => (
+                <div key={ingredient.id}>[ingredient.name]</div>
               ))}
               <br></br>
               {recipe.preparation}

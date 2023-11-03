@@ -51,15 +51,14 @@ const StyledButton = styled.button`
 `;
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
+  const [ingredients, setIngredients] = useState([]);
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     console.log("blaaaaaaaa", data);
-    onSubmit(data);
+    onSubmit({ ...data, ingredients });
   }
-
-  const [ingredients, setIngredients] = useState([]);
 
   return (
     <StyledDiv>
