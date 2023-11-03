@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const StyledButton = styled.button`
   background-color: lightsalmon;
   padding: 0.8rem;
-  border-radius: 0.6rem;
+  border-radius: 5px;
   color: black;
   text-decoration: none;
   font-weight: bold;
@@ -13,7 +13,8 @@ export const StyledButton = styled.button`
   ${({ $variant }) =>
     $variant === "delete" &&
     css`
-      background-color: firebrick;
-      color: white;
+      background-color: lightred;
+      color: black;
+      border-radius: 5px;
     `}
 `;

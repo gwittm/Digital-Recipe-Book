@@ -10,12 +10,7 @@ import useSWR from "swr";
 //   display: inline-flex;
 //   align-items: flex-start;
 // `;
-// const HeaderDiv = styled.div`
-//   width: 22.625rem;
-//   height: 4.625rem;
-//   position: absolute;
-//   border: 1px solid #000;
-//   background: #c17400;
+//
 // `;
 // const BackgroundPicDiv = styled.div`
 //   width: 22.625rem;
@@ -35,10 +30,39 @@ import useSWR from "swr";
 //   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 // `;
 
+const HeaderDiv = styled.div`
+  height: 3rem;
+  background: lightpink;
+  margin: 10px;
+  text-align: center;
+  border-radius: 5px;
+`;
+
+const StyledDetailsPageContainer = styled.div`
+  width: 500px;
+  border: solid black 1px;
+  margin: 10px;
+  padding: 20px;
+`;
+
+const StyledDetailsItem = styled.div`
+  background-color: lightgrey;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+`;
+
 const ImageContainer = styled.div`
   position: relative;
-  height: 15rem;
+  height: 150px;
+  margin: 10px;
+  width: 200px;
 `;
+
+const StyledItemsRow = styled.div`
+  display: flex;
+`;
+
 // const TitleDiv = styled.div`
 //   transform: rotate(-8.578deg);
 //   position: absolute;
@@ -90,6 +114,8 @@ const ImageContainer = styled.div`
 const ButtonContainer = styled.section`
   display: flex;
   text-align: center;
+  gap: 10px;
+  margin: 10px;
 `;
 export default function DetailsPage() {
   const router = useRouter();
@@ -113,7 +139,10 @@ export default function DetailsPage() {
             <StyledLink $justifySelf="start">back</StyledLink>
           </Link>
         </div>
-        <div>
+        <StyledDetailsPageContainer>
+          <HeaderDiv>
+            <h2>{recipe.title}</h2>
+          </HeaderDiv>
           <div>
             <ImageContainer>
               <StyledImage
@@ -126,29 +155,34 @@ export default function DetailsPage() {
                 alt="...here should be a Picture..."
               />
             </ImageContainer>
-            <div>
-              <h2>{recipe.title}</h2>
-            </div>
           </div>
-          <div>
-            <ul>
-              <li>servings: {recipe.servings}</li>
-              <li>time: {recipe.time}</li>
-              <li>course: {recipe.course}</li>
-              <li>preparation: {recipe.preparation}</li>
-            </ul>
-          </div>
-          <div>ingredients: {recipe.ingredients}</div>
-          <div>instruction: {recipe.instruction}</div>
-        </div>
-        <ButtonContainer>
-          <Link href={`/recipes/${id}/edit`} passHref legacyBehavior>
-            <StyledLink>Edit</StyledLink>
-          </Link>
-          <StyledButton onClick={deleteRecipe} type="button" $variant="delete">
-            Delete
-          </StyledButton>
-        </ButtonContainer>
+          <StyledItemsRow>
+            <StyledDetailsItem>servings: {recipe.servings}</StyledDetailsItem>
+            <StyledDetailsItem>time: {recipe.time}</StyledDetailsItem>
+            <StyledDetailsItem>course: {recipe.course}</StyledDetailsItem>
+            <StyledDetailsItem>
+              preparation: {recipe.preparation}
+            </StyledDetailsItem>
+          </StyledItemsRow>
+          <StyledDetailsItem>
+            ingredients: {recipe.ingredients}
+          </StyledDetailsItem>
+          <StyledDetailsItem>
+            instruction: {recipe.instruction}
+          </StyledDetailsItem>
+          <ButtonContainer>
+            <Link href={`/recipes/${id}/edit`} passHref legacyBehavior>
+              <StyledLink>Edit</StyledLink>
+            </Link>
+            <StyledButton
+              onClick={deleteRecipe}
+              type="button"
+              $variant="delete"
+            >
+              Delete
+            </StyledButton>
+          </ButtonContainer>
+        </StyledDetailsPageContainer>
       </div>
     </>
   );
