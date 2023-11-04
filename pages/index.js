@@ -1,6 +1,7 @@
 import Link from "next/link.js";
 import styled from "styled-components";
 import useSWR from "swr";
+import Card from "@/components/Card";
 
 const List = styled.ul`
   list-style: none;
@@ -46,8 +47,9 @@ export default function Home() {
         {data.map((recipe, _id) => {
           return (
             <ListItem key={recipe._id}>
-              {recipe.title}
-              {/*  <p>Ingredients:</p>
+            <Card title={recipe.title} id={recipe._id} />
+
+          {/*  <p>Ingredients:</p>
               {recipe.ingredients.map((ingredient, index) => (
                 <div key={index}>{ingredient.name}</div>
               ))} */}
@@ -56,7 +58,7 @@ export default function Home() {
         })}
         <StyledLink href="/create">+ recipe</StyledLink>
       </List>
-      ;
+      
     </StyledBox>
   );
 }
