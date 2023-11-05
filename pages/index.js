@@ -1,43 +1,58 @@
 import Link from "next/link.js";
 import styled from "styled-components";
 import useSWR from "swr";
-import Card from "../components/Card.js";
-import { StyledLink } from "../components/StyledLink.js";
+import Card from "@/components/Card";
 
 const List = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding-left: 0;
 `;
+
 const ListItem = styled.li`
   position: relative;
-  width: 100%;
+  background-color: lightgrey;
+  width: 320px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 8px 3px 3px lightblue;
+  margin: 10px;
 `;
-const FixedLink = styled(StyledLink)`
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
+
+const StyledLink = styled(Link)`
+  background-color: lightblue;
+  width: 320px;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 8px 3px 3px rgb(39, 45, 56);
+  text-decoration: none;
+  font-size: 20px;
+`;
+
+const StyledBox = styled.section`
+  border: solid grey;
+  margin: 20px;
+  width: 400px;
 `;
 
 export default function Home() {
   const { data } = useSWR("/api/recipes", { fallbackData: [] });
+
   return (
-    <>
+    <StyledBox>
       <List role="list">
-        {data.map((recipe) => {
+        <h1>Rezepte</h1>
+        {data.map((recipe, _id) => {
           return (
             <ListItem key={recipe._id}>
-              <Card title={recipe.title} image={recipe.image} id={recipe._id} />
+              <Card title={recipe.title} />
             </ListItem>
           );
         })}
+        <StyledLink href="/create">+ recipe</StyledLink>
       </List>
-      <Link href="/create" passHref legacyBehavior>
-        <FixedLink>+ recipe</FixedLink>
-      </Link>
-    </>
+    </StyledBox>
   );
 }

@@ -1,5 +1,3 @@
-import { StyledButton } from "@/components/StyledButton.js";
-import { StyledImage } from "@/components/StyledImage.js";
 import { StyledLink } from "@/components/StyledLink";
 import { useRouter } from "next/router.js";
 import styled from "styled-components";
@@ -124,12 +122,12 @@ export default function DetailsPage() {
   const { data: recipe, isLoading, error } = useSWR(`/api/recipes/${id}`);
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
-  async function deleteRecipe() {
+  /*  async function deleteRecipe() {
     await fetch(`/api/recipes/${id}`, {
       method: "DELETE",
     });
     router.push("/");
-  }
+  } */
 
   return (
     <>
@@ -144,7 +142,7 @@ export default function DetailsPage() {
             <h2>{recipe.title}</h2>
           </HeaderDiv>
           <div>
-            <ImageContainer>
+            {/* <ImageContainer>
               <StyledImage
                 src={recipe.image}
                 priority
@@ -154,7 +152,7 @@ export default function DetailsPage() {
               30vw"
                 alt="...here should be a Picture..."
               />
-            </ImageContainer>
+            </ImageContainer> */}
           </div>
           <StyledItemsRow>
             <StyledDetailsItem>servings: {recipe.servings}</StyledDetailsItem>
@@ -170,7 +168,7 @@ export default function DetailsPage() {
           <StyledDetailsItem>
             instruction: {recipe.instruction}
           </StyledDetailsItem>
-          <ButtonContainer>
+          {/*  <ButtonContainer>
             <Link href={`/recipes/${id}/edit`} passHref legacyBehavior>
               <StyledLink>Edit</StyledLink>
             </Link>
@@ -181,7 +179,7 @@ export default function DetailsPage() {
             >
               Delete
             </StyledButton>
-          </ButtonContainer>
+          </ButtonContainer> */}
         </StyledDetailsPageContainer>
       </div>
     </>
