@@ -14,10 +14,14 @@ const ListItem = styled.li`
   position: relative;
   background-color: lightgrey;
   width: 320px;
-  padding: 15px;
   border-radius: 10px;
   box-shadow: 8px 3px 3px lightblue;
   margin: 10px;
+
+  &:hover {
+    background-color: pink;
+    cursor: pointer;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -33,7 +37,6 @@ const StyledLink = styled(Link)`
 
 const StyledBox = styled.section`
   border: solid grey;
-  margin: 20px;
   width: 400px;
 `;
 
@@ -44,7 +47,7 @@ export default function Home() {
     <StyledBox>
       <List role="list">
         <h1>All my Recipes</h1>
-        {data.map((recipe, _id) => {
+        {data.map((recipe, id) => {
           return (
             <ListItem key={recipe._id}>
               <Card title={recipe.title} id={recipe._id} />
