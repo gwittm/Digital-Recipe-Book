@@ -1,4 +1,3 @@
-import TitleBar from "./TitleBar.js";
 import styled from "styled-components";
 import Head from "next/head.js";
 
@@ -17,7 +16,7 @@ export default function Layout({ children }) {
       <Head>
         <title>CookingApp</title>
       </Head>
-      <TitleBar />
+
       <Main>{children}</Main>
     </>
   );

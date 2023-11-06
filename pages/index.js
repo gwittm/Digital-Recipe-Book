@@ -43,11 +43,11 @@ export default function Home() {
   return (
     <StyledBox>
       <List role="list">
-        <h1>Rezepte</h1>
+        <h1>All my Recipes</h1>
         {data.map((recipe, _id) => {
           return (
             <ListItem key={recipe._id}>
-              <Card title={recipe.title} />
+              <Card title={recipe.title} id={recipe._id} />
             </ListItem>
           );
         })}
