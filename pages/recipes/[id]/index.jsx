@@ -131,52 +131,38 @@ export default function DetailsPage() {
   } */
 
   return (
-    <>
-      <div>
-        <StyledDetailsPageContainer>
-          <HeaderDiv>
-            <h2>{recipe.title}</h2>
-          </HeaderDiv>
-          <div>
-            {/* <ImageContainer>
-              <StyledImage
-                src={recipe.image}
-                priority
-                fill
-                sizes="(max-width: 700px) 50vw,
-              (max-width: 700px) 50vw,
-              30vw"
-                alt="...here should be a Picture..."
-              />
-            </ImageContainer> */}
-          </div>
-          <StyledItemsRow>
-            <StyledDetailsItem>Type: {recipe.course}</StyledDetailsItem>
-            <StyledDetailsItem>Time: {recipe.time}</StyledDetailsItem>
-            <StyledDetailsItem>
-              Amount of Servings: {recipe.servings}
-            </StyledDetailsItem>
+    <div>
+      <StyledDetailsPageContainer>
+        <HeaderDiv>
+          <h2>{recipe.title}</h2>
+        </HeaderDiv>
+        <StyledItemsRow>
+          <StyledDetailsItem>Type: {recipe.course}</StyledDetailsItem>
+          <StyledDetailsItem>Time: {recipe.time}</StyledDetailsItem>
+          <StyledDetailsItem>
+            Amount of Servings: {recipe.servings}
+          </StyledDetailsItem>
 
-            <StyledDetailsItem>
-              preparation: {recipe.preparation}
-            </StyledDetailsItem>
-          </StyledItemsRow>
           <StyledDetailsItem>
-            <div>
-              <h4>Ingredients:</h4>
-              <ul>
-                {recipe.ingredients.map((ingredient, index) => (
-                  <div key={index}>
-                    {ingredient.name} {ingredient.amount} {ingredient.unit}
-                  </div>
-                ))}
-              </ul>
-            </div>
+            preparation: {recipe.preparation}
           </StyledDetailsItem>
-          <StyledDetailsItem>
-            <h4>How to prepare it: {recipe.instruction}</h4>
-          </StyledDetailsItem>
-          {/*  <ButtonContainer>
+        </StyledItemsRow>
+        <StyledDetailsItem>
+          <div>
+            <h4>Ingredients:</h4>
+            <ul>
+              {recipe.ingredients.map((ingredient, index) => (
+                <div key={index}>
+                  {ingredient.name} {ingredient.amount} {ingredient.unit}
+                </div>
+              ))}
+            </ul>
+          </div>
+        </StyledDetailsItem>
+        <StyledDetailsItem>
+          <h4>How to prepare it: {recipe.instruction}</h4>
+        </StyledDetailsItem>
+        {/*  <ButtonContainer>
             <Link href={`/recipes/${id}/edit`} passHref legacyBehavior>
               <StyledLink>Edit</StyledLink>
             </Link>
@@ -188,13 +174,12 @@ export default function DetailsPage() {
               Delete
             </StyledButton>
           </ButtonContainer> */}
-          <div>
-            <Link href={"/"} passHref legacyBehavior>
-              <StyledLink $justifySelf="end">back</StyledLink>
-            </Link>
-          </div>
-        </StyledDetailsPageContainer>
-      </div>
-    </>
+        <div>
+          <Link href={"/"} passHref legacyBehavior>
+            <StyledLink $justifySelf="end">back</StyledLink>
+          </Link>
+        </div>
+      </StyledDetailsPageContainer>
+    </div>
   );
 }
