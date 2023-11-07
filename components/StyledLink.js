@@ -1,10 +1,11 @@
 import styled, { css } from "styled-components";
 
 export const StyledLink = styled.a`
-  background-color: lightblue;
+  background-color: rgb(128, 54, 119);
   padding: 0.8rem 1.5rem;
-  border-radius: 0.6rem;
-  color: black;
+  margin: 10px;
+  border-radius: 5px;
+  color: white;
   text-decoration: none;
   font-weight: bold;
 

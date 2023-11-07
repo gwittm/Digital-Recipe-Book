@@ -12,7 +12,7 @@ const List = styled.ul`
 
 const ListItem = styled.li`
   position: relative;
-  background-color: lightgrey;
+  background-color: rgb(247, 240, 240);
   width: 320px;
   border-radius: 10px;
   box-shadow: 8px 3px 3px lightblue;
@@ -47,7 +47,7 @@ export default function Home() {
     <StyledBox>
       <List role="list">
         <h1>All my Recipes</h1>
-        {data.map((recipe, id) => {
+        {data.map((recipe) => {
           return (
             <ListItem key={recipe._id}>
               <Card title={recipe.title} id={recipe._id} />

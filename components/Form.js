@@ -19,14 +19,14 @@ const StyledDiv = styled.div`
 `;
 
 const StyledInput = styled.div`
-  background-color: lightgrey;
+  background-color: rgb(247, 240, 240);
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
 `;
 
 const StyledIngredientsSection = styled.section`
-  background-color: lightgrey;
+  background-color: rgb(247, 240, 240);
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
