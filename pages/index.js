@@ -27,6 +27,7 @@ export default function Home() {
   return (
     <>
       <List role="list">
+        <h1>Rezepte</h1>
         {data.map((recipe) => {
           return (
             <ListItem key={recipe._id}>
@@ -35,6 +36,7 @@ export default function Home() {
           );
         })}
       </List>
+
       <Link href="/create" passHref legacyBehavior>
         <FixedLink>+ recipe</FixedLink>
       </Link>

@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import "./Ingredients";
 
 const { Schema } = mongoose;
 
@@ -9,7 +8,14 @@ const recipeSchema = new Schema({
   course: { type: String },
   time: { type: String },
   servings: { type: Number },
-  ingredients: { type: String },
+  ingredients: [
+    {
+      ingredientId: { type: String },
+      name: { type: String, required: true },
+      amount: { type: Number, required: true },
+      unit: { type: String },
+    },
+  ],
   instruction: { type: String },
 });
 

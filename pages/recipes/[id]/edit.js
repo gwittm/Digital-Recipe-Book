@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import useSWR from "swr";
-import Form from "../../../components/Form.js";
+import Form from "../../../components/FormularAddIngredients/index.js";
 import { StyledLink } from "../../../components/StyledLink.js";
 
 export default function EditPage() {
@@ -33,6 +33,17 @@ export default function EditPage() {
         formName={"edit-recipe"}
         defaultData={recipe}
       />
+      <div>
+        {" "}
+        <h2>Ingredients:</h2>
+        <ul>
+          {recipe.ingredients.map((ingredient, index) => (
+            <div key={index}>
+              {ingredient.name} {ingredient.amount} {ingredient.unit}{" "}
+            </div>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

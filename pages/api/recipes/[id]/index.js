@@ -22,7 +22,7 @@ export default async function handler(request, response) {
     if (request.method === "PUT") {
       const recipeData = request.body;
       await Recipe.findByIdAndUpdate(id, recipeData);
-      return response.status(200).json({ status: "Entry updated!" });
+      response.status(200).json({ status: "Entry updated!" });
     }
 
     if (request.method === "DELETE") {

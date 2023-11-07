@@ -31,51 +31,24 @@ const StyledFigure = styled.figure`
   transform: rotate(-8deg);
 `;
 
-const Anchor = styled.a`
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-`;
-
-const ScreenReaderOnly = styled.span`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-`;
-
 export default function Card({ title, image, id }) {
   return (
     <StyledArticle>
       <StyledFigure>
         <ImageContainer>
-          <StyledImage
-            src={image}
-            fill
-            sizes="(max-width: 700px) 50vw,
+          <Link href={`recipes/${id}`} passHref legacyBehavior>
+            <StyledImage
+              src={image}
+              fill
+              sizes="(max-width: 700px) 50vw,
               (max-width: 350px) 25vw,
               30vw"
-            alt="...here should be a Picture..."
-          />
+              alt="...here should be a Picture..."
+            />
+          </Link>
         </ImageContainer>
         <StyledP>{title}</StyledP>
       </StyledFigure>
-      <Link href={`recipes/${id}`} passHref legacyBehavior>
-        <Anchor>
-          <ScreenReaderOnly>More Info</ScreenReaderOnly>
-        </Anchor>
-      </Link>
     </StyledArticle>
   );
 }

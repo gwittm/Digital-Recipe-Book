@@ -37,7 +37,8 @@ import useSWR from "swr";
 
 const ImageContainer = styled.div`
   position: relative;
-  height: 15rem;
+  height: 10rem;
+  width: 10rem;
 `;
 // const TitleDiv = styled.div`
 //   transform: rotate(-8.578deg);
@@ -107,6 +108,8 @@ export default function DetailsPage() {
 
   return (
     <>
+      <h1>DetailPage</h1>
+
       <div>
         <div>
           <Link href={"/"} passHref legacyBehavior>
@@ -138,7 +141,16 @@ export default function DetailsPage() {
               <li>preparation: {recipe.preparation}</li>
             </ul>
           </div>
-          <div>ingredients: {recipe.ingredients}</div>
+          <div>
+            <h2>Ingredients:</h2>
+            <ul>
+              {recipe.ingredients.map((ingredient, index) => (
+                <div key={index}>
+                  {ingredient.name} {ingredient.amount} {ingredient.unit}
+                </div>
+              ))}
+            </ul>
+          </div>
           <div>instruction: {recipe.instruction}</div>
         </div>
         <ButtonContainer>
