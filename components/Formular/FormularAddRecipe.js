@@ -1,54 +1,14 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import {
+  StyledForm,
+  StyledDiv,
+  StyledInput,
+  StyledButton,StyledIngredientInput,StyledIngredientsSection,
+} from "./FormularStyling.js";
 
-const StyledForm = styled.form`
-  display: flex;
-  align-items: left;
-  gap: 0.5 rem;
-  flex-direction: column;
-  border: solid black, 1em;
-  padding: 1 em;
-`;
 
-const StyledDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 500px;
-  border: 1px solid pink;
-`;
-
-const StyledInput = styled.div`
-  background-color: lightgrey;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-`;
-
-const StyledIngredientsSection = styled.section`
-  background-color: lightgrey;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  display: flex;
-  gap: 5px;
-`;
-
-const StyledIngredientInput = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 150px;
-`;
-
-const StyledButton = styled.button`
-  background-color: hotpink;
-  width: 480px;
-  margin: 10px;
-  height: 40px;
-  font-size: 18px;
-  border-radius: 5px;
-  align-item: center;
-`;
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
   const [ingredients, setIngredients] = useState([]);

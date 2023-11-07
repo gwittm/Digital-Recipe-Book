@@ -1,7 +1,21 @@
 import useSWR from "swr";
 import { useRouter } from "next/router.js";
 import Link from "next/link";
+import styled from "styled-components";
 
+
+const StyledLink = styled(Link)`
+  background-color: lightblue;
+  width: 320px;
+  padding: 5px;
+  border-radius: 40px;
+  margin: 50px;
+  box-shadow: 8px 3px 3px rgb(39, 45, 56);
+  text-decoration: none;
+  font-size: 20px;
+  
+
+`;
 
 export default function DetailsPage() {
 
@@ -17,12 +31,12 @@ export default function DetailsPage() {
     return (
       
       <>
-        <h1>DetailPage</h1>
+        <h1>DetailsPage</h1>
       <div>
         <div>
-          <Link href={"/"} passHref legacyBehavior>
-            <Link $justifySelf="start">back</Link>
-          </Link>
+          <StyledLink href={"/"} passHref legacyBehavior>
+            <StyledLink $justifySelf="start">back</StyledLink>
+          </StyledLink>
          
         </div>
         <div>
@@ -52,13 +66,13 @@ export default function DetailsPage() {
           </div>
           <div>
             <h2>Ingredients:</h2>
-            {/* <ul>
+            <ul>
             {recipe.ingredients.map((ingredient, index) => (
                 <div key={index}>
                   {ingredient.name} {ingredient.amount} {ingredient.unit}
                 </div>
               ))}
-            </ul> */}
+            </ul> 
           </div>
           <div>instruction: {recipe.instruction}</div>
         </div>
