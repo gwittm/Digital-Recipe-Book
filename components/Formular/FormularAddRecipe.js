@@ -12,6 +12,7 @@ import {
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
   const [ingredients, setIngredients] = useState([]);
+  
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -105,7 +106,6 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           ]);
         }}
       >
-        {" "}
         <p>Add ingredients:</p>
         <StyledIngredientsSection>
           <StyledIngredientInput>
@@ -131,7 +131,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
               <option value="pn">pn</option>
             </select>
           </StyledIngredientInput>
-          <button>+</button>
+          <button type="submit">+</button>
         </StyledIngredientsSection>
       </form>
       <StyledIngredientsSection>
