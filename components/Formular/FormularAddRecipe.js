@@ -99,7 +99,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         <ul>
           {ingredients.map((ingredient) => {
             return (
-              <li key={ingredient.name}>
+              <li key={ingredient.IngredientId}>
                 {ingredient.name} {""} {ingredient.amount}
                 {ingredient.unit}
               </li>
@@ -107,7 +107,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           })}
         </ul>
       </StyledIngredientsSection>
-      <StyledButton type="submit" form="recipeForm" onSubmit={handleSubmit}>
+      <StyledButton type="submit" form="recipeForm">
         Add new Recipe
       </StyledButton>
       <br />
