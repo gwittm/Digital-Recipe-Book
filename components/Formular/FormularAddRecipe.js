@@ -9,11 +9,17 @@ import {
 import FormularIngredients from "./FormularIngredients.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
+  const [ingredients, setIngredients] = useState([]);
+
+  function handleAddIngredient(newIngredient) {
+    setIngredients([...ingredients, newIngredient]);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit({ ...data /* ingredients  */ });
+    onSubmit({ ...data, ingredients });
   }
 
   return (
@@ -34,7 +40,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         </StyledInput>
         <StyledInput>
           <label htmlFor="preparation">
-            preparation:
+            Preparation:
             <select name="preparation" id="preparation" defaultValue="Oven">
               <option value="Oven">Oven</option>
               <option value="Microwave">Microwave</option>
@@ -87,8 +93,20 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           ></textarea>
         </StyledInput>
       </StyledForm>
-      <FormularIngredients onSubmit={handleSubmit} />
-
+      <FormularIngredients onAddIngredient={handleAddIngredient} />
+      <StyledIngredientsSection>
+        <p>added Ingredients:</p>
+        <ul>
+          {ingredients.map((ingredient) => {
+            return (
+              <li key={ingredient.name}>
+                {ingredient.name} {""} {ingredient.amount}
+                {ingredient.unit}
+              </li>
+            );
+          })}
+        </ul>
+      </StyledIngredientsSection>
       <StyledButton type="submit" form="recipeForm" onSubmit={handleSubmit}>
         Add new Recipe
       </StyledButton>

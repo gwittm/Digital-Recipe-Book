@@ -3,23 +3,20 @@ import {
   StyledIngredientInput,
 } from "./FormularStyling.js";
 import { useState } from "react";
+import { nanoid } from "nanoid";
 
-export default function FormularIngredients() {
-  const [ingredients, setIngredients] = useState([]);
+export default function FormularIngredients({ onAddIngredient }) {
   return (
     <>
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          setIngredients([
-            ...ingredients,
-            {
-              /*  ingredientId: nanoid(), */
-              name: event.target.elements.ingredient.value,
-              amount: event.target.elements.amount.value,
-              unit: event.target.elements.unit.value,
-            },
-          ]);
+          onAddIngredient({
+            ingredientId: nanoid(),
+            name: event.target.elements.ingredient.value,
+            amount: event.target.elements.amount.value,
+            unit: event.target.elements.unit.value,
+          });
         }}
       >
         <p>Add ingredients:</p>
@@ -50,20 +47,6 @@ export default function FormularIngredients() {
           <button type="submit">+</button>
         </StyledIngredientsSection>
       </form>
-      <StyledIngredientsSection>
-        <p>added Ingredients:</p>
-        <ul>
-          {ingredients.map((ingredient) => {
-            return (
-              <li key={ingredient.name}>
-                {ingredient.name}
-                {ingredient.amount}
-                {ingredient.unit}
-              </li>
-            );
-          })}
-        </ul>
-      </StyledIngredientsSection>
     </>
   );
 }
