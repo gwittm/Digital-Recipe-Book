@@ -7,39 +7,47 @@ const List = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding-left: 0;
 `;
+
 const ListItem = styled.li`
   position: relative;
-  width: 100%;
+  background-color: lightgrey;
+  width: 320px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 8px 3px 3px lightblue;
+  margin: 10px;
+`;
+
+const StyledLink = styled(Link)`
+  background-color: lightblue;
+  width: 320px;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 8px 3px 3px rgb(39, 45, 56);
+  text-decoration: none;
+  font-size: 20px;
+`;
+
+const StyledBox = styled.section`
+  border: solid grey;
+  margin: 20px;
+  width: 400px;
 `;
 
 export default function Home() {
   const { data } = useSWR("/api/recipes", { fallbackData: [] });
+
   return (
-    <>
-      <h1>Rezepte</h1>
+    <StyledBox>
       <List role="list">
+        <h1>Rezepte</h1>
         {data.map((recipe) => {
-          return (
-            <ListItem key={recipe._id}>
-              {recipe.title}
-              {/* <br></br>
-              {recipe.preparation}
-              <br></br>
-              {recipe.course}
-              <br></br>
-              {recipe.time}
-              <br></br>
-              {recipe.servings}
-              <br></br>
-              {recipe.instruction} */}
-            </ListItem>
-          );
+          return <ListItem key={recipe._id}>{recipe.title}</ListItem>;
         })}
+        <StyledLink href="/create">+ recipe</StyledLink>
       </List>
-      <Link href="/create">+ recipe</Link>
-    </>
+    </StyledBox>
   );
 }

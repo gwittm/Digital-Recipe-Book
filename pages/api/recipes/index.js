@@ -8,17 +8,16 @@ export default async function handler(request, response) {
       const recipes = await Recipe.find();
       return response.status(200).json(recipes);
     } catch (error) {
-      console.log(error);
       response.status(400).json({ error: error.message });
     }
   }
   if (request.method === "POST") {
     const recipes = request.body;
+
     try {
       await Recipe.create(recipes);
       response.status(201).json({ status: "Recipe created." });
     } catch (error) {
-      console.log(error);
       response.status(400).json({ error: error.message });
     }
   }

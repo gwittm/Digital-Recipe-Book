@@ -5,11 +5,17 @@ const { Schema } = mongoose;
 const recipeSchema = new Schema({
   title: { type: String, required: true },
   preparation: { type: String },
-  // image: { type: String },
   course: { type: String },
   time: { type: String },
   servings: { type: Number },
-  // ingredients: { type: Array },
+  ingredients: [
+    {
+      ingredientID: { type: String },
+      name: { type: String, required: true },
+      amount: { type: Number, required: true },
+      unit: { type: String },
+    },
+  ],
   instruction: { type: String },
 });
 
