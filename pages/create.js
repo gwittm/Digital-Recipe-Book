@@ -1,8 +1,9 @@
 import Link from "next/link.js";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import Form from "@/components/FormularAddIngredients/index.js";
 import { StyledLink } from "../components/StyledLink.js";
+import RecipeForm from "@/components/FormularAddRecipe/index.js";
+
 const StyledBackLink = styled(StyledLink)`
   justify-self: flex-start;
 `;
@@ -26,7 +27,7 @@ export default function CreateRecipePage() {
       <Link href="/" passHref legacyBehavior>
         <StyledBackLink>back</StyledBackLink>
       </Link>
-      <Form onSubmit={addRecipe} formName={"add-recipe"} />
+      <RecipeForm onSubmit={addRecipe} formName={"add-recipe"} />
     </>
   );
 }

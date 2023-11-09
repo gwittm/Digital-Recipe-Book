@@ -20,7 +20,19 @@ export const StyledInput = styled.div`
   padding: 10px;
   border-radius: 5px;
 `;
-
+export const StyledIngredientsSection = styled.section`
+  background-color: lightgrey;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  gap: 5px;
+`;
+export const StyledIngredientInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+`;
 export const StyledButton = styled.button`
   background-color: hotpink;
   width: 480px;
@@ -28,5 +40,5 @@ export const StyledButton = styled.button`
   height: 40px;
   font-size: 18px;
   border-radius: 5px;
-  align-item: center;
+  align-items: center;
 `;

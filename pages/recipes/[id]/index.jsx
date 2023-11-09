@@ -109,59 +109,56 @@ export default function DetailsPage() {
   return (
     <>
       <h1>DetailPage</h1>
-
+      <div>
+        <Link href={"/"} passHref legacyBehavior>
+          <StyledLink $justifySelf="start">back</StyledLink>
+        </Link>
+      </div>
       <div>
         <div>
-          <Link href={"/"} passHref legacyBehavior>
-            <StyledLink $justifySelf="start">back</StyledLink>
-          </Link>
-        </div>
-        <div>
-          <div>
-            <ImageContainer>
-              <StyledImage
-                src={recipe.image}
-                priority
-                fill
-                sizes="(max-width: 700px) 50vw,
+          <ImageContainer>
+            <StyledImage
+              src={recipe.image}
+              priority
+              fill
+              sizes="(max-width: 700px) 50vw,
               (max-width: 700px) 50vw,
               30vw"
-                alt="...here should be a Picture..."
-              />
-            </ImageContainer>
-            <div>
-              <h2>{recipe.title}</h2>
-            </div>
-          </div>
+              alt="...here should be a Picture..."
+            />
+          </ImageContainer>
           <div>
-            <ul>
-              <li>servings: {recipe.servings}</li>
-              <li>time: {recipe.time}</li>
-              <li>course: {recipe.course}</li>
-              <li>preparation: {recipe.preparation}</li>
-            </ul>
+            <h2>{recipe.title}</h2>
           </div>
-          <div>
-            <h2>Ingredients:</h2>
-            <ul>
-              {recipe.ingredients.map((ingredient, index) => (
-                <div key={index}>
-                  {ingredient.name} {ingredient.amount} {ingredient.unit}
-                </div>
-              ))}
-            </ul>
-          </div>
-          <div>instruction: {recipe.instruction}</div>
         </div>
-        <ButtonContainer>
-          <Link href={`/recipes/${id}/edit`} passHref legacyBehavior>
-            <StyledLink>Edit</StyledLink>
-          </Link>
-          <StyledButton onClick={deleteRecipe} type="button" $variant="delete">
-            Delete
-          </StyledButton>
-        </ButtonContainer>
+        <div>
+          <ul>
+            <li>servings: {recipe.servings}</li>
+            <li>time: {recipe.time}</li>
+            <li>course: {recipe.course}</li>
+            <li>preparation: {recipe.preparation}</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Ingredients:</h2>
+          <ul>
+            {recipe.ingredients.map((ingredient, index) => (
+              <div key={index}>
+                {ingredient.name} {ingredient.amount} {ingredient.unit}
+              </div>
+            ))}
+          </ul>
+        </div>
+        <div>instruction: {recipe.instruction}</div>
       </div>
+      <ButtonContainer>
+        <Link href={`/recipes/${id}/edit`} passHref legacyBehavior>
+          <StyledLink>Edit</StyledLink>
+        </Link>
+        <StyledButton onClick={deleteRecipe} type="button" $variant="delete">
+          Delete
+        </StyledButton>
+      </ButtonContainer>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import Link from "next/link.js";
 import styled from "styled-components";
 import useSWR from "swr";
-import Card from "../components/Card.js";
+import Polaroid from "../components/Polaroid/Index.js";
 import { StyledLink } from "../components/StyledLink.js";
 
 const List = styled.ul`
@@ -31,7 +31,11 @@ export default function Home() {
         {data.map((recipe) => {
           return (
             <ListItem key={recipe._id}>
-              <Card title={recipe.title} image={recipe.image} id={recipe._id} />
+              <Polaroid
+                title={recipe.title}
+                image={recipe.image}
+                id={recipe._id}
+              />
             </ListItem>
           );
         })}
