@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-
-
 export const StyledForm = styled.form`
   display: flex;
   align-items: left;
@@ -44,3 +42,6 @@ export const StyledButton = styled.button`
   border-radius: 5px;
   align-items: center;
 `;
+
+
+

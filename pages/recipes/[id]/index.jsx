@@ -31,14 +31,9 @@ export default function DetailsPage() {
     return (
       
       <>
-        <h1>DetailsPage</h1>
+      
       <div>
-        <div>
-          <StyledLink href={"/"} passHref legacyBehavior>
-            <StyledLink $justifySelf="start">back</StyledLink>
-          </StyledLink>
-         
-        </div>
+       
         <div>
           <div>
             <div>
@@ -78,6 +73,13 @@ export default function DetailsPage() {
         </div>
         
       </div>
+      <hr></hr>
+      <div>
+          <StyledLink href={"/"} passHref legacyBehavior>
+            <StyledLink $justifySelf="start">back</StyledLink>
+          </StyledLink>
+         
+        </div>
     </>
   );
 }
