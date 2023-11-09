@@ -10,6 +10,7 @@ export default async function handler(request, response) {
       return;
     }
 
+    
     if (request.method === "GET") {
       const recipe = await Recipe.findById(id);
 
@@ -17,6 +18,10 @@ export default async function handler(request, response) {
         return response.status(404).json({ status: "Not found !!!" });
       }
       response.status(200).json(recipe);
+    }
+    if (request.method === "DELETE") {
+      await Recipe.findByIdAndDelete(id);
+      response.status(200).json({ status: "Deleted successfully!" });
     }
   } catch (error) {
     console.error("An error occurred:", error);

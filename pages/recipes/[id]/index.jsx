@@ -2,6 +2,7 @@ import useSWR from "swr";
 import { useRouter } from "next/router.js";
 import Link from "next/link";
 import styled from "styled-components";
+import { StyledButton } from "@/components/Formular/FormularStyling";
 
 
 const StyledLink = styled(Link)`
@@ -14,8 +15,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 20px;
   
-
-`;
+  `;
 
 export default function DetailsPage() {
 
@@ -23,15 +23,19 @@ export default function DetailsPage() {
     const { isReady } = router;
     const { id } = router.query;
     const { data: recipe, isLoading, error } = useSWR(`/api/recipes/${id}`);
-    
-  
-    if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
-   
-    return (
+    async function deleteRecipe() {
+      await fetch(`/api/recipes/${id}`, {
+        method: "DELETE",
+      });
+      router.push("/");
+    }
+    
+  if (!isReady || isLoading || error) return <h2>Loading...</h2>;
+
+   return (
       
       <>
-      
       <div>
        
         <div>
@@ -78,6 +82,9 @@ export default function DetailsPage() {
           <StyledLink href={"/"} passHref legacyBehavior>
             <StyledLink $justifySelf="start">back</StyledLink>
           </StyledLink>
+          <StyledButton onClick={deleteRecipe} type="button" $variant="delete">
+          Delete
+        </StyledButton>
          
         </div>
     </>
