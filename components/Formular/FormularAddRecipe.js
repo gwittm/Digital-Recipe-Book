@@ -14,6 +14,13 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
   }
+  function handleDeleteIngredient(ingredientId) {
+    const updatedIngredients = ingredients.filter(
+      (ingredient) => ingredient.ingredientId !== ingredientId
+    );
+    setIngredients(updatedIngredients);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -104,6 +111,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                 {ingredient.name}
                 {ingredient.amount}
                 {ingredient.unit}
+                <button onClick={() => handleDeleteIngredient(ingredient.ingredientId)}>X</button>
               </li>
             );
           })}
