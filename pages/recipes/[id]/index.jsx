@@ -35,10 +35,10 @@ export default function DetailsPage() {
         <h4>Ingredients:</h4>
         <ul>
           {recipe.ingredients.map((ingredient, index) => (
-            <div key={index}>
+            <li key={index}>
               {ingredient.name}
               {":"} {ingredient.amount} {ingredient.unit}
-            </div>
+            </li>
           ))}
         </ul>
       </StyledDetailsItem>

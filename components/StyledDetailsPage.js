@@ -9,7 +9,7 @@ export const HeaderDiv = styled.div`
   box-shadow: 8px 3px 3px rgb(128, 54, 119);
 `;
 
-export const StyledDetailsPageContainer = styled.div`
+export const StyledDetailsPageContainer = styled.h2`
   width: 500px;
   border: solid black 1px;
   margin: 10px;
