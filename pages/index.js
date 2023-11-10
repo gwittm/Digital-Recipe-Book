@@ -1,6 +1,7 @@
 import Link from "next/link.js";
 import styled from "styled-components";
 import useSWR from "swr";
+import Card from "@/components/Card";
 
 const List = styled.ul`
   list-style: none;
@@ -11,12 +12,16 @@ const List = styled.ul`
 
 const ListItem = styled.li`
   position: relative;
-  background-color: lightgrey;
+  background-color: rgb(247, 240, 240);
   width: 320px;
-  padding: 15px;
   border-radius: 10px;
   box-shadow: 8px 3px 3px lightblue;
   margin: 10px;
+
+  &:hover {
+    background-color: pink;
+    cursor: pointer;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -32,7 +37,6 @@ const StyledLink = styled(Link)`
 
 const StyledBox = styled.section`
   border: solid grey;
-  margin: 20px;
   width: 400px;
 `;
 
@@ -42,9 +46,13 @@ export default function Home() {
   return (
     <StyledBox>
       <List role="list">
-        <h1>Rezepte</h1>
+        <h1>All my Recipes</h1>
         {data.map((recipe) => {
-          return <ListItem key={recipe._id}>{recipe.title}</ListItem>;
+          return (
+            <ListItem key={recipe._id}>
+              <Card title={recipe.title} id={recipe._id} />
+            </ListItem>
+          );
         })}
         <StyledLink href="/create">+ recipe</StyledLink>
       </List>

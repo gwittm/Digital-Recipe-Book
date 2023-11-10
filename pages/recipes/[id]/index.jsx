@@ -47,7 +47,7 @@ export default function DetailsPage() {
       </StyledDetailsItem>
       <br />
       <Link href={"/"} passHref legacyBehavior>
-        <StyledLink $justifySelf="end">back</StyledLink>
+        <StyledLink $justifySelf="start">back</StyledLink>
       </Link>
     </StyledDetailsPageContainer>
   );
