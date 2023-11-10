@@ -2,7 +2,9 @@ import useSWR from "swr";
 import { useRouter } from "next/router.js";
 import Link from "next/link";
 import styled from "styled-components";
-import { StyledButton } from "@/components/Formular/FormularStyling";
+import { useState } from "react";
+import { ContentDiv, StyledButton, StyledButtonNo, StyledButtonYes, StyledPopover } from "@/components/DeleteButtonStyle";
+
 
 
 const StyledLink = styled(Link)`
@@ -18,6 +20,7 @@ const StyledLink = styled(Link)`
   `;
 
 export default function DetailsPage() {
+  const [showPopover, setShowPopover] = useState(false);
 
     const router = useRouter();
     const { isReady } = router;
@@ -28,6 +31,7 @@ export default function DetailsPage() {
       await fetch(`/api/recipes/${id}`, {
         method: "DELETE",
       });
+      setShowPopover(false);
       router.push("/");
     }
     
@@ -82,9 +86,28 @@ export default function DetailsPage() {
           <StyledLink href={"/"} passHref legacyBehavior>
             <StyledLink $justifySelf="start">back</StyledLink>
           </StyledLink>
-          <StyledButton onClick={deleteRecipe} type="button" $variant="delete">
-          Delete
-        </StyledButton>
+          <div>
+      <StyledButton
+        onClick={() => setShowPopover(!showPopover)}
+        type="button"
+        $variant="delete"
+      >
+        Delete
+      </StyledButton>
+      {showPopover && (
+        <StyledPopover>
+          <ContentDiv>
+            <p>Möchten Sie dieses Rezept wirklich löschen?</p>
+            <StyledButtonYes onClick={deleteRecipe}>Yes</StyledButtonYes>
+            <StyledButtonNo onClick={() => setShowPopover(false)}>No</StyledButtonNo>
+          </ContentDiv>
+        </StyledPopover>
+      )}
+    </div>
+
+
+
+
          
         </div>
     </>
