@@ -4,7 +4,7 @@ import {
 } from "../FormularAddRecipe/FormStyle.js";
 import { nanoid } from "nanoid";
 
-export default function FormularIngredients(onAddIngredient) {
+export default function FormularIngredients({ onAddIngredient }) {
   return (
     <>
       <form
