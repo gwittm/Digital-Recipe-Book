@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
+import Link from "next/link";
 
-export const StyledLink = styled.a`
+export const StyledLink = styled(Link)`
   background-color: lightblue;
   padding: 0.8rem 1.5rem;
   border-radius: 0.6rem;

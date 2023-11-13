@@ -45,8 +45,8 @@ export default function Home() {
 
   return (
     <StyledBox>
+      <h1>All my Recipes</h1>
       <List role="list">
-        <h1>All my Recipes</h1>
         {data.map((recipe) => {
           return (
             <ListItem key={recipe._id}>

@@ -34,8 +34,8 @@ export default function DetailsPage() {
       <StyledDetailsItem>
         <h4>Ingredients:</h4>
         <ul>
-          {recipe.ingredients.map((ingredient, index) => (
-            <li key={index}>
+          {recipe.ingredients.map((ingredient, ingredientID) => (
+            <li key={ingredientID}>
               {ingredient.name}
               {":"} {ingredient.amount} {ingredient.unit}
             </li>
@@ -46,9 +46,10 @@ export default function DetailsPage() {
         <h4>How to prepare it:</h4> {recipe.instruction}
       </StyledDetailsItem>
       <br />
-      <Link href={"/"} passHref legacyBehavior>
-        <StyledLink $justifySelf="start">back</StyledLink>
-      </Link>
+
+      <StyledLink $justifySelf="start" href={"/"}>
+        back
+      </StyledLink>
     </StyledDetailsPageContainer>
   );
 }
