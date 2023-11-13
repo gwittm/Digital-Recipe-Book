@@ -1,3 +1,4 @@
+// EditPage.js
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import RecipeForm from "@/components/FormularAddRecipe/index";
@@ -8,13 +9,13 @@ export default function EditPage() {
   const { id } = router.query;
   const { data: recipe, error } = useSWR(`/api/recipes/${id}`);
 
-  async function editRecipe(recipe) {
+  async function editRecipe(updatedRecipe) {
     const response = await fetch(`/api/recipes/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(recipe),
+      body: JSON.stringify(updatedRecipe),
     });
 
     if (response.ok) {
@@ -29,11 +30,7 @@ export default function EditPage() {
     <>
       <h2>Edit Recipe</h2>
       <StyledLink href={`/recipes/${id}`}>Back</StyledLink>
-      <RecipeForm
-        onSubmit={editRecipe}
-        formName={"edit-recipe"}
-        defaultData={recipe}
-      />
+      <RecipeForm onSubmit={editRecipe} defaultData={recipe} />
     </>
   );
 }

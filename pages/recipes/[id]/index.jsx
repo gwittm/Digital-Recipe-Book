@@ -82,6 +82,9 @@ export default function DetailsPage() {
           <StyledLink $justifySelf="start">back</StyledLink>
         </StyledLink>
         <div>
+          <Link href={`/recipes/${id}/edit`} passHref legacyBehavior>
+            <Link>Edit</Link>
+          </Link>
           <StyledButton
             onClick={() => setShowModal(true)}
             type="button"
@@ -92,7 +95,7 @@ export default function DetailsPage() {
           {showModal && (
             <Modal>
               <ContentDiv>
-                <p>Möchten Sie dieses Rezept wirklich löschen?</p>
+                <p>Do you really want do delete the recipe??</p>
                 <StyledButtonYes onClick={deleteRecipe}>Yes</StyledButtonYes>
                 <StyledButtonNo onClick={() => setShowModal(false)}>
                   No
