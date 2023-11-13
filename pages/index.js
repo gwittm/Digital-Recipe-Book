@@ -4,11 +4,15 @@ import styled from "styled-components";
 import useSWR from "swr";
 /* import { StyledLink } from "@/components/StyledLink"; */
 
-const List = styled.ul`
+const StyledH1 = styled.h1`
+  padding: 10px;
+  text-align: center;
+`;
+
+const StyledUl = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 const ListItem = styled.li`
@@ -27,7 +31,11 @@ const ListItem = styled.li`
   }
 `;
 
-const StyledLink = styled.a`
+const LinkListItem = styled(Link)`
+  text-decoration: none;
+`;
+
+const StyledLink = styled(Link)`
   background-color: lightblue;
   width: 320px;
   padding: 10px;
@@ -43,22 +51,24 @@ const StyledBox = styled.section`
   width: 400px;
 `;
 
-export default function Home({ _id }) {
+export default function Home() {
   const { data } = useSWR("/api/recipes", { fallbackData: [] });
 
   return (
     <StyledBox>
-      <h1>All my Recipes</h1>
-      <List role="list">
+      <StyledH1>All my Recipes</StyledH1>
+      <StyledUl role="list">
         {data.map((recipe) => {
           return (
             <ListItem key={recipe._id}>
-              <Link href={`recipes/${recipe._id}`}>{recipe.title}</Link>
+              <LinkListItem href={`recipes/${recipe._id}`}>
+                {recipe.title}
+              </LinkListItem>
             </ListItem>
           );
         })}
         <StyledLink href="/create">+ recipe</StyledLink>
-      </List>
+      </StyledUl>
     </StyledBox>
   );
 }
