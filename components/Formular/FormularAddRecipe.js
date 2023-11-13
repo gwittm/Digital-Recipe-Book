@@ -1,44 +1,34 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import {
   StyledForm,
   StyledDiv,
   StyledInput,
-  StyledButton,
   StyledIngredientsSection,
+  StyledButton,
 } from "./FormularStyling.js";
 import FormularIngredients from "./FormularIngredients.js";
 
-
-export default function RecipeForm({ onSubmit, formName, defaultData, }) {
+export default function RecipeForm({ onSubmit, formName, defaultData }) {
   const [ingredients, setIngredients] = useState([]);
-  const ingredientInputRef = useRef(null);
 
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
   }
 
-
   function handleDeleteIngredient(ingredientId) {
     const updatedIngredients = ingredients.filter(
       (ingredient) => ingredient.ingredientId !== ingredientId
     );
-
-    
     setIngredients(updatedIngredients);
+    ingredient.focus();
   }
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     onSubmit({ ...data, ingredients });
   }
-  useEffect(() => {
-    
-    if (ingredientInputRef.current) {
-   ingredientInputRef.current.focus();
- 
-    }
-  }, [ingredients]); 
 
   return (
     <StyledDiv>
@@ -54,13 +44,12 @@ export default function RecipeForm({ onSubmit, formName, defaultData, }) {
             name="title"
             type="text"
             defaultValue={defaultData?.title}
-            
           />
         </StyledInput>
         <StyledInput>
           <label htmlFor="preparation">
-            preparation:
-            <select name="preparation" defaultValue="Oven">
+            Preparation:
+            <select name="preparation" id="preparation" defaultValue="Oven">
               <option value="Oven">Oven</option>
               <option value="Microwave">Microwave</option>
               <option value="Stove">Stove</option>
@@ -69,9 +58,9 @@ export default function RecipeForm({ onSubmit, formName, defaultData, }) {
           </label>
         </StyledInput>
         <StyledInput>
-          <label htmlFor="course" defaultValue="Cake">
+          <label htmlFor="course">
             Course:
-            <select name="course" defaultValue="Cake">
+            <select name="course" defaultValue="Cake" id="course">
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
               <option value="Soup">Soup</option>
@@ -102,7 +91,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData, }) {
           />
         </StyledInput>
         <StyledInput>
-          <label htmlFor="instruction">Instuction</label>
+          <label htmlFor="instruction">Instuctions: </label>
           <textarea
             name="instruction"
             id="instruction"
@@ -112,25 +101,25 @@ export default function RecipeForm({ onSubmit, formName, defaultData, }) {
           ></textarea>
         </StyledInput>
       </StyledForm>
-
-      <FormularIngredients 
-        onAddIngredient={handleAddIngredient}
-        inputRef={ingredientInputRef} 
-      />
+      <FormularIngredients onAddIngredient={handleAddIngredient} />
       <StyledIngredientsSection>
-     
         <p>added Ingredients:</p>
         <ul>
-          {ingredients.map((ingredient) => (
-            <li key={ingredient.ingredientId}>
-              {ingredient.name} {ingredient.amount} {ingredient.unit}
-              <button
-                onClick={() => handleDeleteIngredient(ingredient.ingredientId)}
-              >
-                X
-              </button>
-            </li>
-          ))}
+          {ingredients.map((ingredient) => {
+            return (
+              <li key={ingredient.IngredientId}>
+                {ingredient.name} {""} {ingredient.amount}
+                {ingredient.unit}
+                <button
+                  onClick={() =>
+                    handleDeleteIngredient(ingredient.ingredientId)
+                  }
+                >
+                  X
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </StyledIngredientsSection>
       <StyledButton type="submit" form="recipeForm">
@@ -139,4 +128,4 @@ export default function RecipeForm({ onSubmit, formName, defaultData, }) {
       <br />
     </StyledDiv>
   );
-  }
+}
