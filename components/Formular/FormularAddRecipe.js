@@ -1,32 +1,44 @@
-import { useState } from "react";
-
+import React, { useState, useRef, useEffect } from "react";
 import {
   StyledForm,
   StyledDiv,
   StyledInput,
-  StyledButton,StyledIngredientsSection,
+  StyledButton,
+  StyledIngredientsSection,
 } from "./FormularStyling.js";
 import FormularIngredients from "./FormularIngredients.js";
 
-export default function RecipeForm({ onSubmit, formName, defaultData }) {
+
+export default function RecipeForm({ onSubmit, formName, defaultData, }) {
   const [ingredients, setIngredients] = useState([]);
-  
+  const ingredientInputRef = useRef(null);
+
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
   }
+
+
   function handleDeleteIngredient(ingredientId) {
     const updatedIngredients = ingredients.filter(
       (ingredient) => ingredient.ingredientId !== ingredientId
     );
+
+    
     setIngredients(updatedIngredients);
   }
-
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     onSubmit({ ...data, ingredients });
   }
+  useEffect(() => {
+    
+    if (ingredientInputRef.current) {
+   ingredientInputRef.current.focus();
+ 
+    }
+  }, [ingredients]); 
 
   return (
     <StyledDiv>
@@ -42,6 +54,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             name="title"
             type="text"
             defaultValue={defaultData?.title}
+            
           />
         </StyledInput>
         <StyledInput>
@@ -100,27 +113,30 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         </StyledInput>
       </StyledForm>
 
-      <FormularIngredients onAddIngredient={handleAddIngredient} />
-
- <StyledIngredientsSection>
+      <FormularIngredients 
+        onAddIngredient={handleAddIngredient}
+        inputRef={ingredientInputRef} 
+      />
+      <StyledIngredientsSection>
+     
         <p>added Ingredients:</p>
         <ul>
-          {ingredients.map((ingredient) => {
-            return (
-              <li key={ingredient.ingredientId}>
-                {ingredient.name}
-                {ingredient.amount}
-                {ingredient.unit}
-                <button onClick={() => handleDeleteIngredient(ingredient.ingredientId)}>X</button>
-              </li>
-            );
-          })}
+          {ingredients.map((ingredient) => (
+            <li key={ingredient.ingredientId}>
+              {ingredient.name} {ingredient.amount} {ingredient.unit}
+              <button
+                onClick={() => handleDeleteIngredient(ingredient.ingredientId)}
+              >
+                X
+              </button>
+            </li>
+          ))}
         </ul>
       </StyledIngredientsSection>
-      <StyledButton type="submit" form="recipeForm" onSubmit={handleSubmit}>
+      <StyledButton type="submit" form="recipeForm">
         Add new Recipe
       </StyledButton>
       <br />
     </StyledDiv>
   );
-}
+  }
