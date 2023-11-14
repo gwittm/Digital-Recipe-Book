@@ -5,6 +5,7 @@ import {
   StyledInput,
   StyledIngredientsSection,
   StyledButton,
+  StyledDeleteIngredientButton,
 } from "./FormularStyling.js";
 import FormularIngredients from "./FormularIngredients.js";
 
@@ -104,23 +105,25 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
       <FormularIngredients onAddIngredient={handleAddIngredient} />
       <StyledIngredientsSection>
         <p>added Ingredients:</p>
-        <ul>
-          {ingredients.map((ingredient) => {
-            return (
-              <li key={ingredient.IngredientId}>
-                {ingredient.name} {""} {ingredient.amount}
-                {ingredient.unit}
-                <button
-                  onClick={() =>
-                    handleDeleteIngredient(ingredient.ingredientId)
-                  }
-                >
-                  X
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+        <section>
+          <ul>
+            {ingredients.map((ingredient) => {
+              return (
+                <li key={ingredient.IngredientId}>
+                  {ingredient.name} {""} {ingredient.amount}
+                  {ingredient.unit}
+                  <StyledDeleteIngredientButton
+                    onClick={() =>
+                      handleDeleteIngredient(ingredient.ingredientId)
+                    }
+                  >
+                    X
+                  </StyledDeleteIngredientButton>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
       </StyledIngredientsSection>
       <StyledButton type="submit" form="recipeForm">
         Add new Recipe
