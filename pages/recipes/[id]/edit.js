@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import RecipeForm from "@/components/FormularAddRecipe/index";
 import { StyledLink } from "@/components/StyledLink";
-
+import RecipeForm from "@/components/Formular/FormularAddRecipe";
 
 export default function EditPage() {
   const router = useRouter();
