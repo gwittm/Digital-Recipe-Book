@@ -39,7 +39,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         onSubmit={handleSubmit}
       >
         <StyledInput>
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">Title: </label>
           <input
             id="title"
             name="title"
@@ -49,7 +49,8 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         </StyledInput>
         <StyledInput>
           <label htmlFor="preparation">
-            Preparation:
+            {" "}
+            Preparation:{" "}
             <select name="preparation" id="preparation" defaultValue="Oven">
               <option value="Oven">Oven</option>
               <option value="Microwave">Microwave</option>
@@ -60,7 +61,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         </StyledInput>
         <StyledInput>
           <label htmlFor="course">
-            Course:
+            Course:{" "}
             <select name="course" defaultValue="Cake" id="course">
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
@@ -73,7 +74,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           </label>
         </StyledInput>
         <StyledInput>
-          <label htmlFor="time">Time:</label>
+          <label htmlFor="time">Time: </label>
           <input
             id="time"
             name="time"
@@ -82,7 +83,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           />
         </StyledInput>
         <StyledInput>
-          <label htmlFor="servings">Servings:</label>
+          <label htmlFor="servings">Servings: </label>
           <input
             defaultValue="1"
             id="servings"
@@ -92,7 +93,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           />
         </StyledInput>
         <StyledInput>
-          <label htmlFor="instruction">Instuctions: </label>
+          <label htmlFor="instruction">Instructions: </label>
           <textarea
             name="instruction"
             id="instruction"
@@ -104,12 +105,12 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
       </StyledForm>
       <FormularIngredients onAddIngredient={handleAddIngredient} />
       <StyledIngredientsSection>
-        <p>added Ingredients:</p>
+        <p>Added Ingredients: </p>
         <section>
           <ul>
             {ingredients.map((ingredient) => {
               return (
-                <li key={ingredient.IngredientId}>
+                <li key={ingredient.ingredientId}>
                   {ingredient.name} {""} {ingredient.amount}
                   {ingredient.unit}
                   <StyledDeleteIngredientButton
