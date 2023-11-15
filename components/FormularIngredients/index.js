@@ -16,6 +16,8 @@ export default function FormularIngredients({ onAddIngredient }) {
             amount: event.target.elements.amount.value,
             unit: event.target.elements.unit.value,
           });
+          event.target.reset();
+          ingredient.focus();
         }}
       >
         <p>Add ingredients:</p>

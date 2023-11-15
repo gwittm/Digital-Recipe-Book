@@ -66,14 +66,14 @@ export default function DetailsPage() {
           <div>
             <h2>Ingredients:</h2>
             <ul>
-              {recipe.ingredients.map((ingredient, index) => (
-                <div key={index}>
+              {recipe.ingredients.map((ingredient, id) => (
+                <div key={id}>
                   {ingredient.name} {ingredient.amount} {ingredient.unit}
                 </div>
               ))}
             </ul>
           </div>
-          <div>instruction: {recipe.instruction}</div>
+          <div>How to prepare it: {recipe.instruction}</div>
         </div>
       </div>
       <hr></hr>

@@ -95,9 +95,9 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
       <StyledIngredientsSection>
         <p>added Ingredients:</p>
         <ul>
-          {ingredients.map((ingredient) => {
+          {ingredients.map((ingredient, ingredientId) => {
             return (
-              <li key={ingredient.name}>
+              <li key={ingredientId}>
                 {ingredient.name}
                 {ingredient.amount}
                 {ingredient.unit}

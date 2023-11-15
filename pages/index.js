@@ -15,6 +15,11 @@ const List = styled.ul`
 const ListItem = styled.li`
   position: relative;
   width: 100%;
+
+  &:hover {
+    background-color: pink;
+    cursor: pointer;
+  }
 `;
 const FixedLink = styled(StyledLink)`
   position: fixed;
@@ -28,7 +33,7 @@ export default function Home() {
     <>
       <List role="list">
         <h1>Rezepte</h1>
-        {data.map((recipe) => {
+        {data.map((recipe, _id) => {
           return (
             <ListItem key={recipe._id}>
               <Polaroid
