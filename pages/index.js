@@ -65,7 +65,7 @@ export default function Home() {
       <StyledUl role="list">
         {data.map((recipe) => {
           return (
-            <LinkListItem href={`recipes/${recipe._id}`}>
+            <LinkListItem href={`recipes/${recipe._id}`} key={recipe._id}>
               <ListItem key={recipe._id}>{recipe.title} </ListItem>
             </LinkListItem>
           );
