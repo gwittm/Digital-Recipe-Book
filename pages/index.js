@@ -51,7 +51,13 @@ const StyledBox = styled.section`
 `;
 
 export default function Home() {
-  const { data } = useSWR("/api/recipes", { fallbackData: [] });
+  const { data, isLoading, error } = useSWR("/api/recipes", {
+    fallbackData: [],
+  });
+
+  if (isLoading)
+    return <h2>We are still cooking for you...recipes are loading</h2>;
+  if (error) return <h2>An error occured...</h2>;
 
   return (
     <StyledBox>
