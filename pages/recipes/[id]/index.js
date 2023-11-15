@@ -2,7 +2,7 @@ import { StyledLink } from "@/components/StyledLink";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import {
-  HeaderDiv,
+  StyledHeader,
   StyledDetailsPageContainer,
   StyledDetailsItem,
   StyledItemsRow,
@@ -19,9 +19,9 @@ export default function DetailsPage() {
 
   return (
     <StyledDetailsPageContainer>
-      <HeaderDiv>
+      <StyledHeader>
         <h2>{recipe.title}</h2>
-      </HeaderDiv>
+      </StyledHeader>
       <StyledItemsRow>
         <StyledDetailsItem>Type: {recipe.course}</StyledDetailsItem>
         <StyledDetailsItem>Time: {recipe.time}</StyledDetailsItem>

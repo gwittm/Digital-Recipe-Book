@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderDiv = styled.div`
+export const StyledHeader = styled.header`
   height: 2rem;
   background: lightpink;
   margin: 10px;
