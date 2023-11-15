@@ -18,6 +18,11 @@ export default async function handler(request, response) {
       }
       response.status(200).json(recipe);
     }
+    if (request.method === "PUT") {
+      const recipeData = request.body;
+      await Recipe.findByIdAndUpdate(id, recipeData);
+      response.status(200).json({ status: "Entry updated!" });
+    }
   } catch (error) {
     console.error("An error occurred:", error);
   }
