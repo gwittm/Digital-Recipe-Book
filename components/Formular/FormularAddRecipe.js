@@ -5,6 +5,7 @@ import {
   StyledInput,
   StyledIngredientsSection,
   StyledButton,
+  StyledDeleteIngredientButton,
 } from "./FormularStyling.js";
 import FormularIngredients from "./FormularIngredients.js";
 
@@ -13,6 +14,14 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
 
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
+  }
+
+  function handleDeleteIngredient(ingredientId) {
+    const updatedIngredients = ingredients.filter(
+      (ingredient) => ingredient.ingredientId !== ingredientId
+    );
+    setIngredients(updatedIngredients);
+    ingredient.focus();
   }
 
   function handleSubmit(event) {
@@ -102,6 +111,13 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
               <li key={ingredient.IngredientId}>
                 {ingredient.name} {""} {ingredient.amount}
                 {ingredient.unit}
+                <StyledDeleteIngredientButton
+                  onClick={() =>
+                    handleDeleteIngredient(ingredient.ingredientId)
+                  }
+                >
+                  X
+                </StyledDeleteIngredientButton>
               </li>
             );
           })}

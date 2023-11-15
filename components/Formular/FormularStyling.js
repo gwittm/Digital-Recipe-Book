@@ -47,3 +47,8 @@ export const StyledButton = styled.button`
   border-radius: 5px;
   align-items: center;
 `;
+
+export const StyledDeleteIngredientButton = styled.button`
+  color: red;
+  gap: 25px;
+`;
