@@ -1,4 +1,3 @@
-import { StyledDetailsItem } from "@/components/StyledDetailsPage";
 import Link from "next/link.js";
 import styled from "styled-components";
 import useSWR from "swr";
