@@ -7,6 +7,8 @@ import {
   StyledDetailsItem,
   StyledItemsRow,
 } from "@/components/StyledDetailsPage.js";
+import Link from "next/link";
+
 
 export default function DetailsPage() {
   const router = useRouter();
@@ -49,6 +51,11 @@ export default function DetailsPage() {
       <StyledLink $justifySelf="start" href={"/"}>
         back
       </StyledLink>
+      <div>
+      <Link href={`/recipes/${id}/edit`} passHref legacyBehavior>
+            <Link>Edit</Link>
+          </Link>
+      </div>
     </StyledDetailsPageContainer>
   );
 }
