@@ -2,7 +2,6 @@ import { StyledDetailsItem } from "@/components/StyledDetailsPage";
 import Link from "next/link.js";
 import styled from "styled-components";
 import useSWR from "swr";
-/* import { StyledLink } from "@/components/StyledLink"; */
 
 const StyledH1 = styled.h1`
   padding: 10px;

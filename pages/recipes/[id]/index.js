@@ -1,6 +1,5 @@
 import { StyledLink } from "@/components/StyledLink";
 import { useRouter } from "next/router.js";
-import Link from "next/link";
 import useSWR from "swr";
 import {
   HeaderDiv,
@@ -34,8 +33,8 @@ export default function DetailsPage() {
       <StyledDetailsItem>
         <h4>Ingredients:</h4>
         <ul>
-          {recipe.ingredients.map((ingredient, ingredientID) => (
-            <li key={ingredientID}>
+          {recipe.ingredients.map((ingredient) => (
+            <li key={ingredient.id}>
               {ingredient.name}
               {":"} {ingredient.amount} {ingredient.unit}
             </li>
