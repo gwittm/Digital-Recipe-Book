@@ -83,7 +83,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           />
         </StyledInput>
         <StyledInput>
-          <label htmlFor="instruction">Instuctions: </label>
+          <label htmlFor="instruction">Instructions: </label>
           <textarea
             name="instruction"
             id="instruction"
