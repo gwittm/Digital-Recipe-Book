@@ -107,8 +107,11 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           })}
         </ul>
       </StyledIngredientsSection>
-      <StyledButton type="submit" form="recipeForm">
+      {/* <StyledButton type="submit" form="recipeForm">
         Add new Recipe
+      </StyledButton> */}
+      <StyledButton type="submit" form="recipeForm">
+        {defaultData ? "Update Recipe" : "Add Recipe"}
       </StyledButton>
       <br />
     </StyledDiv>

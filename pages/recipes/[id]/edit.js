@@ -7,6 +7,7 @@ export default function EditPage() {
   const router = useRouter();
   const { id } = router.query;
   const { data: recipe, error } = useSWR(`/api/recipes/${id}`);
+
   async function editRecipe(updatedRecipe) {
     const response = await fetch(`/api/recipes/${id}`, {
       method: "PUT",
@@ -22,10 +23,11 @@ export default function EditPage() {
   if (error) return <div>Error loading recipe</div>;
   if (!recipe) return <div>Loading...</div>;
   return (
+
     <>
-      <h2>Edit Recipe</h2>
+      <h2 id="edit-recipe">Edit Recipe</h2>
       <StyledLink href={`/recipes/${id}`}>Back</StyledLink>
-      <RecipeForm onSubmit={editRecipe} defaultData={recipe} />
+      <RecipeForm onSubmit={editRecipe} formName={"edit-recipe"} defaultData={recipe} />
     </>
   );
 }
