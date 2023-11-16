@@ -18,27 +18,23 @@ export const ContentDiv = styled.div`
   box-shadow: 0 2px 4px 4px rgb(128, 54, 119);
   text-align: center;
 `;
-export const StyledDeleteButton = styled.button`
+const Button = styled.button`
   margin: 8px;
   padding: 8px 16px;
-  border: solid 2px rgb(153, 9, 45);
   cursor: pointer;
   border-radius: 5px;
+`;
+export const StyledDeleteButton = styled(Button)`
+  border: solid 2px rgb(153, 9, 45);
   box-shadow: 0 2px 2px rgb(153, 9, 45);
 `;
-export const StyledButtonYes = styled.button`
-  margin: 8px;
-  padding: 8px 16px;
+
+export const StyledButtonYes = styled(Button)`
   border: solid 2px rgb(5, 133, 14);
-  cursor: pointer;
-  border-radius: 5px;
   box-shadow: 0 2px 2px rgb(5, 133, 14);
 `;
-export const StyledButtonNo = styled.button`
-  margin: 8px;
-  padding: 8px 16px;
+
+export const StyledButtonNo = styled(Button)`
   border: solid 2px rgb(153, 9, 45);
-  cursor: pointer;
-  border-radius: 5px;
   box-shadow: 0 2px 2px rgb(153, 9, 45);
 `;

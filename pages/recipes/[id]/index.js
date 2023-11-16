@@ -22,6 +22,7 @@ export default function DetailsPage() {
   const { isReady } = router;
   const { id } = router.query;
   const { data: recipe, isLoading, error } = useSWR(`/api/recipes/${id}`);
+
   async function deleteRecipe() {
     await fetch(`/api/recipes/${id}`, {
       method: "DELETE",
@@ -32,7 +33,6 @@ export default function DetailsPage() {
 
   if (isLoading) return <h2>Loading...</h2>;
   if (error || !isReady) return <h2>An error occured...</h2>;
-
   return (
     <StyledDetailsPageContainer>
       <StyledHeader>
