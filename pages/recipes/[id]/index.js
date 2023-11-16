@@ -11,10 +11,19 @@ import Link from "next/link";
 
 
 export default function DetailsPage() {
+  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
   const { data: recipe, isLoading, error } = useSWR(`/api/recipes/${id}`);
+
+  async function deleteRecipe() {
+    await fetch(`/api/recipes/${id}`, {
+      method: "DELETE",
+    });
+    setShowModal(false);
+    router.push("/");
+  }
 
   if (isLoading) return <h2>Loading...</h2>;
   if (error || !isReady) return <h2>An error occured...</h2>;
@@ -52,9 +61,9 @@ export default function DetailsPage() {
         back
       </StyledLink>
       <div>
-      <Link href={`/recipes/${id}/edit`} passHref legacyBehavior>
+      <StyledLink href={`/recipes/${id}/edit`} passHref legacyBehavior>
             <Link>Edit</Link>
-          </Link>
+          </StyledLink>
       </div>
     </StyledDetailsPageContainer>
   );
