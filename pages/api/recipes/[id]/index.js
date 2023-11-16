@@ -18,6 +18,11 @@ export default async function handler(request, response) {
       }
       response.status(200).json(recipe);
     }
+    if (request.method === "DELETE") {
+      await Recipe.findByIdAndDelete(id);
+
+      response.status(200).json({ status: "Recipe deleted!" });
+    }
   } catch (error) {
     console.error("An error occurred:", error);
   }
