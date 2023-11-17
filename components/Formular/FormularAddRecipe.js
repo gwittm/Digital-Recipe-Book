@@ -10,7 +10,7 @@ import {
 import FormularIngredients from "./FormularIngredients.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState(defaultData.ingredients || []);
 
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
@@ -21,7 +21,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
     );
     setIngredients(updatedIngredients);
     ingredient.focus();
-    }
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -107,7 +107,6 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         <ul>
           {ingredients.map((ingredient) => {
             return (
-
               <li key={ingredient.IngredientId}>
                 {ingredient.name} {""} {ingredient.amount}
                 {ingredient.unit}
@@ -119,13 +118,11 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                   X
                 </StyledDeleteIngredientButton>
               </li>
-              
             );
           })}
         </ul>
-       
       </StyledIngredientsSection>
-      
+
       <StyledButton type="submit" form="recipeForm">
         {defaultData ? "Update Recipe" : "Add Recipe"}
       </StyledButton>
