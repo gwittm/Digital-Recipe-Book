@@ -14,6 +14,7 @@ export const StyledDetailsPageContainer = styled.section`
   border: solid black 1px;
   margin: 10px;
   padding: 20px;
+  padding-top: 30px;
 `;
 
 export const StyledDetailsItem = styled.div`
