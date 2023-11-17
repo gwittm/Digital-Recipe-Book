@@ -11,10 +11,6 @@ export const StyledHeader = styled.header`
 
 export const StyledDetailsPageContainer = styled.section`
   width: 500px;
-  border: solid black 1px;
-  margin: 10px;
-  padding: 20px;
-  padding-top: 30px;
 `;
 
 export const StyledDetailsItem = styled.div`
@@ -30,15 +26,15 @@ export const StyledItemsRow = styled.div`
 
 export const EditDeleteDiv = styled.div`
   display: flex;
-  justify-content: center;
+  width: 500px;
   background-color: rgb(247, 240, 240);
   margin-top: 1rem;
   margin-bottom: 1rem;
-  margin-left: 10rem;
-  margin-right: 10rem;
+
+  /* margin-right: 10rem;
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   padding-left: 0.3rem;
-  padding-right: 0.3rem;
+  padding-right: 0.3rem; */
   border-radius: 5px;
 `;

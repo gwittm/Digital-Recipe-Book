@@ -2,30 +2,33 @@ import Link from "next/link.js";
 import styled from "styled-components";
 import useSWR from "swr";
 
-const StyledH1 = styled.h1`
+const StyledH1 = styled.h2`
   padding: 10px;
   text-align: center;
+  color: var(--title-color);
 `;
 
 const StyledUl = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const ListItem = styled.li`
-  position: relative;
-  background-color: rgb(247, 240, 240);
-  width: 320px;
-  height: 40px;
+  background-color: var(--background-color);
+  color: var(--title-color);
+  width: 70vw;
+  height: 35px;
   border-radius: 10px;
-  box-shadow: 8px 3px 3px lightblue;
-  margin: 10px;
+  margin: 5px;
   padding: 10px;
 
   &:hover {
-    background-color: pink;
+    background-color: var(--header-color);
+    color: white;
     cursor: pointer;
+    text-decoration: ;
   }
 `;
 
@@ -34,19 +37,18 @@ const LinkListItem = styled(Link)`
 `;
 
 const StyledLink = styled(Link)`
-  background-color: lightblue;
+  background-color: var(--title-color);
+  color: white;
   width: 320px;
   padding: 10px;
   border-radius: 10px;
   margin: 10px;
-  box-shadow: 8px 3px 3px rgb(39, 45, 56);
   text-decoration: none;
   font-size: 20px;
-`;
 
-const StyledBox = styled.section`
-  border: solid grey;
-  width: 400px;
+  &:hover {
+    background-color: var(--header-color);
+  }
 `;
 
 export default function Home() {
@@ -73,7 +75,7 @@ export default function Home() {
   if (error) return <h2>An error occured...</h2>;
 
   return (
-    <StyledBox>
+    <>
       <StyledH1>All my Recipes</StyledH1>
       <StyledUl role="list">
         {data.map((recipe) => {
@@ -85,6 +87,6 @@ export default function Home() {
         })}
         <StyledLink href="/create">+ recipe</StyledLink>
       </StyledUl>
-    </StyledBox>
+    </>
   );
 }
