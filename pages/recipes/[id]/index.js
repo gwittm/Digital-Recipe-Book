@@ -11,19 +11,10 @@ import Link from "next/link";
 
 
 export default function DetailsPage() {
-  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
   const { data: recipe, isLoading, error } = useSWR(`/api/recipes/${id}`);
-
-  async function deleteRecipe() {
-    await fetch(`/api/recipes/${id}`, {
-      method: "DELETE",
-    });
-    setShowModal(false);
-    router.push("/");
-  }
 
   if (isLoading) return <h2>Loading...</h2>;
   if (error || !isReady) return <h2>An error occured...</h2>;
@@ -44,8 +35,8 @@ export default function DetailsPage() {
       <StyledDetailsItem>
         <h4>Ingredients:</h4>
         <ul>
-          {recipe.ingredients.map((ingredient) => (
-            <li key={ingredient.id}>
+          {recipe.ingredients.map((ingredient, id) => (
+            <li key={id}>
               {ingredient.name}
               {":"} {ingredient.amount} {ingredient.unit}
             </li>
