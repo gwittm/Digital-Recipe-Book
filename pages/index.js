@@ -28,7 +28,6 @@ const ListItem = styled.li`
     background-color: var(--header-color);
     color: white;
     cursor: pointer;
-    text-decoration: ;
   }
 `;
 
