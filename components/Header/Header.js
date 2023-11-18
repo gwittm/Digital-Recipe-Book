@@ -17,4 +17,12 @@ const StyledHeader = styled.h1`
   right: 0;
   z-index: 1;
   background-color: var(--header-color);
+
+  @media screen and (min-width: 601px) {
+    font-size: 35px;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
