@@ -10,7 +10,7 @@ export default function SearchBar({ handleSearch }) {
         name="search"
         required
         minLength="0"
-        maxLength="14"
+        maxLength="20"
         size="10"
         placeholder="Search from your recipes"
         onChange={handleSearch}
@@ -21,6 +21,7 @@ export default function SearchBar({ handleSearch }) {
 
 const StyledForm = styled.form`
   display: grid;
+  width: 320px;
   padding: 20px;
   margin: 10px;
   border: solid black 1px;
