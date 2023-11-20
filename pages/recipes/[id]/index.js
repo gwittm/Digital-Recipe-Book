@@ -61,6 +61,9 @@ export default function DetailsPage() {
         <h4>How to prepare it:</h4> {recipe.instruction}
       </StyledDetailsItem>
       <EditDeleteDiv>
+        <StyledLink $justifySelf="start" href={"/"}>
+          back
+        </StyledLink>
         <StyledDeleteButton
           onClick={() => setShowModal(true)}
           type="button"
@@ -86,9 +89,6 @@ export default function DetailsPage() {
           </Modal>
         )}
       </EditDeleteDiv>
-      <StyledLink $justifySelf="start" href={"/"}>
-        back
-      </StyledLink>
     </StyledDetailsPageContainer>
   );
 }

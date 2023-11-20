@@ -15,7 +15,7 @@ export const ContentDiv = styled.div`
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px 4px rgb(128, 54, 119);
+  box-shadow: 0 2px 4px 4px var(--header-color);
   text-align: center;
 `;
 const Button = styled.button`
@@ -30,8 +30,8 @@ export const StyledDeleteButton = styled(Button)`
 `;
 
 export const StyledButtonYes = styled(Button)`
-  border: solid 2px rgb(5, 133, 14);
-  box-shadow: 0 2px 2px rgb(5, 133, 14);
+  border: solid 2px var(--title-color);
+  box-shadow: 0 2px 2px var(--title-color);
 `;
 
 export const StyledButtonNo = styled(Button)`
