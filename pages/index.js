@@ -1,11 +1,12 @@
 import Link from "next/link.js";
 import FuseSearchRecipe from "@/components/Search/FuseSearchRecipe";
+import { StyledLink } from "@/components/StyledLink";
 
 export default function Home() {
   return (
     <>
-      <h2>All my Recipes</h2>
       <FuseSearchRecipe />
+      <StyledLink href="/create">+ recipe</StyledLink>
     </>
   );
 }
