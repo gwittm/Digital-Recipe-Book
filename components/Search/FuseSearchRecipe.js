@@ -21,13 +21,23 @@ export default function FuseSearchRecipe() {
   const [results, setResults] = useState([]);
   const [fuse, setFuse] = useState(null);
   const [isFuseActive, setIsFuseActive] = useState(false);
+  const [recipes, setRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     async function getRecipes() {
-      const response = await fetch(`/api/recipes`);
-      const fetchedRecipes = await response.json();
-      setFuse(new Fuse(fetchedRecipes, fuseOptions));
+      try {
+        const response = await fetch(`/api/recipes`);
+        const fetchedRecipes = await response.json();
+        setRecipes(fetchedRecipes);
+        setIsLoading(false);
+        setFuse(new Fuse(fetchedRecipes, fuseOptions));
+      } catch (error) {
+        setError(error);
+        setIsLoading(false);
+      }
     }
-
     getRecipes();
   }, []);
 
@@ -42,9 +52,6 @@ export default function FuseSearchRecipe() {
     setResults(searchResult);
     searchPattern.length === 0 ? setIsFuseActive(false) : setIsFuseActive(true);
   }
-
-  // Get Data from Backend
-  const { data: recipes, isLoading, error } = useSWR(`/api/recipes`);
 
   if (isLoading)
     return (
