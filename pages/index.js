@@ -1,6 +1,8 @@
-import Link from "next/link.js";
+
+
 import FuseSearchRecipe from "@/components/Search/FuseSearchRecipe";
 import { StyledLink } from "@/components/StyledLink";
+
 
 export default function Home() {
   return (

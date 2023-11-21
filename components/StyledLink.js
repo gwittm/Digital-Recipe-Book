@@ -2,12 +2,17 @@ import styled, { css } from "styled-components";
 import Link from "next/link";
 
 export const StyledLink = styled(Link)`
-  background-color: lightblue;
-  padding: 0.8rem 1.5rem;
-  border-radius: 0.6rem;
-  color: black;
+  background-color: var(--title-color);
+  width: 150px;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  color: white;
   text-decoration: none;
-  font-weight: bold;
+
+  &:hover {
+    background-color: var(--header-color);
+  }
 
   ${({ $justifySelf }) =>
     $justifySelf &&
