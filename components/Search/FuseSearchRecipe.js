@@ -27,14 +27,18 @@ export default function FuseSearchRecipe() {
 
   useEffect(() => {
     async function getRecipes() {
+      setError(null);
+      setIsLoading(true);
+
       try {
         const response = await fetch(`/api/recipes`);
         const fetchedRecipes = await response.json();
+
         setRecipes(fetchedRecipes);
-        setIsLoading(false);
         setFuse(new Fuse(fetchedRecipes, fuseOptions));
-      } catch (error) {
-        setError(error);
+      } catch (fetchError) {
+        setError(fetchError);
+      } finally {
         setIsLoading(false);
       }
     }
