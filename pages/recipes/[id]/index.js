@@ -9,7 +9,6 @@ import {
 } from "@/components/StyledDetailsPage.js";
 import Link from "next/link";
 
-
 export default function DetailsPage() {
   const router = useRouter();
   const { isReady } = router;
@@ -52,9 +51,14 @@ export default function DetailsPage() {
         back
       </StyledLink>
       <div>
-      <StyledLink href={`/recipes/${id}/edit`} passHref legacyBehavior>
-            <Link>Edit</Link>
-          </StyledLink>
+        <StyledLink
+          href={`/recipes/${id}/edit`}
+          defaultData={recipe.ingredients}
+          passHref
+          legacyBehavior
+        >
+          <Link>Edit</Link>
+        </StyledLink>
       </div>
     </StyledDetailsPageContainer>
   );

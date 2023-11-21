@@ -10,8 +10,8 @@ import {
 import FormularIngredients from "./FormularIngredients.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
-  /*  const [ingredients, setIngredients] = useState(defaultData.ingredients || []); */
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState(defaultData.ingredients || []);
+  /*  const [ingredients, setIngredients] = useState([]); */
 
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
@@ -20,6 +20,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
     const updatedIngredients = ingredients.filter(
       (ingredient) => ingredient.ingredientId !== ingredientId
     );
+
     setIngredients(updatedIngredients);
     ingredient.focus();
   }
