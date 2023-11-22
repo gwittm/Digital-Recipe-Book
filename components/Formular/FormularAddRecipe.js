@@ -8,6 +8,7 @@ import {
   StyledDeleteIngredientButton,
 } from "./FormularStyling.js";
 import FormularIngredients from "./FormularIngredients.js";
+import { StyledLink } from "../StyledLink.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
   const [ingredients, setIngredients] = useState(
@@ -22,6 +23,14 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
       (ingredient) => ingredient.ingredientID !== ingredientId
     );
 
+    setIngredients(updatedIngredients);
+    ingredient.focus();
+  }
+
+  function handleDeleteIngredient(ingredientId) {
+    const updatedIngredients = ingredients.filter(
+      (ingredient) => ingredient.ingredientId !== ingredientId
+    );
     setIngredients(updatedIngredients);
     ingredient.focus();
   }
@@ -56,6 +65,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
               <option value="Oven">Oven</option>
               <option value="Microwave">Microwave</option>
               <option value="Stove">Stove</option>
+              <option value="none">none</option>
               <option value="Grill">Grill</option>
             </select>
           </label>
@@ -68,6 +78,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
               <option value="Dish">Dish</option>
               <option value="Soup">Soup</option>
               <option value="Salad">Salad</option>
+              <option value="ColdDish">Cold Dish</option>
               <option value="Cookies">Cookies</option>
               <option value="Drinks">Drinks</option>
               <option value="Fingerfood">Fingerfood</option>
@@ -115,7 +126,9 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                 {ingredient.unit}
                 <StyledDeleteIngredientButton
                   onClick={() =>
+
                     handleDeleteIngredient(ingredient.ingredientID)
+
                   }
                 >
                   X
@@ -130,6 +143,9 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         {defaultData ? "Update Recipe" : "Add Recipe"}
       </StyledButton>
       <br />
+      <StyledLink $justifySelf="start" href={"/"}>
+        back
+      </StyledLink>
     </StyledDiv>
   );
 }
