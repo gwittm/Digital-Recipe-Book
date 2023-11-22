@@ -27,14 +27,6 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
     ingredient.focus();
   }
 
-  function handleDeleteIngredient(ingredientId) {
-    const updatedIngredients = ingredients.filter(
-      (ingredient) => ingredient.ingredientId !== ingredientId
-    );
-    setIngredients(updatedIngredients);
-    ingredient.focus();
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -126,9 +118,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                 {ingredient.unit}
                 <StyledDeleteIngredientButton
                   onClick={() =>
-
                     handleDeleteIngredient(ingredient.ingredientID)
-
                   }
                 >
                   X
