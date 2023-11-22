@@ -49,5 +49,5 @@ export const StyledButton = styled.button`
 `;
 export const StyledDeleteIngredientButton = styled.button`
   color: red;
-  gap: 25px;
+  gap: 20px;
 `;
