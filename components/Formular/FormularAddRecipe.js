@@ -10,15 +10,16 @@ import {
 import FormularIngredients from "./FormularIngredients.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
-  const [ingredients, setIngredients] = useState(defaultData.ingredients || []);
-  /*   const [ingredients, setIngredients] = useState([]);
-   */
+  const [ingredients, setIngredients] = useState(
+    defaultData?.ingredients || []
+  );
+
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
   }
   function handleDeleteIngredient(ingredientId) {
     const updatedIngredients = ingredients.filter(
-      (ingredient) => ingredient.ingredientId !== ingredientId
+      (ingredient) => ingredient.ingredientID !== ingredientId
     );
 
     setIngredients(updatedIngredients);
@@ -109,12 +110,12 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         <ul>
           {ingredients.map((ingredient) => {
             return (
-              <li key={ingredient.IngredientId}>
+              <li key={ingredient.ingredientID}>
                 {ingredient.name} {""} {ingredient.amount}
                 {ingredient.unit}
                 <StyledDeleteIngredientButton
                   onClick={() =>
-                    handleDeleteIngredient(ingredient.ingredientId)
+                    handleDeleteIngredient(ingredient.ingredientID)
                   }
                 >
                   X

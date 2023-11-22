@@ -10,7 +10,7 @@ export default function FormularIngredients({ onAddIngredient }) {
       onSubmit={(event) => {
         event.preventDefault();
         onAddIngredient({
-          ingredientId: nanoid(),
+          ingredientID: nanoid(),
           name: event.target.elements.ingredient.value,
           amount: event.target.elements.amount.value,
           unit: event.target.elements.unit.value,
