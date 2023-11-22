@@ -11,8 +11,8 @@ import FormularIngredients from "./FormularIngredients.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
   const [ingredients, setIngredients] = useState(defaultData.ingredients || []);
-  /*  const [ingredients, setIngredients] = useState([]); */
-
+  /*   const [ingredients, setIngredients] = useState([]);
+   */
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
   }
