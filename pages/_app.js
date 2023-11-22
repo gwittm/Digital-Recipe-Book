@@ -1,7 +1,7 @@
 import { SWRConfig } from "swr";
 import GlobalStyle from "../styles.js";
 import Header from "@/components/Header/Header.js";
-import NavBar from "@/components/NavBar/NavBar.js";
+import NavBar from "@/components/NavBar/index.js";
 
 export default function App({ Component, pageProps }) {
   return (

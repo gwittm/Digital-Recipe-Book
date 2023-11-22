@@ -1,23 +1,6 @@
 import styled from "styled-components";
 
-export default function NavBar() {
-  return (
-    <StyledNav>
-      <div>
-        <StyledHomeLink href="/">Home</StyledHomeLink>
-      </div>
-      <div>
-        <StyledAddLink href="/create">
-          <span>+</span>
-          <span>AddNewRecipe</span>
-        </StyledAddLink>
-      </div>
-      <div></div>
-    </StyledNav>
-  );
-}
-
-const StyledNav = styled.nav`
+export const StyledNav = styled.nav`
   display: flex;
   position: fixed;
   color: white;
@@ -38,7 +21,7 @@ const StyledNav = styled.nav`
   }
 `;
 
-const baseLinkStyles = `
+export const baseLinkStyles = `
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,11 +39,11 @@ const baseLinkStyles = `
   }
 `;
 
-const StyledHomeLink = styled.a`
+export const StyledHomeLink = styled.a`
   ${baseLinkStyles}
 `;
 
-const StyledAddLink = styled.a`
+export const StyledAddLink = styled.a`
   ${baseLinkStyles}
   position: relative;
   border: solid green 0.5rem;
