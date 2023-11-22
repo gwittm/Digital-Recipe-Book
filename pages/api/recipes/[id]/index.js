@@ -23,12 +23,11 @@ export default async function handler(request, response) {
       const recipeData = request.body;
       await Recipe.findByIdAndUpdate(id, recipeData);
       response.status(200).json({ status: "Entry updated!" });
-
+    }
     if (request.method === "DELETE") {
       await Recipe.findByIdAndDelete(id);
 
       response.status(200).json({ status: "Recipe deleted!" });
-
     }
   } catch (error) {
     console.error("An error occurred:", error);
