@@ -13,12 +13,18 @@ export const StyledNav = styled.nav`
   background-color: var(--header-color);
 
   @media screen and (min-width: 601px) {
-    font-size: 35px;
+    font-size: 15px;
   }
 
   @media screen and (max-width: 600px) {
-    font-size: 20px;
+    font-size: 10px;
   }
+`;
+
+export const StyledNavDiv = styled.div`
+  color: white;
+
+  height: 8vh;
 `;
 
 export const baseLinkStyles = `
@@ -31,46 +37,34 @@ export const baseLinkStyles = `
   text-decoration: none;
   
   @media screen and (min-width: 601px) {
-    font-size: 35px;
+    font-size: 20px;
   }
 
   @media screen and (max-width: 600px) {
-    font-size: 20px;
+    font-size: 10px;
   }
 `;
 
-export const StyledHomeLink = styled.a`
-  ${baseLinkStyles}
-`;
-
-export const StyledAddLink = styled.a`
+export const StyledNavLink = styled.a`
   ${baseLinkStyles}
   position: relative;
-  border: var(--title-color), 0.5rem;
-  margin-top: 0.3rem;
-  margin-bottom: 3rem;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
+  justify-content: center;
 
   span {
     position: absolute;
+    color: white;
+    font-size: 1rem;
   }
   span:first-child {
-    position: absolute;
-    color: var(--title-color);
-    top: 1.2rem;
+    top: 2rem;
     left: 1.5rem;
     transform: translate(-50%, -50%);
-    font-size: 4.1rem;
+    background-color: hotpink;
   }
 
   span:last-child {
-    position: absolute;
-    color: var(--title-color);
-    top: 100%;
-    left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: 1.3rem;
+
+    background-color: hotpink;
   }
 `;
