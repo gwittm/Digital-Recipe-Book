@@ -51,10 +51,9 @@ export default function DetailsPage() {
       <StyledDetailsItem>
         <h4>Ingredients:</h4>
         <ul>
-          {recipe.ingredients.map((ingredient) => (
+          {recipe.ingredients && recipe.ingredients.map((ingredient) => (
             <li key={ingredient.ingredientID}>
-              {ingredient.name}
-              {":"} {ingredient.amount} {ingredient.unit}
+              {ingredient.name} : {ingredient.amount} {ingredient.unit}
             </li>
           ))}
         </ul>

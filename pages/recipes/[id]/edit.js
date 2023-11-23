@@ -17,9 +17,7 @@ export default function EditPage() {
         },
         body: JSON.stringify(updatedRecipe),
       });
-      if (isLoading) {
-        return <h1>Loading...</h1>;
-      }
+      if (!recipe || isLoading) return <div>Loading...</div>;
       if (response.ok) {
         router.push(`/recipes/${id}`);
       } else {
@@ -30,7 +28,7 @@ export default function EditPage() {
     }
   }
   if (error) return <div>Error loading recipe</div>;
-  if (!recipe) return <div>Loading...</div>;
+
   return (
     <>
       <h2 id="edit-recipe">Edit Recipe</h2>
