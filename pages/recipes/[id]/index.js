@@ -9,9 +9,7 @@ import {
   StyledDetailsItem,
   StyledItemsRow,
   EditDeleteDiv,
-} from "@/components/StyledDetailsPage.js";
-
-import Link from "next/link";
+} from "@/components/StyledDetailsPage.js"
 
 import {
   StyledButtonNo,
@@ -53,8 +51,8 @@ export default function DetailsPage() {
       <StyledDetailsItem>
         <h4>Ingredients:</h4>
         <ul>
-          {recipe.ingredients.map((ingredient, id) => (
-            <li key={id}>
+          {recipe.ingredients.map((ingredient) => (
+            <li key={ingredient.ingredientID}>
               {ingredient.name}
               {":"} {ingredient.amount} {ingredient.unit}
             </li>
@@ -67,17 +65,13 @@ export default function DetailsPage() {
 
       <br />
 
-      <StyledLink $justifySelf="start" href={"/"}>
-        back
-      </StyledLink>
+     
       <div>
         <StyledLink
           href={`/recipes/${id}/edit`}
           defaultData={recipe.ingredients}
-          passHref
-          legacyBehavior
         >
-          <Link>Edit</Link>
+          Edit
         </StyledLink>
       </div>
 

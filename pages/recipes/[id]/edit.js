@@ -6,7 +6,8 @@ import RecipeForm from "@/components/Formular/FormularAddRecipe";
 export default function EditPage() {
   const router = useRouter();
   const { id } = router.query;
-  const { data: recipe, error } = useSWR(`/api/recipes/${id}`);
+  const { data: recipe, isLoading, error, } = useSWR(id ?`/api/recipes/${id}` : null);
+  
   async function editRecipe(updatedRecipe) {
     try {
       const response = await fetch(`/api/recipes/${id}`, {
@@ -16,6 +17,9 @@ export default function EditPage() {
         },
         body: JSON.stringify(updatedRecipe),
       });
+      if (isLoading) {
+        return <h1>Loading...</h1>;
+      }
       if (response.ok) {
         router.push(`/recipes/${id}`);
       } else {

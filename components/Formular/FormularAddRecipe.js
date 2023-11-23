@@ -11,8 +11,7 @@ import FormularIngredients from "./FormularIngredients.js";
 import { StyledLink } from "../StyledLink.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
-  const [ingredients, setIngredients] = useState(
-    defaultData?.ingredients || []
+  const [ingredients, setIngredients] = useState(defaultData?.ingredients || []
   );
 
   function handleAddIngredient(newIngredient) {
