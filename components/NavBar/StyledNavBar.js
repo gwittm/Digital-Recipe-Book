@@ -46,7 +46,7 @@ export const StyledHomeLink = styled.a`
 export const StyledAddLink = styled.a`
   ${baseLinkStyles}
   position: relative;
-  border: solid green 0.5rem;
+  border: var(--title-color), 0.5rem;
   margin-top: 0.3rem;
   margin-bottom: 3rem;
   width: 4rem;
@@ -58,7 +58,7 @@ export const StyledAddLink = styled.a`
   }
   span:first-child {
     position: absolute;
-    color: green;
+    color: var(--title-color);
     top: 1.2rem;
     left: 1.5rem;
     transform: translate(-50%, -50%);
@@ -67,7 +67,7 @@ export const StyledAddLink = styled.a`
 
   span:last-child {
     position: absolute;
-    color: green;
+    color: var(--title-color);
     top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
