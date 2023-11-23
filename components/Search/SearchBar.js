@@ -21,11 +21,16 @@ export default function SearchBar({ handleSearch }) {
 
 const StyledForm = styled.form`
   display: grid;
-  width: 320px;
+  height: 11vh;
+  width: 400px;
   padding: 20px;
-  margin: 10px;
-  border: solid black 1px;
-  background-color: lightblue;
+  margin: 20px;
+  background-color: var(--title-color);
+  border-radius: 5px;
+
+  &:hover {
+    height: 12vh;
+  }
 `;
 
 const StyledLabel = styled.label`
@@ -34,4 +39,5 @@ const StyledLabel = styled.label`
 
 const StyledInput = styled.input`
   height: 4vh;
+  color: var(--header-color);
 `;

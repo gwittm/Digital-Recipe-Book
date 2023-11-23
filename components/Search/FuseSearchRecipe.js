@@ -6,10 +6,16 @@ import styled from "styled-components";
 import Fuse from "fuse.js";
 
 const StyledUlBox = styled.div`
-  border: solid black 1px;
   padding: 10px;
   width: 500px;
   margin: 20px;
+  align-items: center;
+`;
+
+const StyledH2 = styled.h2`
+  color: var(--title-color);
+  display: flex;
+  justify-content: center;
 `;
 
 const fuseOptions = {
@@ -86,7 +92,7 @@ export default function FuseSearchRecipe() {
     <>
       <SearchBar handleSearch={handleSearch} />
       <StyledUlBox>
-        <h2>All my recipes</h2>
+        <StyledH2>All my recipes</StyledH2>
         <ul>
           {!isFuseActive &&
             alphabeticallySortedRecipes.map((recipe) => (
