@@ -57,6 +57,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
               <option value="Stove">Stove</option>
               <option value="none">none</option>
               <option value="Grill">Grill</option>
+              <option value="none">none</option>
             </select>
           </label>
         </StyledInput>
@@ -72,6 +73,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
               <option value="Cookies">Cookies</option>
               <option value="Drinks">Drinks</option>
               <option value="Fingerfood">Fingerfood</option>
+              <option value="other">Other</option>
             </select>
           </label>
         </StyledInput>

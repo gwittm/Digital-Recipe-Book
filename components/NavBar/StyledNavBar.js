@@ -26,14 +26,6 @@ export const StyledNavDiv = styled.div`
   text-decoration: none;
   margin-top: 2px;
   padding: 2px;
-
-  &:hover {
-    background-color: var(--title-color);
-  }
-
-  &.active {
-    background-color: hotpink;
-  }
 `;
 
 export const baseLinkStyles = `
@@ -60,7 +52,13 @@ export const StyledNavLink = styled(Link)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5px;
+  /*   margin-top: 5px; */
   width: 16vw;
   height: 5vh;
+
+  &.active {
+    &:hover {
+      background-color: var(--title-color);
+    }
+  }
 `;

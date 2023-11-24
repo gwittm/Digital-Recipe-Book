@@ -1,15 +1,28 @@
-import {
-  StyledNavLink,
-  StyledNav,
-  StyledNavDiv,
-  StyledSVG,
-} from "./StyledNavBar";
+import { StyledNavLink, StyledNav, StyledNavDiv } from "./StyledNavBar";
+import { useState } from "react";
 
 export default function NavBar() {
+  const [isHomeActive, setIsHomeActive] = useState(false);
+  const [isNewRecipeActive, setIsNewRecipeActive] = useState(true);
+
+  const handleToggle = (page) => {
+    if (page === "home") {
+      setIsHomeActive(false);
+      setIsNewRecipeActive(true);
+    } else if (page === "newRecipe") {
+      setIsHomeActive(true);
+      setIsNewRecipeActive(false);
+    }
+  };
+
   return (
     <StyledNav>
       <StyledNavDiv>
-        <StyledNavLink activeClassName="active" href="/">
+        <StyledNavLink
+          href="/"
+          className={isHomeActive ? "active" : ""}
+          onClick={() => handleToggle("home")}
+        >
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +37,11 @@ export default function NavBar() {
       </StyledNavDiv>
 
       <StyledNavDiv>
-        <StyledNavLink activeClassName="active" href="/create">
+        <StyledNavLink
+          href="/create"
+          className={isNewRecipeActive ? "active" : ""}
+          onClick={() => handleToggle("newRecipe")}
+        >
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
