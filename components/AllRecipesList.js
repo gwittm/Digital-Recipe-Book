@@ -22,12 +22,13 @@ const StyledUl = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
+  padding-left: 0;
 `;
 
 const ListItem = styled.li`
   background-color: var(--background-color);
   color: var(--header-color);
-  width: 320px;
+  /*   width: 320px; */
   height: 40px;
   border-radius: 5px;
   margin: 10px;

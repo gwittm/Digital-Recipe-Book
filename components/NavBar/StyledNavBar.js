@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export const StyledNav = styled.nav`
   display: flex;
@@ -23,6 +24,16 @@ export const StyledNavDiv = styled.div`
   align-items: center;
   color: white;
   text-decoration: none;
+  margin-top: 2px;
+  padding: 2px;
+
+  &:hover {
+    background-color: var(--title-color);
+  }
+
+  &.active {
+    background-color: hotpink;
+  }
 `;
 
 export const baseLinkStyles = `
@@ -40,16 +51,16 @@ export const baseLinkStyles = `
   }
 `;
 
-export const StyledSVG = styled.svg`
-  margin: 10px;
-  width: 5vh;
-  align-items: center;
-`;
-
-export const StyledNavLink = styled.a`
+export const StyledNavLink = styled(Link)`
   ${baseLinkStyles}
   position: relative;
   justify-content: center;
-  font-size: 5px;
-  margin-top: 0px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  width: 16vw;
+  height: 5vh;
 `;

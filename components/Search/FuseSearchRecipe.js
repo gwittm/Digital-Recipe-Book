@@ -1,14 +1,10 @@
 import AllRecipesList from "../AllRecipesList";
 import { useState, useEffect } from "react";
-import useSWR from "swr";
 import SearchBar from "./SearchBar";
 import styled from "styled-components";
 import Fuse from "fuse.js";
 
 const StyledUlBox = styled.div`
-  padding: 10px;
-  width: 500px;
-  margin: 20px;
   align-items: center;
 `;
 

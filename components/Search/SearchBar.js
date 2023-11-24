@@ -22,9 +22,7 @@ export default function SearchBar({ handleSearch }) {
 const StyledForm = styled.form`
   display: grid;
   height: 11vh;
-  width: 400px;
   padding: 20px;
-  margin: 20px;
   background-color: var(--title-color);
   border-radius: 5px;
 
