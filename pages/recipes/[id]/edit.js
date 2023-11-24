@@ -33,7 +33,7 @@ export default function EditPage() {
   return (
     <>
       <h2 id="edit-recipe">Edit Recipe</h2>
-      <StyledLink href={`/recipes/${id}`}>Back</StyledLink>
+      
       <RecipeForm
         onSubmit={editRecipe}
         formName={"edit-recipe"}

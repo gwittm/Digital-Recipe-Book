@@ -6,6 +6,7 @@ import {
   StyledIngredientsSection,
   StyledButton,
   StyledDeleteIngredientButton,
+  StyledDivButton,
 } from "./FormularStyling.js";
 import FormularIngredients from "./FormularIngredients.js";
 import { StyledLink } from "../StyledLink.js";
@@ -63,8 +64,8 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         </StyledInput>
 
         <StyledInput>
-            <label htmlFor="course"> Type:{" "}
-            <select name="course" id="course" defaultValue={defaultData?.course} >
+            <label htmlFor="type"> Type:{" "}
+            <select name="type" id="type" defaultValue={defaultData?.type} >
             <option value="none">none</option>
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
@@ -125,20 +126,23 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                   X
                  
                 </StyledDeleteIngredientButton>
-                <button type="button" onClick="changeUnit()">Change Unit</button>
+               
               </li>
             );
           })}
         </ul>
       </StyledIngredientsSection>
 
-      <StyledButton type="submit" form="recipeForm">
-        {defaultData ? "Update Recipe" : "Add Recipe"}
-      </StyledButton>
-      <br />
-      <StyledLink $justifySelf="start" href={"/"}>
+<StyledDivButton>
+  
+ <StyledLink $justifySelf="start" href={"/"}>
       back without changes
       </StyledLink>
+      <StyledButton type="submit" form="recipeForm">
+      {defaultData ? "Update Recipe" : "Add Recipe"}
+      </StyledButton>
+    </StyledDivButton>
+      
     </StyledDiv>
   );
 }

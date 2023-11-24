@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const recipeSchema = new Schema({
   title: { type: String, required: true },
   preparation: { type: String },
-  course: { type: String },
+  type: { type: String },
   time: { type: String },
   servings: { type: Number },
   ingredients: [

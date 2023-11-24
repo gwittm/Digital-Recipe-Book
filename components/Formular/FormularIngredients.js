@@ -35,8 +35,8 @@ export default function FormularIngredients({ onAddIngredient }) {
 
           <label htmlFor="unit"> Unit:</label>
           <select id="unit" name="unit" defaultValue="unit">
+          <option value="g">g</option>
             <option value="none">none</option>
-            <option value="g">g</option>
             <option value="l">l</option>
             <option value="cl">cl</option>
             <option value="ml">ml</option>
