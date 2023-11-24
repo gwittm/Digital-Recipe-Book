@@ -9,6 +9,7 @@ export const StyledLink = styled(Link)`
   border-radius: 5px;
   color: white;
   text-decoration: none;
+   
 
   &:hover {
     background-color: var(--header-color);
@@ -26,5 +27,6 @@ export const StyledLink = styled(Link)`
       text-align: center;
       background-color: white;
       border: 3px solid lightsalmon;
+      display flex: font-size
     `}
 `;

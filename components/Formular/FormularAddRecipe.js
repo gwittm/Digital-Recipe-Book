@@ -6,21 +6,23 @@ import {
   StyledIngredientsSection,
   StyledButton,
   StyledDeleteIngredientButton,
+  StyledDivButton,
 } from "./FormularStyling.js";
 import FormularIngredients from "./FormularIngredients.js";
 import { StyledLink } from "../StyledLink.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState(defaultData?.ingredients || []
+  );
 
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
   }
-
   function handleDeleteIngredient(ingredientId) {
     const updatedIngredients = ingredients.filter(
-      (ingredient) => ingredient.ingredientId !== ingredientId
+      (ingredient) => ingredient.ingredientID !== ingredientId
     );
+
     setIngredients(updatedIngredients);
     ingredient.focus();
   }
@@ -48,22 +50,23 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             defaultValue={defaultData?.title}
           />
         </StyledInput>
+
         <StyledInput>
-          <label htmlFor="preparation">
-            Preparation:{" "}
-            <select name="preparation" id="preparation" defaultValue="Oven">
-              <option value="Oven">Oven</option>
+          <label htmlFor="preparation"> Preparation:{" "}
+            <select name="preparation" id="preparation" defaultValue={defaultData?.preparation}>
+            <option value="none">none</option>
               <option value="Microwave">Microwave</option>
+              <option value="Oven">Oven</option>
               <option value="Stove">Stove</option>
-              <option value="none">none</option>
               <option value="Grill">Grill</option>
             </select>
           </label>
         </StyledInput>
+
         <StyledInput>
-          <label htmlFor="course">
-            Course:{" "}
-            <select name="course" defaultValue="Cake" id="course">
+            <label htmlFor="type"> Type:{" "}
+            <select name="type" id="type" defaultValue={defaultData?.type} >
+            <option value="none">none</option>
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
               <option value="Soup">Soup</option>
@@ -75,6 +78,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             </select>
           </label>
         </StyledInput>
+
         <StyledInput>
           <label htmlFor="time">Time: </label>
           <input
@@ -87,7 +91,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         <StyledInput>
           <label htmlFor="servings">Servings: </label>
           <input
-            defaultValue="1"
+            defaultValue={defaultData?.servings}
             id="servings"
             name="servings"
             type="number"
@@ -111,28 +115,34 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         <ul>
           {ingredients.map((ingredient) => {
             return (
-              <li key={ingredient.IngredientId}>
+              <li key={ingredient.ingredientID}>
                 {ingredient.name} {""} {ingredient.amount}
                 {ingredient.unit}
                 <StyledDeleteIngredientButton
                   onClick={() =>
-                    handleDeleteIngredient(ingredient.ingredientId)
+                    handleDeleteIngredient(ingredient.ingredientID)
                   }
                 >
                   X
+                 
                 </StyledDeleteIngredientButton>
+               
               </li>
             );
           })}
         </ul>
       </StyledIngredientsSection>
-      <StyledButton type="submit" form="recipeForm">
-        Add new Recipe
-      </StyledButton>
-      <br />
-      <StyledLink $justifySelf="start" href={"/"}>
-        back
+
+<StyledDivButton>
+  
+ <StyledLink $justifySelf="start" href={"/"}>
+      back without changes
       </StyledLink>
+      <StyledButton type="submit" form="recipeForm">
+      {defaultData ? "Update Recipe" : "Add Recipe"}
+      </StyledButton>
+    </StyledDivButton>
+      
     </StyledDiv>
   );
 }
