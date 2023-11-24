@@ -25,13 +25,17 @@ export default function FormularIngredients({ onAddIngredient }) {
           <label htmlFor="ingredient">Ingredient:</label>
           <input name="ingredient" type="text" id="ingredient" />
         </StyledIngredientInput>
+
         <StyledIngredientInput>
           <label htmlFor="amount">Amount:</label>
           <input name="amount" type="number" min="1" id="amount" />
         </StyledIngredientInput>
+
         <StyledIngredientInput>
-          <label htmlFor="unit">Unit:</label>
-          <select id="unit" name="unit">
+
+          <label htmlFor="unit"> Unit:</label>
+          <select id="unit" name="unit" defaultValue="unit">
+            <option value="none">none</option>
             <option value="g">g</option>
             <option value="l">l</option>
             <option value="cl">cl</option>
@@ -44,6 +48,7 @@ export default function FormularIngredients({ onAddIngredient }) {
             <option value="pn">pn</option>
           </select>
         </StyledIngredientInput>
+
         <button type="submit">+</button>
       </StyledIngredientsSection>
     </form>
