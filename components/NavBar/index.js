@@ -2,16 +2,17 @@ import { StyledNavLink, StyledNav, StyledNavDiv } from "./StyledNavBar";
 import { useState } from "react";
 
 export default function NavBar() {
-  const [isHomeActive, setIsHomeActive] = useState(false);
-  const [isNewRecipeActive, setIsNewRecipeActive] = useState(true);
+  const [isHomeActive, setIsHomeActive] = useState(true);
+  const [isNewRecipeActive, setIsNewRecipeActive] = useState(false);
 
   const handleToggle = (page) => {
     if (page === "home") {
-      setIsHomeActive(false);
-      setIsNewRecipeActive(true);
-    } else if (page === "newRecipe") {
       setIsHomeActive(true);
       setIsNewRecipeActive(false);
+    } else {
+      page === "newRecipe";
+      setIsHomeActive(false);
+      setIsNewRecipeActive(true);
     }
   };
 

@@ -5,13 +5,17 @@ import styled from "styled-components";
 import Fuse from "fuse.js";
 
 const StyledUlBox = styled.div`
-  align-items: center;
+  padding-left: 0;
 `;
 
 const StyledH2 = styled.h2`
   color: var(--title-color);
   display: flex;
   justify-content: center;
+`;
+
+const StyledFuseUl = styled.ul`
+  padding-left: 0;
 `;
 
 const fuseOptions = {
@@ -89,7 +93,7 @@ export default function FuseSearchRecipe() {
       <SearchBar handleSearch={handleSearch} />
       <StyledUlBox>
         <StyledH2>All my recipes</StyledH2>
-        <ul>
+        <StyledFuseUl>
           {!isFuseActive &&
             alphabeticallySortedRecipes.map((recipe) => (
               <AllRecipesList key={recipe._id} recipes={[recipe]} />
@@ -97,7 +101,7 @@ export default function FuseSearchRecipe() {
           {results.map((recipe) => (
             <AllRecipesList key={recipe.item._id} recipes={[recipe.item]} />
           ))}
-        </ul>
+        </StyledFuseUl>
         {isFuseActive && results.length === 0 && <p>No matching recipes :( </p>}
       </StyledUlBox>
     </>

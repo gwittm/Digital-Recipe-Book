@@ -52,13 +52,13 @@ export const StyledNavLink = styled(Link)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*   margin-top: 5px; */
   width: 16vw;
   height: 5vh;
+  &:hover {
+    background-color: var(--title-color);
+  }
 
   &.active {
-    &:hover {
-      background-color: var(--title-color);
-    }
+    background-color: var(--title-color);
   }
 `;
