@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StyledImageContainer, StyledInputSection } from "./StyledImageUpload";
+import { Image } from "cloudinary-react";
 
 export default function ImageUpload() {
   const [image, setImage] = useState(null);
@@ -62,7 +63,9 @@ export default function ImageUpload() {
           onChange={handleImageChange}
           accept="image/*"
         />
-        <label htmlFor="hidden-input" className="cursor-pointer"></label>
+        <label htmlFor="hidden-input" className="cursor-pointer">
+          Upload here:
+        </label>
 
         <div className="flex justify-center items-center mt-5 mx-3 max-w-xs">
           {preview && <img src={preview} alt="preview" className="w-full" />}
