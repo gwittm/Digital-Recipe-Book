@@ -36,15 +36,23 @@ export const StyledIngredientInput = styled.div`
   width: 150px;
 `;
 
+export const StyledDivButton = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+
 export const StyledButton = styled.button`
   background-color: var(--title-color);
   color: white;
-  width: 480px;
+  /* width: 480px; */
   margin: 10px;
   height: 40px;
   font-size: 18px;
   border-radius: 5px;
   align-items: center;
+  /* align-items: center; */
+  
 
   &:hover {
     background-color: var(--header-color);

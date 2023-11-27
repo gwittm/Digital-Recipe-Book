@@ -9,13 +9,15 @@ import {
   StyledDetailsItem,
   StyledItemsRow,
   EditDeleteDiv,
-} from "@/components/StyledDetailsPage.js";
+} from "@/components/StyledDetailsPage.js"
+
 import {
   StyledButtonNo,
   StyledButtonYes,
   StyledDeleteButton,
 } from "@/components/Modal/ModalStyle.js";
 import { StyledDetailsItemIngredientsUl } from "@/components/StyledDetailsPage.js";
+
 
 export default function DetailsPage() {
   const [showModal, setShowModal] = useState(false);
@@ -49,10 +51,12 @@ export default function DetailsPage() {
       </StyledItemsRow>
       <StyledDetailsItem>
         <h4>Ingredients:</h4>
+
         <StyledDetailsItemIngredientsUl>
           {recipe.ingredients.map((ingredient) => (
             <li key={ingredient.id}>
               {ingredient.name}: {ingredient.amount} {ingredient.unit}
+
             </li>
           ))}
         </StyledDetailsItemIngredientsUl>
@@ -98,6 +102,7 @@ export default function DetailsPage() {
           </Modal>
         )}
       </EditDeleteDiv>
+
     </StyledDetailsPageContainer>
   );
 }
