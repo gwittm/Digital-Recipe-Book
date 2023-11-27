@@ -10,9 +10,11 @@ import {
 } from "./FormularStyling.js";
 import FormularIngredients from "./FormularIngredients.js";
 import { StyledLink } from "../StyledLink.js";
+import ImageUpload from "../ImageUpload/Image.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
-  const [ingredients, setIngredients] = useState(defaultData?.ingredients || []
+  const [ingredients, setIngredients] = useState(
+    defaultData?.ingredients || []
   );
 
   function handleAddIngredient(newIngredient) {
@@ -52,9 +54,15 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         </StyledInput>
 
         <StyledInput>
-          <label htmlFor="preparation"> Preparation:{" "}
-            <select name="preparation" id="preparation" defaultValue={defaultData?.preparation}>
-            <option value="none">none</option>
+          <label htmlFor="preparation">
+            {" "}
+            Preparation:{" "}
+            <select
+              name="preparation"
+              id="preparation"
+              defaultValue={defaultData?.preparation}
+            >
+              <option value="none">none</option>
               <option value="Microwave">Microwave</option>
               <option value="Oven">Oven</option>
               <option value="Stove">Stove</option>
@@ -64,9 +72,11 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         </StyledInput>
 
         <StyledInput>
-            <label htmlFor="type"> Type:{" "}
-            <select name="type" id="type" defaultValue={defaultData?.type} >
-            <option value="none">none</option>
+          <label htmlFor="type">
+            {" "}
+            Type:{" "}
+            <select name="type" id="type" defaultValue={defaultData?.type}>
+              <option value="none">none</option>
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
               <option value="Soup">Soup</option>
@@ -124,25 +134,21 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                   }
                 >
                   X
-                 
                 </StyledDeleteIngredientButton>
-               
               </li>
             );
           })}
         </ul>
       </StyledIngredientsSection>
-
-<StyledDivButton>
-  
- <StyledLink $justifySelf="start" href={"/"}>
-      back without changes
-      </StyledLink>
-      <StyledButton type="submit" form="recipeForm">
-      {defaultData ? "Update Recipe" : "Add Recipe"}
-      </StyledButton>
-    </StyledDivButton>
-      
+      <ImageUpload />
+      <StyledDivButton>
+        <StyledLink $justifySelf="start" href={"/"}>
+          back without changes
+        </StyledLink>
+        <StyledButton type="submit" form="recipeForm">
+          {defaultData ? "Update Recipe" : "Add Recipe"}
+        </StyledButton>
+      </StyledDivButton>
     </StyledDiv>
   );
 }
