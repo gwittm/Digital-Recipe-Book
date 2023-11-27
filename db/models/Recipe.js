@@ -10,13 +10,14 @@ const recipeSchema = new Schema({
   servings: { type: Number },
   ingredients: [
     {
-      ingredientID: { type: String },
+      ingredientID: { type: String, required: true },
       name: { type: String, required: true },
       amount: { type: Number, required: true },
       unit: { type: String },
     },
   ],
   instruction: { type: String },
+  image: { type: Image },
 });
 
 const Recipe = mongoose.models.Recipe || mongoose.model("Recipe", recipeSchema);
