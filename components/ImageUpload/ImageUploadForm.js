@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { StyledImageContainer, StyledInputSection } from "./StyledImageUpload";
-import { Image } from "cloudinary-react";
 
 export default function ImageUpload() {
   const [image, setImage] = useState(null);
@@ -96,7 +95,7 @@ export default function ImageUpload() {
       ) : (
         url && (
           <div className="pb-8 pt-4">
-            <Image
+            <ImageFetch
               cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}
               publicId={url}
             />

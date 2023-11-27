@@ -17,7 +17,7 @@ const recipeSchema = new Schema({
     },
   ],
   instruction: { type: String },
-  image: { type: Image },
+  image: { type: String },
 });
 
 const Recipe = mongoose.models.Recipe || mongoose.model("Recipe", recipeSchema);
