@@ -10,7 +10,6 @@ export default function NavBar() {
       setIsHomeActive(true);
       setIsNewRecipeActive(false);
     } else {
-      page === "newRecipe";
       setIsHomeActive(false);
       setIsNewRecipeActive(true);
     }
