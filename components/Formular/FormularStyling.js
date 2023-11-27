@@ -26,8 +26,6 @@ export const StyledIngredientsSection = styled.section`
   border-radius: 5px;
   display: flex;
   gap: 5px;
-  list-style-type: circle;
-  padding-left: 15px;
 `;
 
 export const StyledIngredientInput = styled.div`
@@ -60,8 +58,6 @@ export const StyledButton = styled.button`
 `;
 
 export const StyledDeleteIngredientButton = styled.button`
-  border: solid red 1px;
-  border-radius: 5px;
-  margin: 3px;
-  padding: 3px;
+  color: red;
+  gap: 25px;
 `;

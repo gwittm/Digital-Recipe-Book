@@ -10,7 +10,6 @@ import {
 } from "./FormularStyling.js";
 import FormularIngredients from "./FormularIngredients.js";
 import { StyledLink } from "../StyledLink.js";
-import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
   const [ingredients, setIngredients] = useState(defaultData?.ingredients || []
@@ -60,13 +59,11 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
               <option value="Oven">Oven</option>
               <option value="Stove">Stove</option>
               <option value="Grill">Grill</option>
-              <option value="none">none</option>
             </select>
           </label>
         </StyledInput>
 
         <StyledInput>
-
             <label htmlFor="type"> Type:{" "}
             <select name="type" id="type" defaultValue={defaultData?.type} >
             <option value="none">none</option>
@@ -78,7 +75,6 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
               <option value="Cookies">Cookies</option>
               <option value="Drinks">Drinks</option>
               <option value="Fingerfood">Fingerfood</option>
-              <option value="other">Other</option>
             </select>
           </label>
         </StyledInput>
@@ -116,7 +112,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
       <FormularIngredients onAddIngredient={handleAddIngredient} />
       <StyledIngredientsSection>
         <p>Added Ingredients: </p>
-        <StyledDetailsItemIngredientsUl>
+        <ul>
           {ingredients.map((ingredient) => {
             return (
               <li key={ingredient.ingredientID}>
@@ -127,24 +123,14 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                     handleDeleteIngredient(ingredient.ingredientID)
                   }
                 >
-
-                  <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="1em"
-                      viewBox="0 0 448 512"
-                      fill="#feffff"
-                    >
-                      <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                    </svg>
-                  </span>
-
+                  X
+                 
                 </StyledDeleteIngredientButton>
                
               </li>
             );
           })}
-        </StyledDetailsItemIngredientsUl>
+        </ul>
       </StyledIngredientsSection>
 
 <StyledDivButton>

@@ -1,21 +1,15 @@
 import AllRecipesList from "../AllRecipesList";
 import { useState, useEffect } from "react";
+import useSWR from "swr";
 import SearchBar from "./SearchBar";
 import styled from "styled-components";
 import Fuse from "fuse.js";
 
 const StyledUlBox = styled.div`
-  padding-left: 0;
-`;
-
-const StyledH2 = styled.h2`
-  color: var(--title-color);
-  display: flex;
-  justify-content: center;
-`;
-
-const StyledFuseUl = styled.ul`
-  padding-left: 0;
+  border: solid black 1px;
+  padding: 10px;
+  width: 500px;
+  margin: 20px;
 `;
 
 const fuseOptions = {
@@ -92,8 +86,8 @@ export default function FuseSearchRecipe() {
     <>
       <SearchBar handleSearch={handleSearch} />
       <StyledUlBox>
-        <StyledH2>All my recipes</StyledH2>
-        <StyledFuseUl>
+        <h2>All my recipes</h2>
+        <ul>
           {!isFuseActive &&
             alphabeticallySortedRecipes.map((recipe) => (
               <AllRecipesList key={recipe._id} recipes={[recipe]} />
@@ -101,7 +95,7 @@ export default function FuseSearchRecipe() {
           {results.map((recipe) => (
             <AllRecipesList key={recipe.item._id} recipes={[recipe.item]} />
           ))}
-        </StyledFuseUl>
+        </ul>
         {isFuseActive && results.length === 0 && <p>No matching recipes :( </p>}
       </StyledUlBox>
     </>

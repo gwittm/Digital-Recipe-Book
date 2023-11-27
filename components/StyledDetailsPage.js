@@ -13,11 +13,6 @@ export const StyledDetailsPageContainer = styled.section`
   width: 500px;
 `;
 
-export const StyledDetailsItemIngredientsUl = styled.ul`
-  list-style-type: circle;
-  padding-left: 15px;
-`;
-
 export const StyledDetailsItem = styled.div`
   background-color: var(--background-color);
   margin: 10px;
@@ -29,13 +24,11 @@ export const StyledItemsRow = styled.div`
   display: flex;
 `;
 
-export const EditDeleteDiv = styled.section`
+export const EditDeleteDiv = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 480px;
+  width: 500px;
   background-color: var(--background-color);
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 5px;
-  margin-left: 10px;
 `;

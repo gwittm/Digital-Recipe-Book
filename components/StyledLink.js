@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const StyledLink = styled(Link)`
   background-color: var(--title-color);
-  width: 80px;
+  width: 150px;
   padding: 5px;
   margin: 10px;
   border-radius: 5px;
@@ -25,5 +25,8 @@ export const StyledLink = styled(Link)`
     $variant === "outlined" &&
     css`
       text-align: center;
+      background-color: white;
+      border: 3px solid lightsalmon;
+      display flex: font-size
     `}
 `;
