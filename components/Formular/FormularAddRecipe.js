@@ -10,7 +10,7 @@ import {
 } from "./FormularStyling.js";
 import FormularIngredients from "./FormularIngredients.js";
 import { StyledLink } from "../StyledLink.js";
-import ImageUpload from "../ImageUpload/Image.js";
+import ImageUpload from "../ImageUpload/ImageUploadForm.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
   const [ingredients, setIngredients] = useState(

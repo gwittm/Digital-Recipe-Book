@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { StyledImageContainer, StyledInputSection } from "./StyledImageUpload";
+import {
+  StyledImageContainer,
+  StyledInputSection,
+  StyledPreviewDiv,
+} from "./StyledImageUpload";
 
 export default function ImageUpload() {
   const [image, setImage] = useState(null);
@@ -18,13 +22,10 @@ export default function ImageUpload() {
     data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
     data.append("folder", "Cloudinary-React");
     try {
-      const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
-        {
-          method: "POST",
-          body: data,
-        }
-      );
+      const response = await fetch(`/api/upload`, {
+        method: "POST",
+        body: data,
+      });
       const res = await response.json();
       setUrl(res.public_id);
       setLoading(false);
@@ -52,9 +53,10 @@ export default function ImageUpload() {
 
   return (
     <StyledImageContainer>
-      <p>Click on Upload a File</p>
+      <p>Upload an Image</p>
 
       <StyledInputSection>
+        <label htmlFor="hidden-input" className="cursor-pointer"></label>
         <input
           id="hidden-input"
           type="file"
@@ -62,13 +64,10 @@ export default function ImageUpload() {
           onChange={handleImageChange}
           accept="image/*"
         />
-        <label htmlFor="hidden-input" className="cursor-pointer">
-          Upload here:
-        </label>
 
-        <div className="flex justify-center items-center mt-5 mx-3 max-w-xs">
+        <StyledPreviewDiv>
           {preview && <img src={preview} alt="preview" className="w-full" />}
-        </div>
+        </StyledPreviewDiv>
       </StyledInputSection>
 
       <div className="flex justify-end pb-8 pt-6 gap-4">

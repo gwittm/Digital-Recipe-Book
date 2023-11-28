@@ -16,3 +16,9 @@ export const StyledInputSection = styled.p`
   display: flex;
   flex-direction: r;
 `;
+
+export const StyledPreviewDiv = styled.div`
+  width: 200px;
+  height: 200px;
+  border: dotted 1px;
+`;

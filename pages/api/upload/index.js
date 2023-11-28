@@ -18,7 +18,11 @@ export default async function handler(request, response) {
     response.status(400).json({ message: "Method not allowed" });
     return;
   }
-
+  console.log({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET,
+  });
   const form = formidable({});
 
   const [fields, files] = await form.parse(request);
