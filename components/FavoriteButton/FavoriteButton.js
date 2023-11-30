@@ -14,7 +14,7 @@ export default function FavoriteButton() {
       <StyledFavoriteButton onClick={handleToggleFavorite}>
         {isFavorite ? "is Favorite" : "not my favorite"}
       </StyledFavoriteButton>
-      {isFavorite && <p>This item is in your favorites!</p>}
+      {/* {isFavorite && <p>This item is in your favorites!</p>} */}
     </>
   );
 }

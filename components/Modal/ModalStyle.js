@@ -25,11 +25,8 @@ const Button = styled.button`
   border-radius: 5px;
 `;
 export const StyledDeleteButton = styled(Button)`
-  border: solid 2px rgb(153, 9, 45);
-  background-color: var(--title-color);
-  color: white;
-  box-shadow: 0 2px 2px rgb(153, 9, 45);
-  width: 80px;
+  background-color: transparent;
+  border: none;
 `;
 
 export const StyledButtonYes = styled(Button)`
