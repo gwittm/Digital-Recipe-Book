@@ -9,15 +9,15 @@ export default createGlobalStyle`
 
   :root{
     --submitbutton-color:#BC986A;
-    --header-color:#659DBD;
-    --title-color:#8D8741;
-    --background-color:#FBEEC1;
-    --editbutton-color:#DAAD86;
-    --hover-color:#8D8741;
+    --background-color:#f2ebe9;
+    --header-color:#de5499;
+    --darkbackground-color:#eddcd9;
+    --font-color: ff397754;
+    --title-color: #264143;
   }
 
   body {
-    margin: 80px;
+    margin: 80px auto;
     font-family: system-ui;
 
   }

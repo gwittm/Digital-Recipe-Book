@@ -20,22 +20,20 @@ export default function SearchBar({ handleSearch }) {
 }
 
 const StyledForm = styled.form`
-  display: grid;
-  height: 11vh;
-  padding: 20px;
-  background-color: var(--title-color);
-  border-radius: 5px;
-
-  &:hover {
-    height: 12vh;
-  }
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 `;
 
 const StyledLabel = styled.label`
-  padding-bottom: 10px;
+  padding: 5px;
 `;
 
 const StyledInput = styled.input`
-  height: 4vh;
-  color: var(--header-color);
+  padding: 10px;
+  height: 5vh;
+  width: 350px;
+  color: var(--title-color);
+  border: solid 2px var(--header-color);
+  border-radius: 60px;
 `;

@@ -10,7 +10,7 @@ export const StyledNav = styled.nav`
   left: 0;
   right: 0;
   z-index: 1;
-  background-color: var(--header-color);
+  background-color: var(--darkbackground-color);
 `;
 
 export const StyledNavDiv = styled.div`
@@ -54,11 +54,14 @@ export const StyledNavLink = styled(Link)`
   align-items: center;
   width: 16vw;
   height: 5vh;
+  color: var(--header-color);
   &:hover {
     background-color: var(--title-color);
+    color: white;
   }
 
   &.active {
-    background-color: var(--title-color);
+    border-color: var(--header-color);
+    color: var(--header-color);
   }
 `;

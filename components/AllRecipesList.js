@@ -21,17 +21,20 @@ const LinkListItem = styled(Link)`
 const StyledUl = styled.ul`
   list-style: none;
   display: flex;
+  align-items: center;
+
   flex-direction: column;
   padding-left: 0;
 `;
 
 const ListItem = styled.li`
   background-color: var(--background-color);
-  color: var(--header-color);
+  color: var(--title-color);
   height: 40px;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
+  width: 400px;
 
   &:hover {
     background-color: var(--title-color);

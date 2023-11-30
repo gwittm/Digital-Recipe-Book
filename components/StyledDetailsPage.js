@@ -10,12 +10,15 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledDetailsPageContainer = styled.section`
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 `;
 
 export const StyledDetailsItemIngredientsUl = styled.ul`
   list-style-type: circle;
-  padding-left: 15px;
+  width: 100%;
+  max-width: 500px;
 `;
 
 export const StyledDetailsItem = styled.div`
