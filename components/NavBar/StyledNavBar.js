@@ -16,7 +16,7 @@ export const StyledNav = styled.nav`
 export const StyledNavDiv = styled.div`
   color: white;
   margin-bottom: 5px;
-  border: solid white 1px;
+
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -50,18 +50,16 @@ export const StyledNavLink = styled(Link)`
   font-size: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 16vw;
   height: 5vh;
   color: var(--header-color);
   &:hover {
-    background-color: var(--title-color);
-    color: white;
+    scale: 1.1;
   }
 
   &.active {
-    border-color: var(--header-color);
-    color: var(--header-color);
+    color: var(--title-color);
+    text-decoration: underline;
   }
 `;
