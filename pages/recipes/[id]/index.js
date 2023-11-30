@@ -47,7 +47,9 @@ export default function DetailsPage() {
   return (
     
     <StyledDetailsPageContainer>
-    <FavoriteButton/>
+    <div>
+      {recipe.isFavorite}
+    </div>
       <StyledHeader>
 
         <h2>{recipe.title}</h2>
