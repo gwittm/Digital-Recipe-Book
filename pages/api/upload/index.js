@@ -26,18 +26,26 @@ export default async function handler(request, response) {
   const form = formidable({});
 
   const [fields, files] = await form.parse(request);
+  console.log("Fields:", fields);
+  console.log("Files:", files);
 
-  const file = files.file[0];
-  const { newFilename, filepath } = file;
-
+  const file = files.recipeImage[0];
+  const { newFilename, filepath } = file || {};
   // now we have the information about the image, we can send it to cloudinary
 
-  const result = await cloudinary.v2.uploader.upload(filepath, {
-    public_id: newFilename,
-    folder: "nf",
-  });
+  try {
+    const result = await cloudinary.v2.uploader.upload(filepath, {
+      public_id: newFilename,
+      folder: "DigitalRecipeBook",
+    });
 
-  console.log("result from cloudinary: ", result);
+    console.log("result from cloudinary: ", result);
 
-  response.status(200).json(result);
+    response
+      .status(200)
+      .json({ imageUrl: result.secure_url, publicId: result.public_id });
+  } catch (error) {
+    console.error("Error uploading to Cloudinary: ", error);
+    response.status(500).json({ error: "Error uploading to Cloudinary" });
+  }
 }

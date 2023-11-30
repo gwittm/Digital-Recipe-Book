@@ -9,7 +9,7 @@ export default createGlobalStyle`
 
   :root{
     --submitbutton-color:#BC986A;
-    --header-color:#659DBD;
+    --header-color:#174577;
     --title-color:#8D8741;
     --background-color:#FBEEC1;
     --editbutton-color:#DAAD86;

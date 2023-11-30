@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import ImageViewer from "./ImageUpload/ImageViewer";
 
 export default function AllRecipesList({ recipes }) {
   return (
@@ -7,7 +8,7 @@ export default function AllRecipesList({ recipes }) {
       {recipes &&
         recipes.map((recipe) => (
           <LinkListItem href={`recipes/${recipe._id}`} key={recipe._id}>
-            <ListItem key={recipe._id}>{recipe.title} </ListItem>
+            <ListItem key={recipe._id}>{recipe.title}</ListItem>
           </LinkListItem>
         ))}
     </StyledUl>
@@ -22,19 +23,20 @@ const StyledUl = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
+  padding-left: 0;
 `;
 
 const ListItem = styled.li`
-  background-color: rgb(247, 240, 240);
-  width: 320px;
+  background-color: var(--background-color);
+  color: var(--header-color);
   height: 40px;
   border-radius: 5px;
-  box-shadow: 8px 3px 3px lightblue;
   margin: 10px;
   padding: 10px;
 
   &:hover {
-    background-color: pink;
+    background-color: var(--title-color);
+    color: white;
     cursor: pointer;
   }
 `;

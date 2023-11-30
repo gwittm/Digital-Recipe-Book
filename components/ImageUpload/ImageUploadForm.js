@@ -4,6 +4,7 @@ import {
   StyledInputSection,
   StyledPreviewDiv,
 } from "./StyledImageUpload";
+import ImageViewer from "./ImageViewer";
 
 export default function ImageUpload() {
   const [image, setImage] = useState(null);
@@ -27,7 +28,8 @@ export default function ImageUpload() {
         body: data,
       });
       const res = await response.json();
-      setUrl(res.public_id);
+      console.log("Image URL:", res.imageUrl); // Log the image URL
+      setUrl(res.imageUrl);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -54,11 +56,11 @@ export default function ImageUpload() {
   return (
     <StyledImageContainer>
       <p>Upload an Image</p>
-
       <StyledInputSection>
-        <label htmlFor="hidden-input" className="cursor-pointer"></label>
+        <label htmlFor="recipeImage" className="cursor-pointer"></label>
         <input
-          id="hidden-input"
+          id="recipeImage"
+          name="recipeImage"
           type="file"
           className="hidden"
           onChange={handleImageChange}
@@ -92,14 +94,7 @@ export default function ImageUpload() {
           <span>Processing...</span>
         </div>
       ) : (
-        url && (
-          <div className="pb-8 pt-4">
-            <ImageFetch
-              cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}
-              publicId={url}
-            />
-          </div>
-        )
+        <div className="pb-8 pt-4">{url && <ImageViewer imageUrl={url} />}</div>
       )}
     </StyledImageContainer>
   );
