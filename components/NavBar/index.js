@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function NavBar() {
   const [isHomeActive, setIsHomeActive] = useState(true);
   const [isNewRecipeActive, setIsNewRecipeActive] = useState(false);
+  const [isFavoriteActive, setIsFavoriteActive] = useState(false);
 
   const handleToggle = (page) => {
     if (page === "home") {
@@ -33,6 +34,16 @@ export default function NavBar() {
             </svg>
           </span>
           Home
+        </StyledNavLink>
+      </StyledNavDiv>
+      <StyledNavDiv>
+        <StyledNavLink
+          href="/favorite"
+          className={isFavoriteActive ? "active" : ""}
+          onClick={() => handleToggle("favorites")}
+        >
+          <span>💜</span>
+          Favorites
         </StyledNavLink>
       </StyledNavDiv>
 
