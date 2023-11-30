@@ -11,6 +11,7 @@ import {
 import FormularIngredients from "./FormularIngredients.js";
 import { StyledLink } from "../StyledLink.js";
 import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
+import FavoriteButton from "../FavoriteButton/index.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
   const [ingredients, setIngredients] = useState(defaultData?.ingredients || []
@@ -36,12 +37,13 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
   }
 
   return (
+
     <StyledDiv>
       <StyledForm
         aria-labelledby={formName}
         id="recipeForm"
         onSubmit={handleSubmit}
-      >
+      ><FavoriteButton />
         <StyledInput>
           <label htmlFor="title">Title: </label>
           <input

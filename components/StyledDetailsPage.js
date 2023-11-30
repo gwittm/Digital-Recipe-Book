@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const StyledHeader = styled.header`
   height: 2rem;
   background-color: var(--title-color);
@@ -39,3 +40,6 @@ export const EditDeleteDiv = styled.section`
   border-radius: 5px;
   margin-left: 10px;
 `;
+
+
+
