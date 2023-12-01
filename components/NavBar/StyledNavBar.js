@@ -60,6 +60,5 @@ export const StyledNavLink = styled(Link)`
 
   &.active {
     color: var(--title-color);
-    text-decoration: underline;
   }
 `;

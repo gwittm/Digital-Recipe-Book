@@ -56,6 +56,7 @@ export const StyledH4 = styled.h4`
   display: flex;
   justify-content: center;
   background-color: var(--darkbackground-color);
+  font-weight: 400;
 `;
 
 export const StyledIngredientsItems = styled.div`
