@@ -29,7 +29,8 @@ export default async function handler(request, response) {
   console.log("Fields:", fields);
   console.log("Files:", files);
 
-  const file = files.recipeImage[0];
+  const file = files.recipeImage?.[0];
+  console.log("file", file);
   const { newFilename, filepath } = file || {};
   // now we have the information about the image, we can send it to cloudinary
 

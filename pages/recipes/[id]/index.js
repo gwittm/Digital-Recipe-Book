@@ -9,7 +9,6 @@ import {
   StyledDetailsItem,
   StyledItemsRow,
   EditDeleteDiv,
-  StyledRecipeImage,
 } from "@/components/StyledDetailsPage.js";
 
 import {
@@ -20,7 +19,7 @@ import {
 import { StyledDetailsItemIngredientsUl } from "@/components/StyledDetailsPage.js";
 import ImageViewer from "@/components/ImageUpload/ImageViewer";
 
-export default function DetailsPage({ imageUrl }) {
+export default function DetailsPage() {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { isReady } = router;
@@ -37,19 +36,15 @@ export default function DetailsPage({ imageUrl }) {
 
   if (isLoading) return <h2>Loading...</h2>;
   if (error || !isReady) return <h2>An error occured...</h2>;
+
+  console.log("Recipeeeeeeee", recipe); // console log
+
   return (
     <StyledDetailsPageContainer>
       <StyledHeader>
         <h2>{recipe.title}</h2>
       </StyledHeader>
-      <ImageViewer>
-        <StyledRecipeImage
-          src={imageUrl}
-          alt={recipe.title}
-          width={300}
-          height={200}
-        />
-      </ImageViewer>
+      <ImageViewer image={recipe.imageUrl} width={300} height={200} />
       <StyledItemsRow>
         <StyledDetailsItem>Type: {recipe.course}</StyledDetailsItem>
         <StyledDetailsItem>Time: {recipe.time}</StyledDetailsItem>
@@ -73,7 +68,6 @@ export default function DetailsPage({ imageUrl }) {
       <StyledDetailsItem>
         <h4>How to prepare it:</h4> {recipe.instruction}
       </StyledDetailsItem>
-
       <EditDeleteDiv>
         <StyledLink $justifySelf="start" href={"/"}>
           back

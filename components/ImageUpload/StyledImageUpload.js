@@ -14,7 +14,7 @@ export const StyledImageContainer = styled.section`
 export const StyledInputSection = styled.p`
   gap: 5px;
   display: flex;
-  flex-direction: r;
+  flex-direction: row;
 `;
 
 export const StyledPreviewDiv = styled.div`

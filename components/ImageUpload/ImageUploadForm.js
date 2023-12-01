@@ -7,7 +7,7 @@ import {
 import ImageViewer from "./ImageViewer";
 
 export default function ImageUpload() {
-  const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
@@ -15,20 +15,14 @@ export default function ImageUpload() {
   const uploadImage = async () => {
     setLoading(true);
     const data = new FormData();
-    data.append("file", image);
-    data.append(
-      "upload_preset",
-      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
-    );
-    data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
-    data.append("folder", "Cloudinary-React");
+    data.append("recipeImage", imageUrl);
+
     try {
       const response = await fetch(`/api/upload`, {
         method: "POST",
         body: data,
       });
       const res = await response.json();
-      console.log("Image URL:", res.imageUrl); // Log the image URL
       setUrl(res.imageUrl);
       setLoading(false);
     } catch (error) {
@@ -38,8 +32,7 @@ export default function ImageUpload() {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    setImage(file);
-
+    setImageUrl(URL.createObjectURL(file));
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
@@ -50,9 +43,9 @@ export default function ImageUpload() {
 
   const handleResetClick = () => {
     setPreview(null);
-    setImage(null);
+    setImageUrl(null);
   };
-
+  console.log("Url in ImageUpload", imageUrl);
   return (
     <StyledImageContainer>
       <p>Upload an Image</p>
@@ -76,7 +69,7 @@ export default function ImageUpload() {
         <button
           onClick={uploadImage}
           className="rounded-sm px-3 py-1 bg-blue-700 hover:bg-blue-500 text-white focus:shadow-outline focus:outline-none disabled:cursor-not-allowed"
-          disabled={!image}
+          disabled={!imageUrl}
         >
           Upload now
         </button>

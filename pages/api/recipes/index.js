@@ -5,7 +5,7 @@ export default async function handler(request, response) {
 
   if (request.method === "GET") {
     try {
-      const recipes = await Recipe.find();
+      const recipes = await Recipe.find().populate(`imageUrl`);
       return response.status(200).json(recipes);
     } catch (error) {
       response.status(400).json({ error: error.message });
