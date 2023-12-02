@@ -42,7 +42,7 @@ export default function NavBar() {
 
       <StyledNavDiv>
         <StyledNavLink
-          href="/favoritenRecipePage"
+          href="/favorite/"
           className={isFavoriteActive ? "active" : ""}
           onClick={() => handleToggle("favoriten")}
         >

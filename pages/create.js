@@ -19,7 +19,10 @@ export default function CreateRecipePage() {
   return (
     <>
       <h2 id="add-recipe">Add Recipe</h2>
-      <RecipeForm onSubmit={addRecipe} formName={"add-recipe"} />
+      <RecipeForm 
+      onSubmit={addRecipe} 
+      formName={"add-recipe"} 
+      />
     </>
   );
 }

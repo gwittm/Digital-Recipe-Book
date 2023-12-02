@@ -18,9 +18,7 @@ import {
 } from "@/components/Modal/ModalStyle.js";
 import { StyledDetailsItemIngredientsUl } from "@/components/StyledDetailsPage.js";
 import FavoriteButton from "@/components/FavoriteButton";
-
-
-
+import RecipeForm from "@/components/Formular/FormularAddRecipe";
 
 
 export default function DetailsPage() {
@@ -47,16 +45,14 @@ export default function DetailsPage() {
   return (
     
     <StyledDetailsPageContainer>
-    <div>
-      {recipe.isFavorite}
-    </div>
+    {/* <RecipeForm onSubmit={isFavorite} /> */}
       <StyledHeader>
 
         <h2>{recipe.title}</h2>
       </StyledHeader>
 
       <StyledItemsRow>
-        <StyledDetailsItem>Type: {recipe.course}</StyledDetailsItem>
+        <StyledDetailsItem>Type: {recipe.type}</StyledDetailsItem>
         <StyledDetailsItem>Time: {recipe.time}</StyledDetailsItem>
         <StyledDetailsItem>
           Amount of Servings: {recipe.servings}
@@ -88,6 +84,12 @@ export default function DetailsPage() {
           defaultData={recipe.ingredients}
         >
           Edit
+        </StyledLink>
+        <StyledLink
+          href={`/recipes/${id}/favorite`}
+          defaultData={recipe.ingredients}
+        >
+          Favorite
         </StyledLink>
         <StyledDeleteButton
           onClick={() => setShowModal(true)}
