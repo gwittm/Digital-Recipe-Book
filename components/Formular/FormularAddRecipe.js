@@ -59,7 +59,9 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             type="text"
             defaultValue={defaultData?.title}
           />
+          
         </StyledInput>
+        
 
         <StyledInput>
           <label htmlFor="preparation"> Preparation:{" "}
@@ -73,6 +75,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             </select>
           </label>
         </StyledInput>
+
 
         <StyledInput>
 

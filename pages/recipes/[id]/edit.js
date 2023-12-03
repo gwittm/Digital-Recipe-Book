@@ -32,6 +32,7 @@ export default function EditPage() {
 
   return (
     <>
+    
       <h2 id="edit-recipe">Edit Recipe</h2>
       
       <RecipeForm
