@@ -4,19 +4,17 @@ import {
   StyledImageContainer,
   StyledInputSection,
   StyledPreviewDiv,
+  StyledImageButtonDiv,
+  StyledImageButtonUpload,
+  StyledImageButtonReset,
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 
 export default function ImageUpload() {
   const [imageUrl, setImageUrl] = useState(null);
-  const [url, setUrl] = useState("");
-  const [loading, setLoading] = useState(false);
+  /*   const [url, setUrl] = useState("");
+   */ const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
-
-  /*   const uploadImage = async () => {
-    setLoading(true);
-    const data = new FormData();
-    data.append("recipeImage", imageUrl); */
 
   const uploadImage = async () => {
     setLoading(true);
@@ -30,13 +28,19 @@ export default function ImageUpload() {
         method: "POST",
         body: data,
       });
-      const res = await response.json();
-      setUrl(res.imageUrl);
-      setLoading(false);
+
+      if (response.ok) {
+        const res = await response.json();
+        setImageUrl(res.imageUrl);
+        setLoading(false);
+      } else {
+        setLoading(false);
+      }
     } catch (error) {
       setLoading(false);
     }
   };
+
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     setImageUrl(URL.createObjectURL(file));
@@ -53,51 +57,40 @@ export default function ImageUpload() {
     setImageUrl(null);
   };
   useEffect(() => {
-    console.log("Url in ImageUpload", imageUrl);
+    console.log("ImageUrl in ImageUpload", imageUrl);
   }, [imageUrl]);
 
   return (
     <StyledImageContainer>
       <p>Upload an Image</p>
       <StyledInputSection>
-        <label htmlFor="recipeImage" className="cursor-pointer"></label>
+        <label htmlFor="recipeImage"></label>
         <input
           id="recipeImage"
           name="recipeImage"
           type="file"
-          className="hidden"
           onChange={handleImageChange}
           accept="image/*"
         />
 
-        <StyledPreviewDiv>
+        {/* <StyledPreviewDiv>
           {preview && <img src={preview} alt="preview" className="w-full" />}
-        </StyledPreviewDiv>
+        </StyledPreviewDiv> */}
       </StyledInputSection>
 
-      <div className="flex justify-end pb-8 pt-6 gap-4">
-        <button
-          onClick={uploadImage}
-          className="rounded-sm px-3 py-1 bg-blue-700 hover:bg-blue-500 text-white focus:shadow-outline focus:outline-none disabled:cursor-not-allowed"
-          disabled={!imageUrl}
-        >
+      <StyledImageButtonDiv>
+        <StyledImageButtonUpload onClick={uploadImage} disabled={!imageUrl}>
           Upload now
-        </button>
-        <button
-          onClick={handleResetClick}
-          className="rounded-sm px-3 py-1 bg-red-700 hover:bg-red-500 text-white focus:shadow-outline focus:outline-none"
-        >
+        </StyledImageButtonUpload>
+        <StyledImageButtonReset onClick={handleResetClick}>
           Reset
-        </button>
-      </div>
+        </StyledImageButtonReset>
+      </StyledImageButtonDiv>
 
       {loading ? (
-        <div className="flex items-center justify-center gap-2">
-          <div className="border-t-transparent border-solid animate-spin rounded-full border-blue-400 border-4 h-6 w-6"></div>
-          <span>Processing...</span>
-        </div>
+        <span>Processing...</span>
       ) : (
-        <div className="pb-8 pt-4">{url && <ImageViewer imageUrl={url} />}</div>
+        <div>{imageUrl && <ImageViewer imageUrl={imageUrl} />}</div>
       )}
     </StyledImageContainer>
   );

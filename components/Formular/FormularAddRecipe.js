@@ -43,6 +43,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         aria-labelledby={formName}
         id="recipeForm"
         onSubmit={handleSubmit}
+        encType="multipart/form-data"
       >
         <StyledInput>
           <label htmlFor="title">Title: </label>
@@ -152,7 +153,8 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           })}
         </StyledDetailsItemIngredientsUl>
       </StyledIngredientsSection>
-      <ImageUpload />
+      {/*      // chat GPT */}
+      <ImageUpload onSubmit={handleSubmit} encType="multipart/form-data" />
 
       <StyledDivButton>
         <StyledLink $justifySelf="start" href={"/"}>

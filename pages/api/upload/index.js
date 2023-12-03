@@ -39,8 +39,13 @@ export default async function handler(request, response) {
       public_id: newFilename,
       folder: "DigitalRecipeBook",
     });
+    const recipeData = {
+      ...fields,
+      imageUrl: result.secure_url,
+    };
 
-    console.log("result from cloudinary: ", result);
+    const newRecipe = await Recipe.create(recipeData);
+    response.status(201).json({ status: "Recipe created.", recipe: newRecipe });
 
     response
       .status(200)

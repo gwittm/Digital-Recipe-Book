@@ -22,3 +22,23 @@ export const StyledPreviewDiv = styled.div`
   height: 200px;
   border: dotted 1px;
 `;
+
+export const StyledImageButtonDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+`;
+
+export const StyledImageButtonUpload = styled.button`
+  border: solid 1px black;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+`;
+
+export const StyledImageButtonReset = styled.button`
+  border: solid 1px black;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+`;

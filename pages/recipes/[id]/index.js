@@ -38,13 +38,14 @@ export default function DetailsPage() {
   if (error || !isReady) return <h2>An error occured...</h2>;
 
   console.log("Recipeeeeeeee", recipe); // console log
+  console.log("ImageUrl:", recipe.imageUrl);
 
   return (
     <StyledDetailsPageContainer>
       <StyledHeader>
         <h2>{recipe.title}</h2>
       </StyledHeader>
-      <ImageViewer image={recipe.imageUrl} width={300} height={200} />
+      <ImageViewer imageUrl={recipe.imageUrl} width={300} height={200} />
       <StyledItemsRow>
         <StyledDetailsItem>Type: {recipe.course}</StyledDetailsItem>
         <StyledDetailsItem>Time: {recipe.time}</StyledDetailsItem>
