@@ -19,6 +19,7 @@ export const StyledDiv = styled.div`
   height: 100vh;
   margin: 0 auto;
   padding-top: 50px;
+  padding-bottom: 150px;
 `;
 
 export const StyledInputandLabel = styled.div`
@@ -49,6 +50,7 @@ export const StyledIngredientsSection = styled.section`
   gap: 5px;
   list-style-type: circle;
   padding-left: 15px;
+  width: 500px;
 `;
 
 export const StyledIngredientInput = styled.div`
@@ -59,32 +61,39 @@ export const StyledIngredientInput = styled.div`
 
 export const StyledDivButton = styled.div`
   display: flex;
-  align-items: center;
 `;
 
 export const StyledButton = styled.button`
   background-color: var(--title-color);
   color: white;
-  /* width: 480px; */
+  width: 150px;
   margin: 10px;
   height: 40px;
   font-size: 18px;
   border-radius: 5px;
-  align-items: center;
-  /* align-items: center; */
 
-  &:hover {
+  ´ &:hover {
     background-color: var(--header-color);
   }
 `;
 
 export const StyledDeleteIngredientButton = styled.button`
-  border: solid red 1px;
+  /*   border: solid red 1px; */
+  border: none;
   border-radius: 5px;
   margin: 3px;
   padding: 3px;
+
+  &:hover {
+  }
 `;
 
 export const StyledH2AddandEdit = styled.h2`
   color: var(--title-color);
+`;
+
+export const StyledDetailsItemIngredientFormularLi = styled.li`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;

@@ -11,6 +11,11 @@ import {
   EditDeleteDiv,
   StyledDetailsItemIngredientLi,
   StyledPreparation,
+  StyledSpan,
+  StyledP,
+  ImageContainerDetailsPage,
+  StyledIngredientName,
+  StyledIngredientAmountUnit,
 } from "@/components/StyledDetailsPage.js";
 
 import {
@@ -48,13 +53,60 @@ export default function DetailsPage() {
         <h2>{recipe.title}</h2>
       </StyledHeader>
       <FavoriteButton />
+      <ImageContainerDetailsPage />
       <StyledItemsBox>
-        <StyledDetailsItem>Type {recipe.course}</StyledDetailsItem>
-        <StyledDetailsItem>Time {recipe.time}</StyledDetailsItem>
         <StyledDetailsItem>
-          Amount of Servings {recipe.servings}
+          <StyledSpan>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="16"
+              width="14"
+              viewBox="0 0 448 512"
+            >
+              <path d="M416 0C400 0 288 32 288 176V288c0 35.3 28.7 64 64 64h32V480c0 17.7 14.3 32 32 32s32-14.3 32-32V352 240 32c0-17.7-14.3-32-32-32zM64 16C64 7.8 57.9 1 49.7 .1S34.2 4.6 32.4 12.5L2.1 148.8C.7 155.1 0 161.5 0 167.9c0 45.9 35.1 83.6 80 87.7V480c0 17.7 14.3 32 32 32s32-14.3 32-32V255.6c44.9-4.1 80-41.8 80-87.7c0-6.4-.7-12.8-2.1-19.1L191.6 12.5c-1.8-8-9.3-13.3-17.4-12.4S160 7.8 160 16V150.2c0 5.4-4.4 9.8-9.8 9.8c-5.1 0-9.3-3.9-9.8-9L127.9 14.6C127.2 6.3 120.3 0 112 0s-15.2 6.3-15.9 14.6L83.7 151c-.5 5.1-4.7 9-9.8 9c-5.4 0-9.8-4.4-9.8-9.8V16zm48.3 152l-.3 0-.3 0 .3-.7 .3 .7z" />
+            </svg>
+          </StyledSpan>
+          <StyledP> {recipe.type}</StyledP>
         </StyledDetailsItem>
-        <StyledDetailsItem>Preparation {recipe.preparation}</StyledDetailsItem>
+        <StyledDetailsItem>
+          <StyledSpan>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="16"
+              width="16"
+              viewBox="0 0 512 512"
+            >
+              <path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
+            </svg>
+          </StyledSpan>
+          <StyledP> {recipe.time}</StyledP>
+        </StyledDetailsItem>
+        <StyledDetailsItem>
+          <StyledSpan>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="16"
+              width="10"
+              viewBox="0 0 320 512"
+            >
+              <path d="M112 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm40 304V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V256.9L59.4 304.5c-9.1 15.1-28.8 20-43.9 10.9s-20-28.8-10.9-43.9l58.3-97c17.4-28.9 48.6-46.6 82.3-46.6h29.7c33.7 0 64.9 17.7 82.3 46.6l58.3 97c9.1 15.1 4.2 34.8-10.9 43.9s-34.8 4.2-43.9-10.9L232 256.9V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V352H152z" />
+            </svg>
+          </StyledSpan>
+          <StyledP> {recipe.servings}</StyledP>
+        </StyledDetailsItem>
+        <StyledDetailsItem>
+          <StyledSpan>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="16"
+              width="18"
+              viewBox="0 0 576 512"
+            >
+              <path d="M240 144A96 96 0 1 0 48 144a96 96 0 1 0 192 0zm44.4 32C269.9 240.1 212.5 288 144 288C64.5 288 0 223.5 0 144S64.5 0 144 0c68.5 0 125.9 47.9 140.4 112h71.8c8.8-9.8 21.6-16 35.8-16H496c26.5 0 48 21.5 48 48s-21.5 48-48 48H392c-14.2 0-27-6.2-35.8-16H284.4zM144 80a64 64 0 1 1 0 128 64 64 0 1 1 0-128zM400 240c13.3 0 24 10.7 24 24v8h96c13.3 0 24 10.7 24 24s-10.7 24-24 24H280c-13.3 0-24-10.7-24-24s10.7-24 24-24h96v-8c0-13.3 10.7-24 24-24zM288 464V352H512V464c0 26.5-21.5 48-48 48H336c-26.5 0-48-21.5-48-48zM48 320h80 16 32c26.5 0 48 21.5 48 48s-21.5 48-48 48H160c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V336c0-8.8 7.2-16 16-16zm128 64c8.8 0 16-7.2 16-16s-7.2-16-16-16H160v32h16zM24 464H200c13.3 0 24 10.7 24 24s-10.7 24-24 24H24c-13.3 0-24-10.7-24-24s10.7-24 24-24z" />
+            </svg>
+          </StyledSpan>
+          <StyledP> {recipe.preparation}</StyledP>
+        </StyledDetailsItem>
       </StyledItemsBox>
       <StyledIngredientsItems>
         <StyledH4>Ingredients</StyledH4>
@@ -63,7 +115,10 @@ export default function DetailsPage() {
           {recipe.ingredients &&
             recipe.ingredients.map((ingredient) => (
               <StyledDetailsItemIngredientLi key={ingredient.ingredientID}>
-                {ingredient.name} : {ingredient.amount} {ingredient.unit}
+                <StyledIngredientName>{ingredient.name}</StyledIngredientName>
+                <StyledIngredientAmountUnit>
+                  {ingredient.amount} {ingredient.unit}
+                </StyledIngredientAmountUnit>
               </StyledDetailsItemIngredientLi>
             ))}
         </StyledDetailsItemIngredientsUl>

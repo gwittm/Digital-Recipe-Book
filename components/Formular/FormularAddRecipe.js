@@ -9,10 +9,16 @@ import {
   StyledButton,
   StyledDeleteIngredientButton,
   StyledDivButton,
+  StyledDetailsItemIngredientFormularLi,
 } from "./FormularStyling.js";
 import FormularIngredients from "./FormularIngredients.js";
 import { StyledLink } from "../StyledLink.js";
-import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
+import {
+  StyledDetailsItemIngredientsUl,
+  StyledIngredientAmountUnit,
+  StyledSpan,
+} from "../StyledDetailsPage.js";
+import { StyledIngredientName } from "../StyledDetailsPage.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
   const [ingredients, setIngredients] = useState(
@@ -126,9 +132,15 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         <StyledDetailsItemIngredientsUl>
           {ingredients.map((ingredient) => {
             return (
-              <li key={ingredient.ingredientID}>
-                {ingredient.name} {""} {ingredient.amount}
-                {ingredient.unit}
+              <StyledDetailsItemIngredientFormularLi
+                key={ingredient.ingredientID}
+              >
+                <StyledIngredientName>{ingredient.name}</StyledIngredientName>
+                <StyledIngredientAmountUnit>
+                  {ingredient.amount}
+                  {ingredient.unit}
+                </StyledIngredientAmountUnit>
+
                 <StyledDeleteIngredientButton
                   onClick={() =>
                     handleDeleteIngredient(ingredient.ingredientID)
@@ -145,7 +157,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                     </svg>
                   </span>
                 </StyledDeleteIngredientButton>
-              </li>
+              </StyledDetailsItemIngredientFormularLi>
             );
           })}
         </StyledDetailsItemIngredientsUl>
