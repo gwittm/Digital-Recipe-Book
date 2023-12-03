@@ -23,7 +23,7 @@ export default async function handler(request, response) {
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_SECRET,
   });
-  const form = formidable({});
+  const form = formidable({ multiples: true }); // new
 
   const [fields, files] = await form.parse(request);
   console.log("Fields:", fields);

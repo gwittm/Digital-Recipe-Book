@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import {
   StyledImageContainer,
   StyledInputSection,
@@ -12,10 +13,17 @@ export default function ImageUpload() {
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
 
+  /*   const uploadImage = async () => {
+    setLoading(true);
+    const data = new FormData();
+    data.append("recipeImage", imageUrl); */
+
   const uploadImage = async () => {
     setLoading(true);
     const data = new FormData();
-    data.append("recipeImage", imageUrl);
+    const fileInput = document.getElementById("recipeImage");
+    const file = fileInput.files[0];
+    data.append("recipeImage", file);
 
     try {
       const response = await fetch(`/api/upload`, {
@@ -29,7 +37,6 @@ export default function ImageUpload() {
       setLoading(false);
     }
   };
-
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     setImageUrl(URL.createObjectURL(file));
@@ -45,7 +52,10 @@ export default function ImageUpload() {
     setPreview(null);
     setImageUrl(null);
   };
-  console.log("Url in ImageUpload", imageUrl);
+  useEffect(() => {
+    console.log("Url in ImageUpload", imageUrl);
+  }, [imageUrl]);
+
   return (
     <StyledImageContainer>
       <p>Upload an Image</p>
