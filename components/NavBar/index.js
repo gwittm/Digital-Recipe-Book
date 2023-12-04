@@ -1,4 +1,3 @@
-import { StyledLink } from "../StyledLink";
 import { StyledNavLink, StyledNav, StyledNavDiv } from "./StyledNavBar";
 import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
