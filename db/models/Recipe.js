@@ -17,6 +17,7 @@ const recipeSchema = new Schema({
     },
   ],
   instruction: { type: String },
+  isFavorite: { type: Boolean, default: false },
 });
 
 const Recipe = mongoose.models.Recipe || mongoose.model("Recipe", recipeSchema);

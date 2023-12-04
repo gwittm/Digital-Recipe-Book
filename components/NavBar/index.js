@@ -1,3 +1,4 @@
+import { StyledLink } from "../StyledLink";
 import { StyledNavLink, StyledNav, StyledNavDiv } from "./StyledNavBar";
 import { useState } from "react";
 
@@ -54,6 +55,9 @@ export default function NavBar() {
           New Recipe
         </StyledNavLink>
       </StyledNavDiv>
+      <StyledLink $justifySelf="start" href={"pages/recipes/[id]/favorite.js"}>
+        Favorite
+      </StyledLink>
     </StyledNav>
   );
 }
