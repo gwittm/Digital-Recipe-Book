@@ -46,7 +46,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
   return (
     <StyledDiv>
       <StyledForm
-        aria-labelledby={formName}
+        aria-label="Recipe Form"
         id="recipeForm"
         onSubmit={handleSubmit}
         defaultData={{
@@ -64,9 +64,9 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             name="title"
             type="text"
             defaultValue={defaultData?.title}
+            aria-labelledby="title"
           />
         </StyledInput>
-
         <StyledInput>
           <label htmlFor="preparation">
             {" "}
@@ -75,6 +75,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
               name="preparation"
               id="preparation"
               defaultValue={defaultData?.preparation}
+              aria-labelledby="preparation"
             >
               <option value="none">none</option>
               <option value="Microwave">Microwave</option>
@@ -85,12 +86,16 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             </select>
           </label>
         </StyledInput>
-
         <StyledInput>
           <label htmlFor="type">
             {" "}
             Type:{" "}
-            <select name="type" id="type" defaultValue={defaultData?.type}>
+            <select
+              name="type"
+              id="type"
+              defaultValue={defaultData?.type}
+              aria-labelledby="type"
+            >
               <option value="none">none</option>
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
@@ -104,7 +109,6 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             </select>
           </label>
         </StyledInput>
-
         <StyledInput>
           <label htmlFor="time">Time: </label>
           <input
@@ -112,16 +116,18 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             name="time"
             type="text"
             defaultValue={defaultData?.time}
+            aria-labelledby="time"
           />
         </StyledInput>
         <StyledInput>
           <label htmlFor="servings">Servings: </label>
           <input
-            defaultValue={defaultData?.servings}
             id="servings"
             name="servings"
             type="number"
             min="1"
+            defaultValue={defaultData?.servings}
+            aria-labelledby="servings"
           />
         </StyledInput>
         <StyledInput>
@@ -132,11 +138,12 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             cols="40"
             rows="10"
             defaultValue={defaultData?.instruction}
+            aria-labelledby="instruction"
           ></textarea>
         </StyledInput>
       </StyledForm>
       <FormularIngredients onAddIngredient={handleAddIngredient} />
-      <StyledIngredientsSection>
+      <StyledIngredientsSection aria-live="polite">
         <p>Added Ingredients: </p>
         <StyledDetailsItemIngredientsUl>
           {ingredients.map((ingredient) => {
@@ -145,6 +152,8 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                 {ingredient.name} {""} {ingredient.amount}
                 {ingredient.unit}
                 <StyledDeleteIngredientButton
+                  role="button"
+                  tabIndex="0"
                   onClick={() =>
                     handleDeleteIngredient(ingredient.ingredientID)
                   }
@@ -155,6 +164,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                       height="1em"
                       viewBox="0 0 448 512"
                       fill="#423530"
+                      alt="Delete Ingredient"
                     >
                       <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
                     </svg>
@@ -165,7 +175,6 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           })}
         </StyledDetailsItemIngredientsUl>
       </StyledIngredientsSection>
-
       <StyledDivButton>
         <StyledLink $justifySelf="start" href={"/"}>
           back without changes

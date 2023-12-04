@@ -31,7 +31,7 @@ export default function EditPage() {
     }
   }
   if (error) return <div>Error loading recipe</div>;
-  if (!recipe || isLoading) return <div>Loading...</div>;
+  if (!recipe || isLoading) return <div>Loading recipe details...</div>;
 
   return (
     <>
