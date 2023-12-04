@@ -1,7 +1,7 @@
 import { StyledLink } from "../StyledLink";
 import { StyledNavLink, StyledNav, StyledNavDiv } from "./StyledNavBar";
 import { useState } from "react";
-
+import { FaHeart } from "react-icons/fa";
 export default function NavBar() {
   const [isHomeActive, setIsHomeActive] = useState(true);
   const [isNewRecipeActive, setIsNewRecipeActive] = useState(false);
@@ -55,9 +55,16 @@ export default function NavBar() {
           New Recipe
         </StyledNavLink>
       </StyledNavDiv>
-      <StyledLink $justifySelf="start" href={"pages/recipes/[id]/favorite.js"}>
-        Favorite
-      </StyledLink>
+      <StyledNavDiv>
+        <StyledNavLink
+          href="/favorite"
+          className={isNewRecipeActive ? "active" : ""}
+          onClick={() => handleToggle("favorite")}
+        >
+          <FaHeart color="red" font-size="40px" />
+          Favorite
+        </StyledNavLink>
+      </StyledNavDiv>
     </StyledNav>
   );
 }

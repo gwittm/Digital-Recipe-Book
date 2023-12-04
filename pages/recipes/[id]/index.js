@@ -24,12 +24,7 @@ export default function DetailsPage() {
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
-  const {
-    data: recipe,
-    isFavorite,
-    isLoading,
-    error,
-  } = useSWR(`/api/recipes/${id}`);
+  const { data: recipe, isLoading, error } = useSWR(`/api/recipes/${id}`);
 
   async function deleteRecipe() {
     await fetch(`/api/recipes/${id}`, {

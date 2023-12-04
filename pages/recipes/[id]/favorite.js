@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import FavoriteButton from "../FavoriteButton/index.js";
 
 export default function FavoritePage() {
+  <h1>hallo</h1>;
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
   // Annahme: Hier müsstest du die tatsächliche Funktion implementieren,
