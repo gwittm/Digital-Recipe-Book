@@ -26,11 +26,11 @@ export default async function handler(request, response) {
   const form = formidable({ multiples: true }); // new
 
   const [fields, files] = await form.parse(request);
-  console.log("Fields:", fields);
-  console.log("Files:", files);
+  // console.log("Fields:", fields);
+  // console.log("Files:", files);
 
   const file = files.recipeImage?.[0];
-  console.log("file", file);
+  // console.log("file", file);
   const { newFilename, filepath } = file || {};
   // now we have the information about the image, we can send it to cloudinary
 
@@ -39,13 +39,13 @@ export default async function handler(request, response) {
       public_id: newFilename,
       folder: "DigitalRecipeBook",
     });
-    const recipeData = {
-      ...fields,
-      imageUrl: result.secure_url,
-    };
+    // const recipeData = {
+    //   ...fields,
+    //   imageUrl: result.secure_url,
+    // };
 
-    const newRecipe = await Recipe.create(recipeData);
-    response.status(201).json({ status: "Recipe created.", recipe: newRecipe });
+    // const newRecipe = await Recipe.create(recipeData);
+    // response.status(201).json({ status: "Recipe created.", recipe: newRecipe });
 
     response
       .status(200)

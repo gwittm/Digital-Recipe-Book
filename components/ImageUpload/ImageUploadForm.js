@@ -11,9 +11,9 @@ import {
 import ImageViewer from "./ImageViewer";
 
 export default function ImageUpload() {
-  const [imageUrl, setImageUrl] = useState(null);
   /*   const [url, setUrl] = useState("");
-   */ const [loading, setLoading] = useState(false);
+   */
+  const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
 
   const uploadImage = async () => {
