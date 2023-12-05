@@ -10,9 +10,7 @@ import {
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 
-export default function ImageUpload() {
-  /*   const [url, setUrl] = useState("");
-   */
+export default function ImageUpload({ imageUrl, onAddUrl }) {
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
 
@@ -31,7 +29,7 @@ export default function ImageUpload() {
 
       if (response.ok) {
         const res = await response.json();
-        setImageUrl(res.imageUrl);
+        onAddUrl(res.imageUrl);
         setLoading(false);
       } else {
         setLoading(false);
@@ -43,7 +41,7 @@ export default function ImageUpload() {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    setImageUrl(URL.createObjectURL(file));
+    onAddUrl(URL.createObjectURL(file));
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
@@ -54,11 +52,8 @@ export default function ImageUpload() {
 
   const handleResetClick = () => {
     setPreview(null);
-    setImageUrl(null);
+    onAddUrl(null);
   };
-  useEffect(() => {
-    console.log("ImageUrl in ImageUpload", imageUrl);
-  }, [imageUrl]);
 
   return (
     <StyledImageContainer>
@@ -72,10 +67,6 @@ export default function ImageUpload() {
           onChange={handleImageChange}
           accept="image/*"
         />
-
-        {/* <StyledPreviewDiv>
-          {preview && <img src={preview} alt="preview" className="w-full" />}
-        </StyledPreviewDiv> */}
       </StyledInputSection>
 
       <StyledImageButtonDiv>

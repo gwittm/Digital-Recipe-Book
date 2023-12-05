@@ -160,7 +160,7 @@ export default function RecipeForm({
         </StyledDetailsItemIngredientsUl>
       </StyledIngredientsSection>
       {/*      // chat GPT */}
-      <ImageUpload onSubmit={handleSubmit} encType="multipart/form-data" />
+      <ImageUpload onAddUrl={onAddUrl} imageUrl={imageUrl} />
 
       <StyledDivButton>
         <StyledLink $justifySelf="start" href={"/"}>
