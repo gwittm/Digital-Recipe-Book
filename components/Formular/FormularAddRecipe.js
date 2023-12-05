@@ -86,7 +86,7 @@ export default function RecipeForm({
         </StyledInput>
 
         <StyledInput>
-          <label htmlFor="type"
+          <label htmlFor="type">
             Type:{" "}
             <select name="type" id="type" defaultValue={defaultData?.type}>
               <option value="Cake">Cake</option>
