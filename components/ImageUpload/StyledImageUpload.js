@@ -1,13 +1,14 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 export const StyledImageContainer = styled.section`
   display: flex;
   flex-direction: column;
+  align-items: left;
   background-color: var(--background-color);
   margin: 10px;
-  padding: 10px;
+  padding: 3px;
   border-radius: 5px;
-  display: flex;
   gap: 5px;
 `;
 
@@ -41,4 +42,8 @@ export const StyledImageButtonReset = styled.button`
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
+`;
+
+export const StyledImage = styled(Image)`
+  border-radius: 900px;
 `;

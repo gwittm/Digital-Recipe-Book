@@ -2,18 +2,18 @@ import React from "react";
 import Image from "next/image";
 import { StyledImageContainer } from "./StyledImageUpload";
 
-export default function ImageViewer({ imageUrl }) {
+export default function ImageViewer({ imageUrl, width, height }) {
   return (
     <StyledImageContainer>
       {imageUrl ? (
         <Image
           src={imageUrl}
           alt="Here should be your picture"
-          width={200}
-          height={200}
+          width={width}
+          height={height}
         />
       ) : (
-        <p>No image URL provided</p>
+        <p>Image</p>
       )}
     </StyledImageContainer>
   );

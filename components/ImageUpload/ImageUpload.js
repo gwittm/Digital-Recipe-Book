@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { useState } from "react";
 import {
   StyledImageContainer,
   StyledInputSection,
-  StyledPreviewDiv,
   StyledImageButtonDiv,
   StyledImageButtonUpload,
   StyledImageButtonReset,
@@ -11,11 +9,11 @@ import {
 import ImageViewer from "./ImageViewer";
 
 export default function ImageUpload({ imageUrl, onAddUrl }) {
-  const [loading, setLoading] = useState(false);
-  const [preview, setPreview] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [preview, setPreview] = useState(imageUrl || null);
 
   const uploadImage = async () => {
-    setLoading(true);
+    setIsLoading(true);
     const data = new FormData();
     const fileInput = document.getElementById("recipeImage");
     const file = fileInput.files[0];
@@ -30,29 +28,23 @@ export default function ImageUpload({ imageUrl, onAddUrl }) {
       if (response.ok) {
         const res = await response.json();
         onAddUrl(res.imageUrl);
-        setLoading(false);
+
+        setIsLoading(false);
       } else {
-        setLoading(false);
+        setIsLoading(false);
       }
     } catch (error) {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    onAddUrl(URL.createObjectURL(file));
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onload = () => {
-      setPreview(reader.result);
-    };
+    setPreview(URL.createObjectURL(file));
   };
 
   const handleResetClick = () => {
     setPreview(null);
-    onAddUrl(null);
   };
 
   return (
@@ -67,10 +59,20 @@ export default function ImageUpload({ imageUrl, onAddUrl }) {
           onChange={handleImageChange}
           accept="image/*"
         />
+        {preview && (
+          <ImageViewer
+            imageUrl={preview || imageUrl}
+            height={150}
+            width={150}
+          />
+        )}
       </StyledInputSection>
 
       <StyledImageButtonDiv>
-        <StyledImageButtonUpload onClick={uploadImage} disabled={!imageUrl}>
+        <StyledImageButtonUpload
+          onClick={uploadImage}
+          disabled={!preview || isLoading}
+        >
           Upload now
         </StyledImageButtonUpload>
         <StyledImageButtonReset onClick={handleResetClick}>
@@ -78,11 +80,8 @@ export default function ImageUpload({ imageUrl, onAddUrl }) {
         </StyledImageButtonReset>
       </StyledImageButtonDiv>
 
-      {loading ? (
-        <span>Processing...</span>
-      ) : (
-        <div>{imageUrl && <ImageViewer imageUrl={imageUrl} />}</div>
-      )}
+      {isLoading && <span>Loading, please wait...</span>}
+      {!isLoading && <span>Loading completed</span>}
     </StyledImageContainer>
   );
 }

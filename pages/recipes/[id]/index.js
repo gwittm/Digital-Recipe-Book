@@ -9,14 +9,13 @@ import {
   StyledDetailsItem,
   StyledItemsRow,
   EditDeleteDiv,
+  StyledDetailsItemIngredientsUl,
 } from "@/components/StyledDetailsPage.js";
-
 import {
   StyledButtonNo,
   StyledButtonYes,
   StyledDeleteButton,
 } from "@/components/Modal/ModalStyle.js";
-import { StyledDetailsItemIngredientsUl } from "@/components/StyledDetailsPage.js";
 import ImageViewer from "@/components/ImageUpload/ImageViewer";
 
 export default function DetailsPage() {
@@ -37,15 +36,12 @@ export default function DetailsPage() {
   if (isLoading) return <h2>Loading...</h2>;
   if (error || !isReady) return <h2>An error occured...</h2>;
 
-  console.log("Recipeeeeeeee", recipe); // console log
-  console.log("ImageUrl:", recipe.imageUrl);
-
   return (
     <StyledDetailsPageContainer>
       <StyledHeader>
         <h2>{recipe.title}</h2>
       </StyledHeader>
-      <ImageViewer imageUrl={recipe.imageUrl} width={300} height={200} />
+      <ImageViewer imageUrl={recipe.imageUrl} width={200} height={200} />
       <StyledItemsRow>
         <StyledDetailsItem>Type: {recipe.course}</StyledDetailsItem>
         <StyledDetailsItem>Time: {recipe.time}</StyledDetailsItem>

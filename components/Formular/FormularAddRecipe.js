@@ -11,18 +11,23 @@ import {
 import FormularIngredients from "./FormularIngredients.js";
 import { StyledLink } from "../StyledLink.js";
 import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
-import ImageUpload from "../ImageUpload/ImageUploadForm.js";
+import ImageUpload from "../ImageUpload/ImageUpload.js";
 
 export default function RecipeForm({
   onSubmit,
   formName,
   defaultData,
-  onAddUrl,
-  imageUrl,
+  imageUrl: propImageUrl,
 }) {
+  const [imageUrl, setImageUrl] = useState(propImageUrl || null);
   const [ingredients, setIngredients] = useState(
     defaultData?.ingredients || []
   );
+
+  function handleAddUrl(url) {
+    setImageUrl(url);
+    onAddUrl(url);
+  }
 
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
@@ -40,7 +45,7 @@ export default function RecipeForm({
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit({ ...data, ingredients });
+    onSubmit({ ...data, ingredients, imageUrl });
   }
 
   return (
@@ -63,7 +68,6 @@ export default function RecipeForm({
 
         <StyledInput>
           <label htmlFor="preparation">
-            {" "}
             Preparation:{" "}
             <select
               name="preparation"
@@ -159,9 +163,7 @@ export default function RecipeForm({
           })}
         </StyledDetailsItemIngredientsUl>
       </StyledIngredientsSection>
-      {/*      // chat GPT */}
-      <ImageUpload onAddUrl={onAddUrl} imageUrl={imageUrl} />
-
+      <ImageUpload onAddUrl={handleAddUrl} imageUrl={imageUrl} />
       <StyledDivButton>
         <StyledLink $justifySelf="start" href={"/"}>
           back without changes
