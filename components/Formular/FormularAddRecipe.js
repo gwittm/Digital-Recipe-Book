@@ -13,6 +13,7 @@ import { StyledLink } from "../StyledLink.js";
 import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
 import ImageUpload from "../ImageUpload/ImageUpload.js";
 
+
 export default function RecipeForm({
   onSubmit,
   formName,
@@ -85,11 +86,9 @@ export default function RecipeForm({
         </StyledInput>
 
         <StyledInput>
-          <label htmlFor="type">
-            {" "}
+          <label htmlFor="type"
             Type:{" "}
             <select name="type" id="type" defaultValue={defaultData?.type}>
-              <option value="none">none</option>
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
               <option value="Soup">Soup</option>

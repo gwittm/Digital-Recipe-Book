@@ -16,7 +16,9 @@ import {
   StyledButtonYes,
   StyledDeleteButton,
 } from "@/components/Modal/ModalStyle.js";
+
 import ImageViewer from "@/components/ImageUpload/ImageViewer";
+
 
 export default function DetailsPage() {
   const [showModal, setShowModal] = useState(false);
@@ -54,17 +56,22 @@ export default function DetailsPage() {
         <h4>Ingredients:</h4>
 
         <StyledDetailsItemIngredientsUl>
+
           {recipe.ingredients &&
             recipe.ingredients.map((ingredient) => (
               <li key={ingredient.ingredientID}>
                 {ingredient.name} : {ingredient.amount} {ingredient.unit}
               </li>
-            ))}
+          ))}
         </StyledDetailsItemIngredientsUl>
       </StyledDetailsItem>
       <StyledDetailsItem>
         <h4>How to prepare it:</h4> {recipe.instruction}
       </StyledDetailsItem>
+      <EditDeleteDiv>
+        <StyledLink $justifySelf="start" href={"/"}>
+          back
+        </StyledLink>
       <EditDeleteDiv>
         <StyledLink $justifySelf="start" href={"/"}>
           back

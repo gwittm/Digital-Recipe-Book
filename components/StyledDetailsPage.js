@@ -41,7 +41,4 @@ export const EditDeleteDiv = styled.section`
   margin-left: 10px;
 `;
 
-export const StyledRecipeImage = styled(Image)`
-  overflow: clip;
-  overflow-clip-margin: content-box;
-`;
+
