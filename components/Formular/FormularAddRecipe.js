@@ -27,7 +27,6 @@ export default function RecipeForm({
 
   function handleAddUrl(url) {
     setImageUrl(url);
-    onAddUrl(url);
   }
 
   function handleAddIngredient(newIngredient) {
