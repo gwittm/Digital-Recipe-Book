@@ -3,16 +3,27 @@ import useSWR from "swr";
 import RecipeForm from "@/components/Formular/FormularAddRecipe";
 import { toast } from 'react-toastify';
 
-const showToastSucess = () => {
+const showToastPutSucess = () => {
   toast.success("Recipe created successfully");
 };
 
-const showToastError = () => {
+const showToastPutError = () => {
   toast.error("Failed to edit recipe")
 };
 
-const showToastWarn = () => {
+const showToastPutWarn = () => {
   toast.warn("Error during recipe edit")
+};
+
+const showToastEditLoadError1 = () => {
+  toast.error("Failed to edit recipe")
+};
+const showToastEditLoadSuccess = () => {
+  toast.error("Failed to edit recipe")
+};
+
+const showToastEditLoadError2 = () => {
+  toast.error("Failed to edit recipe")
 };
 
 export default function EditPage(toast) {
@@ -31,19 +42,21 @@ export default function EditPage(toast) {
       });
      
       if (response.ok) {
-        showToastSucess();
+        showToastPutSucess();
         router.push(`/recipes/${id}`);
       } else {
-        showToastError();
+        showToastPutError();
         console.error("Failed to edit recipe");
       }
     } catch (error) {
-      showToastWarn();
+      showToastPutWarn();
       console.error("Error during recipe edit:", error);
     }
   }
-  if (error) return <div>Error loading recipe</div>;
-  if (!recipe || isLoading) return <div>Loading...</div>;
+  if (error) return (showToastEditLoadError1());
+  if (isLoading) return (showToastEditLoadSuccess());
+  if (!recipe) return (showToastEditLoadError2());
+
 
   return (
     <>
