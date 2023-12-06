@@ -2,8 +2,10 @@ import { SWRConfig } from "swr";
 import GlobalStyle from "../styles.js";
 import Header from "@/components/Header/Header.js";
 import NavBar from "@/components/NavBar/index.js";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps,  }) {
   return (
     <SWRConfig
       value={{
@@ -17,6 +19,7 @@ export default function App({ Component, pageProps }) {
       }}
     >
       <GlobalStyle />
+      <ToastContainer/>
       <Header />
       <Component {...pageProps} />
       <NavBar />

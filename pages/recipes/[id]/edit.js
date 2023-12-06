@@ -1,9 +1,21 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import { StyledLink } from "@/components/StyledLink";
 import RecipeForm from "@/components/Formular/FormularAddRecipe";
+import { toast } from 'react-toastify';
 
-export default function EditPage() {
+const showToastSucess = () => {
+  toast.success("Recipe created successfully");
+};
+
+const showToastError = () => {
+  toast.error("Failed to edit recipe")
+};
+
+const showToastWarn = () => {
+  toast.warn("Error during recipe edit")
+};
+
+export default function EditPage(toast) {
   const router = useRouter();
   const { id } = router.query;
   const { data: recipe, isLoading, error, } = useSWR(id ?`/api/recipes/${id}` : null);
@@ -19,11 +31,14 @@ export default function EditPage() {
       });
      
       if (response.ok) {
+        showToastSucess();
         router.push(`/recipes/${id}`);
       } else {
+        showToastError();
         console.error("Failed to edit recipe");
       }
     } catch (error) {
+      showToastWarn();
       console.error("Error during recipe edit:", error);
     }
   }

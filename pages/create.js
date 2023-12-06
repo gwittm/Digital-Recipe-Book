@@ -1,5 +1,10 @@
 import { useRouter } from "next/router";
 import RecipeForm from "@/components/Formular/FormularAddRecipe";
+import { toast } from 'react-toastify';
+
+const showToast = () => {
+  toast.success("Recipe created successfully");
+};
 
 export default function CreateRecipePage() {
   const router = useRouter();
@@ -13,6 +18,9 @@ export default function CreateRecipePage() {
     });
 
     if (response.ok) {
+      showToast();
+      
+    
       router.push("/");
     }
   }
