@@ -11,7 +11,7 @@ export default async function handler(request, response) {
     }
 
     if (request.method === "GET") {
-      const recipe = await Recipe.findById(id);
+      const recipe = await Recipe.findById(id).populate("favorite-buttons");
 
       if (!recipe) {
         return response.status(404).json({ status: "Not found !!!" });
