@@ -13,13 +13,8 @@ import { StyledLink } from "../StyledLink.js";
 import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
 import ImageUpload from "../ImageUpload/ImageUpload.js";
 
-export default function RecipeForm({
-  onSubmit,
-  formName,
-  defaultData,
-  imageUrl: propImageUrl,
-}) {
-  const [imageUrl, setImageUrl] = useState(propImageUrl || null);
+export default function RecipeForm({ onSubmit, formName, defaultData }) {
+  const [imageUrl, setImageUrl] = useState(defaultData?.imageUrl || null);
   const [ingredients, setIngredients] = useState(
     defaultData?.ingredients || []
   );

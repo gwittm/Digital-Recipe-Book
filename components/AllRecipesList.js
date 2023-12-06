@@ -45,13 +45,3 @@ const ListItem = styled.li`
     cursor: pointer;
   }
 `;
-
-const StyledListDiv = styled.div`
-  /*   display: flex;
- */
-`;
-
-const StyledImageViewerOverviewPage = styled.div`
-  /*   display: flex;
- */
-`;

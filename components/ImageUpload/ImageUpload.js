@@ -12,12 +12,17 @@ export default function ImageUpload({ imageUrl, onAddUrl }) {
   const [isLoading, setIsLoading] = useState(false);
   const [preview, setPreview] = useState(imageUrl || null);
 
-  const uploadImage = async () => {
+  /*const uploadImage = async () => {
     setIsLoading(true);
     const data = new FormData();
     const fileInput = document.getElementById("recipeImage");
     const file = fileInput.files[0];
-    data.append("recipeImage", file);
+    data.append("recipeImage", file); */
+
+  const uploadImage = async (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+    const data = new FormData(event.target);
 
     try {
       const response = await fetch(`/api/upload`, {
@@ -50,35 +55,34 @@ export default function ImageUpload({ imageUrl, onAddUrl }) {
   return (
     <StyledImageContainer>
       <p>Upload an Image</p>
-      <StyledInputSection>
-        <label htmlFor="recipeImage"></label>
-        <input
-          id="recipeImage"
-          name="recipeImage"
-          type="file"
-          onChange={handleImageChange}
-          accept="image/*"
-        />
-        {preview && (
-          <ImageViewer
-            imageUrl={preview || imageUrl}
-            height={150}
-            width={150}
+      {preview && (
+        <ImageViewer imageUrl={preview || imageUrl} height={150} width={150} />
+      )}
+      <form>
+        <StyledInputSection>
+          <label htmlFor="recipeImage"></label>
+          <input
+            id="recipeImage"
+            name="recipeImage"
+            type="file"
+            onChange={handleImageChange}
+            accept="image/*"
           />
-        )}
-      </StyledInputSection>
+        </StyledInputSection>
 
-      <StyledImageButtonDiv>
-        <StyledImageButtonUpload
-          onClick={uploadImage}
-          disabled={!preview || isLoading}
-        >
-          Upload now
-        </StyledImageButtonUpload>
-        <StyledImageButtonReset onClick={handleResetClick}>
-          Reset
-        </StyledImageButtonReset>
-      </StyledImageButtonDiv>
+        <StyledImageButtonDiv>
+          <StyledImageButtonUpload
+            type="submit"
+            onClick={uploadImage}
+            disabled={!preview || isLoading}
+          >
+            Upload now
+          </StyledImageButtonUpload>
+          <StyledImageButtonReset onClick={handleResetClick}>
+            Reset
+          </StyledImageButtonReset>
+        </StyledImageButtonDiv>
+      </form>
 
       {isLoading && <span>Loading, please wait...</span>}
       {!isLoading && <span>Loading completed</span>}

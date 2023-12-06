@@ -40,7 +40,6 @@ export default function EditPage() {
         onSubmit={editRecipe}
         formName={"edit-recipe"}
         defaultData={recipe}
-        imageUrl={recipe?.imageUrl}
       />
     </>
   );

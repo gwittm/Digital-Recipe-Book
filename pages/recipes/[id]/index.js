@@ -70,12 +70,7 @@ export default function DetailsPage() {
           back
         </StyledLink>
 
-        <StyledLink
-          href={`/recipes/${id}/edit`}
-          defaultData={recipe.ingredients}
-        >
-          Edit
-        </StyledLink>
+        <StyledLink href={`/recipes/${id}/edit`}>Edit</StyledLink>
         <StyledDeleteButton
           onClick={() => setShowModal(true)}
           type="button"
