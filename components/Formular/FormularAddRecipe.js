@@ -155,7 +155,11 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           })}
         </StyledDetailsItemIngredientsUl>
       </StyledIngredientsSection>
-      <ImageUpload onAddUrl={handleAddUrl} imageUrl={imageUrl} />
+      <ImageUpload
+        onAddUrl={handleAddUrl}
+        imageUrl={imageUrl}
+        title={defaultData?.title}
+      />
       <StyledDivButton>
         <StyledLink $justifySelf="start" href={"/"}>
           back without changes

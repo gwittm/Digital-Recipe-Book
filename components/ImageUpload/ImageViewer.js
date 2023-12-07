@@ -2,16 +2,11 @@ import React from "react";
 import Image from "next/image";
 import { StyledImageContainer } from "./StyledImageUpload";
 
-export default function ImageViewer({ imageUrl, width, height }) {
+export default function ImageViewer({ imageUrl, width, height, title }) {
   return (
     <StyledImageContainer>
       {imageUrl ? (
-        <Image
-          src={imageUrl}
-          alt="Image of Food"
-          width={width}
-          height={height}
-        />
+        <Image src={imageUrl} alt={title} width={width} height={height} />
       ) : (
         <span>
           <svg

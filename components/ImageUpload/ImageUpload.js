@@ -8,22 +8,15 @@ import {
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 
-export default function ImageUpload({ imageUrl, onAddUrl }) {
+export default function ImageUpload({ imageUrl, onAddUrl, title }) {
   const [isLoading, setIsLoading] = useState(false);
   const [preview, setPreview] = useState(imageUrl || null);
 
-  const uploadImage = async () => {
-    setIsLoading(true);
-    const data = new FormData();
-    const fileInput = document.getElementById("recipeImage");
-    const file = fileInput.files[0];
-    data.append("recipeImage", file);
-
-    /*  const uploadImage = async (event) => {
+  const uploadImage = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     const data = new FormData(event.target);
- */
+
     try {
       const response = await fetch(`/api/upload`, {
         method: "POST",
@@ -56,7 +49,12 @@ export default function ImageUpload({ imageUrl, onAddUrl }) {
     <StyledImageContainer>
       <p>Upload an Image</p>
       {preview && (
-        <ImageViewer imageUrl={preview || imageUrl} height={150} width={150} />
+        <ImageViewer
+          imageUrl={preview || imageUrl}
+          height={150}
+          width={150}
+          title={title}
+        />
       )}
       <form onSubmit={uploadImage}>
         <StyledInputSection>
@@ -73,7 +71,6 @@ export default function ImageUpload({ imageUrl, onAddUrl }) {
         <StyledImageButtonDiv>
           <StyledImageButtonUpload
             type="submit"
-            onClick={uploadImage}
             disabled={!preview || isLoading}
           >
             Upload now

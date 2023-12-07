@@ -10,7 +10,12 @@ export default function AllRecipesList({ recipes }) {
           <LinkListItem href={`recipes/${recipe._id}`} key={recipe._id}>
             <ListItem key={recipe._id}>
               {recipe.title}
-              <ImageViewer imageUrl={recipe.imageUrl} width={40} height={40} />
+              <ImageViewer
+                imageUrl={recipe.imageUrl}
+                width={40}
+                height={40}
+                title={recipe.title}
+              />
             </ListItem>
           </LinkListItem>
         ))}
