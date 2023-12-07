@@ -1,22 +1,6 @@
 import Recipe from "@/db/models/Recipe";
 import connect from "@/db/connect";
-
-const showToastGetSuccess = () => {
-  toast.get("Code 200: Recipe successfully loaded")
-};
-const showToastGetError = () => {
-  toast.get("400 Bad Request. Url not Found!")
-};
-
-const showToastPostSuccess = () => {
-  toast.create("Codes 201: Recipe successfully created.")
-};
-
-const showToastPostError = () => {
-  toast.error("Codes 400: Failed to create recipe")
-};
-
-
+import { toast } from 'react-toastify';
 
 export default async function handler(request, response) {
   await connect();
@@ -24,27 +8,25 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     try {
       const recipes = await Recipe.find();
-      showToastGetSuccess();
-
+      toast.success("Code 200: Recipe successfully loaded")
       return response.status(200).json(recipes);
+
     } catch (error) {
-      showToastGetError();
+      toast.error("400 Bad Request. Url not Found!")
       response.status(400).json({ error: error.message });
     }
   }
   if (request.method === "POST") {
     const recipes = request.body;
 
-    try {
+  try {
       await Recipe.create(recipes);
-      showToastPostSuccess();
+      toast.success("Codes 201: Recipe successfully created.")
       response.status(201).json({ status: "Recipe created." });
 
     } catch (error) {
-      showToastPostError();
+      toast.error("Codes 400: Failed to create recipe")
       response.status(400).json({ error: error.message });
-      
-      
-    }
+      }
   }
 }

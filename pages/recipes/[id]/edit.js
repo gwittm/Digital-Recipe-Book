@@ -3,30 +3,9 @@ import useSWR from "swr";
 import RecipeForm from "@/components/Formular/FormularAddRecipe";
 import { toast } from 'react-toastify';
 
-const showToastPutSucess = () => {
-  toast.success("Recipe created successfully");
-};
 
-const showToastPutError = () => {
-  toast.error("Failed to edit recipe")
-};
 
-const showToastPutWarn = () => {
-  toast.warn("Error during recipe edit")
-};
-
-const showToastEditLoadError1 = () => {
-  toast.error("Failed to edit recipe")
-};
-const showToastEditLoadSuccess = () => {
-  toast.error("Failed to edit recipe")
-};
-
-const showToastEditLoadError2 = () => {
-  toast.error("Failed to edit recipe")
-};
-
-export default function EditPage(toast) {
+export default function EditPage() {
   const router = useRouter();
   const { id } = router.query;
   const { data: recipe, isLoading, error, } = useSWR(id ?`/api/recipes/${id}` : null);
@@ -40,22 +19,22 @@ export default function EditPage(toast) {
         },
         body: JSON.stringify(updatedRecipe),
       });
-     
+    
       if (response.ok) {
-        showToastPutSucess();
+        toast.success("Recipe changed successfully");
         router.push(`/recipes/${id}`);
       } else {
-        showToastPutError();
+        toast.error("Failed to edit recipe");
         console.error("Failed to edit recipe");
       }
     } catch (error) {
-      showToastPutWarn();
+      toast.warn("Error during recipe edit");
       console.error("Error during recipe edit:", error);
     }
   }
-  if (error) return (showToastEditLoadError1());
-  if (isLoading) return (showToastEditLoadSuccess());
-  if (!recipe) return (showToastEditLoadError2());
+  if (error)  toast.error("Failed to edit recipe");
+  if (isLoading)  toast.error("Failed to edit recipe");
+  if (!recipe)  toast.error("Failed to edit recipe");
 
 
   return (
