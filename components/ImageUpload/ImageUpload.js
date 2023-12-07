@@ -12,18 +12,18 @@ export default function ImageUpload({ imageUrl, onAddUrl }) {
   const [isLoading, setIsLoading] = useState(false);
   const [preview, setPreview] = useState(imageUrl || null);
 
-  /*const uploadImage = async () => {
+  const uploadImage = async () => {
     setIsLoading(true);
     const data = new FormData();
     const fileInput = document.getElementById("recipeImage");
     const file = fileInput.files[0];
-    data.append("recipeImage", file); */
+    data.append("recipeImage", file);
 
-  const uploadImage = async (event) => {
+    /*  const uploadImage = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     const data = new FormData(event.target);
-
+ */
     try {
       const response = await fetch(`/api/upload`, {
         method: "POST",
@@ -58,7 +58,7 @@ export default function ImageUpload({ imageUrl, onAddUrl }) {
       {preview && (
         <ImageViewer imageUrl={preview || imageUrl} height={150} width={150} />
       )}
-      <form onClick={uploadImage}>
+      <form onSubmit={uploadImage}>
         <StyledInputSection>
           <label htmlFor="recipeImage"></label>
           <input
