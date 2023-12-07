@@ -18,12 +18,14 @@ import {
 } from "@/components/Modal/ModalStyle.js";
 import ImageViewer from "@/components/ImageUpload/ImageViewer";
 
-export default function DetailsPage() {
+export default function DetailsPage({ data }) {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
   const { data: recipe, isLoading, error } = useSWR(`/api/recipes/${id}`);
+
+  console.log("Recipeeeee", recipe);
 
   async function deleteRecipe() {
     await fetch(`/api/recipes/${id}`, {
@@ -41,7 +43,12 @@ export default function DetailsPage() {
       <StyledHeader>
         <h2>{recipe.title}</h2>
       </StyledHeader>
-      <ImageViewer imageUrl={recipe.imageUrl} width={200} height={200} />
+      <ImageViewer
+        imageUrl={recipe.imageUrl}
+        width={200}
+        height={200}
+        recipe={recipe || { title: "Recipe" }}
+      />
       <StyledItemsRow>
         <StyledDetailsItem>Type: {recipe.course}</StyledDetailsItem>
         <StyledDetailsItem>Time: {recipe.time}</StyledDetailsItem>

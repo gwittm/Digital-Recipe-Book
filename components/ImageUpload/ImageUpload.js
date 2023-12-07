@@ -58,7 +58,7 @@ export default function ImageUpload({ imageUrl, onAddUrl }) {
       {preview && (
         <ImageViewer imageUrl={preview || imageUrl} height={150} width={150} />
       )}
-      <form>
+      <form onClick={uploadImage}>
         <StyledInputSection>
           <label htmlFor="recipeImage"></label>
           <input
