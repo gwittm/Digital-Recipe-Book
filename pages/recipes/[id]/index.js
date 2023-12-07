@@ -117,3 +117,4 @@ export default function DetailsPage({ data }) {
     </StyledDetailsPageContainer>
   );
 }
+

@@ -21,7 +21,6 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
 
   function handleAddUrl(url) {
     setImageUrl(url);
-    onAddUrl(url);
   }
 
   function handleAddIngredient(newIngredient) {
@@ -81,10 +80,8 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
 
         <StyledInput>
           <label htmlFor="type">
-            {" "}
             Type:{" "}
             <select name="type" id="type" defaultValue={defaultData?.type}>
-              <option value="none">none</option>
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
               <option value="Soup">Soup</option>
