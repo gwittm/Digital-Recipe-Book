@@ -3,8 +3,7 @@ import {
   StyledImageContainer,
   StyledInputSection,
   StyledImageButtonDiv,
-  StyledImageButtonUpload,
-  StyledImageButtonReset,
+  StyledImageButtonResetUpload,
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 
@@ -70,15 +69,15 @@ export default function ImageUpload({ imageUrl, onAddUrl, title }) {
         </StyledInputSection>
 
         <StyledImageButtonDiv>
-          <StyledImageButtonUpload
+          <StyledImageButtonResetUpload
             type="submit"
             disabled={!preview || isLoading}
           >
             Upload now
-          </StyledImageButtonUpload>
-          <StyledImageButtonReset onClick={handleResetClick}>
+          </StyledImageButtonResetUpload>
+          <StyledImageButtonResetUpload onClick={handleResetClick}>
             Reset
-          </StyledImageButtonReset>
+          </StyledImageButtonResetUpload>
         </StyledImageButtonDiv>
       </form>
 

@@ -28,14 +28,7 @@ export const StyledImageButtonDiv = styled.div`
   gap: 20px;
 `;
 
-export const StyledImageButtonUpload = styled.button`
-  border: solid 1px black;
-  border-radius: 5px;
-  margin: 10px;
-  padding: 10px;
-`;
-
-export const StyledImageButtonReset = styled.button`
+export const StyledImageButtonResetUpload = styled.button`
   border: solid 1px black;
   border-radius: 5px;
   margin: 10px;
