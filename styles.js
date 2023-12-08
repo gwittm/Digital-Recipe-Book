@@ -13,8 +13,9 @@ export default createGlobalStyle`
 /*     --header-color:#de5499;
  */    --darkbackground-color:#eddcd9;
     --font-color: ff397754;
-    --header-color: #264143;
-    --title-color:#ff8a44
+    --title-color: #264143;
+/*     --title-color:#ff8a44
+ */    --header-color: #794163
   }
 
   body {
