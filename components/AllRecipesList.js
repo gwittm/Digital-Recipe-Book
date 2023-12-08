@@ -12,6 +12,7 @@ export default function AllRecipesList({ recipes }) {
               {recipe.title}
               <ImageViewer
                 imageUrl={recipe.imageUrl}
+                alt={recipe.title}
                 width={40}
                 height={40}
                 title={recipe.title}

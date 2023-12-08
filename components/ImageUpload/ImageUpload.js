@@ -51,6 +51,7 @@ export default function ImageUpload({ imageUrl, onAddUrl, title }) {
       {preview && (
         <ImageViewer
           imageUrl={preview || imageUrl}
+          alt={title}
           height={150}
           width={150}
           title={title}

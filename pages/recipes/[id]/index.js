@@ -46,6 +46,7 @@ export default function DetailsPage() {
         width={200}
         height={200}
         title={recipe.title}
+        alt={recipe.title}
       />
       <StyledItemsRow>
         <StyledDetailsItem>Type: {recipe.course}</StyledDetailsItem>
