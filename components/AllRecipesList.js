@@ -1,36 +1,48 @@
 import Link from "next/link";
 import styled from "styled-components";
+import ImageViewer from "./ImageUpload/ImageViewer";
 
 export default function AllRecipesList({ recipes }) {
   return (
     <StyledUl role="list">
       {recipes &&
         recipes.map((recipe) => (
-          <LinkListItem href={`recipes/${recipe._id}`} key={recipe._id}>
-            <ListItem key={recipe._id}>{recipe.title} </ListItem>
+          <LinkListItem key={recipe._id}>
+            <Link href={`recipes/${recipe._id}`} passHref>
+              <a>
+                <ListItem>
+                  <RecipeContent>
+                    <ImageViewer
+                      imageUrl={recipe.imageUrl}
+                      alt={recipe.title}
+                      width={40}
+                      height={40}
+                      title={recipe.title}
+                    />
+                    <RecipeTitle>{recipe.title}</RecipeTitle>
+                  </RecipeContent>
+                </ListItem>
+              </a>
+            </Link>
           </LinkListItem>
         ))}
     </StyledUl>
   );
 }
 
-const LinkListItem = styled(Link)`
-  text-decoration: none;
+const LinkListItem = styled.li`
+  list-style: none;
 `;
 
 const StyledUl = styled.ul`
-  list-style: none;
   display: flex;
-  align-items: center;
-
   flex-direction: column;
   padding-left: 0;
 `;
 
-const ListItem = styled.li`
+const ListItem = styled.div`
   background-color: var(--background-color);
   color: var(--title-color);
-  height: 40px;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
@@ -41,4 +53,13 @@ const ListItem = styled.li`
     color: white;
     cursor: pointer;
   }
+`;
+
+const RecipeContent = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const RecipeTitle = styled.div`
+  margin-left: 10px; /* Adjust the margin as needed */
 `;

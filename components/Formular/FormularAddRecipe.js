@@ -19,12 +19,16 @@ import {
   StyledSpan,
 } from "../StyledDetailsPage.js";
 import { StyledIngredientName } from "../StyledDetailsPage.js";
+import ImageUpload from "../ImageUpload/ImageUpload.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
+  const [imageUrl, setImageUrl] = useState(defaultData?.imageUrl || null);
   const [ingredients, setIngredients] = useState(
     defaultData?.ingredients || []
   );
-
+  function handleAddUrl(url) {
+    setImageUrl(url);
+  }
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
   }
@@ -41,7 +45,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit({ ...data, ingredients });
+    onSubmit({ ...data, ingredients, imageUrl });
   }
 
   return (
@@ -50,6 +54,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         aria-labelledby={formName}
         id="recipeForm"
         onSubmit={handleSubmit}
+        encType="multipart/form-data"
       >
         <StyledInputandLabel>
           <StyledLabel htmlFor="title">Title: </StyledLabel>
@@ -162,7 +167,11 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
           })}
         </StyledDetailsItemIngredientsUl>
       </StyledIngredientsSection>
-
+      <ImageUpload
+        onAddUrl={handleAddUrl}
+        imageUrl={imageUrl}
+        title={defaultData?.title}
+      />
       <StyledDivButton>
         <StyledLink $justifySelf="start" href={"/"}>
           back without changes
