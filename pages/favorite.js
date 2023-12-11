@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 
 import styled from "styled-components";
-import Fuse from "fuse.js";
 
-import SearchBar from "@/components/Search/SearchBar";
 import AllRecipesList from "@/components/AllRecipesList";
 
 const StyledUlBox = styled.div`
@@ -16,19 +14,7 @@ const StyledH2 = styled.h2`
   justify-content: center;
 `;
 
-const StyledFuseUl = styled.ul`
-  padding-left: 0;
-`;
-
-const fuseOptions = {
-  threshold: 0.3,
-  keys: ["title"],
-};
-
-export default function FuseSearchRecipe() {
-  const [results, setResults] = useState([]);
-  const [fuse, setFuse] = useState(null);
-  const [isFuseActive, setIsFuseActive] = useState(false);
+export default function FavoriteRecipes() {
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -45,7 +31,6 @@ export default function FuseSearchRecipe() {
           (recipe) => recipe.isFavorite
         );
         setRecipes(favoriteRecipes);
-        setFuse(new Fuse(favoriteRecipes, fuseOptions));
       } catch (fetchError) {
         setError(fetchError);
       } finally {
@@ -55,22 +40,9 @@ export default function FuseSearchRecipe() {
     getRecipes();
   }, []);
 
-  // Search logic
-  function handleSearch(event) {
-    event.preventDefault();
-    if (!fuse) {
-      return;
-    }
-    const searchPattern = event.target.value;
-    const searchResult = fuse.search(searchPattern);
-    setResults(searchResult);
-    searchPattern.length === 0 ? setIsFuseActive(false) : setIsFuseActive(true);
-  }
-
   if (isLoading)
     return (
       <>
-        {" "}
         <svg
           role="status"
           xmlns="http://www.w3.org/2000/svg"
@@ -101,24 +73,13 @@ export default function FuseSearchRecipe() {
   });
   return (
     <>
-      <label htmlFor="searchInput">
-        <h2>Search:</h2>
-      </label>
-      <SearchBar id="searchInput" handleSearch={handleSearch} />
       <StyledUlBox>
         <StyledH2>My favorite recipes</StyledH2>
-        <StyledFuseUl>
-          {!isFuseActive &&
-            alphabeticallySortedRecipes.map((recipe) => (
-              <AllRecipesList key={recipe._id} recipes={[recipe]} />
-            ))}
-          {results.map((recipe) => (
-            <AllRecipesList key={recipe.item._id} recipes={[recipe.item]} />
+        <ul>
+          {alphabeticallySortedRecipes.map((recipe) => (
+            <AllRecipesList key={recipe._id} recipes={[recipe]} />
           ))}
-        </StyledFuseUl>
-        {isFuseActive && results.length === 0 && (
-          <p aria-live="assertive">No matching recipes 🤷🏻‍♂️ </p>
-        )}
+        </ul>
       </StyledUlBox>
     </>
   );
