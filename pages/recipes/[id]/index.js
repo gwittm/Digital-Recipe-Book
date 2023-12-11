@@ -50,12 +50,11 @@ export default function DetailsPage() {
   if (error || !isReady) return <h2>An error occured...</h2>;
   return (
     <>
-      <SideBannerDetail />
+      {/*       <SideBannerDetail /> */}
       <StyledDetailsPageContainer>
         <StyledHeader>
           <h2>{recipe.title}</h2>
         </StyledHeader>
-        {/*     <FavoriteButton /> */}
         <ImageContainerDetailsPage />
         <StyledItemsBox>
           <StyledDetailsItem>

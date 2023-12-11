@@ -9,20 +9,18 @@ export default function AllRecipesList({ recipes }) {
         recipes.map((recipe) => (
           <LinkListItem key={recipe._id}>
             <Link href={`recipes/${recipe._id}`} passHref>
-              <a>
-                <ListItem>
-                  <RecipeContent>
-                    <ImageViewer
-                      imageUrl={recipe.imageUrl}
-                      alt={recipe.title}
-                      width={40}
-                      height={40}
-                      title={recipe.title}
-                    />
-                    <RecipeTitle>{recipe.title}</RecipeTitle>
-                  </RecipeContent>
-                </ListItem>
-              </a>
+              <ListItem>
+                <RecipeContent>
+                  <RecipeTitle>{recipe.title}</RecipeTitle>
+                  <ImageViewer
+                    imageUrl={recipe.imageUrl}
+                    alt={recipe.title}
+                    width={40}
+                    height={40}
+                    title={recipe.title}
+                  />
+                </RecipeContent>
+              </ListItem>
             </Link>
           </LinkListItem>
         ))}
@@ -34,19 +32,14 @@ const LinkListItem = styled.li`
   list-style: none;
 `;
 
-const StyledUl = styled.ul`
-  display: flex;
-  flex-direction: column;
-  padding-left: 0;
-`;
+const StyledUl = styled.ul``;
 
 const ListItem = styled.div`
   background-color: var(--background-color);
   color: var(--title-color);
   border-radius: 5px;
   margin: 10px;
-  padding: 10px;
-  width: 400px;
+  width: 50vw;
 
   &:hover {
     background-color: var(--title-color);
@@ -58,8 +51,9 @@ const ListItem = styled.div`
 const RecipeContent = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const RecipeTitle = styled.div`
-  margin-left: 10px; /* Adjust the margin as needed */
+  margin: 10px; /* Adjust the margin as needed */
 `;

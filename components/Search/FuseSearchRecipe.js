@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Fuse from "fuse.js";
 
 const StyledUlBox = styled.div`
-  padding-left: 0;
+  margin-top: 40px;
 `;
 
 const StyledH2 = styled.h2`
@@ -15,7 +15,7 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledFuseUl = styled.ul`
-  padding-left: 0;
+  padding-left: 0px;
 `;
 
 const StyledLoadingMessage = styled.div`
@@ -24,6 +24,11 @@ const StyledLoadingMessage = styled.div`
   align-items: center;
   justify-content: center;
   padding: 30px;
+`;
+const StartingPageDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const fuseOptions = {
@@ -59,7 +64,6 @@ export default function FuseSearchRecipe() {
     getRecipes();
   }, []);
 
-  // Search logic
   function handleSearch(event) {
     event.preventDefault();
     if (!fuse) {
@@ -97,10 +101,10 @@ export default function FuseSearchRecipe() {
     return 0;
   });
   return (
-    <>
+    <StartingPageDiv>
       <SearchBar handleSearch={handleSearch} />
       <StyledUlBox>
-        <StyledH2>All my recipes</StyledH2>
+        {/*   <StyledH2>All my recipes</StyledH2> */}
         <StyledFuseUl>
           {!isFuseActive &&
             alphabeticallySortedRecipes.map((recipe) => (
@@ -112,6 +116,6 @@ export default function FuseSearchRecipe() {
         </StyledFuseUl>
         {isFuseActive && results.length === 0 && <p>No matching recipes :( </p>}
       </StyledUlBox>
-    </>
+    </StartingPageDiv>
   );
 }
