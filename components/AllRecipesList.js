@@ -11,7 +11,7 @@ export default function AllRecipesList({ recipes }) {
             <ListItem key={recipe._id}>
               {recipe.title}
               <ImageViewer
-                imageUrl={recipe.imageUrl}
+                image={recipe.image ? recipe.image.imageUrl : null}
                 alt={recipe.title}
                 width={40}
                 height={40}

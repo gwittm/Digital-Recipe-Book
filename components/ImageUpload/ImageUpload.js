@@ -7,7 +7,7 @@ import {
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 
-export default function ImageUpload({ imageUrl, onAddUrl, onAddImage, title }) {
+export default function ImageUpload({ imageUrl, onAddImage, title }) {
   const [isLoading, setIsLoading] = useState(false);
   const [preview, setPreview] = useState(imageUrl || null);
 
@@ -28,9 +28,9 @@ export default function ImageUpload({ imageUrl, onAddUrl, onAddImage, title }) {
 
       if (response.ok) {
         const res = await response.json();
-        console.log("Image upload successful. Image URL:", imageData.imageUrl);
+        console.log("Image upload successful. Image URL:", res.imageUrl);
 
-        onAddUrl(res.imageUrl);
+        onAddImage({ imageUrl: res.imageUrl, publicId: res.publicId });
         setPreview(res.imageUrl);
         setIsLoading(false);
       } else {
@@ -48,18 +48,10 @@ export default function ImageUpload({ imageUrl, onAddUrl, onAddImage, title }) {
     setPreview(URL.createObjectURL(file));
   };
 
-  /* const handleResetClick = () => {
-    setPreview(null);
-    const fileInput = document.getElementById("recipeImage");
-    if (fileInput) {
-      fileInput.value = "";
-    }
-  }; */
-
   const handleResetClick = async () => {
     if (preview) {
       try {
-        const response = await fetch(`/api/upload?id=${imageUrl.publicId}`, {
+        const response = await fetch(`/api/upload?id=${preview.publicId}`, {
           method: "DELETE",
         });
 
@@ -68,16 +60,12 @@ export default function ImageUpload({ imageUrl, onAddUrl, onAddImage, title }) {
           await response.json();
           onAddImage({ imageUrl: "", publicId: "" });
           setPreview(null);
+        } else {
+          console.error("Image delete failed. Response:", response);
         }
       } catch (error) {
-        console.error("Error deleting image: ", error);
+        console.error("Error deleting image:", error);
       }
-    }
-    setPreview(null);
-
-    const fileInput = document.getElementById("recipeImage");
-    if (fileInput) {
-      fileInput.value = "";
     }
   };
 

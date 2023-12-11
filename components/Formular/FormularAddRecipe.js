@@ -158,7 +158,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
       <ImageUpload
         onAddUrl={handleAddImage}
         onAddImage={handleAddImage}
-        imageUrl={image}
+        image={image}
         title={defaultData?.title}
       />
       <StyledDivButton>

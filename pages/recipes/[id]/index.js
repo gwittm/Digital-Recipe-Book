@@ -18,7 +18,7 @@ import {
 } from "@/components/Modal/ModalStyle.js";
 import ImageViewer from "@/components/ImageUpload/ImageViewer";
 
-export default function DetailsPage() {
+export default function DetailsPage({ image }) {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { isReady } = router;
@@ -42,7 +42,7 @@ export default function DetailsPage() {
         <h2>{recipe.title}</h2>
       </StyledHeader>
       <ImageViewer
-        imageUrl={recipe.imageUrl}
+        image={image.imageUrl}
         width={200}
         height={200}
         title={recipe.title}
