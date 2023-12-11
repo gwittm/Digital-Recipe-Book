@@ -13,7 +13,7 @@ import { StyledLink } from "../StyledLink.js";
 import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
 import FavoriteButton from "../FavoriteButton/index.js";
 
-export default function RecipeForm({ onSubmit, formName, defaultData }) {
+export default function RecipeForm({ onSubmit, defaultData }) {
   const [ingredients, setIngredients] = useState(
     defaultData?.ingredients || []
   );
