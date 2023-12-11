@@ -42,6 +42,10 @@ export default function ImageUpload({ imageUrl, onAddUrl, title }) {
 
   const handleResetClick = () => {
     setPreview(null);
+    const fileInput = document.getElementById("recipeImage");
+    if (fileInput) {
+      fileInput.value = "";
+    }
   };
 
   return (
