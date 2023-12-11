@@ -14,13 +14,13 @@ import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
 import ImageUpload from "../ImageUpload/ImageUpload.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
-  const [imageUrl, setImageUrl] = useState(defaultData?.imageUrl || null);
+  const [image, setImage] = useState(defaultData?.image || null);
   const [ingredients, setIngredients] = useState(
     defaultData?.ingredients || []
   );
 
-  function handleAddUrl(url) {
-    setImageUrl(url);
+  function handleAddImage(newImage) {
+    setImage(newImage);
   }
 
   function handleAddIngredient(newIngredient) {
@@ -39,7 +39,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit({ ...data, ingredients, imageUrl });
+    onSubmit({ ...data, ingredients, image });
   }
 
   return (
@@ -156,8 +156,9 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         </StyledDetailsItemIngredientsUl>
       </StyledIngredientsSection>
       <ImageUpload
-        onAddUrl={handleAddUrl}
-        imageUrl={imageUrl}
+        onAddUrl={handleAddImage}
+        onAddImage={handleAddImage}
+        imageUrl={image}
         title={defaultData?.title}
       />
       <StyledDivButton>

@@ -37,4 +37,15 @@ export default async function handler(request, response) {
     console.error("Error uploading to Cloudinary: ", error);
     response.status(500).json({ error: "Error uploading to Cloudinary" });
   }
+
+  if (request.method === "DELETE") {
+    const public_id = request.query.id;
+    try {
+      await cloudinary.v2.uploader.destroy(public_id);
+      response.status(200).json({ message: "Image removed from Cloud" });
+    } catch (error) {
+      console.error("Error deleting from Cloudinary: ", error);
+      response.status(500).json({ error: "Error deleting from Cloudinary" });
+    }
+  }
 }

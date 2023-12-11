@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   StyledImageContainer,
   StyledInputSection,
@@ -7,9 +7,13 @@ import {
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 
-export default function ImageUpload({ imageUrl, onAddUrl, title }) {
+export default function ImageUpload({ imageUrl, onAddUrl, onAddImage, title }) {
   const [isLoading, setIsLoading] = useState(false);
   const [preview, setPreview] = useState(imageUrl || null);
+
+  useEffect(() => {
+    setPreview(imageUrl);
+  }, [imageUrl]);
 
   const uploadImage = async (event) => {
     event.preventDefault();
@@ -24,13 +28,17 @@ export default function ImageUpload({ imageUrl, onAddUrl, title }) {
 
       if (response.ok) {
         const res = await response.json();
-        onAddUrl(res.imageUrl);
+        console.log("Image upload successful. Image URL:", imageData.imageUrl);
 
+        onAddUrl(res.imageUrl);
+        setPreview(res.imageUrl);
         setIsLoading(false);
       } else {
+        console.error("Image upload failed. Response:", response);
         setIsLoading(false);
       }
     } catch (error) {
+      console.error("Error during image upload:", error);
       setIsLoading(false);
     }
   };
@@ -40,8 +48,33 @@ export default function ImageUpload({ imageUrl, onAddUrl, title }) {
     setPreview(URL.createObjectURL(file));
   };
 
-  const handleResetClick = () => {
+  /* const handleResetClick = () => {
     setPreview(null);
+    const fileInput = document.getElementById("recipeImage");
+    if (fileInput) {
+      fileInput.value = "";
+    }
+  }; */
+
+  const handleResetClick = async () => {
+    if (preview) {
+      try {
+        const response = await fetch(`/api/upload?id=${imageUrl.publicId}`, {
+          method: "DELETE",
+        });
+
+        if (response.ok) {
+          console.log("Image delete successful.");
+          await response.json();
+          onAddImage({ imageUrl: "", publicId: "" });
+          setPreview(null);
+        }
+      } catch (error) {
+        console.error("Error deleting image: ", error);
+      }
+    }
+    setPreview(null);
+
     const fileInput = document.getElementById("recipeImage");
     if (fileInput) {
       fileInput.value = "";
@@ -53,7 +86,7 @@ export default function ImageUpload({ imageUrl, onAddUrl, title }) {
       <p>Upload an Image</p>
       {preview && (
         <ImageViewer
-          imageUrl={preview || imageUrl}
+          image={preview}
           alt={title}
           height={150}
           width={150}
