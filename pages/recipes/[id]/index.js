@@ -17,14 +17,9 @@ import {
   StyledDeleteButton,
 } from "@/components/Modal/ModalStyle.js";
 import { StyledDetailsItemIngredientsUl } from "@/components/StyledDetailsPage.js";
-import FavoriteButton from "@/components/FavoriteButton";
 
 export default function DetailsPage() {
-  const [showModal, setShowModal] = useState;
-  const [isFavorite, setIsFavorite] = useState(
-    defaultData?.isFavorite || false
-  );
-  false;
+  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
@@ -35,10 +30,7 @@ export default function DetailsPage() {
     mutate,
   } = useSWR(`/api/recipes/${id}`);
 
-  async function handleFavoriteToggle(newStatus, event) {
-    event.preventDefault();
-    setIsFavorite(!isFavorite);
-
+  async function handleFavoriteToggle(newStatus) {
     await fetch(`/api/recipes/${id}`, {
       method: "PUT",
       headers: {
@@ -66,11 +58,7 @@ export default function DetailsPage() {
       <StyledHeader>
         <h2>{recipe.title}</h2>
       </StyledHeader>
-      <FavoriteButton
-        isFavorite={isFavorite}
-        toggleFavorite={handleFavoriteToggle}
-      />
-      {/* <div>
+      <div>
         {recipe.isFavorite ? (
           <svg
             role="img"
@@ -227,7 +215,7 @@ export default function DetailsPage() {
             </g>
           </svg>
         )}
-      </div> */}
+      </div>
       <StyledItemsRow>
         <StyledDetailsItem>Type: {recipe.course}</StyledDetailsItem>
         <StyledDetailsItem>Time: {recipe.time}</StyledDetailsItem>
