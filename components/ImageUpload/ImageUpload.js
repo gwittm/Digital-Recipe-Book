@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
-  StyledImageContainer,
   StyledInputSection,
   StyledImageButtonDiv,
   StyledImageButtonResetUpload,
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
+import { StyledImageContainer } from "./StyledImageUpload";
 
 export default function ImageUpload({ onAddImage, title, image }) {
   const [isLoading, setIsLoading] = useState(false);

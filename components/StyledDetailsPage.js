@@ -10,15 +10,15 @@ export const StyledHeader = styled.header`
 
 export const StyledDetailsPageContainer = styled.section`
   width: 100%;
-  max-width: 500px;
+  max-width: 300px;
   margin: 0 auto;
 `;
 
 export const StyledDetailsItemIngredientsUl = styled.ul`
   list-style-type: none;
   width: 100%;
-  max-width: 500px;
-  padding-bottom: 15px;
+  max-width: 300px;
+  padding-bottom: 10px;
   display: flex;
   flex-direction: column;
 `;
@@ -42,8 +42,9 @@ export const StyledItemsBox = styled.div`
 
 export const EditDeleteDiv = styled.section`
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  width: 500px;
+  width: 300px;
   background-color: var(--background-color);
   margin-top: 20px;
   margin-bottom: 1rem;
@@ -63,14 +64,14 @@ export const StyledH4 = styled.h4`
 
 export const StyledIngredientsItems = styled.div`
   width: 100%;
-  max-width: 500px;
+  max-width: 300px;
 `;
 
 export const StyledDetailsItemIngredientLi = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 500px;
+  width: 300px;
   height: 40px;
   border: solid 1px;
   margin: 10px;
@@ -101,13 +102,16 @@ export const StyledP = styled.p`
 `;
 
 export const ImageContainerDetailsPage = styled.section`
-  width: 500px;
+  width: 300px;
   height: 200px;
   padding: 10px;
+  margin-top: 30px;
   margin-bottom: 30px;
   background-color: var(--background-color);
   border: solid black 1px;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
 `;
 
 export const StyledIngredientName = styled.p`

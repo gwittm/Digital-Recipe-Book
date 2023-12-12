@@ -14,11 +14,11 @@ export const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 500px;
+  width: 300px;
   align-items: center;
   height: 100vh;
   margin: 0 auto;
-  padding-top: 300px;
+  padding-top: 500px;
   padding-bottom: 150px;
 `;
 
@@ -91,6 +91,9 @@ export const StyledDeleteIngredientButton = styled.button`
 
 export const StyledH2AddandEdit = styled.h2`
   color: var(--title-color);
+  display: flex;
+  justify-content: center;
+  background-color: hotpink;
 `;
 
 export const StyledDetailsItemIngredientFormularLi = styled.li`

@@ -21,7 +21,9 @@ export default function CreateRecipePage() {
 
   return (
     <>
-      <StyledH2AddandEdit id="add-recipe">Add Recipe</StyledH2AddandEdit>
+      <StyledH2AddandEdit id="add-recipe">
+        Add your new Recipe
+      </StyledH2AddandEdit>
       <RecipeForm onSubmit={addRecipe} formName={"add-recipe"} />
     </>
   );

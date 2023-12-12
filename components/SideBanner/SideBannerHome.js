@@ -6,23 +6,41 @@ export default function SideBannerHome() {
     <>
       <StyledSideBanner>
         <StyledImageSidebar
+          src="/Banner.jpg"
+          alt="Image Side Banner"
+          width={400}
+          height={400}
+        />
+        <StyledImageSidebar
+          src="/Banner.jpg"
+          alt="Image Side Banner"
+          width={400}
+          height={400}
+        />
+        <StyledImageSidebar
+          src="/Banner.jpg"
+          alt="Image Side Banner"
+          width={400}
+          height={400}
+        />
+        {/* <StyledImageSidebar
           src="/nadine-primeau--ftWfohtjNw-unsplash.jpg"
           alt="Image Side Banner"
-          width={800}
-          height={1000}
+          width={200}
+          height={500}
         />
         <StyledImageSidebar
           src="/nadine-primeau--bLkT8wGV0I-unsplash.jpg"
           alt="Image Side Banner"
-          width={800}
-          height={1000}
+          width={200}
+          height={500}
         />
         <StyledImageSidebar
           src="/brooke-lark-GTMGG-xvxdU-unsplash.jpg"
           alt="Image Side Banner"
-          width={800}
-          height={1000}
-        />
+          width={200}
+          height={500}
+        /> */}
       </StyledSideBanner>
     </>
   );
@@ -30,16 +48,16 @@ export default function SideBannerHome() {
 
 const StyledSideBanner = styled.div`
   position: fixed;
-  left: 0;
-  height: 85vh;
-  width: 180px;
-  background-color: var(--darkbackground-color);
+  height: 500px;
+  width: 70px;
+  /*   background-color: var(--darkbackground-color);
+ */
 `;
 
 const StyledImageSidebar = styled(Image)`
   object-fit: cover;
   height: auto;
-  width: 180px;
-  padding: 10px;
-  border-radius: 30px;
+  width: 60px;
+  padding: 2px;
+  border-radius: 10px;
 `;

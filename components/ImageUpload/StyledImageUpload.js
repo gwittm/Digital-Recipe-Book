@@ -1,17 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-export const StyledImageContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  background-color: var(--background-color);
-  margin: 10px;
-  padding: 3px;
-  border-radius: 5px;
-  gap: 5px;
-`;
-
 export const StyledInputSection = styled.div`
   gap: 5px;
   display: flex;
@@ -37,4 +26,14 @@ export const StyledImageButtonResetUpload = styled.button`
 
 export const StyledImage = styled(Image)`
   border-radius: 900px;
+`;
+export const StyledImageContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  background-color: var(--background-color);
+  margin: 10px;
+  padding: 3px;
+  border-radius: 5px;
+  gap: 5px;
 `;

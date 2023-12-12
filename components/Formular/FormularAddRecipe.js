@@ -1,36 +1,19 @@
 import { useState } from "react";
-import {
-  StyledForm,
-  StyledDiv,
-  StyledInput,
-  StyledInputandLabel,
-  StyledLabel,
-  StyledIngredientsSection,
-  StyledButton,
-  StyledDeleteIngredientButton,
-  StyledDivButton,
-  StyledDetailsItemIngredientFormularLi,
-} from "./FormularStyling.js";
-import FormularIngredients from "./FormularIngredients.js";
-import { StyledLink } from "../StyledLink.js";
-import {
-  StyledDetailsItemIngredientsUl,
-  StyledIngredientAmountUnit,
-  StyledSpan,
-} from "../StyledDetailsPage.js";
-import { StyledIngredientName } from "../StyledDetailsPage.js";
+import { StyledDiv } from "./FormularStyling";
+import { StyledForm } from "./FormularStyling";
+import { StyledLabel } from "./FormularStyling";
+import { StyledInputandLabel } from "./FormularStyling";
+import { StyledInput } from "./FormularStyling";
+import FormularIngredients from "./FormularIngredients";
+import { StyledIngredientsSection } from "./FormularStyling";
+import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage";
 import ImageUpload from "../ImageUpload/ImageUpload.js";
-
-export default function RecipeForm({ onSubmit, formName, defaultData }) {
-  const [imageUrl, setImageUrl] = useState(defaultData?.imageUrl || null);
-  const [ingredients, setIngredients] = useState(
-    defaultData?.ingredients || []
-  );
-  function handleAddUrl(url) {
-    setImageUrl(url);
-  }
-import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
-import ImageUpload from "../ImageUpload/ImageUpload.js";
+import { StyledDivButton } from "./FormularStyling";
+import { StyledLink } from "../StyledLink";
+import { StyledButton } from "./FormularStyling";
+import { StyledIngredientName } from "../StyledDetailsPage";
+import { StyledIngredientAmountUnit } from "../StyledDetailsPage";
+import { StyledDeleteIngredientButton } from "./FormularStyling";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
   const [image, setImage] = useState(defaultData?.image || null);
@@ -143,7 +126,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             rows="10"
             defaultValue={defaultData?.instruction}
           ></textarea>
-        </StyledInputandLabel>{" "}
+        </StyledInputandLabel>
       </StyledForm>
       <FormularIngredients onAddIngredient={handleAddIngredient} />
       <StyledIngredientsSection>
@@ -151,9 +134,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         <StyledDetailsItemIngredientsUl>
           {ingredients.map((ingredient) => {
             return (
-              <StyledDetailsItemIngredientFormularLi
-                key={ingredient.ingredientID}
-              >
+              <li key={ingredient.ingredientID}>
                 <StyledIngredientName>{ingredient.name}</StyledIngredientName>
                 <StyledIngredientAmountUnit>
                   {ingredient.amount}
@@ -176,8 +157,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                     </svg>
                   </span>
                 </StyledDeleteIngredientButton>
-              </StyledDetailsItemIngredientFormularLi>
-
+              </li>
             );
           })}
         </StyledDetailsItemIngredientsUl>

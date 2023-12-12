@@ -7,6 +7,8 @@ export const StyledLink = styled(Link)`
   padding: 5px;
   margin: 10px;
   text-decoration: none;
+  width: 30px;
+  border-radius: 5px;
 
   &:hover {
     background-color: var(--header-color);

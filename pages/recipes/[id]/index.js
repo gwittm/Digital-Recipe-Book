@@ -13,7 +13,6 @@ import {
   StyledPreparation,
   StyledSpan,
   StyledP,
-  ImageContainerDetailsPage,
   StyledIngredientName,
   StyledIngredientAmountUnit,
 } from "@/components/StyledDetailsPage.js";
@@ -27,9 +26,9 @@ import {
   StyledH4,
   StyledIngredientsItems,
 } from "@/components/StyledDetailsPage.js";
-import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 import SideBannerDetail from "@/components/SideBanner/SideBannerDetail";
 import ImageViewer from "@/components/ImageUpload/ImageViewer";
+import { ImageContainerDetailsPage } from "@/components/StyledDetailsPage.js";
 
 export default function DetailsPage() {
   const [showModal, setShowModal] = useState(false);
@@ -56,14 +55,16 @@ export default function DetailsPage() {
         <StyledHeader>
           <h2>{recipe.title}</h2>
         </StyledHeader>
-        <ImageViewer
-          image={recipe.image.imageUrl}
-          width={200}
-          height={200}
-          title={recipe.title}
-          alt={recipe.title}
-        />
-        <ImageContainerDetailsPage />
+
+        <ImageContainerDetailsPage>
+          <ImageViewer
+            image={recipe.image.imageUrl}
+            width={170}
+            height={170}
+            title={recipe.title}
+            alt={recipe.title}
+          />
+        </ImageContainerDetailsPage>
         <StyledItemsBox>
           <StyledDetailsItem>
             <StyledSpan>

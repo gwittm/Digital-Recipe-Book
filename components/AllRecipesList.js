@@ -4,7 +4,7 @@ import ImageViewer from "./ImageUpload/ImageViewer";
 
 export default function AllRecipesList({ recipes }) {
   return (
-    <StyledUl role="list">
+    <ul role="list">
       {recipes &&
         recipes.map((recipe) => (
           <LinkListItem key={recipe._id}>
@@ -24,32 +24,23 @@ export default function AllRecipesList({ recipes }) {
             </Link>
           </LinkListItem>
         ))}
-    </StyledUl>
+    </ul>
   );
 }
 
 const LinkListItem = styled.li`
   list-style: none;
-  padding-left: 0;
+  display: flex;
 `;
 
-const StyledUl = styled.ul``;
-
 const ListItem = styled.div`
+  height: 60px;
   background-color: var(--background-color);
   color: var(--title-color);
   border-radius: 5px;
   margin: 10px;
-  width: 50vw;
-  color: var(--header-color);
-  height: 60px;
-  border-radius: 5px;
-  margin: 10px;
-  padding: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 80vw;
 
   &:hover {
     background-color: var(--title-color);
@@ -62,8 +53,11 @@ const RecipeContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 60vw;
+  padding: 15px;
 `;
 
 const RecipeTitle = styled.div`
   margin: 10px; /* Adjust the margin as needed */
+  text-decoration: none;
 `;

@@ -27,6 +27,17 @@ const Button = styled.button`
 export const StyledDeleteButton = styled(Button)`
   background-color: transparent;
   border: none;
+  background-color: var(--background-color);
+  width: 80px;
+  padding: 5px;
+  margin: 10px;
+  text-decoration: none;
+  width: 30px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--header-color);
+  }
 `;
 
 export const StyledButtonYes = styled(Button)`
