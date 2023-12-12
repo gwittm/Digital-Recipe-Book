@@ -37,6 +37,7 @@ export default function EditPage() {
   return (
     <>
       <StyledH2AddandEdit id="edit-recipe">Edit Recipe</StyledH2AddandEdit>
+
       <RecipeForm
         onSubmit={editRecipe}
         formName={"edit-recipe"}

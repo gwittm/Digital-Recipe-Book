@@ -13,7 +13,7 @@ export default function AllRecipesList({ recipes }) {
                 <RecipeContent>
                   <RecipeTitle>{recipe.title}</RecipeTitle>
                   <ImageViewer
-                    imageUrl={recipe.imageUrl}
+                    image={recipe.image ? recipe.image.imageUrl : null}
                     alt={recipe.title}
                     width={40}
                     height={40}
@@ -30,6 +30,7 @@ export default function AllRecipesList({ recipes }) {
 
 const LinkListItem = styled.li`
   list-style: none;
+  padding-left: 0;
 `;
 
 const StyledUl = styled.ul``;
@@ -40,6 +41,15 @@ const ListItem = styled.div`
   border-radius: 5px;
   margin: 10px;
   width: 50vw;
+  color: var(--header-color);
+  height: 60px;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
 
   &:hover {
     background-color: var(--title-color);

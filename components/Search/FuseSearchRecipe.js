@@ -33,7 +33,7 @@ const StartingPageDiv = styled.div`
 
 const fuseOptions = {
   threshold: 0.3,
-  keys: ["title"],
+  keys: ["title", "ingredients.name"],
 };
 
 export default function FuseSearchRecipe() {

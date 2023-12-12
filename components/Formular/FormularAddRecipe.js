@@ -29,6 +29,19 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
   function handleAddUrl(url) {
     setImageUrl(url);
   }
+import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
+import ImageUpload from "../ImageUpload/ImageUpload.js";
+
+export default function RecipeForm({ onSubmit, formName, defaultData }) {
+  const [image, setImage] = useState(defaultData?.image || null);
+  const [ingredients, setIngredients] = useState(
+    defaultData?.ingredients || []
+  );
+
+  function handleAddImage(newImage) {
+    setImage(newImage);
+  }
+
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
   }
@@ -45,7 +58,8 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit({ ...data, ingredients, imageUrl });
+
+    onSubmit({ ...data, ingredients, image });
   }
 
   return (
@@ -67,8 +81,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         </StyledInputandLabel>
         <StyledInputandLabel>
           <StyledLabel htmlFor="preparation">
-            {" "}
-            Preparation:{" "}
+            Preparation:
             <select
               name="preparation"
               id="preparation"
@@ -89,6 +102,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
             Type:{" "}
             <select name="type" id="type" defaultValue={defaultData?.type}>
               <option value="none">none</option>
+
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
               <option value="Soup">Soup</option>
@@ -163,13 +177,14 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                   </span>
                 </StyledDeleteIngredientButton>
               </StyledDetailsItemIngredientFormularLi>
+
             );
           })}
         </StyledDetailsItemIngredientsUl>
       </StyledIngredientsSection>
       <ImageUpload
-        onAddUrl={handleAddUrl}
-        imageUrl={imageUrl}
+        onAddImage={handleAddImage}
+        image={image}
         title={defaultData?.title}
       />
       <StyledDivButton>

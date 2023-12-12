@@ -71,6 +71,7 @@ export const StyledButton = styled.button`
   height: 40px;
   font-size: 18px;
   border-radius: 5px;
+  align-items: center;
 
   ´ &:hover {
     background-color: var(--header-color);
