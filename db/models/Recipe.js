@@ -16,7 +16,7 @@ const recipeSchema = new Schema({
       unit: { type: String },
     },
   ],
-  instruction: { type: String },
+  instruction: { type: Object },
 });
 
 const Recipe = mongoose.models.Recipe || mongoose.model("Recipe", recipeSchema);

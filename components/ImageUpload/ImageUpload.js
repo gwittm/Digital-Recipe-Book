@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   StyledImageContainer,
   StyledInputSection,
@@ -7,15 +7,14 @@ import {
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 
-export default function ImageUpload({ imageUrl, onAddUrl, title }) {
+export default function ImageUpload({ onAddImage, title, image }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [preview, setPreview] = useState(imageUrl || null);
+  const [preview, setPreview] = useState(image || null);
 
   const uploadImage = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     const data = new FormData(event.target);
-
     try {
       const response = await fetch(`/api/upload`, {
         method: "POST",
@@ -24,13 +23,16 @@ export default function ImageUpload({ imageUrl, onAddUrl, title }) {
 
       if (response.ok) {
         const res = await response.json();
-        onAddUrl(res.imageUrl);
 
+        onAddImage(res);
+        setPreview(res);
         setIsLoading(false);
       } else {
+        console.error("Image upload failed. Response:", response);
         setIsLoading(false);
       }
     } catch (error) {
+      console.error("Error during image upload:", error);
       setIsLoading(false);
     }
   };
@@ -40,12 +42,28 @@ export default function ImageUpload({ imageUrl, onAddUrl, title }) {
     setPreview(URL.createObjectURL(file));
   };
 
-  const handleResetClick = () => {
-    setPreview(null);
-    const fileInput = document.getElementById("recipeImage");
-    if (fileInput) {
-      fileInput.value = "";
+  const handleResetClick = async () => {
+    try {
+      const response = await fetch(`/api/upload?id=${image.publicId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        await response.json();
+        onAddImage({ imageUrl: "", publicId: "" });
+        setPreview(null);
+      } else {
+        console.error("Image delete failed. Response:", response);
+      }
+    } catch (error) {
+      console.error("Error deleting image:", error);
     }
+  };
+  //new!!
+  const handleFormReset = (event) => {
+    event.preventDefault();
+    setPreview(null);
+    document.getElementById("recipeImage").value = "";
   };
 
   return (
@@ -53,14 +71,14 @@ export default function ImageUpload({ imageUrl, onAddUrl, title }) {
       <p>Upload an Image</p>
       {preview && (
         <ImageViewer
-          imageUrl={preview || imageUrl}
+          image={preview.imageUrl}
           alt={title}
           height={150}
           width={150}
           title={title}
         />
       )}
-      <form onSubmit={uploadImage}>
+      <form onSubmit={uploadImage} onReset={handleFormReset}>
         <StyledInputSection>
           <label htmlFor="recipeImage"></label>
           <input
@@ -79,7 +97,7 @@ export default function ImageUpload({ imageUrl, onAddUrl, title }) {
           >
             Upload now
           </StyledImageButtonResetUpload>
-          <StyledImageButtonResetUpload onClick={handleResetClick}>
+          <StyledImageButtonResetUpload type="reset" onClick={handleResetClick}>
             Reset
           </StyledImageButtonResetUpload>
         </StyledImageButtonDiv>

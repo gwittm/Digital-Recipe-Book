@@ -18,7 +18,7 @@ export const StyledDiv = styled.div`
   align-items: center;
   height: 100vh;
   margin: 0 auto;
-  padding-top: 50px;
+  padding-top: 300px;
   padding-bottom: 150px;
 `;
 
