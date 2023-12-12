@@ -33,8 +33,14 @@ const StyledInput = styled.input`
   position: fixed;
   padding: 10px;
   height: 7vh;
-  width: 40vw;
+  width: 270px;
+  margin-left: 40px;
+  margin-top: -30px;
   color: var(--title-color);
-  border: solid 3px var(--header-color);
+  border: solid 3px var(--title-color);
   border-radius: 50px;
+
+  &:active {
+    border: solid 3px var(--header-color);
+  }
 `;

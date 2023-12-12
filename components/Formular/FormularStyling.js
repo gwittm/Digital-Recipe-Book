@@ -7,7 +7,7 @@ export const StyledForm = styled.form`
   flex-direction: column;
   padding: 1 em;
   width: 100%;
-  max-width: 500px;
+  max-width: 300px;
 `;
 
 export const StyledDiv = styled.div`
@@ -50,13 +50,13 @@ export const StyledIngredientsSection = styled.section`
   gap: 5px;
   list-style-type: circle;
   padding-left: 15px;
-  width: 500px;
+  width: 300px;
 `;
 
 export const StyledIngredientInput = styled.div`
   display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 80px;
 `;
 
 export const StyledDivButton = styled.div`

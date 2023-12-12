@@ -4,33 +4,6 @@ import SearchBar from "./SearchBar";
 import styled from "styled-components";
 import Fuse from "fuse.js";
 
-const StyledUlBox = styled.div`
-  margin-top: 40px;
-`;
-
-const StyledH2 = styled.h2`
-  color: var(--title-color);
-  display: flex;
-  justify-content: center;
-`;
-
-const StyledFuseUl = styled.ul`
-  padding-left: 0px;
-`;
-
-const StyledLoadingMessage = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-`;
-const StartingPageDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const fuseOptions = {
   threshold: 0.3,
   keys: ["title", "ingredients.name"],
@@ -119,3 +92,22 @@ export default function FuseSearchRecipe() {
     </StartingPageDiv>
   );
 }
+
+const StyledUlBox = styled.div``;
+
+const StyledFuseUl = styled.ul`
+  padding-left: 0px;
+`;
+
+const StyledLoadingMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+`;
+const StartingPageDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
