@@ -11,9 +11,12 @@ export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
   const [isLoading, setIsLoading] = useState(false);
   const [preview, setPreview] = useState(image || null);
 
-  /*   useEffect(() => {
-    setPreview(imageUrl);
-  }, [imageUrl]); */
+  //new!!
+  const handleFormReset = (event) => {
+    event.preventDefault();
+    setPreview(null);
+    document.getElementById("recipeImage").value = ""; // Reset the input field value
+  };
 
   const uploadImage = async (event) => {
     event.preventDefault();
@@ -79,7 +82,7 @@ export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
           title={title}
         />
       )}
-      <form onSubmit={uploadImage}>
+      <form onSubmit={uploadImage} onReset={handleFormReset}>
         <StyledInputSection>
           <label htmlFor="recipeImage"></label>
           <input
@@ -98,7 +101,7 @@ export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
           >
             Upload now
           </StyledImageButtonResetUpload>
-          <StyledImageButtonResetUpload onClick={handleResetClick}>
+          <StyledImageButtonResetUpload type="reset" onClick={handleResetClick}>
             Reset
           </StyledImageButtonResetUpload>
         </StyledImageButtonDiv>
