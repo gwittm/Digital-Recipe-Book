@@ -1,6 +1,5 @@
 import { StyledNavLink, StyledNav, StyledNavDiv } from "./StyledNavBar";
 import { useState } from "react";
-import { FaHeart } from "react-icons/fa";
 export default function NavBar() {
   const [isHomeActive, setIsHomeActive] = useState(true);
   const [isNewRecipeActive, setIsNewRecipeActive] = useState(false);
