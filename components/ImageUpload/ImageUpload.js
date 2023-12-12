@@ -9,11 +9,11 @@ import ImageViewer from "./ImageViewer";
 
 export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [preview, setPreview] = useState(image.imageUrl || null);
+  const [preview, setPreview] = useState(image || null);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     setPreview(imageUrl);
-  }, [imageUrl]);
+  }, [imageUrl]); */
 
   const uploadImage = async (event) => {
     event.preventDefault();
@@ -30,8 +30,8 @@ export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
         const res = await response.json();
         console.log("Image upload successful. Image URL:", res.imageUrl);
 
-        onAddImage({ imageUrl: res.imageUrl, publicId: res.publicId });
-        setPreview(res.image.imageUrl);
+        onAddImage(res);
+        setPreview(res);
         setIsLoading(false);
       } else {
         console.error("Image upload failed. Response:", response);
@@ -42,30 +42,28 @@ export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
       setIsLoading(false);
     }
   };
-
+  console.log("Image-Log:", image);
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     setPreview(URL.createObjectURL(file));
   };
 
   const handleResetClick = async () => {
-    if (preview) {
-      try {
-        const response = await fetch(`/api/upload?id=${preview.publicId}`, {
-          method: "DELETE",
-        });
+    try {
+      const response = await fetch(`/api/upload?id=${image.publicId}`, {
+        method: "DELETE",
+      });
 
-        if (response.ok) {
-          console.log("Image delete successful.");
-          await response.json();
-          onAddImage({ imageUrl: "", publicId: "" });
-          setPreview(null);
-        } else {
-          console.error("Image delete failed. Response:", response);
-        }
-      } catch (error) {
-        console.error("Error deleting image:", error);
+      if (response.ok) {
+        console.log("Image delete successful.");
+        await response.json();
+        onAddImage({ imageUrl: "", publicId: "" });
+        setPreview(null);
+      } else {
+        console.error("Image delete failed. Response:", response);
       }
+    } catch (error) {
+      console.error("Error deleting image:", error);
     }
   };
 
@@ -74,7 +72,7 @@ export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
       <p>Upload an Image</p>
       {preview && (
         <ImageViewer
-          image={preview}
+          image={preview.imageUrl}
           alt={title}
           height={150}
           width={150}
