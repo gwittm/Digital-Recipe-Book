@@ -7,9 +7,9 @@ import {
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 
-export default function ImageUpload({ imageUrl, onAddImage, title }) {
+export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [preview, setPreview] = useState(imageUrl || null);
+  const [preview, setPreview] = useState(image.imageUrl || null);
 
   useEffect(() => {
     setPreview(imageUrl);
@@ -31,7 +31,7 @@ export default function ImageUpload({ imageUrl, onAddImage, title }) {
         console.log("Image upload successful. Image URL:", res.imageUrl);
 
         onAddImage({ imageUrl: res.imageUrl, publicId: res.publicId });
-        setPreview(res.imageUrl);
+        setPreview(res.image.imageUrl);
         setIsLoading(false);
       } else {
         console.error("Image upload failed. Response:", response);
