@@ -7,22 +7,14 @@ import {
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 
-export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
+export default function ImageUpload({ onAddImage, title, image }) {
   const [isLoading, setIsLoading] = useState(false);
   const [preview, setPreview] = useState(image || null);
-
-  //new!!
-  const handleFormReset = (event) => {
-    event.preventDefault();
-    setPreview(null);
-    document.getElementById("recipeImage").value = ""; // Reset the input field value
-  };
 
   const uploadImage = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     const data = new FormData(event.target);
-
     try {
       const response = await fetch(`/api/upload`, {
         method: "POST",
@@ -31,7 +23,6 @@ export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
 
       if (response.ok) {
         const res = await response.json();
-        console.log("Image upload successful. Image URL:", res.imageUrl);
 
         onAddImage(res);
         setPreview(res);
@@ -45,7 +36,7 @@ export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
       setIsLoading(false);
     }
   };
-  console.log("Image-Log:", image);
+
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     setPreview(URL.createObjectURL(file));
@@ -58,7 +49,6 @@ export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
       });
 
       if (response.ok) {
-        console.log("Image delete successful.");
         await response.json();
         onAddImage({ imageUrl: "", publicId: "" });
         setPreview(null);
@@ -68,6 +58,12 @@ export default function ImageUpload({ imageUrl, onAddImage, title, image }) {
     } catch (error) {
       console.error("Error deleting image:", error);
     }
+  };
+  //new!!
+  const handleFormReset = (event) => {
+    event.preventDefault();
+    setPreview(null);
+    document.getElementById("recipeImage").value = "";
   };
 
   return (

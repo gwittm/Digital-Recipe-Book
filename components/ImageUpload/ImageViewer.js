@@ -3,7 +3,6 @@ import Image from "next/image";
 import { StyledImageContainer } from "./StyledImageUpload";
 
 export default function ImageViewer({ image, width, height, title }) {
-  console.log("ImageViewerViewer - Image URL:", image);
   return (
     <StyledImageContainer>
       {image ? (
