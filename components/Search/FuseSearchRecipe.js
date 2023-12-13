@@ -97,6 +97,7 @@ const StyledUlBox = styled.div``;
 
 const StyledFuseUl = styled.ul`
   padding-left: 0px;
+  padding-top: 40px;
 `;
 
 const StyledLoadingMessage = styled.div`
@@ -104,7 +105,8 @@ const StyledLoadingMessage = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 30px;
+  padding: 60px;
+  padding-left: 90px;
 `;
 const StartingPageDiv = styled.div`
   display: flex;

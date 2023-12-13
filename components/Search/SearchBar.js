@@ -14,7 +14,7 @@ export default function SearchBar({ handleSearch }) {
         size="10"
         placeholder="Search from all your recipes"
         onChange={handleSearch}
-      />
+      ></StyledInput>
     </StyledForm>
   );
 }
@@ -27,8 +27,9 @@ const StyledForm = styled.form`
   width: 270px;
   height: 12vh;
   position: fixed;
-  margin-top: -40px;
   margin-left: 35px;
+  margin-top: -20px;
+  padding-bottom: 20px;
 `;
 
 const StyledLabel = styled.label`
@@ -41,6 +42,7 @@ const StyledInput = styled.input`
   height: 7vh;
   width: 230px;
   margin-left: 10px;
+  margin-top: 12px;
   color: var(--title-color);
   border: solid 3px var(--title-color);
   border-radius: 50px;

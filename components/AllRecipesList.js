@@ -60,4 +60,5 @@ const RecipeContent = styled.div`
 const RecipeTitle = styled.div`
   margin: 10px; /* Adjust the margin as needed */
   text-decoration: none;
+  overflow-wrap: wrap;
 `;

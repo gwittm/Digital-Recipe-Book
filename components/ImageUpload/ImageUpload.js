@@ -6,6 +6,8 @@ import {
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 import { StyledImageContainer } from "./StyledImageUpload";
+import { StyledInputImageUpload } from "./StyledImageUpload";
+import { StyledLabelImageUpload } from "./StyledImageUpload";
 
 export default function ImageUpload({ onAddImage, title, image }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +41,8 @@ export default function ImageUpload({ onAddImage, title, image }) {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    setPreview(URL.createObjectURL(file));
+    /*     setPreview(URL.createObjectURL(file));
+     */ setPreview({ imageUrl: URL.createObjectURL(file) });
   };
 
   const handleResetClick = async () => {
@@ -80,8 +83,10 @@ export default function ImageUpload({ onAddImage, title, image }) {
       )}
       <form onSubmit={uploadImage} onReset={handleFormReset}>
         <StyledInputSection>
-          <label htmlFor="recipeImage"></label>
-          <input
+          <StyledLabelImageUpload htmlFor="recipeImage">
+            Browse Images
+          </StyledLabelImageUpload>{" "}
+          <StyledInputImageUpload
             id="recipeImage"
             name="recipeImage"
             type="file"

@@ -48,15 +48,12 @@ export default function SideBannerHome() {
 
 const StyledSideBanner = styled.div`
   position: fixed;
-  height: 500px;
+  height: 30rem;
   width: 70px;
-  /*   background-color: var(--darkbackground-color);
- */
 `;
 
 const StyledImageSidebar = styled(Image)`
   object-fit: cover;
-  /*   height: auto; */
   height: 110%;
   width: 60px;
   padding: 2px;

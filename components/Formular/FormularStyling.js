@@ -101,3 +101,7 @@ export const StyledDetailsItemIngredientFormularLi = styled.li`
   flex-direction: row;
   justify-content: space-between;
 `;
+
+export const StyledSpanFormular = styled.span`
+  display: flex;
+`;

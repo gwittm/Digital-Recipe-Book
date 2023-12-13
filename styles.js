@@ -20,7 +20,7 @@ export default createGlobalStyle`
   }
 
   body {
-    margin: 80px auto;
+    margin: 60px auto;
     font-family: system-ui;
 
   }
