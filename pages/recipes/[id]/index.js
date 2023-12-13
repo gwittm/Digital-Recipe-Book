@@ -1,5 +1,5 @@
 import { Modal } from "@/components/Modal/index.js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { StyledLink } from "@/components/StyledLink";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
@@ -21,22 +21,16 @@ import FavoriteButton from "@/components/FavoriteButton";
 
 export default function DetailsPage() {
   const [showModal, setShowModal] = useState(false);
-  const [localRecipe, setLocalRecipe] = useState(null);
 
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
   const {
     data: recipe,
-    isValidating,
+    isLoading,
     error,
+    mutate,
   } = useSWR(id ? `/api/recipes/${id}` : null);
-
-  useEffect(() => {
-    if (recipe) {
-      setLocalRecipe(recipe);
-    }
-  }, [recipe]);
 
   async function handleToggleFavorite(newStatus) {
     await fetch(`/api/recipes/${id}`, {
@@ -46,9 +40,7 @@ export default function DetailsPage() {
       },
       body: JSON.stringify({ isFavorite: newStatus }),
     });
-    if (localRecipe) {
-      setLocalRecipe({ ...localRecipe, isFavorite: newStatus });
-    }
+    mutate();
   }
 
   async function deleteRecipe() {
@@ -59,7 +51,7 @@ export default function DetailsPage() {
     router.push("/");
   }
 
-  if (isValidating) return <h2>Loading...</h2>;
+  if (isLoading) return <h2>Loading...</h2>;
   if (error || !isReady) return <h2>An error occured...</h2>;
   return (
     <StyledDetailsPageContainer>
@@ -67,7 +59,7 @@ export default function DetailsPage() {
         <h2>{recipe.title}</h2>
       </StyledHeader>
       <FavoriteButton
-        isFavorite={localRecipe?.isFavorite}
+        isFavorite={recipe?.isFavorite}
         onToggleFavorite={handleToggleFavorite}
       />
       <StyledItemsRow>
