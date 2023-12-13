@@ -38,3 +38,19 @@ export const StyledImageButtonResetUpload = styled.button`
 export const StyledImage = styled(Image)`
   border-radius: 900px;
 `;
+export const StyledInputImageUpload = styled.input`
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+  z-index: -1;
+`;
+
+export const StyledLabelImageUpload = styled.label`
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--title-color);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+`;

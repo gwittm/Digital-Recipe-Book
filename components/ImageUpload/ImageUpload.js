@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   StyledImageContainer,
   StyledInputSection,
   StyledImageButtonDiv,
   StyledImageButtonResetUpload,
+  StyledLabelImageUpload,
+  StyledInputImageUpload,
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 
@@ -39,8 +41,7 @@ export default function ImageUpload({ onAddImage, title, image }) {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    /*     setPreview(URL.createObjectURL(file));
-     */ setPreview({ imageUrl: URL.createObjectURL(file) });
+    setPreview({ imageUrl: URL.createObjectURL(file) });
   };
 
   const handleResetClick = async () => {
@@ -60,7 +61,6 @@ export default function ImageUpload({ onAddImage, title, image }) {
       console.error("Error deleting image:", error);
     }
   };
-  //new!!
   const handleFormReset = (event) => {
     event.preventDefault();
     setPreview(null);
@@ -81,8 +81,10 @@ export default function ImageUpload({ onAddImage, title, image }) {
       )}
       <form onSubmit={uploadImage} onReset={handleFormReset}>
         <StyledInputSection>
-          <label htmlFor="recipeImage"></label>
-          <input
+          <StyledLabelImageUpload htmlFor="recipeImage">
+            Browse Image
+          </StyledLabelImageUpload>
+          <StyledInputImageUpload
             id="recipeImage"
             name="recipeImage"
             type="file"
