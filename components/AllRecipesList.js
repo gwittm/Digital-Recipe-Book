@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
 import FavoriteButton from "./FavoriteButton";
-import { useRouter } from "next/router";
-import useSWR from "swr";
 import Link from "next/link";
 
 export default function AllRecipesList({ recipes, mutate }) {
@@ -26,9 +24,6 @@ export default function AllRecipesList({ recipes, mutate }) {
     }
   }
 
-  // if (error) return <div>Error loading recipe</div>;
-  // if (!recipe) return <div>Loading recipe details...</div>;
-
   return (
     <ul role="list">
       {recipes &&
@@ -49,42 +44,9 @@ export default function AllRecipesList({ recipes, mutate }) {
           </LinkListItem>
         ))}
     </ul>
-
-    // <StyledUl role="list">
-    //   <ListItem>
-    //     <div>
-    //       {recipe.title}{" "}
-
-    //     </div>
-    //   </ListItem>
-    // </StyledUl>
   );
 }
 
-// const StyledUl = styled.ul`
-//   list-style: none;
-//   display: flex;
-//   flex-direction: column;
-//   padding-left: 0;
-// `;
-
-// const ListItem = styled.li`
-//   background-color: var(
-//     --background-color
-//   ); /* Make sure to define these CSS variables */
-//   color: var(--header-color);
-//   height: 40px;
-//   border-radius: 5px;
-//   margin: 10px;
-//   padding: 10px;
-
-//   &:hover {
-//     background-color: var(--title-color);
-//     color: white;
-//     cursor: pointer;
-//   }
-// `;
-// new
 const LinkListItem = styled.li`
   list-style: none;
   display: flex;

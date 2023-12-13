@@ -1,7 +1,4 @@
-import { useState, useEffect } from "react";
-
 import styled from "styled-components";
-
 import AllRecipesList from "@/components/AllRecipesList";
 import useSWR from "swr";
 
@@ -19,27 +16,6 @@ export default function FavoriteRecipes() {
   const { data: recipes, isLoading, error, mutate } = useSWR("/api/recipes");
 
   const favoriteRecipes = recipes.filter((recipe) => recipe.isFavorite);
-
-  // useEffect(() => {
-  //   async function getRecipes() {
-  //     setError(null);
-  //     setIsLoading(true);
-
-  //     try {
-  //       const response = await fetch(`/api/recipes`);
-  //       const fetchedRecipes = await response.json();
-  //       const favoriteRecipes = fetchedRecipes.filter(
-  //         (recipe) => recipe.isFavorite
-  //       );
-  //       setRecipes(favoriteRecipes);
-  //     } catch (fetchError) {
-  //       setError(fetchError);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   }
-  //   getRecipes();
-  // }, []);
 
   if (isLoading)
     return (
