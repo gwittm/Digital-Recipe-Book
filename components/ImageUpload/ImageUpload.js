@@ -39,7 +39,8 @@ export default function ImageUpload({ onAddImage, title, image }) {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    setPreview(URL.createObjectURL(file));
+    /*     setPreview(URL.createObjectURL(file));
+     */ setPreview({ imageUrl: URL.createObjectURL(file) });
   };
 
   const handleResetClick = async () => {
