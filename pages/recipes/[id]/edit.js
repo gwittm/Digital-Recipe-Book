@@ -1,13 +1,16 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import { StyledLink } from "@/components/StyledLink";
 import RecipeForm from "@/components/Formular/FormularAddRecipe";
 
 export default function EditPage() {
   const router = useRouter();
   const { id } = router.query;
-  const { data: recipe, isLoading, error, } = useSWR(id ?`/api/recipes/${id}` : null);
-  
+  const {
+    data: recipe,
+    isLoading,
+    error,
+  } = useSWR(id ? `/api/recipes/${id}` : null);
+
   async function editRecipe(updatedRecipe) {
     try {
       const response = await fetch(`/api/recipes/${id}`, {
@@ -17,7 +20,7 @@ export default function EditPage() {
         },
         body: JSON.stringify(updatedRecipe),
       });
-     
+
       if (response.ok) {
         router.push(`/recipes/${id}`);
       } else {
@@ -33,7 +36,6 @@ export default function EditPage() {
   return (
     <>
       <h2 id="edit-recipe">Edit Recipe</h2>
-      
       <RecipeForm
         onSubmit={editRecipe}
         formName={"edit-recipe"}

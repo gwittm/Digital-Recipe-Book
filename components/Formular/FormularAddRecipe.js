@@ -11,10 +11,17 @@ import {
 import FormularIngredients from "./FormularIngredients.js";
 import { StyledLink } from "../StyledLink.js";
 import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
+import ImageUpload from "../ImageUpload/ImageUpload.js";
 
 export default function RecipeForm({ onSubmit, formName, defaultData }) {
-  const [ingredients, setIngredients] = useState(defaultData?.ingredients || []
+  const [image, setImage] = useState(defaultData?.image || null);
+  const [ingredients, setIngredients] = useState(
+    defaultData?.ingredients || []
   );
+
+  function handleAddImage(newImage) {
+    setImage(newImage);
+  }
 
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
@@ -32,7 +39,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit({ ...data, ingredients });
+    onSubmit({ ...data, ingredients, image });
   }
 
   return (
@@ -41,6 +48,7 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         aria-labelledby={formName}
         id="recipeForm"
         onSubmit={handleSubmit}
+        encType="multipart/form-data"
       >
         <StyledInput>
           <label htmlFor="title">Title: </label>
@@ -53,9 +61,14 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         </StyledInput>
 
         <StyledInput>
-          <label htmlFor="preparation"> Preparation:{" "}
-            <select name="preparation" id="preparation" defaultValue={defaultData?.preparation}>
-            <option value="none">none</option>
+          <label htmlFor="preparation">
+            Preparation:{" "}
+            <select
+              name="preparation"
+              id="preparation"
+              defaultValue={defaultData?.preparation}
+            >
+              <option value="none">none</option>
               <option value="Microwave">Microwave</option>
               <option value="Oven">Oven</option>
               <option value="Stove">Stove</option>
@@ -66,10 +79,9 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         </StyledInput>
 
         <StyledInput>
-
-            <label htmlFor="type"> Type:{" "}
-            <select name="type" id="type" defaultValue={defaultData?.type} >
-            <option value="none">none</option>
+          <label htmlFor="type">
+            Type:{" "}
+            <select name="type" id="type" defaultValue={defaultData?.type}>
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
               <option value="Soup">Soup</option>
@@ -127,7 +139,6 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                     handleDeleteIngredient(ingredient.ingredientID)
                   }
                 >
-
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -138,25 +149,25 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
                       <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
                     </svg>
                   </span>
-
                 </StyledDeleteIngredientButton>
-               
               </li>
             );
           })}
         </StyledDetailsItemIngredientsUl>
       </StyledIngredientsSection>
-
-<StyledDivButton>
-  
- <StyledLink $justifySelf="start" href={"/"}>
-      back without changes
-      </StyledLink>
-      <StyledButton type="submit" form="recipeForm">
-      {defaultData ? "Update Recipe" : "Add Recipe"}
-      </StyledButton>
-    </StyledDivButton>
-      
+      <ImageUpload
+        onAddImage={handleAddImage}
+        image={image}
+        title={defaultData?.title}
+      />
+      <StyledDivButton>
+        <StyledLink $justifySelf="start" href={"/"}>
+          back without changes
+        </StyledLink>
+        <StyledButton type="submit" form="recipeForm">
+          {defaultData ? "Update Recipe" : "Add Recipe"}
+        </StyledButton>
+      </StyledDivButton>
     </StyledDiv>
   );
 }
