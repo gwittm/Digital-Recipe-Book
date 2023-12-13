@@ -31,6 +31,7 @@ export default function SideBannerDetail() {
 const StyledSideBanner = styled.div`
   position: fixed;
   left: 0;
+  padding-top: -20px;
   height: 85vh;
   width: 180px;
   background-color: var(--darkbackground-color);

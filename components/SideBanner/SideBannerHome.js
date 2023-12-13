@@ -11,7 +11,7 @@ export default function SideBannerHome() {
           width={400}
           height={400}
         />
-        <StyledImageSidebar
+        {/*   <StyledImageSidebar
           src="/Banner.jpg"
           alt="Image Side Banner"
           width={400}
@@ -22,7 +22,7 @@ export default function SideBannerHome() {
           alt="Image Side Banner"
           width={400}
           height={400}
-        />
+        /> */}
         {/* <StyledImageSidebar
           src="/nadine-primeau--ftWfohtjNw-unsplash.jpg"
           alt="Image Side Banner"
@@ -56,8 +56,10 @@ const StyledSideBanner = styled.div`
 
 const StyledImageSidebar = styled(Image)`
   object-fit: cover;
-  height: auto;
+  /*   height: auto; */
+  height: 110%;
   width: 60px;
   padding: 2px;
   border-radius: 10px;
+  padding-top: -100px;
 `;

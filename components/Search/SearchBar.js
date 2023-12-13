@@ -23,6 +23,12 @@ const StyledForm = styled.form`
   display: flex;
   justify-content: center;
   padding: 10px;
+  background-color: white;
+  width: 270px;
+  height: 12vh;
+  position: fixed;
+  margin-top: -40px;
+  margin-left: 35px;
 `;
 
 const StyledLabel = styled.label`
@@ -33,9 +39,8 @@ const StyledInput = styled.input`
   position: fixed;
   padding: 10px;
   height: 7vh;
-  width: 270px;
-  margin-left: 40px;
-  margin-top: -30px;
+  width: 230px;
+  margin-left: 10px;
   color: var(--title-color);
   border: solid 3px var(--title-color);
   border-radius: 50px;
