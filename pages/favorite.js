@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import AllRecipesList from "@/components/AllRecipesList";
+import useSWR from "swr";
 
 const StyledUlBox = styled.div`
   padding-left: 0;
@@ -15,30 +16,30 @@ const StyledH2 = styled.h2`
 `;
 
 export default function FavoriteRecipes() {
-  const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { data: recipes, isLoading, error, mutate } = useSWR("/api/recipes");
 
-  useEffect(() => {
-    async function getRecipes() {
-      setError(null);
-      setIsLoading(true);
+  const favoriteRecipes = recipes.filter((recipe) => recipe.isFavorite);
 
-      try {
-        const response = await fetch(`/api/recipes`);
-        const fetchedRecipes = await response.json();
-        const favoriteRecipes = fetchedRecipes.filter(
-          (recipe) => recipe.isFavorite
-        );
-        setRecipes(favoriteRecipes);
-      } catch (fetchError) {
-        setError(fetchError);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getRecipes();
-  }, []);
+  // useEffect(() => {
+  //   async function getRecipes() {
+  //     setError(null);
+  //     setIsLoading(true);
+
+  //     try {
+  //       const response = await fetch(`/api/recipes`);
+  //       const fetchedRecipes = await response.json();
+  //       const favoriteRecipes = fetchedRecipes.filter(
+  //         (recipe) => recipe.isFavorite
+  //       );
+  //       setRecipes(favoriteRecipes);
+  //     } catch (fetchError) {
+  //       setError(fetchError);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+  //   getRecipes();
+  // }, []);
 
   if (isLoading)
     return (
@@ -62,7 +63,7 @@ export default function FavoriteRecipes() {
       </h2>
     );
 
-  const alphabeticallySortedRecipes = recipes.sort((a, b) => {
+  const alphabeticallySortedRecipes = favoriteRecipes.toSorted((a, b) => {
     if (a.title < b.title) {
       return -1;
     }
@@ -77,7 +78,11 @@ export default function FavoriteRecipes() {
         <StyledH2>My favorite recipes</StyledH2>
         <ul>
           {alphabeticallySortedRecipes.map((recipe) => (
-            <AllRecipesList key={recipe._id} recipes={[recipe]} />
+            <AllRecipesList
+              key={recipe._id}
+              recipes={[recipe]}
+              mutate={mutate}
+            />
           ))}
         </ul>
       </StyledUlBox>

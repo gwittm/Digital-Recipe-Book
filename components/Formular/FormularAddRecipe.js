@@ -32,9 +32,8 @@ export default function RecipeForm({ onSubmit, defaultData }) {
     setIngredients(updatedIngredients);
     ingredient.focus();
   }
-  function handleFavoriteToggle(event) {
-    event.preventDefault();
-    setIsFavorite(!isFavorite);
+  function handleToggleFavorite(newStatus) {
+    setIsFavorite(newStatus);
   }
   function handleSubmit(event) {
     event.preventDefault();
@@ -55,7 +54,7 @@ export default function RecipeForm({ onSubmit, defaultData }) {
       >
         <FavoriteButton
           isFavorite={isFavorite}
-          toggleFavorite={handleFavoriteToggle}
+          onToggleFavorite={handleToggleFavorite}
         />
         <StyledInput>
           <label htmlFor="title">Title: </label>

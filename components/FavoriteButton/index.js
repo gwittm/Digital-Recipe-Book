@@ -1,9 +1,10 @@
-export default function FavoriteButton({ isFavorite, toggleFavorite }) {
+export default function FavoriteButton({ id, isFavorite, onToggleFavorite }) {
   return (
     <button
-      onClick={toggleFavorite}
+      onClick={() => onToggleFavorite(!isFavorite, id)}
       aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
       aria-pressed={isFavorite}
+      type="button"
     >
       {isFavorite ? (
         <svg

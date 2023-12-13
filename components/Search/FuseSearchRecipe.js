@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 import styled from "styled-components";
 import Fuse from "fuse.js";
+import useSWR from "swr";
 
 const StyledUlBox = styled.div`
   padding-left: 0;
@@ -27,29 +28,40 @@ export default function FuseSearchRecipe() {
   const [results, setResults] = useState([]);
   const [fuse, setFuse] = useState(null);
   const [isFuseActive, setIsFuseActive] = useState(false);
-  const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [recipes, setRecipes] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState(null);
 
-  useEffect(() => {
-    async function getRecipes() {
-      setError(null);
-      setIsLoading(true);
+  const {
+    data: recipes,
+    isLoading,
+    error,
+    mutate,
+  } = useSWR("/api/recipes", {
+    onSuccess: (fetchedRecipes) => {
+      setFuse(new Fuse(fetchedRecipes, fuseOptions));
+    },
+  });
 
-      try {
-        const response = await fetch(`/api/recipes`);
-        const fetchedRecipes = await response.json();
+  // async function getRecipes() {
+  //   setError(null);
+  //   setIsLoading(true);
 
-        setRecipes(fetchedRecipes);
-        setFuse(new Fuse(fetchedRecipes, fuseOptions));
-      } catch (fetchError) {
-        setError(fetchError);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getRecipes();
-  }, []);
+  //   try {
+  //     const response = await fetch(`/api/recipes`);
+  //     const fetchedRecipes = await response.json();
+
+  //     setRecipes(fetchedRecipes);
+  //     setFuse(new Fuse(fetchedRecipes, fuseOptions));
+  //   } catch (fetchError) {
+  //     setError(fetchError);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // }
+  // useEffect(() => {
+  //   getRecipes();
+  // }, []);
 
   // Search logic
   function handleSearch(event) {
@@ -96,10 +108,18 @@ export default function FuseSearchRecipe() {
         <StyledFuseUl>
           {!isFuseActive &&
             alphabeticallySortedRecipes.map((recipe) => (
-              <AllRecipesList key={recipe._id} recipes={[recipe]} />
+              <AllRecipesList
+                key={recipe._id}
+                recipes={[recipe]}
+                mutate={mutate}
+              />
             ))}
           {results.map((recipe) => (
-            <AllRecipesList key={recipe.item._id} recipes={[recipe.item]} />
+            <AllRecipesList
+              key={recipe.item._id}
+              recipes={[recipe.item]}
+              mutate={mutate}
+            />
           ))}
         </StyledFuseUl>
         {isFuseActive && results.length === 0 && <p>No matching recipes :( </p>}
