@@ -6,22 +6,15 @@ import { toast } from 'react-toastify';
 
 export default function CreateRecipePage() {
   const router = useRouter();
+
   async function addRecipe(recipe) {
-
-    if (!recipe.title || !recipe.ingredients) {
-      
-      toast.error(`Please fill out the fields with "*"`);
-      return;
-    }
-
-    try {
-      const response = await fetch("/api/recipes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(recipe),
-      });
+    const response = await fetch("/api/recipes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(recipe),
+    });
 
       if (response.ok) {
         toast.success("Recipe created successfully");

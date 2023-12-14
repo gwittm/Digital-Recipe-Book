@@ -41,18 +41,14 @@ export const StyledDivButton = styled.div`
   align-items: center;
 `;
 
-
 export const StyledButton = styled.button`
   background-color: var(--title-color);
   color: white;
-  /* width: 480px; */
   margin: 10px;
   height: 40px;
   font-size: 18px;
   border-radius: 5px;
   align-items: center;
-  /* align-items: center; */
-  
 
   &:hover {
     background-color: var(--header-color);
