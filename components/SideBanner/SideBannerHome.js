@@ -6,7 +6,7 @@ export default function SideBannerHome() {
     <>
       <StyledSideBanner>
         <StyledImageSidebar
-          src="/Banner.jpg"
+          src="/Anime_Pastel_Dream_In_the_corner_of_a_quaint_kitchen_a_welllov_0.jpeg"
           alt="Image Side Banner"
           width={400}
           height={400}

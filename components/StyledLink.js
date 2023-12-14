@@ -26,3 +26,21 @@ export const StyledLink = styled(Link)`
       text-align: center;
     `}
 `;
+
+export const StyledLinkRecipeBack = styled(Link)`
+  background-color: var(--darkbackground-color);
+  color: var(--title-color);
+  border: 1px solid var(--title-color);
+  padding: 3px;
+  width: 150px;
+  margin: 10px;
+  height: 40px;
+  font-size: 12px;
+  border-radius: 5px;
+
+  text-decoration: none;
+
+  ´ &:hover {
+    background-color: var(--header-color);
+  }
+`;

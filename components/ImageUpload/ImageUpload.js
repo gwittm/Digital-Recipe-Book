@@ -3,11 +3,13 @@ import {
   StyledInputSection,
   StyledImageButtonDiv,
   StyledImageButtonResetUpload,
+  StyledFormImageUpload,
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
 import { StyledImageContainer } from "./StyledImageUpload";
 import { StyledInputImageUpload } from "./StyledImageUpload";
 import { StyledLabelImageUpload } from "./StyledImageUpload";
+import { StyledPSubtitle } from "../Formular/FormularIngredients";
 
 export default function ImageUpload({ onAddImage, title, image }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,8 +43,7 @@ export default function ImageUpload({ onAddImage, title, image }) {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    /*     setPreview(URL.createObjectURL(file));
-     */ setPreview({ imageUrl: URL.createObjectURL(file) });
+    setPreview({ imageUrl: URL.createObjectURL(file) });
   };
 
   const handleResetClick = async () => {
@@ -62,7 +63,7 @@ export default function ImageUpload({ onAddImage, title, image }) {
       console.error("Error deleting image:", error);
     }
   };
-  //new!!
+
   const handleFormReset = (event) => {
     event.preventDefault();
     setPreview(null);
@@ -71,7 +72,19 @@ export default function ImageUpload({ onAddImage, title, image }) {
 
   return (
     <StyledImageContainer>
-      <p>Upload an Image</p>
+      <StyledPSubtitle>
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height={25}
+            width={25}
+            viewBox="0 0 512 512"
+          >
+            <path d="M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z" />
+          </svg>
+        </span>{" "}
+        Upload an Image
+      </StyledPSubtitle>
       {preview && (
         <ImageViewer
           image={preview.imageUrl}
@@ -81,7 +94,7 @@ export default function ImageUpload({ onAddImage, title, image }) {
           title={title}
         />
       )}
-      <form onSubmit={uploadImage} onReset={handleFormReset}>
+      <StyledFormImageUpload onSubmit={uploadImage} onReset={handleFormReset}>
         <StyledInputSection>
           <StyledLabelImageUpload htmlFor="recipeImage">
             Browse Images
@@ -106,10 +119,10 @@ export default function ImageUpload({ onAddImage, title, image }) {
             Reset
           </StyledImageButtonResetUpload>
         </StyledImageButtonDiv>
-      </form>
+      </StyledFormImageUpload>
 
-      {isLoading && <span>Loading, please wait...</span>}
-      {!isLoading && <span>Loading completed</span>}
+      {isLoading && <StyledPSubtitle>Loading, please wait...</StyledPSubtitle>}
+      {!isLoading && <StyledPSubtitle>Loading completed</StyledPSubtitle>}
     </StyledImageContainer>
   );
 }

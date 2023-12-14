@@ -2,31 +2,29 @@ import styled from "styled-components";
 import Image from "next/image";
 
 export const StyledInputSection = styled.div`
-  gap: 5px;
   display: flex;
-`;
-
-export const StyledPreviewDiv = styled.div`
-  width: 200px;
-  height: 200px;
-  border: dotted 1px;
 `;
 
 export const StyledImageButtonDiv = styled.div`
+  width: 230px;
+  height: 60px;
+  padding-top: 10px;
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
 `;
 
 export const StyledImageButtonResetUpload = styled.button`
-  border: solid 1px black;
+  border: solid 1px var(--header-color);
   border-radius: 5px;
-  margin: 10px;
-  padding: 10px;
+  width: 100px;
+  margin-top: 10px;
+  cursor: pointer;
 `;
 
 export const StyledImage = styled(Image)`
   border-radius: 900px;
 `;
+
 export const StyledImageContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -36,6 +34,7 @@ export const StyledImageContainer = styled.section`
   padding: 3px;
   border-radius: 5px;
   gap: 5px;
+  width: 280px;
 `;
 
 export const StyledInputImageUpload = styled.input`
@@ -48,9 +47,22 @@ export const StyledInputImageUpload = styled.input`
 
 export const StyledLabelImageUpload = styled.label`
   display: inline-block;
-  padding: 10px 20px;
-  background-color: var(--title-color);
-  color: white;
+  padding: 10px 55px;
+  border: 1px solid var(--header-color);
+  color: var(--title-color);
   border-radius: 5px;
   cursor: pointer;
+  width: 230px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: white;
+    background-color: var(--title-color);
+  }
+`;
+
+export const StyledFormImageUpload = styled.form`
+  padding-left: 20px;
 `;

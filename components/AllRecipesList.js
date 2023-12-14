@@ -8,7 +8,7 @@ export default function AllRecipesList({ recipes }) {
       {recipes &&
         recipes.map((recipe) => (
           <LinkListItem key={recipe._id}>
-            <Link href={`recipes/${recipe._id}`} passHref>
+            <StyledLinkAllRecipesList href={`recipes/${recipe._id}`} passHref>
               <ListItem>
                 <RecipeContent>
                   <RecipeTitle>{recipe.title}</RecipeTitle>
@@ -21,7 +21,7 @@ export default function AllRecipesList({ recipes }) {
                   />
                 </RecipeContent>
               </ListItem>
-            </Link>
+            </StyledLinkAllRecipesList>
           </LinkListItem>
         ))}
     </ul>
@@ -61,4 +61,8 @@ const RecipeTitle = styled.div`
   margin: 10px; /* Adjust the margin as needed */
   text-decoration: none;
   overflow-wrap: wrap;
+`;
+
+const StyledLinkAllRecipesList = styled(Link)`
+  text-decoration: none;
 `;

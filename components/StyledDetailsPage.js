@@ -19,18 +19,15 @@ export const StyledDetailsItemIngredientsUl = styled.ul`
   width: 100%;
   max-width: 300px;
   padding-bottom: 10px;
-  display: flex;
-  flex-direction: column;
 `;
 
 export const StyledDetailsItem = styled.div`
   background-color: var(--background-color);
   margin-bottom: 10px;
-  padding: 10px;
   border-radius: 5px;
   width: 48%;
   box-sizing: border-box;
-  height: 80px;
+  height: 70px;
   border: 1px solid var(--title-color);
 `;
 
@@ -72,9 +69,9 @@ export const StyledDetailsItemIngredientLi = styled.li`
   justify-content: space-between;
   align-items: center;
   width: 300px;
-  height: 40px;
+  height: 30px;
   border: solid 1px;
-  margin: 10px;
+  margin: 5px;
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;
@@ -91,14 +88,16 @@ export const StyledPreparation = styled.div`
 export const StyledSpan = styled.span`
   display: flex;
   justify-content: center;
-  margin: 8px;
-  padding: 3px;
+  margin: 5px;
+  padding: 5px;
   border-bottom: solid 1px var(--title-color);
 `;
 
 export const StyledP = styled.p`
   display: flex;
   justify-content: center;
+
+  margin: 3px;
 `;
 
 export const ImageContainerDetailsPage = styled.section`

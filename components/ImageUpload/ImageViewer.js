@@ -23,4 +23,6 @@ export default function ImageViewer({ image, width, height, title }) {
 
 const StyledImage = styled(Image)`
   border-radius: 5px;
+  object-fit: cover;
+  padding-left: 20px;
 `;
