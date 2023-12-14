@@ -21,7 +21,7 @@ const StyledFuseUl = styled.ul`
 
 const fuseOptions = {
   threshold: 0.3,
-  keys: ["title"],
+  keys: ["title", "ingredients.name"],
 };
 
 export default function FuseSearchRecipe() {
