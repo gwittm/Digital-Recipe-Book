@@ -17,6 +17,7 @@ import {
   StyledDeleteButton,
 } from "@/components/Modal/ModalStyle.js";
 import ImageViewer from "@/components/ImageUpload/ImageViewer";
+import { toast } from "react-toastify";
 
 export default function DetailsPage() {
   const [showModal, setShowModal] = useState(false);
@@ -30,6 +31,7 @@ export default function DetailsPage() {
       method: "DELETE",
     });
     setShowModal(false);
+    toast.success("Recipe deleted successfully");
     router.push("/");
   }
 
