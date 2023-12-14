@@ -9,14 +9,13 @@ import {
   StyledDetailsItem,
   StyledItemsRow,
   EditDeleteDiv,
+  StyledDetailsItemIngredientsUl,
 } from "@/components/StyledDetailsPage.js";
-
 import {
   StyledButtonNo,
   StyledButtonYes,
   StyledDeleteButton,
 } from "@/components/Modal/ModalStyle.js";
-import { StyledDetailsItemIngredientsUl } from "@/components/StyledDetailsPage.js";
 import FavoriteButton from "@/components/FavoriteButton";
 
 export default function DetailsPage() {
