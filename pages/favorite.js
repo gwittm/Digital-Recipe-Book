@@ -15,7 +15,7 @@ const StyledH2 = styled.h2`
 export default function FavoriteRecipes() {
   const { data: recipes, isLoading, error, mutate } = useSWR("/api/recipes");
 
-  const favoriteRecipes = recipes.filter((recipe) => recipe.isFavorite);
+  const favoriteRecipes = recipes?.filter((recipe) => recipe.isFavorite);
 
   if (isLoading)
     return (
