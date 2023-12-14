@@ -1,39 +1,64 @@
-import Link from "next/link";
 import styled from "styled-components";
 import ImageViewer from "./ImageUpload/ImageViewer";
+import FavoriteButton from "./FavoriteButton";
+import Link from "next/link";
 
-export default function AllRecipesList({ recipes }) {
+export default function AllRecipesList({ recipes, mutate }) {
+  async function handleToggleFavorite(newStatus, id) {
+    try {
+      const response = await fetch(`/api/recipes/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ isFavorite: newStatus }),
+      });
+
+      if (response.ok) {
+        mutate();
+      } else {
+        console.error("Failed to edit recipe");
+      }
+    } catch (error) {
+      console.error("Error during recipe edit:", error);
+    }
+  }
+
   return (
-    <StyledUl role="list">
+    <ul role="list">
       {recipes &&
         recipes.map((recipe) => (
-          <LinkListItem href={`recipes/${recipe._id}`} key={recipe._id}>
-            <ListItem key={recipe._id}>
-              {recipe.title}
-              <ImageViewer
-                image={recipe.image ? recipe.image.imageUrl : null}
-                alt={recipe.title}
-                width={40}
-                height={40}
-                title={recipe.title}
-              />
-            </ListItem>
-          </LinkListItem>
+          <ListItem key={recipe._id}>
+            <LinkListItem href={`recipes/${recipe._id}`} passHref>
+              <RecipeContent>
+                <RecipeTitle>{recipe.title}</RecipeTitle>
+                <ImageViewer
+                  image={recipe.image ? recipe.image.imageUrl : null}
+                  alt={recipe.title}
+                  width={40}
+                  height={40}
+                  title={recipe.title}
+                />
+              </RecipeContent>
+            </LinkListItem>
+            <FavoriteButton
+              id={recipe._id}
+              isFavorite={recipe.isFavorite}
+              onToggleFavorite={handleToggleFavorite}
+            />
+          </ListItem>
         ))}
-    </StyledUl>
+    </ul>
   );
 }
-
 const LinkListItem = styled(Link)`
   text-decoration: none;
 `;
-
 const StyledUl = styled.ul`
   list-style: none;
   padding-left: 0;
 `;
-
-const ListItem = styled.li`
+const ListItem = styled.div`
   background-color: var(--background-color);
   color: var(--header-color);
   height: 60px;
@@ -50,4 +75,17 @@ const ListItem = styled.li`
     color: white;
     cursor: pointer;
   }
+`;
+
+const RecipeContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60vw;
+  padding: 15px;
+`;
+
+const RecipeTitle = styled.div`
+  margin: 10px;
+  text-decoration: none;
 `;

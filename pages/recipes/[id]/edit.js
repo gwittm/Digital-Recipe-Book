@@ -31,11 +31,12 @@ export default function EditPage() {
     }
   }
   if (error) return <div>Error loading recipe</div>;
-  if (!recipe || isLoading) return <div>Loading...</div>;
+  if (!recipe || isLoading) return <div>Loading recipe details...</div>;
 
   return (
     <>
       <h2 id="edit-recipe">Edit Recipe</h2>
+
       <RecipeForm
         onSubmit={editRecipe}
         formName={"edit-recipe"}
