@@ -11,13 +11,15 @@ import {
 import FormularIngredients from "./FormularIngredients.js";
 import { StyledLink } from "../StyledLink.js";
 import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
-import FavoriteButton from "../FavoriteButton/index.js";
 
+import FavoriteButton from "../FavoriteButton/index.js";
 import ImageUpload from "../ImageUpload/ImageUpload.js";
-export default function RecipeForm({ onSubmit, defaultData }) {
+
+export default function RecipeForm({ onSubmit, formName, defaultData }) {
   const [ingredients, setIngredients] = useState(
     defaultData?.ingredients || []
   );
+  const [image, setImage] = useState(null);
   const [isFavorite, setIsFavorite] = useState(
     defaultData?.isFavorite || false
   );
@@ -37,6 +39,9 @@ export default function RecipeForm({ onSubmit, defaultData }) {
     setIngredients(updatedIngredients);
     ingredient.focus();
   }
+  function handleAddImage(newImage) {
+    setImage(newImage);
+  }
   function handleToggleFavorite(newStatus) {
     setIsFavorite(newStatus);
   }
@@ -51,7 +56,7 @@ export default function RecipeForm({ onSubmit, defaultData }) {
   return (
     <StyledDiv>
       <StyledForm
-        aria-label="Recipe Form"
+        aria-labelledby={formName}
         id="recipeForm"
         onSubmit={handleSubmit}
         defaultData={{
@@ -74,7 +79,6 @@ export default function RecipeForm({ onSubmit, defaultData }) {
         </StyledInput>
         <StyledInput>
           <label>
-            {" "}
             Preparation:{" "}
             <select
               name="preparation"
@@ -94,7 +98,6 @@ export default function RecipeForm({ onSubmit, defaultData }) {
             Type:{" "}
             <select name="type" id="type" defaultValue={defaultData?.type}>
               <option value="none">none</option>
-
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
               <option value="Soup">Soup</option>

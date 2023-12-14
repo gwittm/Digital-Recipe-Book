@@ -25,17 +25,13 @@ export default function AllRecipesList({ recipes, mutate }) {
   }
 
   return (
-    <StyledUl role="list">
+    <ul role="list">
       {recipes &&
         recipes.map((recipe) => (
-          <LinkListItem
-            key={recipe._id}
-            href={`recipes/${recipe._id}`}
-            passHref
-          >
-            {" "}
-            <ListItem>
+          <ListItem key={recipe._id}>
+            <LinkListItem href={`recipes/${recipe._id}`} passHref>
               <RecipeContent>
+                <RecipeTitle>{recipe.title}</RecipeTitle>
                 <ImageViewer
                   image={recipe.image ? recipe.image.imageUrl : null}
                   alt={recipe.title}
@@ -43,17 +39,16 @@ export default function AllRecipesList({ recipes, mutate }) {
                   height={40}
                   title={recipe.title}
                 />
-                <RecipeTitle>{recipe.title}</RecipeTitle>
               </RecipeContent>
-            </ListItem>
+            </LinkListItem>
             <FavoriteButton
               id={recipe._id}
               isFavorite={recipe.isFavorite}
               onToggleFavorite={handleToggleFavorite}
             />
-          </LinkListItem>
+          </ListItem>
         ))}
-    </StyledUl>
+    </ul>
   );
 }
 const LinkListItem = styled(Link)`
