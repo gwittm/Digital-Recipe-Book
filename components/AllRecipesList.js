@@ -77,6 +77,6 @@ const RecipeContent = styled.div`
 `;
 
 const RecipeTitle = styled.div`
-  margin: 10px; /* Adjust the margin as needed */
+  margin: 10px;
   text-decoration: none;
 `;

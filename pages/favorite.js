@@ -49,19 +49,13 @@ export default function FavoriteRecipes() {
     return 0;
   });
   return (
-    <>
-      <StyledUlBox>
-        <StyledH2>My favorite recipes</StyledH2>
-        <ul>
-          {alphabeticallySortedRecipes.map((recipe) => (
-            <AllRecipesList
-              key={recipe._id}
-              recipes={[recipe]}
-              mutate={mutate}
-            />
-          ))}
-        </ul>
-      </StyledUlBox>
-    </>
+    <StyledUlBox>
+      <StyledH2>My favorite recipes</StyledH2>
+      <ul>
+        {alphabeticallySortedRecipes.map((recipe) => (
+          <AllRecipesList key={recipe._id} recipes={[recipe]} mutate={mutate} />
+        ))}
+      </ul>
+    </StyledUlBox>
   );
 }

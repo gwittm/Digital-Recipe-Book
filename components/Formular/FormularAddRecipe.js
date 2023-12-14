@@ -63,38 +63,29 @@ export default function RecipeForm({ onSubmit, defaultData }) {
             name="title"
             type="text"
             defaultValue={defaultData?.title}
-            aria-labelledby="title"
           />
         </StyledInput>
         <StyledInput>
-          <label htmlFor="preparation">
+          <label>
             {" "}
             Preparation:{" "}
             <select
               name="preparation"
               id="preparation"
               defaultValue={defaultData?.preparation}
-              aria-labelledby="preparation"
             >
               <option value="none">none</option>
               <option value="Microwave">Microwave</option>
               <option value="Oven">Oven</option>
               <option value="Stove">Stove</option>
               <option value="Grill">Grill</option>
-              <option value="none">none</option>
             </select>
           </label>
         </StyledInput>
         <StyledInput>
-          <label htmlFor="type">
-            {" "}
+          <label>
             Type:{" "}
-            <select
-              name="type"
-              id="type"
-              defaultValue={defaultData?.type}
-              aria-labelledby="type"
-            >
+            <select name="type" id="type" defaultValue={defaultData?.type}>
               <option value="none">none</option>
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
@@ -115,7 +106,6 @@ export default function RecipeForm({ onSubmit, defaultData }) {
             name="time"
             type="text"
             defaultValue={defaultData?.time}
-            aria-labelledby="time"
           />
         </StyledInput>
         <StyledInput>
@@ -126,7 +116,6 @@ export default function RecipeForm({ onSubmit, defaultData }) {
             type="number"
             min="1"
             defaultValue={defaultData?.servings}
-            aria-labelledby="servings"
           />
         </StyledInput>
         <StyledInput>
@@ -137,7 +126,6 @@ export default function RecipeForm({ onSubmit, defaultData }) {
             cols="40"
             rows="10"
             defaultValue={defaultData?.instruction}
-            aria-labelledby="instruction"
           ></textarea>
         </StyledInput>
       </StyledForm>

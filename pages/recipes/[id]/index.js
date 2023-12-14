@@ -63,7 +63,7 @@ export default function DetailsPage() {
         onToggleFavorite={handleToggleFavorite}
       />
       <StyledItemsRow>
-        <StyledDetailsItem>Type: {recipe.course}</StyledDetailsItem>
+        <StyledDetailsItem>Type: {recipe.type}</StyledDetailsItem>
         <StyledDetailsItem>Time: {recipe.time}</StyledDetailsItem>
         <StyledDetailsItem>
           Amount of Servings: {recipe.servings}
