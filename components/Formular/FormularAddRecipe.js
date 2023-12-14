@@ -13,6 +13,7 @@ import { StyledLink } from "../StyledLink.js";
 import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage.js";
 import FavoriteButton from "../FavoriteButton/index.js";
 
+import ImageUpload from "../ImageUpload/ImageUpload.js";
 export default function RecipeForm({ onSubmit, defaultData }) {
   const [ingredients, setIngredients] = useState(
     defaultData?.ingredients || []
@@ -20,6 +21,10 @@ export default function RecipeForm({ onSubmit, defaultData }) {
   const [isFavorite, setIsFavorite] = useState(
     defaultData?.isFavorite || false
   );
+
+  function handleAddImage(newImage) {
+    setImage(newImage);
+  }
 
   function handleAddIngredient(newIngredient) {
     setIngredients([...ingredients, newIngredient]);
@@ -39,7 +44,8 @@ export default function RecipeForm({ onSubmit, defaultData }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit({ ...data, ingredients, isFavorite });
+
+    onSubmit({ ...data, ingredients, image, isFavorite });
   }
 
   return (
@@ -51,6 +57,7 @@ export default function RecipeForm({ onSubmit, defaultData }) {
         defaultData={{
           isFavorite: isFavorite,
         }}
+        encType="multipart/form-data"
       >
         <FavoriteButton
           isFavorite={isFavorite}
@@ -87,6 +94,7 @@ export default function RecipeForm({ onSubmit, defaultData }) {
             Type:{" "}
             <select name="type" id="type" defaultValue={defaultData?.type}>
               <option value="none">none</option>
+
               <option value="Cake">Cake</option>
               <option value="Dish">Dish</option>
               <option value="Soup">Soup</option>
@@ -162,6 +170,13 @@ export default function RecipeForm({ onSubmit, defaultData }) {
           })}
         </StyledDetailsItemIngredientsUl>
       </StyledIngredientsSection>
+
+      <ImageUpload
+        onAddImage={handleAddImage}
+        image={image}
+        title={defaultData?.title}
+      />
+
       <StyledDivButton>
         <StyledLink $justifySelf="start" href={"/"}>
           back without changes

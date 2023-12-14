@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import ImageViewer from "./ImageUpload/ImageViewer";
 import FavoriteButton from "./FavoriteButton";
 import Link from "next/link";
 
@@ -25,41 +25,55 @@ export default function AllRecipesList({ recipes, mutate }) {
   }
 
   return (
-    <ul role="list">
+    <StyledUl role="list">
       {recipes &&
         recipes.map((recipe) => (
-          <LinkListItem key={recipe._id}>
+          <LinkListItem
+            key={recipe._id}
+            href={`recipes/${recipe._id}`}
+            passHref
+          >
+            {" "}
+            <ListItem>
+              <RecipeContent>
+                <ImageViewer
+                  image={recipe.image ? recipe.image.imageUrl : null}
+                  alt={recipe.title}
+                  width={40}
+                  height={40}
+                  title={recipe.title}
+                />
+                <RecipeTitle>{recipe.title}</RecipeTitle>
+              </RecipeContent>
+            </ListItem>
             <FavoriteButton
               id={recipe._id}
               isFavorite={recipe.isFavorite}
               onToggleFavorite={handleToggleFavorite}
             />
-            <Link href={`recipes/${recipe._id}`} passHref>
-              <ListItem>
-                <RecipeContent>
-                  <RecipeTitle>{recipe.title}</RecipeTitle>
-                </RecipeContent>
-              </ListItem>
-            </Link>
           </LinkListItem>
         ))}
-    </ul>
+    </StyledUl>
   );
 }
-
-const LinkListItem = styled.li`
-  list-style: none;
-  display: flex;
+const LinkListItem = styled(Link)`
+  text-decoration: none;
 `;
-
+const StyledUl = styled.ul`
+  list-style: none;
+  padding-left: 0;
+`;
 const ListItem = styled.div`
-  height: 60px;
   background-color: var(--background-color);
-  color: var(--title-color);
+  color: var(--header-color);
+  height: 60px;
   border-radius: 5px;
   margin: 10px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 80vw;
 
   &:hover {
     background-color: var(--title-color);
