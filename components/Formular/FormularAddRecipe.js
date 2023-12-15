@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyledDiv } from "./FormularStyling";
+import { StyledDiv, StyledFavoriteButtonDivFormular } from "./FormularStyling";
 import { StyledForm } from "./FormularStyling";
 import { StyledLabel } from "./FormularStyling";
 import { StyledInputandLabel } from "./FormularStyling";
@@ -13,10 +13,8 @@ import { StyledIngredientAmountUnit } from "../StyledDetailsPage";
 import { StyledDeleteIngredientButton } from "./FormularStyling";
 import { StyledSelect } from "./FormularStyling";
 import { StyledAddedIngredientsSection } from "./FormularStyling";
-import { StyledPSubtitle } from "./FormularIngredients";
+import { StyledPSubtitle } from "./FormularStyling";
 import { StyledDetailsItemIngredientLi } from "./FormularStyling";
-import Image from "next/image";
-import styled from "styled-components";
 import { StyledLinkRecipeBack } from "../StyledLink";
 
 import FavoriteButton from "../FavoriteButton/index.js";
@@ -274,7 +272,3 @@ export default function RecipeForm({ onSubmit, formName, defaultdata }) {
     </StyledDiv>
   );
 }
-
-export const StyledFavoriteButtonDivFormular = styled.div`
-  margin-left: 500px;
-`;

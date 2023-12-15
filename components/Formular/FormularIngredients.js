@@ -1,9 +1,10 @@
 import {
   StyledIngredientsSection,
   StyledIngredientInput,
+  StyledIngredientForm,
+  StyledPSubtitle,
 } from "./FormularStyling.js";
 import { nanoid } from "nanoid";
-import styled from "styled-components";
 
 export default function FormularIngredients({ onAddIngredient }) {
   return (
@@ -66,20 +67,3 @@ export default function FormularIngredients({ onAddIngredient }) {
     </StyledIngredientForm>
   );
 }
-
-export const StyledIngredientForm = styled.form`
-  background-color: var(--background-color);
-  width: 280px;
-  margin: 0 auto;
-  margin-left: 10px;
-  border-radius: 5px;
-`;
-
-export const StyledPSubtitle = styled.p`
-  font-size: 15px;
-  padding-left: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--title-color);
-`;

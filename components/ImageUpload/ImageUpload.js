@@ -9,8 +9,8 @@ import ImageViewer from "./ImageViewer";
 import { StyledImageContainer } from "./StyledImageUpload";
 import { StyledInputImageUpload } from "./StyledImageUpload";
 import { StyledLabelImageUpload } from "./StyledImageUpload";
-import { StyledPSubtitle } from "../Formular/FormularIngredients";
 import styled from "styled-components";
+import { StyledPSubtitle } from "../Formular/FormularStyling";
 
 export default function ImageUpload({ onAddImage, title, image }) {
   const [isLoading, setIsLoading] = useState(false);

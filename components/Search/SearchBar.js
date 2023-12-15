@@ -1,4 +1,6 @@
-import styled from "styled-components";
+import { StyledForm } from "./FuseSearchStyling";
+import { StyledInput } from "./FuseSearchStyling";
+import { StyledLabel } from "./FuseSearchStyling";
 
 export default function SearchBar({ handleSearch }) {
   return (
@@ -18,36 +20,3 @@ export default function SearchBar({ handleSearch }) {
     </StyledForm>
   );
 }
-
-const StyledForm = styled.form`
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  background-color: white;
-  width: 270px;
-  height: 12vh;
-  position: fixed;
-  margin-left: 35px;
-  margin-top: -20px;
-  padding-bottom: 20px;
-`;
-
-const StyledLabel = styled.label`
-  padding: 5px;
-`;
-
-const StyledInput = styled.input`
-  position: fixed;
-  padding: 10px;
-  height: 7vh;
-  width: 230px;
-  margin-left: 10px;
-  margin-top: 12px;
-  color: var(--title-color);
-  border: solid 3px var(--title-color);
-  border-radius: 50px;
-
-  &:active {
-    border: solid 3px var(--header-color);
-  }
-`;

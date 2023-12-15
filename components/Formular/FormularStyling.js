@@ -140,13 +140,29 @@ export const StyledDetailsItemIngredientLi = styled.li`
   padding-top: 0;
 `;
 
-/* export const StyledFormularImage = styled(Image)`
-  object-fit: cover;
-  border-radius: 50px;
-`; */
-
 export const StyledImageFormular = styled(Image)`
   border-radius: 5px;
   padding-top: 0;
   margin-left: 13%;
+`;
+
+export const StyledFavoriteButtonDivFormular = styled.div`
+  margin-left: 500px;
+`;
+
+export const StyledIngredientForm = styled.form`
+  background-color: var(--background-color);
+  width: 280px;
+  margin: 0 auto;
+  margin-left: 10px;
+  border-radius: 5px;
+`;
+
+export const StyledPSubtitle = styled.p`
+  font-size: 15px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--title-color);
 `;
