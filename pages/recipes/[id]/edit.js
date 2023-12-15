@@ -36,14 +36,13 @@ export default function EditPage() {
       console.error("Error during recipe edit:", error);
     }
   }
-  if (error)  toast.error("Failed to edit recipe");
-  if (isLoading)  toast.error("Failed to edit recipe");
-  if (!recipe)  toast.error("Failed to edit recipe");
-
+  if (error) return <div>Error loading recipe</div>;
+  if (!recipe || isLoading) return <div>Loading...</div>;
 
   return (
     <>
       <h2 id="edit-recipe">Edit Recipe</h2>
+
       <RecipeForm
         onSubmit={editRecipe}
         formName={"edit-recipe"}
