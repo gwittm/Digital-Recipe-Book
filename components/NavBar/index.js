@@ -9,9 +9,17 @@ export default function NavBar() {
     if (page === "home") {
       setIsHomeActive(true);
       setIsNewRecipeActive(false);
-    } else {
+      setIsFavoriteActive(false);
+    }
+    if (page === "newRecipe") {
       setIsHomeActive(false);
       setIsNewRecipeActive(true);
+      setIsFavoriteActive(false);
+    }
+    if (page === "favoritePage") {
+      setIsHomeActive(false);
+      setIsNewRecipeActive(false);
+      setIsFavoriteActive(true);
     }
   };
 
@@ -64,8 +72,8 @@ export default function NavBar() {
       <StyledNavDiv>
         <StyledNavLink
           href="/favorite"
-          className={isNewRecipeActive ? "active" : ""}
-          onClick={() => handleToggle("favorite")}
+          className={isFavoriteActive ? "active" : ""}
+          onClick={() => handleToggle("favoritePage")}
         >
           <svg
             role="img"
