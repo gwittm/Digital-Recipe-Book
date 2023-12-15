@@ -18,6 +18,9 @@ import {
   StyledDeleteButton,
 } from "@/components/Modal/ModalStyle.js";
 import ImageViewer from "@/components/ImageUpload/ImageViewer";
+import FavoriteButton from "@/components/FavoriteButton";
+import { toast } from "react-toastify";
+
 
 export default function DetailsPage() {
   const [showModal, setShowModal] = useState(false);
