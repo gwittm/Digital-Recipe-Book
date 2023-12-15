@@ -13,7 +13,7 @@ export const StyledDiv = styled.div`
   align-items: center;
   height: 100vh;
   margin: 0 auto;
-  padding-top: 600px;
+  padding-top: 650px;
   padding-bottom: 650px;
 `;
 
@@ -63,16 +63,15 @@ export const StyledDivButton = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  background-color: var(--darkbackground-color);
-  border: 1px solid var(--title-color);
-  color: var(--header-color);
-  width: 150px;
+  background-color: var(--title-color);
+  color: white;
+  /* width: 480px; */
   margin: 10px;
   height: 40px;
   font-size: 18px;
   border-radius: 5px;
   align-items: center;
-  cursor: pointer;
+  /* align-items: center; */
 
   &:hover {
     background-color: var(--title-color);

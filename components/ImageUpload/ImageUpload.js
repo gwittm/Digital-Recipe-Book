@@ -85,6 +85,7 @@ export default function ImageUpload({ onAddImage, title, image }) {
         </span>{" "}
         Upload an Image
       </StyledPSubtitle>
+
       {preview && (
         <ImageViewer
           image={preview.imageUrl}
@@ -94,6 +95,7 @@ export default function ImageUpload({ onAddImage, title, image }) {
           title={title}
         />
       )}
+
       <StyledFormImageUpload onSubmit={uploadImage} onReset={handleFormReset}>
         <StyledInputSection>
           <StyledLabelImageUpload htmlFor="recipeImage">

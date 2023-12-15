@@ -18,6 +18,7 @@ const recipeSchema = new Schema({
   ],
 
   instruction: { type: String },
+  isFavorite: { type: Boolean, default: false },
   image: { type: Object },
 });
 

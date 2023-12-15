@@ -1,8 +1,9 @@
 import AllRecipesList from "../AllRecipesList";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SearchBar from "./SearchBar";
 import styled from "styled-components";
 import Fuse from "fuse.js";
+import useSWR from "swr";
 
 const fuseOptions = {
   threshold: 0.3,
@@ -13,29 +14,16 @@ export default function FuseSearchRecipe() {
   const [results, setResults] = useState([]);
   const [fuse, setFuse] = useState(null);
   const [isFuseActive, setIsFuseActive] = useState(false);
-  const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function getRecipes() {
-      setError(null);
-      setIsLoading(true);
-
-      try {
-        const response = await fetch(`/api/recipes`);
-        const fetchedRecipes = await response.json();
-
-        setRecipes(fetchedRecipes);
-        setFuse(new Fuse(fetchedRecipes, fuseOptions));
-      } catch (fetchError) {
-        setError(fetchError);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getRecipes();
-  }, []);
+  const {
+    data: recipes,
+    isLoading,
+    error,
+    mutate,
+  } = useSWR("/api/recipes", {
+    onSuccess: (fetchedRecipes) => {
+      setFuse(new Fuse(fetchedRecipes, fuseOptions));
+    },
+  });
 
   function handleSearch(event) {
     event.preventDefault();
@@ -81,10 +69,18 @@ export default function FuseSearchRecipe() {
         <StyledFuseUl>
           {!isFuseActive &&
             alphabeticallySortedRecipes.map((recipe) => (
-              <AllRecipesList key={recipe._id} recipes={[recipe]} />
+              <AllRecipesList
+                key={recipe._id}
+                recipes={[recipe]}
+                mutate={mutate}
+              />
             ))}
           {results.map((recipe) => (
-            <AllRecipesList key={recipe.item._id} recipes={[recipe.item]} />
+            <AllRecipesList
+              key={recipe.item._id}
+              recipes={[recipe.item]}
+              mutate={mutate}
+            />
           ))}
         </StyledFuseUl>
         {isFuseActive && results.length === 0 && <p>No matching recipes :( </p>}

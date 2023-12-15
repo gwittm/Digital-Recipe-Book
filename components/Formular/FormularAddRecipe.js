@@ -11,7 +11,6 @@ import { StyledInput } from "./FormularStyling";
 import FormularIngredients from "./FormularIngredients";
 import { StyledIngredientsSection } from "./FormularStyling";
 import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage";
-import ImageUpload from "../ImageUpload/ImageUpload.js";
 import { StyledDivButton } from "./FormularStyling";
 import { StyledLink } from "../StyledLink";
 import { StyledButton } from "./FormularStyling";
@@ -31,10 +30,17 @@ import Image from "next/image";
 import styled from "styled-components";
 import { StyledLinkRecipeBack } from "../StyledLink";
 
+import FavoriteButton from "../FavoriteButton/index.js";
+import ImageUpload from "../ImageUpload/ImageUpload.js";
+
 export default function RecipeForm({ onSubmit, formName, defaultdata }) {
   const [image, setImage] = useState(defaultdata?.image || null);
   const [ingredients, setIngredients] = useState(
     defaultdata?.ingredients || []
+  );
+
+  const [isFavorite, setIsFavorite] = useState(
+    defaultdata?.isFavorite || false
   );
 
   function handleAddImage(newImage) {
@@ -52,29 +58,35 @@ export default function RecipeForm({ onSubmit, formName, defaultdata }) {
     setIngredients(updatedIngredients);
     ingredient.focus();
   }
-
+  function handleAddImage(newImage) {
+    setImage(newImage);
+  }
+  function handleToggleFavorite(newStatus) {
+    setIsFavorite(newStatus);
+  }
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    onSubmit({ ...data, ingredients, image });
+    onSubmit({ ...data, ingredients, image, image, isFavorite });
   }
 
   return (
     <StyledDiv>
-      <StyledH2AddandEdit>Add your new recipe</StyledH2AddandEdit>
-      <StyledImageFormular
-        src="/Anime_Pastel_Dream_In_the_corner_of_a_quaint_kitchen_a_welllov_3.jpeg"
-        width="280"
-        height="100"
-      />
       <StyledForm
         aria-labelledby={formName}
         id="recipeForm"
         onSubmit={handleSubmit}
+        defaultData={{
+          isFavorite: isFavorite,
+        }}
         encType="multipart/form-data"
       >
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={handleToggleFavorite}
+        />
         <StyledInputandLabel>
           <StyledLabel htmlFor="title">
             <svg
@@ -218,7 +230,7 @@ export default function RecipeForm({ onSubmit, formName, defaultdata }) {
         </StyledInputandLabel>
       </StyledForm>
       <FormularIngredients onAddIngredient={handleAddIngredient} />
-      <StyledAddedIngredientsSection>
+      <StyledAddedIngredientsSection aria-live="polite">
         <StyledPSubtitle>Added Ingredients: </StyledPSubtitle>
         <StyledDetailsItemIngredientsUl>
           {ingredients.map((ingredient) => {
@@ -231,6 +243,8 @@ export default function RecipeForm({ onSubmit, formName, defaultdata }) {
                 </StyledIngredientAmountUnit>
 
                 <StyledDeleteIngredientButton
+                  role="button"
+                  tabIndex="0"
                   onClick={() =>
                     handleDeleteIngredient(ingredient.ingredientID)
                   }
@@ -241,6 +255,7 @@ export default function RecipeForm({ onSubmit, formName, defaultdata }) {
                       height="1em"
                       viewBox="0 0 448 512"
                       fill="#423530"
+                      alt="Delete Ingredient"
                     >
                       <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
                     </svg>
@@ -277,4 +292,8 @@ export const StyledFormularImage = styled(Image)`
 export const StyledImageFormular = styled(Image)`
   border-radius: 5px;
   padding-top: 0;
+  /*  display: flex;
+  justify-content: center;
+  align-items: center; */
+  margin-left: 13%;
 `;
