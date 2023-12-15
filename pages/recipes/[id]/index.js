@@ -226,7 +226,7 @@ export default function DetailsPage() {
           </StyledDeleteButton>
           {showModal && (
             <Modal>
-              <p>Do you really want do delete the recipe??</p>
+              <p>Do you really want do delete your recipe?</p>
               <StyledButtonYes onClick={deleteRecipe}>
                 <span role="img" aria-label="a check-icon">
                   ✔️
@@ -243,95 +243,6 @@ export default function DetailsPage() {
           )}
         </EditDeleteDiv>
       </StyledDetailsPageContainer>
-
-      {/* <StyledDetailsPageContainer>
-        <StyledHeader>
-          <h2>{recipe.title}</h2>
-        </StyledHeader>
-        <ImageViewer
-          image={recipe.image ? recipe.image.imageUrl : null}
-          width={200}
-          height={200}
-          title={recipe.title}
-          alt={recipe.title}
-        />
-        <FavoriteButton
-          isFavorite={recipe?.isFavorite}
-          onToggleFavorite={handleToggleFavorite}
-        />
-        <StyledItemsRow>
-          <StyledDetailsItem>Type: {recipe.type}</StyledDetailsItem>
-          <StyledDetailsItem>Time: {recipe.time}</StyledDetailsItem>
-          <StyledDetailsItem>
-            Amount of Servings: {recipe.servings}
-          </StyledDetailsItem>
-          <StyledDetailsItem>
-            Preparation: {recipe.preparation}
-          </StyledDetailsItem>
-        </StyledItemsRow>
-        <StyledDetailsItem>
-          <h4>Ingredients:</h4>
-
-          <StyledDetailsItemIngredientsUl>
-            {recipe.ingredients &&
-              recipe.ingredients.map((ingredient) => (
-                <li key={ingredient.ingredientID}>
-                  {ingredient.name} : {ingredient.amount} {ingredient.unit}
-                </li>
-              ))}
-          </StyledDetailsItemIngredientsUl>
-        </StyledDetailsItem>
-        <StyledDetailsItem>
-          <h4>How to prepare it:</h4> {recipe.instruction}
-        </StyledDetailsItem>
-
-        <EditDeleteDiv>
-          <StyledLink $justifySelf="start" href={"/"}>
-            back
-          </StyledLink>
-          <StyledLink
-            href={`/recipes/${id}/edit`}
-            defaultData={recipe.ingredients}
-          >
-            Edit
-          </StyledLink>
-          <StyledDeleteButton
-            onClick={() => setShowModal(true)}
-            type="button"
-            $variant="delete"
-          >
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="1em"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
-                  fill="#e9f0ef"
-                />
-              </svg>
-            </span>
-          </StyledDeleteButton>
-          {showModal && (
-            <Modal>
-              <p>Do you really want do delete the recipe??</p>
-              <StyledButtonYes onClick={deleteRecipe}>
-                <span role="img" aria-label="a check-icon">
-                  ✔️
-                </span>
-                Yes
-              </StyledButtonYes>
-              <StyledButtonNo onClick={() => setShowModal(false)}>
-                <span role="img" aria-label="a X-icon">
-                  ✖️
-                </span>
-                No
-              </StyledButtonNo>
-            </Modal>
-          )}
-        </EditDeleteDiv>
-      </StyledDetailsPageContainer> */}
     </>
   );
 }

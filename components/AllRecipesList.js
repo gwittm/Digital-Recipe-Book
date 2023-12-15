@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import ImageViewer from "./ImageUpload/ImageViewer";
-
 import FavoriteButton from "./FavoriteButton";
 import Link from "next/link";
+import ImageViewer from "./ImageUpload/ImageViewer";
 
 export default function AllRecipesList({ recipes, mutate }) {
   async function handleToggleFavorite(newStatus, id) {
@@ -33,20 +32,24 @@ export default function AllRecipesList({ recipes, mutate }) {
             <LinkListItem href={`recipes/${recipe._id}`} passHref>
               <RecipeContent>
                 <RecipeTitle>{recipe.title}</RecipeTitle>
-                <ImageViewer
-                  image={recipe.image ? recipe.image.imageUrl : null}
-                  alt={recipe.title}
-                  width={40}
-                  height={40}
-                  title={recipe.title}
-                />
+                <StyledImageViewerContainer>
+                  <ImageViewer
+                    image={recipe.image ? recipe.image.imageUrl : null}
+                    alt={recipe.title}
+                    width={40}
+                    height={40}
+                    title={recipe.title}
+                  />
+                </StyledImageViewerContainer>
               </RecipeContent>
             </LinkListItem>
-            <FavoriteButton
-              id={recipe._id}
-              isFavorite={recipe.isFavorite}
-              onToggleFavorite={handleToggleFavorite}
-            />
+            <StyledFavoriteButtonDiv>
+              <FavoriteButton
+                id={recipe._id}
+                isFavorite={recipe.isFavorite}
+                onToggleFavorite={handleToggleFavorite}
+              />
+            </StyledFavoriteButtonDiv>
           </ListItem>
         ))}
     </ul>
@@ -93,4 +96,15 @@ const RecipeTitle = styled.div`
   margin: 10px; /* Adjust the margin as needed */
   text-decoration: none;
   overflow-wrap: wrap;
+`;
+
+const StyledImageViewerContainer = styled.div`
+  border-radius: 5px;
+  object-fit: cover;
+  margin: -15px;
+`;
+
+export const StyledFavoriteButtonDiv = styled.div`
+  margin-top: -45px;
+  margin-right: -20px;
 `;

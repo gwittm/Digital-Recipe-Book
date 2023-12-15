@@ -10,6 +10,7 @@ import { StyledImageContainer } from "./StyledImageUpload";
 import { StyledInputImageUpload } from "./StyledImageUpload";
 import { StyledLabelImageUpload } from "./StyledImageUpload";
 import { StyledPSubtitle } from "../Formular/FormularIngredients";
+import styled from "styled-components";
 
 export default function ImageUpload({ onAddImage, title, image }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -87,13 +88,15 @@ export default function ImageUpload({ onAddImage, title, image }) {
       </StyledPSubtitle>
 
       {preview && (
-        <ImageViewer
-          image={preview.imageUrl}
-          alt={title}
-          height={150}
-          width={150}
-          title={title}
-        />
+        <ImageViewerPreviewFormular>
+          <ImageViewer
+            image={preview.imageUrl}
+            alt={title}
+            height={150}
+            width={150}
+            title={title}
+          />
+        </ImageViewerPreviewFormular>
       )}
 
       <StyledFormImageUpload onSubmit={uploadImage} onReset={handleFormReset}>
@@ -128,3 +131,7 @@ export default function ImageUpload({ onAddImage, title, image }) {
     </StyledImageContainer>
   );
 }
+
+export const ImageViewerPreviewFormular = styled.div`
+  align-self: center;
+`;

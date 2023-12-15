@@ -11,36 +11,6 @@ export default function SideBannerHome() {
           width={400}
           height={400}
         />
-        {/*   <StyledImageSidebar
-          src="/Banner.jpg"
-          alt="Image Side Banner"
-          width={400}
-          height={400}
-        />
-        <StyledImageSidebar
-          src="/Banner.jpg"
-          alt="Image Side Banner"
-          width={400}
-          height={400}
-        /> */}
-        {/* <StyledImageSidebar
-          src="/nadine-primeau--ftWfohtjNw-unsplash.jpg"
-          alt="Image Side Banner"
-          width={200}
-          height={500}
-        />
-        <StyledImageSidebar
-          src="/nadine-primeau--bLkT8wGV0I-unsplash.jpg"
-          alt="Image Side Banner"
-          width={200}
-          height={500}
-        />
-        <StyledImageSidebar
-          src="/brooke-lark-GTMGG-xvxdU-unsplash.jpg"
-          alt="Image Side Banner"
-          width={200}
-          height={500}
-        /> */}
       </StyledSideBanner>
     </>
   );

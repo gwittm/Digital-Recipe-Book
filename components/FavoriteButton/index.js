@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export default function FavoriteButton({ id, isFavorite, onToggleFavorite }) {
   return (
-    <StyledFavoriteButton
+    <button
       onClick={() => onToggleFavorite(!isFavorite, id)}
       aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
       aria-pressed={isFavorite}
@@ -159,7 +159,7 @@ export default function FavoriteButton({ id, isFavorite, onToggleFavorite }) {
           </g>
         </svg>
       )}
-    </StyledFavoriteButton>
+    </button>
   );
 }
 

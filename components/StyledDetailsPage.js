@@ -111,6 +111,8 @@ export const ImageContainerDetailsPage = styled.section`
   border-radius: 5px;
   display: flex;
   justify-content: center;
+  /*   object-fit: cover;
+ */
 `;
 
 export const StyledIngredientName = styled.p`

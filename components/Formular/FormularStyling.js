@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 export const StyledForm = styled.form`
   width: 100%;
@@ -13,7 +14,7 @@ export const StyledDiv = styled.div`
   align-items: center;
   height: 100vh;
   margin: 0 auto;
-  padding-top: 650px;
+  padding-top: 550px;
   padding-bottom: 650px;
 `;
 
@@ -63,15 +64,16 @@ export const StyledDivButton = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  background-color: var(--title-color);
-  color: white;
-  /* width: 480px; */
+  background-color: var(--darkbackground-color);
+  border: 1px solid var(--title-color);
+  color: var(--header-color);
+  width: 150px;
   margin: 10px;
   height: 40px;
   font-size: 18px;
   border-radius: 5px;
   align-items: center;
-  /* align-items: center; */
+  cursor: pointer;
 
   &:hover {
     background-color: var(--title-color);
@@ -136,4 +138,15 @@ export const StyledDetailsItemIngredientLi = styled.li`
   display: flex;
   flex-direction: row;
   padding-top: 0;
+`;
+
+/* export const StyledFormularImage = styled(Image)`
+  object-fit: cover;
+  border-radius: 50px;
+`; */
+
+export const StyledImageFormular = styled(Image)`
+  border-radius: 5px;
+  padding-top: 0;
+  margin-left: 13%;
 `;

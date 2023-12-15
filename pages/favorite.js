@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import AllRecipesList from "@/components/AllRecipesList";
 import useSWR from "swr";
+import SideBannerHome from "@/components/SideBanner/SideBannerHome";
 
 const StyledUlBox = styled.div`
   padding-left: 0;
@@ -51,6 +52,7 @@ export default function FavoriteRecipes() {
   return (
     <StyledUlBox>
       <StyledH2>My favorite recipes</StyledH2>
+      <SideBannerHome />
       <ul>
         {alphabeticallySortedRecipes.map((recipe) => (
           <AllRecipesList key={recipe._id} recipes={[recipe]} mutate={mutate} />

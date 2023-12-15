@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import RecipeForm from "@/components/Formular/FormularAddRecipe";
 import { StyledH2AddandEdit } from "@/components/Formular/FormularStyling";
-import { StyledImageFormular } from "@/components/Formular/FormularAddRecipe";
+import { StyledImageFormular } from "@/components/Formular/FormularStyling";
 
 export default function CreateRecipePage() {
   const router = useRouter();

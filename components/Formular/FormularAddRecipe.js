@@ -1,28 +1,17 @@
 import { useState } from "react";
-import {
-  StyledDiv,
-  StyledH2AddandEdit,
-  StyledInputLabelFlex,
-} from "./FormularStyling";
+import { StyledDiv } from "./FormularStyling";
 import { StyledForm } from "./FormularStyling";
 import { StyledLabel } from "./FormularStyling";
 import { StyledInputandLabel } from "./FormularStyling";
 import { StyledInput } from "./FormularStyling";
 import FormularIngredients from "./FormularIngredients";
-import { StyledIngredientsSection } from "./FormularStyling";
 import { StyledDetailsItemIngredientsUl } from "../StyledDetailsPage";
 import { StyledDivButton } from "./FormularStyling";
-import { StyledLink } from "../StyledLink";
 import { StyledButton } from "./FormularStyling";
 import { StyledIngredientName } from "../StyledDetailsPage";
 import { StyledIngredientAmountUnit } from "../StyledDetailsPage";
 import { StyledDeleteIngredientButton } from "./FormularStyling";
 import { StyledSelect } from "./FormularStyling";
-import { StyledTypePreparationFlex } from "./FormularStyling";
-import { StyledSpan } from "../StyledDetailsPage";
-import { StyledP } from "../StyledDetailsPage";
-import { StyledItemsBox } from "../StyledDetailsPage";
-import { StyledDetailsItemFormular } from "./FormularStyling";
 import { StyledAddedIngredientsSection } from "./FormularStyling";
 import { StyledPSubtitle } from "./FormularIngredients";
 import { StyledDetailsItemIngredientLi } from "./FormularStyling";
@@ -83,10 +72,12 @@ export default function RecipeForm({ onSubmit, formName, defaultdata }) {
         }}
         encType="multipart/form-data"
       >
-        <FavoriteButton
-          isFavorite={isFavorite}
-          onToggleFavorite={handleToggleFavorite}
-        />
+        <StyledFavoriteButtonDivFormular>
+          <FavoriteButton
+            isFavorite={isFavorite}
+            onToggleFavorite={handleToggleFavorite}
+          />
+        </StyledFavoriteButtonDivFormular>
         <StyledInputandLabel>
           <StyledLabel htmlFor="title">
             <svg
@@ -284,16 +275,6 @@ export default function RecipeForm({ onSubmit, formName, defaultdata }) {
   );
 }
 
-export const StyledFormularImage = styled(Image)`
-  object-fit: cover;
-  border-radius: 50px;
-`;
-
-export const StyledImageFormular = styled(Image)`
-  border-radius: 5px;
-  padding-top: 0;
-  /*  display: flex;
-  justify-content: center;
-  align-items: center; */
-  margin-left: 13%;
+export const StyledFavoriteButtonDivFormular = styled.div`
+  margin-left: 500px;
 `;
