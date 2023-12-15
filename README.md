@@ -6,16 +6,16 @@ Do your mother or grandmother still have their old handwritten Recipe Book? In s
 With our app, you can seamlessly digitize the timeless recipes from your family's collection. Additionally, you have the flexibility to incorporate your own creations or favorite recipes from the internet, friends, and more, all within your personal Digital Recipe Book. Each recipe can be enhanced with a suitable image, and thanks to the app's database connection, all your recipes are securely stored for future generations!
 
 ## Features
-🧁 Easily create new recipes using our user-friendly form. You have the flexibility to input various details, such as serving size, recipe type, and even upload images.
-🧁 Each recipe has its own detailed page, displaying all stored information
-🧁 Manage your recipes by updating or deleting them as needed.
-🧁 Navigate through an organized overview page that displays all added recipes in alphabetical order.
-🧁 Use the Search Bar to search for specific recipes within your collection.
-🧁 Customize your experience by adding recipes to a favorites list with a simple toggle button.
-🧁 Thanks to the app's database connection, all your added recipes are securely stored for future reference
+- Easily create new recipes using our user-friendly form. You have the flexibility to input various details, such as serving size, recipe type, and even upload images.
+- Each recipe has its own detailed page, displaying all stored information
+- Manage your recipes by updating or deleting them as needed.
+- Navigate through an organized overview page that displays all added recipes in alphabetical order.
+- Use the Search Bar to search for specific recipes within your collection.
+- Customize your experience by adding recipes to a favorites list with a simple toggle button.
+- Thanks to the app's database connection, all your added recipes are securely stored for future reference
 
 _____________
-❤️
+<p align="center">❤️</p>
 This app was developed by Gabriele, Gökhan, and Stephan as a capstone project during our web developer bootcamp at neue fische in 2023. 
 We all began as complete novices with no practical coding experience. We are very proud of what we archieved.
 
