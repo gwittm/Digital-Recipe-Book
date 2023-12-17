@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import AllRecipesList from "@/components/AllRecipesList";
 import useSWR from "swr";
+import { toast } from 'react-toastify';
 
 const StyledUlBox = styled.div`
   padding-left: 0;
@@ -32,13 +33,12 @@ export default function FavoriteRecipes() {
         <h2>We are still busy in the kitchen! Recipes are loading...</h2>
       </>
     );
-  if (error)
-    return (
-      <h2>
-        Oops! Something went wrong while fetching recipes. Please try again.
-      </h2>
-    );
-
+  if (error) {
+  toast.error("Failed to load favorite recipe");
+  return (
+     <h2>Oops! Something went wrong while fetching recipes. Please try again.</h2>
+  );
+    }
   const alphabeticallySortedRecipes = favoriteRecipes.toSorted((a, b) => {
     if (a.title < b.title) {
       return -1;

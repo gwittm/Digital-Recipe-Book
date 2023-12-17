@@ -64,12 +64,12 @@ export default function RecipeForm({ onSubmit, formName, defaultData }) {
         }}
         encType="multipart/form-data"
       >
-        <FavoriteButton
+        {/* <FavoriteButton
           isFavorite={isFavorite}
           onToggleFavorite={handleToggleFavorite}
-        />
+        /> */}
         <StyledInput>
-          <label htmlFor="title">Title: </label>
+          <label htmlFor="title">* Title: </label>
           <input
             id="title"
             name="title"

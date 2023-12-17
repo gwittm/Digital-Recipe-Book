@@ -19,6 +19,7 @@ import {
 } from "@/components/Modal/ModalStyle.js";
 import ImageViewer from "@/components/ImageUpload/ImageViewer";
 import FavoriteButton from "@/components/FavoriteButton";
+import { toast } from 'react-toastify';
 
 export default function DetailsPage() {
   const [showModal, setShowModal] = useState(false);
@@ -41,6 +42,7 @@ export default function DetailsPage() {
       body: JSON.stringify({ isFavorite: newStatus }),
     });
     mutate();
+    toast.success("favorite button state changed successfully");
   }
 
   async function deleteRecipe() {
@@ -48,6 +50,7 @@ export default function DetailsPage() {
       method: "DELETE",
     });
     setShowModal(false);
+    toast.success("Recipe deleted successfully");
     router.push("/");
   }
 

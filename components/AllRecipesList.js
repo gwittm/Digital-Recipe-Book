@@ -2,6 +2,9 @@ import styled from "styled-components";
 import ImageViewer from "./ImageUpload/ImageViewer";
 import FavoriteButton from "./FavoriteButton";
 import Link from "next/link";
+import { toast } from 'react-toastify';
+import EditPage from "@/pages/recipes/[id]/edit";
+
 
 export default function AllRecipesList({ recipes, mutate }) {
   async function handleToggleFavorite(newStatus, id) {
@@ -15,12 +18,16 @@ export default function AllRecipesList({ recipes, mutate }) {
       });
 
       if (response.ok) {
+        toast.success("favorite button state changed successfully");
+
         mutate();
-      } else {
+      }else {
+        toast.error("Failed to edit recipe");
         console.error("Failed to edit recipe");
       }
-    } catch (error) {
-      console.error("Error during recipe edit:", error);
+    }   catch (error) {
+        toast.warn("Failed to update recipe");
+        console.error("Error during recipe edit:", error);
     }
   }
 
@@ -42,6 +49,11 @@ export default function AllRecipesList({ recipes, mutate }) {
               </RecipeContent>
             </LinkListItem>
             <FavoriteButton
+              id={recipe._id}
+              isFavorite={recipe.isFavorite}
+              onToggleFavorite={handleToggleFavorite}
+            />
+            <EditPage
               id={recipe._id}
               isFavorite={recipe.isFavorite}
               onToggleFavorite={handleToggleFavorite}

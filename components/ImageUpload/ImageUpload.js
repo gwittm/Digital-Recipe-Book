@@ -8,6 +8,7 @@ import {
   StyledInputImageUpload,
 } from "./StyledImageUpload";
 import ImageViewer from "./ImageViewer";
+import { toast } from "react-toastify";
 
 export default function ImageUpload({ onAddImage, title, image }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,6 +25,7 @@ export default function ImageUpload({ onAddImage, title, image }) {
       });
 
       if (response.ok) {
+        toast.success("image was uploaded successfully");
         const res = await response.json();
 
         onAddImage(res);
