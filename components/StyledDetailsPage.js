@@ -57,7 +57,7 @@ export const EditDeleteDiv = styled.section`
   border-radius: 5px;
 `;
 
-export const StyledH4 = styled.h4`
+export const StyledH2 = styled.h2`
   color: var(--header-color);
   border-radius: 5px;
   border: 1px solid var(--title-color);
@@ -66,6 +66,8 @@ export const StyledH4 = styled.h4`
   justify-content: center;
   background-color: var(--darkbackground-color);
   font-weight: 400;
+  font-size: 15px;
+  gap: 3px;
 `;
 
 export const StyledIngredientsItems = styled.div`
