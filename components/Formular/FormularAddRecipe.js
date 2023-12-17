@@ -1,6 +1,13 @@
 import { useState } from "react";
-import { StyledDiv, StyledFavoriteButtonDivFormular } from "./FormularStyling";
-import { StyledForm } from "./FormularStyling";
+import {
+  StyledDiv,
+  StyledFavoriteButtonDivFormular,
+  StyledTextArea,
+} from "./FormularStyling";
+import {
+  StyledForm,
+  StyledDetailsItemIngredientNameAmountUnit,
+} from "./FormularStyling";
 import { StyledLabel } from "./FormularStyling";
 import { StyledInputandLabel } from "./FormularStyling";
 import { StyledInput } from "./FormularStyling";
@@ -209,13 +216,13 @@ export default function RecipeForm({ onSubmit, formName, defaultdata }) {
             </svg>{" "}
             Prepartion
           </StyledLabel>
-          <textarea
+          <StyledTextArea
             name="instruction"
             id="instruction"
             cols="20"
             rows="10"
             defaultValue={defaultdata?.instruction}
-          ></textarea>
+          ></StyledTextArea>
         </StyledInputandLabel>
       </StyledForm>
       <FormularIngredients onAddIngredient={handleAddIngredient} />
@@ -225,12 +232,13 @@ export default function RecipeForm({ onSubmit, formName, defaultdata }) {
           {ingredients.map((ingredient) => {
             return (
               <StyledDetailsItemIngredientLi key={ingredient.ingredientID}>
-                <StyledIngredientName>{ingredient.name}</StyledIngredientName>
-                <StyledIngredientAmountUnit>
-                  {ingredient.amount}
-                  {ingredient.unit}
-                </StyledIngredientAmountUnit>
-
+                <StyledDetailsItemIngredientNameAmountUnit>
+                  <StyledIngredientName>{ingredient.name}</StyledIngredientName>
+                  <StyledIngredientAmountUnit>
+                    {ingredient.amount}
+                    {ingredient.unit}
+                  </StyledIngredientAmountUnit>
+                </StyledDetailsItemIngredientNameAmountUnit>
                 <StyledDeleteIngredientButton
                   role="button"
                   tabIndex="0"

@@ -3,6 +3,10 @@ import {
   StyledIngredientInput,
   StyledIngredientForm,
   StyledPSubtitle,
+  AddIngredientButton,
+  StyledSelect,
+  StyledInput,
+  StyledLabel,
 } from "./FormularStyling.js";
 import { nanoid } from "nanoid";
 
@@ -36,18 +40,18 @@ export default function FormularIngredients({ onAddIngredient }) {
       </StyledPSubtitle>
       <StyledIngredientsSection>
         <StyledIngredientInput>
-          <label htmlFor="ingredient">Ingredient:</label>
-          <input name="ingredient" type="text" id="ingredient" />
+          <StyledLabel htmlFor="ingredient">Ingredient:</StyledLabel>
+          <StyledInput name="ingredient" type="text" id="ingredient" />
         </StyledIngredientInput>
 
         <StyledIngredientInput>
-          <label htmlFor="amount">Amount:</label>
-          <input name="amount" type="number" min="1" id="amount" />
+          <StyledLabel htmlFor="amount">Amount:</StyledLabel>
+          <StyledInput name="amount" type="number" min="1" id="amount" />
         </StyledIngredientInput>
 
         <StyledIngredientInput>
-          <label htmlFor="unit"> Unit:</label>
-          <select id="unit" name="unit" defaultValue="unit">
+          <StyledLabel htmlFor="unit"> Unit:</StyledLabel>
+          <StyledSelect id="unit" name="unit" defaultValue="unit">
             <option value="g">g</option>
             <option value="none">none</option>
             <option value="l">l</option>
@@ -59,10 +63,10 @@ export default function FormularIngredients({ onAddIngredient }) {
             <option value="cup">cup</option>
             <option value="pcs">pcs</option>
             <option value="pn">pn</option>
-          </select>
+          </StyledSelect>
         </StyledIngredientInput>
 
-        <button type="submit">+</button>
+        <AddIngredientButton type="submit">+</AddIngredientButton>
       </StyledIngredientsSection>
     </StyledIngredientForm>
   );

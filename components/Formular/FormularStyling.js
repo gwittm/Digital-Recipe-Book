@@ -37,7 +37,9 @@ export const StyledLabel = styled.label`
 
 export const StyledInput = styled.input`
   border-radius: 5px;
-  height: 3vh;
+  height: 4vh;
+  background-color: var(--darkbackground-color);
+  border: solid 1px var(--title-color);
 `;
 
 export const StyledIngredientsSection = styled.section`
@@ -86,9 +88,7 @@ export const StyledDeleteIngredientButton = styled.button`
   border-radius: 5px;
   margin: 3px;
   padding: 3px;
-
-  &:hover {
-  }
+  background-color: transparent;
 `;
 
 export const StyledH2AddandEdit = styled.h2`
@@ -115,6 +115,14 @@ export const StyledInputLabelFlex = styled.div`
 
 export const StyledSelect = styled.select`
   display: flex;
+  background-color: var(--darkbackground-color);
+  border-radius: 5px;
+  height: 4vh;
+  border: 1px solid var(--title-color);
+`;
+
+export const StyledTextArea = styled.textarea`
+  background-color: var(--darkbackground-color);
 `;
 
 export const StyledTypePreparationFlex = styled.div`
@@ -137,7 +145,15 @@ export const StyledAddedIngredientsSection = styled.div`
 export const StyledDetailsItemIngredientLi = styled.li`
   display: flex;
   flex-direction: row;
-  padding-top: 0;
+  justify-content: space-between;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: -20px;
+  margin-right: 10px;
+
+  &:hover {
+    background-color: var(--darkbackground-color);
+  }
 `;
 
 export const StyledImageFormular = styled(Image)`
@@ -165,4 +181,22 @@ export const StyledPSubtitle = styled.p`
   align-items: center;
   gap: 10px;
   color: var(--title-color);
+`;
+
+export const StyledDetailsItemIngredientNameAmountUnit = styled.div`
+  display: flex;
+`;
+
+export const AddIngredientButton = styled.button`
+  background-color: var(--darkbackground-color);
+  border: solid 1px var(--header-color);
+  color: var(--title-color);
+  border-radius: 5px;
+  width: 30px;
+  margin-right: 10px;
+
+  &:hover {
+    background-color: var(--title-color);
+    color: white;
+  }
 `;

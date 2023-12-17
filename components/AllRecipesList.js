@@ -28,8 +28,8 @@ export default function AllRecipesList({ recipes, mutate }) {
     <ul role="list">
       {recipes &&
         recipes.map((recipe) => (
-          <ListItem key={recipe._id}>
-            <LinkListItem href={`recipes/${recipe._id}`} passHref>
+          <LinkListItem key={recipe._id}>
+            <ListItem href={`recipes/${recipe._id}`} passHref>
               <RecipeContent>
                 <RecipeTitle>{recipe.title}</RecipeTitle>
                 <StyledImageViewerContainer>
@@ -42,7 +42,7 @@ export default function AllRecipesList({ recipes, mutate }) {
                   />
                 </StyledImageViewerContainer>
               </RecipeContent>
-            </LinkListItem>
+            </ListItem>
             <StyledFavoriteButtonDiv>
               <FavoriteButton
                 id={recipe._id}
@@ -50,36 +50,30 @@ export default function AllRecipesList({ recipes, mutate }) {
                 onToggleFavorite={handleToggleFavorite}
               />
             </StyledFavoriteButtonDiv>
-          </ListItem>
+          </LinkListItem>
         ))}
     </ul>
   );
 }
 
-const LinkListItem = styled(Link)`
+const ListItem = styled(Link)`
   text-decoration: none;
   color: var(--title-color);
-  &:hover {
-    color: white;
-    cursor: pointer;
-  }
+  width: 270px;
 `;
 
-const ListItem = styled.li`
+const LinkListItem = styled.li`
   background-color: var(--background-color);
-  color: hotpink;
   height: 60px;
   border-radius: 5px;
   margin: 13px;
   padding: 10px;
   display: flex;
-  /*   justify-content: space-between; */
   align-items: center;
-  width: 70vw;
+  width: 270px;
 
   &:hover {
     background-color: var(--title-color);
-    color: white;
     cursor: pointer;
   }
 `;
@@ -90,10 +84,13 @@ const RecipeContent = styled.div`
   justify-content: space-between;
   width: 60vw;
   padding: 5px;
+  &:hover {
+    color: white;
+  }
 `;
 
 const RecipeTitle = styled.div`
-  margin: 10px; /* Adjust the margin as needed */
+  margin: 10px;
   text-decoration: none;
   overflow-wrap: wrap;
 `;

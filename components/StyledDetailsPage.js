@@ -27,9 +27,6 @@ export const StyledDetailsPageContainer = styled.section`
 `;
 
 export const StyledDetailsItemIngredientsUl = styled.ul`
-  list-style-type: none;
-  width: 100%;
-  max-width: 300px;
   padding-bottom: 10px;
 `;
 
@@ -129,6 +126,7 @@ export const ImageContainerDetailsPage = styled.section`
 
 export const StyledIngredientName = styled.p`
   display: flex;
+  padding-right: 3px;
 `;
 
 export const StyledIngredientAmountUnit = styled.p`
