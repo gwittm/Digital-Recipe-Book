@@ -15,11 +15,11 @@ export default createGlobalStyle`
     --header-color: #794163
   }
 
-  /* body {
+  body {
     margin: 60px auto;
     font-family: system-ui;
 
-  } */
+  } 
 
 
 

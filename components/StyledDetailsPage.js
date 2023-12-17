@@ -15,8 +15,8 @@ export const StyledH2RecipeTitle = styled.h2`
 `;
 
 export const StyledFavoriteButtonDivDetailsPage = styled.div`
-  position: fixed;
-  margin-top: 15px;
+  position: absolute;
+  margin-top: 20px;
   margin-left: 260px;
 `;
 

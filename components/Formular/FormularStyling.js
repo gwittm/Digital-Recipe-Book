@@ -32,7 +32,7 @@ export const StyledInputandLabel = styled.div`
 export const StyledLabel = styled.label`
   color: var(--title-color);
   margin-bottom: 5px;
-  padding-left: 2;
+  padding-left: 2px;
 `;
 
 export const StyledInput = styled.input`
