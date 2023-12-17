@@ -3,6 +3,7 @@ import useSWR from "swr";
 import RecipeForm from "@/components/Formular/FormularAddRecipe";
 import { StyledH2AddandEdit } from "@/components/Formular/FormularStyling";
 import { StyledImageFormular } from "@/components/Formular/FormularStyling";
+import { RecipeFormEditDiv } from "@/components/Formular/FormularStyling";
 
 export default function EditPage() {
   const router = useRouter();
@@ -43,11 +44,13 @@ export default function EditPage() {
         width="280"
         height="100"
       />
-      <RecipeForm
-        onSubmit={editRecipe}
-        formName={"edit-recipe"}
-        defaultdata={recipe}
-      />
+      <RecipeFormEditDiv>
+        <RecipeForm
+          onSubmit={editRecipe}
+          formName={"edit-recipe"}
+          defaultdata={recipe}
+        />
+      </RecipeFormEditDiv>
     </>
   );
 }

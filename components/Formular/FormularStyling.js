@@ -15,7 +15,7 @@ export const StyledDiv = styled.div`
   height: 100vh;
   margin: 0 auto;
   padding-top: 550px;
-  padding-bottom: 650px;
+  padding-bottom: 660px;
 `;
 
 export const StyledInputandLabel = styled.div`
@@ -199,4 +199,9 @@ export const AddIngredientButton = styled.button`
     background-color: var(--title-color);
     color: white;
   }
+`;
+
+export const RecipeFormEditDiv = styled.div`
+  padding-top: 150px;
+  padding-bottom: 200px;
 `;

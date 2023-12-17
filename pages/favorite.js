@@ -3,7 +3,10 @@ import useSWR from "swr";
 import SideBannerHome from "@/components/SideBanner/SideBannerHome";
 import LoadingMessage from "@/components/LoadingMessage/LoadingMessage";
 import { StyledUlFavoritePage } from "@/components/StyledFavoritePage";
-import { StyledH2AddandEdit } from "@/components/Formular/FormularStyling";
+import {
+  StyledH2AddandEdit,
+  StyledPSubtitle,
+} from "@/components/Formular/FormularStyling";
 
 export default function FavoriteRecipes() {
   const { data: recipes, isLoading, error, mutate } = useSWR("/api/recipes");
@@ -13,9 +16,9 @@ export default function FavoriteRecipes() {
   if (isLoading) return <LoadingMessage />;
   if (error)
     return (
-      <h2>
-        Oops! Something went wrong while fetching recipes. Please try again.
-      </h2>
+      <StyledPSubtitle>
+        Oops! Something went wrong... Please try again.
+      </StyledPSubtitle>
     );
 
   const alphabeticallySortedRecipes = favoriteRecipes.toSorted((a, b) => {

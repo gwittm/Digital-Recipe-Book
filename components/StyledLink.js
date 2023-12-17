@@ -31,16 +31,19 @@ export const StyledLinkRecipeBack = styled(Link)`
   background-color: var(--darkbackground-color);
   color: var(--title-color);
   border: 1px solid var(--title-color);
-  padding: 3px;
+  padding: 10px;
   width: 150px;
   margin: 10px;
   height: 40px;
   font-size: 12px;
   border-radius: 5px;
-
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  ´ &:hover {
+  &:hover {
     background-color: var(--header-color);
+    color: white;
   }
 `;
