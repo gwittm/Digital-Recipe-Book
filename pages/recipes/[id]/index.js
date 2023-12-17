@@ -15,18 +15,19 @@ import {
   StyledP,
   StyledIngredientName,
   StyledIngredientAmountUnit,
+  StyledH2RecipeTitle,
+  StyledDetailsItemIngredientsUl,
+  StyledH4,
+  ImageContainerDetailsPage,
+  StyledIngredientsItems,
+  StyledFavoriteButtonDivDetailsPage,
 } from "@/components/StyledDetailsPage.js";
-
 import {
   StyledButtonNo,
   StyledButtonYes,
   StyledDeleteButton,
 } from "@/components/Modal/ModalStyle.js";
-import { StyledDetailsItemIngredientsUl } from "@/components/StyledDetailsPage.js";
-import { StyledH4 } from "@/components/StyledDetailsPage.js";
 import ImageViewer from "@/components/ImageUpload/ImageViewer";
-import { ImageContainerDetailsPage } from "@/components/StyledDetailsPage.js";
-import { StyledIngredientsItems } from "@/components/StyledDetailsPage.js";
 import FavoriteButton from "@/components/FavoriteButton";
 
 export default function DetailsPage() {
@@ -67,12 +68,15 @@ export default function DetailsPage() {
     <>
       <StyledDetailsPageContainer>
         <StyledHeader>
-          <h2>{recipe.title}</h2>
+          <StyledH2RecipeTitle>{recipe.title}</StyledH2RecipeTitle>
         </StyledHeader>
-        <FavoriteButton
-          isFavorite={recipe?.isFavorite}
-          onToggleFavorite={handleToggleFavorite}
-        />
+        <StyledFavoriteButtonDivDetailsPage>
+          <FavoriteButton
+            isFavorite={recipe?.isFavorite}
+            onToggleFavorite={handleToggleFavorite}
+          />
+        </StyledFavoriteButtonDivDetailsPage>
+
         <ImageContainerDetailsPage>
           <ImageViewer
             image={recipe.image.imageUrl}

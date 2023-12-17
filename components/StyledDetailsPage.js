@@ -8,6 +8,18 @@ export const StyledHeader = styled.header`
   border-radius: 5px;
 `;
 
+export const StyledH2RecipeTitle = styled.h2`
+  font-size: 20px;
+  font-weight: 300;
+  padding: 2px;
+`;
+
+export const StyledFavoriteButtonDivDetailsPage = styled.div`
+  position: fixed;
+  margin-top: 15px;
+  margin-left: 260px;
+`;
+
 export const StyledDetailsPageContainer = styled.section`
   width: 100%;
   max-width: 300px;
