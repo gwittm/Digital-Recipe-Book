@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import { StyledForm } from "./FuseSearchStyling";
+import { StyledInput } from "./FuseSearchStyling";
 
 export default function SearchBar({ handleSearch }) {
   return (
     <StyledForm>
-      <StyledLabel htmlFor="search" />
+      <label htmlFor="search" />
       <StyledInput
         type="text"
         id="search"
@@ -12,30 +13,9 @@ export default function SearchBar({ handleSearch }) {
         minLength="0"
         maxLength="20"
         size="10"
-        placeholder="Search from your recipes"
+        placeholder="Search from all your recipes"
         onChange={handleSearch}
-      />
+      ></StyledInput>
     </StyledForm>
   );
 }
-
-const StyledForm = styled.form`
-  display: grid;
-  height: 11vh;
-  padding: 20px;
-  background-color: var(--title-color);
-  border-radius: 5px;
-
-  &:hover {
-    height: 12vh;
-  }
-`;
-
-const StyledLabel = styled.label`
-  padding-bottom: 10px;
-`;
-
-const StyledInput = styled.input`
-  height: 4vh;
-  color: var(--header-color);
-`;

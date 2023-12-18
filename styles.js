@@ -8,19 +8,17 @@ export default createGlobalStyle`
   }
 
   :root{
-    --submitbutton-color:#BC986A;
-    --header-color:#174577;
-    --title-color:#8D8741;
-    --background-color:#FBEEC1;
-    --editbutton-color:#DAAD86;
-    --hover-color:#8D8741;
+    --background-color:#f2ebe9;
+    --darkbackground-color:#eddcd9;
+    --title-color: #264143;
+    --header-color: #794163
   }
 
   body {
-    margin: 80px;
+    margin: 60px auto;
     font-family: system-ui;
 
-  }
+  } 
 
 
 

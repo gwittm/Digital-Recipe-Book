@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import RecipeForm from "@/components/Formular/FormularAddRecipe";
+import { StyledH2AddandEdit } from "@/components/Formular/FormularStyling";
+import { StyledImageFormular } from "@/components/Formular/FormularStyling";
 
 export default function CreateRecipePage() {
   const router = useRouter();
@@ -20,7 +22,14 @@ export default function CreateRecipePage() {
 
   return (
     <>
-      <h1 id="add-recipe">Add Recipe</h1>
+      <StyledH2AddandEdit id="add-recipe">
+        Add your new Recipe
+      </StyledH2AddandEdit>
+      <StyledImageFormular
+        src="/Anime_Pastel_Dream_In_the_corner_of_a_quaint_kitchen_a_welllov_3.jpeg"
+        width="280"
+        height="100"
+      />
       <RecipeForm onSubmit={addRecipe} formName={"add-recipe"} />
     </>
   );

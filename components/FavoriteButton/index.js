@@ -1,6 +1,7 @@
+import styled from "styled-components";
 export default function FavoriteButton({ id, isFavorite, onToggleFavorite }) {
   return (
-    <button
+    <StyledButtonFavorite
       onClick={() => onToggleFavorite(!isFavorite, id)}
       aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
       aria-pressed={isFavorite}
@@ -9,8 +10,8 @@ export default function FavoriteButton({ id, isFavorite, onToggleFavorite }) {
       {isFavorite ? (
         <svg
           role="img"
-          height="40px"
-          width="40px"
+          height="30px"
+          width="30px"
           version="1.1"
           id="Layer_1"
           viewBox="0 0 502 502"
@@ -99,8 +100,8 @@ export default function FavoriteButton({ id, isFavorite, onToggleFavorite }) {
       ) : (
         <svg
           fill="#000000"
-          height="40px"
-          width="40px"
+          height="30px"
+          width="30px"
           version="1.1"
           id="Layer_1"
           viewBox="0 0 502 502"
@@ -158,6 +159,12 @@ export default function FavoriteButton({ id, isFavorite, onToggleFavorite }) {
           </g>
         </svg>
       )}
-    </button>
+    </StyledButtonFavorite>
   );
 }
+
+const StyledButtonFavorite = styled.button`
+  border: none;
+  background-color: var(--background-color);
+  border-radius: 50px;
+`;

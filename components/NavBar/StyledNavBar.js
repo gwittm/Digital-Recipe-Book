@@ -10,13 +10,13 @@ export const StyledNav = styled.nav`
   left: 0;
   right: 0;
   z-index: 1;
-  background-color: var(--header-color);
+  background-color: var(--darkbackground-color);
 `;
 
 export const StyledNavDiv = styled.div`
   color: white;
   margin-bottom: 5px;
-  border: solid white 1px;
+
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -50,15 +50,15 @@ export const StyledNavLink = styled(Link)`
   font-size: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 16vw;
   height: 5vh;
+  color: var(--header-color);
   &:hover {
-    background-color: var(--title-color);
+    scale: 1.1;
   }
 
   &.active {
-    background-color: var(--title-color);
+    color: var(--title-color);
   }
 `;

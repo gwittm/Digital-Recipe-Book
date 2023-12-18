@@ -16,12 +16,10 @@ const recipeSchema = new Schema({
       unit: { type: String },
     },
   ],
+
   instruction: { type: String },
-
   isFavorite: { type: Boolean, default: false },
-
   image: { type: Object },
-
 });
 
 const Recipe = mongoose.models.Recipe || mongoose.model("Recipe", recipeSchema);

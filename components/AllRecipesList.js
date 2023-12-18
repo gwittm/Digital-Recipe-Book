@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import ImageViewer from "./ImageUpload/ImageViewer";
 import FavoriteButton from "./FavoriteButton";
 import Link from "next/link";
+import ImageViewer from "./ImageUpload/ImageViewer";
+import { Fragment } from "react";
 
 export default function AllRecipesList({ recipes, mutate }) {
   async function handleToggleFavorite(newStatus, id) {
@@ -28,9 +29,9 @@ export default function AllRecipesList({ recipes, mutate }) {
     <ul role="list">
       {recipes &&
         recipes.map((recipe) => (
-          <ListItem key={recipe._id}>
-            <LinkListItem href={`recipes/${recipe._id}`} passHref>
-              <RecipeContent>
+          <Fragment key={recipe._id}>
+            <LinkListItem href={`recipes/${recipe._id}`}>
+              <ListItem>
                 <RecipeTitle>{recipe.title}</RecipeTitle>
                 <ImageViewer
                   image={recipe.image ? recipe.image.imageUrl : null}
@@ -39,53 +40,67 @@ export default function AllRecipesList({ recipes, mutate }) {
                   height={40}
                   title={recipe.title}
                 />
-              </RecipeContent>
+              </ListItem>
             </LinkListItem>
-            <FavoriteButton
-              id={recipe._id}
-              isFavorite={recipe.isFavorite}
-              onToggleFavorite={handleToggleFavorite}
-            />
-          </ListItem>
+            <StyledFavoriteButtonDiv>
+              <FavoriteButton
+                id={recipe._id}
+                isFavorite={recipe.isFavorite}
+                onToggleFavorite={handleToggleFavorite}
+              />
+            </StyledFavoriteButtonDiv>
+          </Fragment>
         ))}
     </ul>
   );
 }
+
+const ListItem = styled.li`
+  color: var(--title-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 600px;
+  padding: 5px;
+`;
+
 const LinkListItem = styled(Link)`
   text-decoration: none;
-`;
-const StyledUl = styled.ul`
-  list-style: none;
-  padding-left: 0;
-`;
-const ListItem = styled.div`
   background-color: var(--background-color);
-  color: var(--header-color);
   height: 60px;
   border-radius: 5px;
-  margin: 10px;
+  margin: 13px;
   padding: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 80vw;
+  width: 270px;
 
   &:hover {
     background-color: var(--title-color);
-    color: white;
     cursor: pointer;
-  }
-`;
 
-const RecipeContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 60vw;
-  padding: 15px;
+    ${ListItem} {
+      color: white;
+    }
+  }
 `;
 
 const RecipeTitle = styled.div`
   margin: 10px;
   text-decoration: none;
+  overflow-wrap: wrap;
+`;
+
+export const StyledFavoriteButtonDiv = styled.div`
+  /* margin-top: -50px;
+  margin-right: -70px; */
+  /*  border-radius: 20px;
+  margin-left: 250px;
+  margin-top: -50px; */
+
+  position: absolute;
+  margin-top: -85px;
+  margin-left: 260px;
+  width: 40px;
+  z-index: 1;
 `;

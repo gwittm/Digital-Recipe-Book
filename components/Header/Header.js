@@ -7,8 +7,9 @@ export default function Header() {
 const StyledHeader = styled.h1`
   display: flex;
   position: fixed;
-  color: white;
+  color: var(--header-color);
   font-family: Georgia, "Times New Roman", Times, serif;
+  letter-spacing: 0.06rem;
   justify-content: center;
   margin: 0 0 1rem 0;
   padding: 0.5rem 0.7rem 0.7rem 0.7rem;
@@ -16,7 +17,8 @@ const StyledHeader = styled.h1`
   left: 0;
   right: 0;
   z-index: 1;
-  background-color: var(--header-color);
+  background-color: var(--background-color);
+  z-index: 10;
 
   @media screen and (min-width: 601px) {
     font-size: 35px;
