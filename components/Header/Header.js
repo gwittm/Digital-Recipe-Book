@@ -18,6 +18,7 @@ const StyledHeader = styled.h1`
   right: 0;
   z-index: 1;
   background-color: var(--background-color);
+  z-index: 10;
 
   @media screen and (min-width: 601px) {
     font-size: 35px;

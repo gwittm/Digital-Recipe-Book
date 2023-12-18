@@ -1,11 +1,10 @@
 import { StyledForm } from "./FuseSearchStyling";
 import { StyledInput } from "./FuseSearchStyling";
-import { StyledLabel } from "./FuseSearchStyling";
 
 export default function SearchBar({ handleSearch }) {
   return (
     <StyledForm>
-      <StyledLabel htmlFor="search" />
+      <label htmlFor="search" />
       <StyledInput
         type="text"
         id="search"

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import FavoriteButton from "./FavoriteButton";
 import Link from "next/link";
 import ImageViewer from "./ImageUpload/ImageViewer";
+import { Fragment } from "react";
 
 export default function AllRecipesList({ recipes, mutate }) {
   async function handleToggleFavorite(newStatus, id) {
@@ -28,21 +29,19 @@ export default function AllRecipesList({ recipes, mutate }) {
     <ul role="list">
       {recipes &&
         recipes.map((recipe) => (
-          <LinkListItem
-            href={`recipes/${recipe._id}`}
-            passHref
-            key={recipe._id}
-          >
-            <ListItem>
-              <RecipeTitle>{recipe.title}</RecipeTitle>
-              <ImageViewer
-                image={recipe.image ? recipe.image.imageUrl : null}
-                alt={recipe.title}
-                width={40}
-                height={40}
-                title={recipe.title}
-              />
-            </ListItem>
+          <Fragment key={recipe._id}>
+            <LinkListItem href={`recipes/${recipe._id}`}>
+              <ListItem>
+                <RecipeTitle>{recipe.title}</RecipeTitle>
+                <ImageViewer
+                  image={recipe.image ? recipe.image.imageUrl : null}
+                  alt={recipe.title}
+                  width={40}
+                  height={40}
+                  title={recipe.title}
+                />
+              </ListItem>
+            </LinkListItem>
             <StyledFavoriteButtonDiv>
               <FavoriteButton
                 id={recipe._id}
@@ -50,7 +49,7 @@ export default function AllRecipesList({ recipes, mutate }) {
                 onToggleFavorite={handleToggleFavorite}
               />
             </StyledFavoriteButtonDiv>
-          </LinkListItem>
+          </Fragment>
         ))}
     </ul>
   );
@@ -93,6 +92,15 @@ const RecipeTitle = styled.div`
 `;
 
 export const StyledFavoriteButtonDiv = styled.div`
-  margin-top: -50px;
-  margin-left: -10px;
+  /* margin-top: -50px;
+  margin-right: -70px; */
+  /*  border-radius: 20px;
+  margin-left: 250px;
+  margin-top: -50px; */
+
+  position: absolute;
+  margin-top: -85px;
+  margin-left: 260px;
+  width: 40px;
+  z-index: 1;
 `;

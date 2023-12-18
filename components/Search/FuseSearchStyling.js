@@ -10,10 +10,7 @@ export const StyledForm = styled.form`
   position: fixed;
   margin-left: 30px;
   margin-top: -20px;
-`;
-
-export const StyledLabel = styled.label`
-  /*   padding: 5px; */
+  z-index: 8;
 `;
 
 export const StyledInput = styled.input`
