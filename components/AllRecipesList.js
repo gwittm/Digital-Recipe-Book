@@ -28,8 +28,12 @@ export default function AllRecipesList({ recipes, mutate }) {
     <ul role="list">
       {recipes &&
         recipes.map((recipe) => (
-          <LinkListItem href={`recipes/${recipe._id}`} passHrefkey={recipe._id}>
-            <ListItem key={recipe._id}>
+          <LinkListItem
+            href={`recipes/${recipe._id}`}
+            passHref
+            key={recipe._id}
+          >
+            <ListItem>
               <RecipeTitle>{recipe.title}</RecipeTitle>
               <ImageViewer
                 image={recipe.image ? recipe.image.imageUrl : null}
