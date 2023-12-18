@@ -10,7 +10,6 @@ export default createGlobalStyle`
   :root{
     --background-color:#f2ebe9;
     --darkbackground-color:#eddcd9;
-    --font-color: ff397754;
     --title-color: #264143;
     --header-color: #794163
   }

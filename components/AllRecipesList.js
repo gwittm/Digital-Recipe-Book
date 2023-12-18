@@ -28,20 +28,16 @@ export default function AllRecipesList({ recipes, mutate }) {
     <ul role="list">
       {recipes &&
         recipes.map((recipe) => (
-          <LinkListItem key={recipe._id}>
-            <ListItem href={`recipes/${recipe._id}`} passHref>
-              <RecipeContent>
-                <RecipeTitle>{recipe.title}</RecipeTitle>
-                <StyledImageViewerContainer>
-                  <ImageViewer
-                    image={recipe.image ? recipe.image.imageUrl : null}
-                    alt={recipe.title}
-                    width={40}
-                    height={40}
-                    title={recipe.title}
-                  />
-                </StyledImageViewerContainer>
-              </RecipeContent>
+          <LinkListItem href={`recipes/${recipe._id}`} passHrefkey={recipe._id}>
+            <ListItem key={recipe._id}>
+              <RecipeTitle>{recipe.title}</RecipeTitle>
+              <ImageViewer
+                image={recipe.image ? recipe.image.imageUrl : null}
+                alt={recipe.title}
+                width={40}
+                height={40}
+                title={recipe.title}
+              />
             </ListItem>
             <StyledFavoriteButtonDiv>
               <FavoriteButton
@@ -56,13 +52,17 @@ export default function AllRecipesList({ recipes, mutate }) {
   );
 }
 
-const ListItem = styled(Link)`
-  text-decoration: none;
+const ListItem = styled.li`
   color: var(--title-color);
-  width: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 600px;
+  padding: 5px;
 `;
 
-const LinkListItem = styled.li`
+const LinkListItem = styled(Link)`
+  text-decoration: none;
   background-color: var(--background-color);
   height: 60px;
   border-radius: 5px;
@@ -75,17 +75,10 @@ const LinkListItem = styled.li`
   &:hover {
     background-color: var(--title-color);
     cursor: pointer;
-  }
-`;
 
-const RecipeContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 60vw;
-  padding: 5px;
-  &:hover {
-    color: white;
+    ${ListItem} {
+      color: white;
+    }
   }
 `;
 
@@ -95,13 +88,7 @@ const RecipeTitle = styled.div`
   overflow-wrap: wrap;
 `;
 
-const StyledImageViewerContainer = styled.div`
-  border-radius: 5px;
-  object-fit: cover;
-  margin: -15px;
-`;
-
 export const StyledFavoriteButtonDiv = styled.div`
-  margin-top: -45px;
-  margin-right: -20px;
+  margin-top: -50px;
+  margin-left: -10px;
 `;

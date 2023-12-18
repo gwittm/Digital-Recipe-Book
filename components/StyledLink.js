@@ -14,7 +14,7 @@ export const StyledLink = styled(Link)`
     background-color: var(--header-color);
   }
 
-  ${({ $justifySelf }) =>
+  /*  ${({ $justifySelf }) =>
     $justifySelf &&
     css`
       justify-self: ${$justifySelf};
@@ -24,7 +24,7 @@ export const StyledLink = styled(Link)`
     $variant === "outlined" &&
     css`
       text-align: center;
-    `}
+    `} */
 `;
 
 export const StyledLinkRecipeBack = styled(Link)`

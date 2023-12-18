@@ -160,6 +160,8 @@ export const StyledImageFormular = styled(Image)`
   border-radius: 5px;
   padding-top: 0;
   margin-left: 13%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const StyledFavoriteButtonDivFormular = styled.div`

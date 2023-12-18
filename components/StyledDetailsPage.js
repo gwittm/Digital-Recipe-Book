@@ -16,8 +16,9 @@ export const StyledH2RecipeTitle = styled.h2`
 
 export const StyledFavoriteButtonDivDetailsPage = styled.div`
   position: absolute;
-  margin-top: 20px;
+  margin-top: 14px;
   margin-left: 260px;
+  width: 40px;
 `;
 
 export const StyledDetailsPageContainer = styled.section`
@@ -94,6 +95,7 @@ export const StyledPreparation = styled.div`
   border: solid 1px var(--header-color);
   padding: 10px;
   border-radius: 5px;
+  overflow-wrap: break-word;
 `;
 
 export const StyledSpan = styled.span`
