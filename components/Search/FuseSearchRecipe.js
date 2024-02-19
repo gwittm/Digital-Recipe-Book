@@ -71,7 +71,7 @@ export default function FuseSearchRecipe() {
             />
           ))}
         </StyledFuseUl>
-        {isFuseActive && results.length === 0 && <p>No matching recipes :( </p>}
+        {isFuseActive && results.length === 0 && <p>No matching recipes, sorry :( </p>}
       </div>
     </StartingPageDiv>
   );

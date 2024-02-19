@@ -123,7 +123,6 @@ export default function RecipeForm({ onSubmit, formName, defaultdata }) {
               <option value="Microwave">Microwave</option>
               <option value="Oven">Oven</option>
               <option value="Stove">Stove</option>
-              <option value="Grill">Grill</option>
               <option value="none">none</option>
             </StyledSelect>
           </StyledLabel>
